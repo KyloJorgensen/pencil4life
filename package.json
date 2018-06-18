@@ -11,7 +11,7 @@
     "tsc": "tsc",
     "server:init": "pm2 start ./server/lib/server.js --name pencil4life",
     "server:watch": "pm2 restart ./server/lib/server.js --name pencil4life --watch ./server/lib/ --ignore-watch ./data/ -a",
-    "server": "pm2 start pencil4life",
+    "server": "pm2 start pencil4life -a",
     "compile": "tsc -p ./server/tsconfig.server.json",
     "compile:watch": "tsc -w -p ./server/tsconfig.server.json"
   },
