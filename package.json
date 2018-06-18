@@ -1,14 +1,19 @@
 {
-  "name": "test",
+  "name": "pencil4life",
   "version": "1.0.0",
   "description": "",
-  "main": "index.tsx",
+  "main": "client/src/index.tsx",
   "scripts": {
     "test": "jest",
     "build": "webpack --mode production",
     "dev:build": "webpack --mode development",
     "build:watch": "webpack --watch --mode development",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "server:init": "pm2 start ./server/lib/server.js --name pencil4life",
+    "server:watch": "pm2 restart ./server/lib/server.js --name pencil4life --watch ./server/lib/ --ignore-watch ./data/ -a",
+    "server": "pm2 start pencil4life",
+    "compile": "tsc -p ./server/tsconfig.server.json",
+    "compile:watch": "tsc -w -p ./server/tsconfig.server.json"
   },
   "author": "",
   "license": "MIT",
@@ -18,6 +23,7 @@
   "devDependencies": {
     "@types/enzyme": "^3.1.10",
     "@types/enzyme-adapter-react-16": "^1.0.2",
+    "@types/express": "^4.16.0",
     "@types/jest": "^23.1.0",
     "@types/react": "^16.3.17",
     "@types/react-dom": "^16.0.6",

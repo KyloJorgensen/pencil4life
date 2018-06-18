@@ -13,9 +13,17 @@
       "command": "npm run build:watch"
     },
     {
+      "name": "COMPILE",
+      "description": "COMPILE SERVER CODE",
+      "command": "npm run compile:watch"
+    },
+    {
       "name": "SERVER",
       "description": "WEBPACK",
-      "command": "node server.js"
+      "commands": [
+        "npm run server:watch",
+        "pm2 logs pencil4life"
+      ]
     }
   ]
 }
