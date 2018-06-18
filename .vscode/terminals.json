@@ -1,0 +1,21 @@
+{
+  "autorun": false,
+  "terminals": [
+    {
+      "name": "JEST",
+      "description": "JEST TESTING",
+      "focus": true,
+      "command": "npm test -- --watchAll"
+    },
+    {
+      "name": "WEBPACK",
+      "description": "WEBPACK",
+      "command": "npm run build:watch"
+    },
+    {
+      "name": "SERVER",
+      "description": "WEBPACK",
+      "command": "node server.js"
+    }
+  ]
+}

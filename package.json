@@ -7,7 +7,7 @@
     "test": "jest",
     "build": "webpack --mode production",
     "dev:build": "webpack --mode development",
-    "dev:watch:build": "webpack --watch --mode development",
+    "build:watch": "webpack --watch --mode development",
     "tsc": "tsc"
   },
   "author": "",
