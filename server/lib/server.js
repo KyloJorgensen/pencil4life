@@ -1,14 +1,9 @@
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
-var express = require("express");
-var path = require("path");
 var http = require("http");
-var app = express();
-app
-    .use('/', express.static(path.join(__dirname, '../../dist/')))
-    .use('/images', express.static(path.join(__dirname, '../../assests/images/')))
-    .use('/fonts', express.static(path.join(__dirname, '../../assests/fonts/')));
-http.createServer(app).listen(8081, function () {
-    console.log("Listening on port: " + 8081);
+var app_1 = require("./app");
+var variables_express_1 = require("./config/variables.express");
+http.createServer(app_1.default).listen(variables_express_1.HTTP_PORT, function () {
+    var _date = new Date();
+    console.log(_date.toUTCString() + " | Listening on port: " + variables_express_1.HTTP_PORT);
 });
-exports.app = app;

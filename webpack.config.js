@@ -22,7 +22,7 @@ module.exports = {
                 use: {
                     loader: 'ts-loader',
                     options: {
-                        configFile: path.join(__dirname, '/client/tsconfig.client.json')  
+                        configFile: path.join(__dirname, './client/tsconfig.json')  
                     }
                 }
             },

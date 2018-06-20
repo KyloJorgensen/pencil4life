@@ -1,5 +1,6 @@
 {
-  "autorun": false,
+  "autorun": true,
+  "autokill": true,
   "terminals": [
     {
       "name": "JEST",
