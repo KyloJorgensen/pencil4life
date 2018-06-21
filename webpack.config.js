@@ -7,6 +7,7 @@ module.exports = {
     entry: ['babel-polyfill', './client/src/index.tsx'],
     output: {
         path: path.join(__dirname, '/dist'),
+        publicPath: '/dist/',
         filename: 'index_bundle.js'
     },
     resolve: {

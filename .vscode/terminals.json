@@ -25,6 +25,13 @@
         "npm run server:watch",
         "pm2 logs pencil4life"
       ]
+    },
+    {
+      "name": "STOP SERVER",
+      "description": "STOP SERVER",
+      "command": "pm2 stop pencil4life",
+      "focus": true,
+      "onlySingle": true
     }
   ]
 }
