@@ -7,12 +7,12 @@ import * as Loadable from 'react-loadable';
 const Loading = () => <div>Loading...</div>;
 
 const Main = Loadable({
-  loader: () => import('./main'),
+  loader: () => import('./main/main'),
   loading: Loading,
 });
 
 const Other = Loadable({
-  loader: () => import('./other'),
+  loader: () => import('./other/other'),
   loading: Loading,
 });
 
@@ -22,7 +22,7 @@ class Routes extends React.Component {
       <div>
           <Switch>
             <Route exact path="/" component={Main} />
-            <Route path="/Other" component={Other} />
+            <Route path="/other/" component={Other} />
           </Switch>
       </div>
     );
