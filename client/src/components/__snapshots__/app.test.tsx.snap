@@ -18,7 +18,19 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": <HashRouter>
-        <Routes />
+        <div>
+          <withRouter(Header)
+            adminAccess={false}
+            dispatch={Object {}}
+            location={
+              Object {
+                "pathname": "happy",
+              }
+            }
+            userAccess={false}
+          />
+          <Routes />
+        </div>
       </HashRouter>,
     },
     "ref": null,
@@ -27,17 +39,69 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "children": <Routes />,
+        "children": <div>
+          <withRouter(Header)
+            adminAccess={false}
+            dispatch={Object {}}
+            location={
+              Object {
+                "pathname": "happy",
+              }
+            }
+            userAccess={false}
+          />
+          <Routes />
+        </div>,
       },
       "ref": null,
       "rendered": Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
-        "props": Object {},
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <withRouter(Header)
+              adminAccess={false}
+              dispatch={Object {}}
+              location={
+                Object {
+                  "pathname": "happy",
+                }
+              }
+              userAccess={false}
+            />,
+            <Routes />,
+          ],
+        },
         "ref": null,
-        "rendered": null,
-        "type": [Function],
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "adminAccess": false,
+              "dispatch": Object {},
+              "location": Object {
+                "pathname": "happy",
+              },
+              "userAccess": false,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "div",
       },
       "type": [Function],
     },
@@ -50,7 +114,19 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <HashRouter>
-          <Routes />
+          <div>
+            <withRouter(Header)
+              adminAccess={false}
+              dispatch={Object {}}
+              location={
+                Object {
+                  "pathname": "happy",
+                }
+              }
+              userAccess={false}
+            />
+            <Routes />
+          </div>
         </HashRouter>,
       },
       "ref": null,
@@ -59,17 +135,69 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": <Routes />,
+          "children": <div>
+            <withRouter(Header)
+              adminAccess={false}
+              dispatch={Object {}}
+              location={
+                Object {
+                  "pathname": "happy",
+                }
+              }
+              userAccess={false}
+            />
+            <Routes />
+          </div>,
         },
         "ref": null,
         "rendered": Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
-          "props": Object {},
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <withRouter(Header)
+                adminAccess={false}
+                dispatch={Object {}}
+                location={
+                  Object {
+                    "pathname": "happy",
+                  }
+                }
+                userAccess={false}
+              />,
+              <Routes />,
+            ],
+          },
           "ref": null,
-          "rendered": null,
-          "type": [Function],
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "adminAccess": false,
+                "dispatch": Object {},
+                "location": Object {
+                  "pathname": "happy",
+                },
+                "userAccess": false,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
         },
         "type": [Function],
       },
