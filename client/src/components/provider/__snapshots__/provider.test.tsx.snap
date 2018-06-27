@@ -18,7 +18,9 @@ ShallowWrapper {
     "nodeType": "function",
     "props": Object {
       "children": <div
+        className="provider"
         onClick={[Function]}
+        onScroll={[Function]}
       />,
       "value": Object {
         "addEventListener": [Function],
@@ -32,9 +34,11 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": undefined,
+        "className": "provider",
         "onClick": [Function],
+        "onScroll": [Function],
       },
-      "ref": null,
+      "ref": [Function],
       "rendered": null,
       "type": "div",
     },
@@ -71,7 +75,9 @@ ShallowWrapper {
       "nodeType": "function",
       "props": Object {
         "children": <div
+          className="provider"
           onClick={[Function]}
+          onScroll={[Function]}
         />,
         "value": Object {
           "addEventListener": [Function],
@@ -85,9 +91,11 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": undefined,
+          "className": "provider",
           "onClick": [Function],
+          "onScroll": [Function],
         },
-        "ref": null,
+        "ref": [Function],
         "rendered": null,
         "type": "div",
       },

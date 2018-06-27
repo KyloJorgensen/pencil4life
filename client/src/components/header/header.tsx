@@ -1,46 +1,7 @@
 'use strict';
 
-// import * as React from 'react';
-// import { NavLink } from 'react-router-dom';
-
-// class Header extends React.Component<null, null> {
-// 	render() {
-// 		return (
-// 			<header>
-// 				<div>
-// 					<NavLink role="menuitem" tabIndex={-1} to={'/'} ><img className="logo-img" src="/images/pencil4lifelogo-blue-transparent.png" alt="Pencil4Life" /></NavLink>
-// 				</div>
-// 				<div>
-//  				    <nav >
-//  				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/'} activeClassName="selected" >HOME</NavLink>
-//  				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/project'} activeClassName="selected" >PROJECTS</NavLink>
-//  				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/doodles'} activeClassName="selected" >DOODLES</NavLink>
-//  				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/comics'} activeClassName="selected" >COMICS</NavLink>
-//  				    	<div toggleClass={communityClasses}  toggleChild='COMMUNITY'>
-//  				    		<NavLink className="dropdown-item" exact className="btn" role="menuitem" tabIndex={-1} to={'/event'} activeClassName="selected" >EVENTS</NavLink>
-//  						    <NavLink className="dropdown-item" exact className="btn" role="menuitem" tabIndex={-1} to={'/news'} activeClassName="selected" >NEWS</NavLink>
-//  						    <NavLink className="dropdown-item" exact className="btn" role="menuitem" tabIndex={-1} to={'/soundboard'} activeClassName="selected" >SOUNDBOARD</NavLink>
-//  				    	</div>
-//  					    <NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/shop'} activeClassName="selected" >SHOP</NavLink>
-//  				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/commission'} activeClassName="selected" >COMMISSION</NavLink>
-//  				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/info'} activeClassName="selected" >INFO</NavLink>
-//  				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/contact'} activeClassName="selected" >CONTACT</NavLink>
-//  				    </nav>
-//  					<div className="user-info" >
-//  						{user}
-//  					</div>
-// 				</div>
-// 			</header>
-// 		)
-// 	}
-// }
-
-// export default Header;
-
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
-// import userActions from '../../actions/user.actions';
-import Dropdown from '../utilities/dropdown';
 import * as  fontawesome from '@fortawesome/fontawesome';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as faCheckSquare from '@fortawesome/fontawesome-free-solid/faCheckSquare';
@@ -48,12 +9,15 @@ import * as faSignInAlt from '@fortawesome/fontawesome-free-solid/faSignInAlt';
 import * as faSignOutAlt from '@fortawesome/fontawesome-free-solid/faSignOutAlt';
 import * as faUserAlt from '@fortawesome/fontawesome-free-solid/faUserAlt';
 import { withRouter } from 'react-router';
+import { providerConsumer, Context } from '../provider/provider';
+import Dropdown from '../utilities/dropdown';
+// import userActions from '../../actions/user.actions';
 
 fontawesome.library.add(faCheckSquare, faSignInAlt, faSignOutAlt, faUserAlt);
 
 import './header.less';
 
-export interface IHeaderProps {
+export interface IHeaderProps extends Context {
 	location: any;
 	dispatch: any;
 	adminAccess: boolean;
@@ -74,41 +38,28 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 		  };
   		this.logout = this.logout.bind(this);
 		this.handleScroll = this.handleScroll.bind(this);
-		this.setLogoRef = this.setLogoRef.bind(this);
-		this.setNavRef = this.setNavRef.bind(this);  
     }
 
 	componentDidMount() {
-	    window.addEventListener('scroll', this.handleScroll);
+		this.props.addEventListener('scroll', this.handleScroll);
+	    // window.addEventListener('scroll', this.handleScroll);
 	}
 
 	componentWillUnmount() {
-	    window.removeEventListener('scroll', this.handleScroll);
+		// window.removeEventListener('scroll', this.handleScroll);
+		this.props.removeEventListener('scroll', this.handleScroll);
 	}
 	
-	logoRef = null;
-	navRef = null;
-	
-	setLogoRef(ref) {
-		this.logoRef = ref;
-	}
+	logoRef: React.RefObject<HTMLDivElement> = React.createRef();
+	navRef: React.RefObject<HTMLDivElement> = React.createRef();
 
-	setNavRef(ref) {
-		this.navRef = ref;
-	}
-
-	handleScroll(e) {
-
+	handleScroll(event: UIEvent, ref: React.RefObject<HTMLDivElement>) {
 		this.setState((prevState, props) => {
-			
-			const scroll = window.pageYOffset;
-			//@ts-ignore
-			const imgHeight = this.logoRef.clientHeight;
-			//@ts-ignore
-			const navBarHeight = this.navRef.clientHeight;
-			//@ts-ignore
-			const navBarWidth = this.navRef.clientWidth;
-
+			// const scroll = window.pageYOffset;
+			const scroll = ref.current.scrollTop;
+			const imgHeight = this.logoRef.current.clientHeight;
+			const navBarHeight = this.navRef.current.clientHeight;
+			const navBarWidth = this.navRef.current.clientWidth;
 			return {
 				navPosition: scroll >= imgHeight && navBarWidth > 900 ? 'fixed' : 'initial',
 				logoMargin: scroll >= imgHeight && navBarWidth > 900 ? navBarHeight+20 : 0,
@@ -175,13 +126,13 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 		}
 
 		return (
-			<header onScroll={this.handleScroll}>
+			<header>
 				<div className="container" >
-					<div className="logo" ref={this.setLogoRef} style={{marginBottom: this.state.logoMargin+'px'}}>
+					<div className="logo" ref={this.logoRef} style={{marginBottom: this.state.logoMargin+'px'}}>
 						<NavLink role="menuitem" tabIndex={-1} to={'/'} ><img className="logo-img" src="/images/pencil4lifelogo-blue-transparent.png" alt="Pencil4Life" /></NavLink>
 					</div>
 				</div>
-				<div className="container nav-wrapper" ref={this.setNavRef} style={{position: this.state.navPosition}} >
+				<div className="container nav-wrapper" ref={this.navRef} style={{position: this.state.navPosition}} >
 				    <nav >
 				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/'} activeClassName="selected" >HOME</NavLink>
 				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/project'} activeClassName="selected" >PROJECTS</NavLink>
@@ -206,4 +157,4 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 	}
 };
 
-export default withRouter(Header);
+export default withRouter(providerConsumer(Header));

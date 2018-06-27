@@ -4,7 +4,7 @@ exports[`Render Header matches the snapshot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <withRouter(Header)
+  Symbol(enzyme.__unrendered__): <withRouter(ProviderConsumer)
     adminAccess={false}
     dispatch={Object {}}
     location={

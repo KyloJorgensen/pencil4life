@@ -19,14 +19,9 @@ ShallowWrapper {
     "props": Object {
       "children": <HashRouter>
         <div>
-          <withRouter(Header)
+          <withRouter(ProviderConsumer)
             adminAccess={false}
             dispatch={Object {}}
-            location={
-              Object {
-                "pathname": "happy",
-              }
-            }
             userAccess={false}
           />
           <Routes />
@@ -40,14 +35,9 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <div>
-          <withRouter(Header)
+          <withRouter(ProviderConsumer)
             adminAccess={false}
             dispatch={Object {}}
-            location={
-              Object {
-                "pathname": "happy",
-              }
-            }
             userAccess={false}
           />
           <Routes />
@@ -60,14 +50,9 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            <withRouter(Header)
+            <withRouter(ProviderConsumer)
               adminAccess={false}
               dispatch={Object {}}
-              location={
-                Object {
-                  "pathname": "happy",
-                }
-              }
               userAccess={false}
             />,
             <Routes />,
@@ -82,9 +67,6 @@ ShallowWrapper {
             "props": Object {
               "adminAccess": false,
               "dispatch": Object {},
-              "location": Object {
-                "pathname": "happy",
-              },
               "userAccess": false,
             },
             "ref": null,
@@ -115,14 +97,9 @@ ShallowWrapper {
       "props": Object {
         "children": <HashRouter>
           <div>
-            <withRouter(Header)
+            <withRouter(ProviderConsumer)
               adminAccess={false}
               dispatch={Object {}}
-              location={
-                Object {
-                  "pathname": "happy",
-                }
-              }
               userAccess={false}
             />
             <Routes />
@@ -136,14 +113,9 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": <div>
-            <withRouter(Header)
+            <withRouter(ProviderConsumer)
               adminAccess={false}
               dispatch={Object {}}
-              location={
-                Object {
-                  "pathname": "happy",
-                }
-              }
               userAccess={false}
             />
             <Routes />
@@ -156,14 +128,9 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
-              <withRouter(Header)
+              <withRouter(ProviderConsumer)
                 adminAccess={false}
                 dispatch={Object {}}
-                location={
-                  Object {
-                    "pathname": "happy",
-                  }
-                }
                 userAccess={false}
               />,
               <Routes />,
@@ -178,9 +145,6 @@ ShallowWrapper {
               "props": Object {
                 "adminAccess": false,
                 "dispatch": Object {},
-                "location": Object {
-                  "pathname": "happy",
-                },
                 "userAccess": false,
               },
               "ref": null,

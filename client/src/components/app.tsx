@@ -13,7 +13,7 @@ class App extends React.Component {
       <Provider>
         <Router>
           <div>
-          <Header location={{pathname: 'happy'}} dispatch={{}} adminAccess={false} userAccess={false} />
+          <Header dispatch={{}} adminAccess={false} userAccess={false} />
           <Routes/>
           </div>
         </Router>

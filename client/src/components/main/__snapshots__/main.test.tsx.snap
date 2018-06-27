@@ -21,6 +21,9 @@ ShallowWrapper {
         Main page
       </p>,
       "className": "main",
+      "style": Object {
+        "height": "1000px",
+      },
     },
     "ref": null,
     "rendered": Object {
@@ -46,6 +49,9 @@ ShallowWrapper {
           Main page
         </p>,
         "className": "main",
+        "style": Object {
+          "height": "1000px",
+        },
       },
       "ref": null,
       "rendered": Object {

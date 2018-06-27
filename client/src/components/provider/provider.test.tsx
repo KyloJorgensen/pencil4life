@@ -83,11 +83,48 @@ describe('interaction', () => {
 		return uniqueNumber;
 	};
 
+	interface IUnmountState {
+		mount: boolean;
+	}
+	
+	class Unmount extends React.Component<null, IUnmountState> {
+		constructor(props) {
+			super(props);
+			this.state = {
+				mount: true,
+			}
+			this.handleClick = this.handleClick.bind(this);
+			this.handleScroll = this.handleScroll.bind(this);
+		}
+
+		handleClick(event) {
+			this.setState((prevState) => {
+				return {mount: !prevState.mount};
+			});
+		}
+
+		handleScroll(event) {
+			this.setState((prevState) => {
+				return {mount: !prevState.mount};
+			});
+		}
+
+		render() {
+			return (
+				<div>
+					<button className="unmount" onClick={this.handleClick} onScroll={this.handleScroll} ></button>
+					<div>{this.state.mount ? this.props.children : ''}</div>
+				</div>
+			);
+		}
+	}
+
 
 	interface IInsideProps {
 		addEventListener:Provider["addEventListener"];
 		removeEventListener:Provider["removeEventListener"];
-		mockHandler: Function;
+		clickHandler: Function;
+		scrollHandler: Function;
 	}	
 	interface IInsideState {
 		uniqueNumber: number;
@@ -101,7 +138,13 @@ describe('interaction', () => {
 		}
 
 		componentDidMount() {
-			this.props.addEventListener('click', this.state.uniqueNumber + 'uniqueTag', this.props.mockHandler);
+			this.props.addEventListener('click', this.props.clickHandler);
+			this.props.addEventListener('scroll', this.props.scrollHandler);
+		}
+
+		componentWillUnmount() {
+			this.props.removeEventListener('click', this.props.clickHandler);
+			this.props.removeEventListener('scroll', this.props.scrollHandler);
 		}
 
 		render() {
@@ -114,7 +157,7 @@ describe('interaction', () => {
 		uniqueNumber = 0;
 	});
 
-	it('should add event listener', () => {
+	it('should add onClick event listener', () => {
 		const mockHandler = jest.fn(() => {});
  		wrapper = mount(
 			<Provider>
@@ -123,7 +166,8 @@ describe('interaction', () => {
 						const props = {
 							addEventListener: context.addEventListener,
 							removeEventListener: context.removeEventListener,
-							mockHandler: mockHandler
+							clickHandler: mockHandler,
+							scrollHandler: () => {},
 						}
 
 						return (
@@ -134,11 +178,13 @@ describe('interaction', () => {
 			</Provider>
 		);
 
+		
+
 		wrapper.find('p').simulate('click');
 		expect(mockHandler.mock.calls.length).toEqual(1);
 	});
 
-	it('should remove event listener', () => {
+	it('should remove onClick event listener', () => {
 		const mockHandler = jest.fn(() => {});
 		let props;
  		wrapper = mount(
@@ -148,22 +194,27 @@ describe('interaction', () => {
 						props = {
 							addEventListener: context.addEventListener,
 							removeEventListener: context.removeEventListener,
-							mockHandler: mockHandler
+							clickHandler: () => {
+								mockHandler();
+							},
+							scrollHandler: () => {},
 						}
 
 						return (
-							<Inside {...props} />
+							<Unmount>
+								<Inside {...props} />
+							</Unmount>
 						);
 					}}
 				</ProviderContext.Consumer>
 			</Provider>
 		);
-		props.removeEventListener('click', '1uniqueTag');
-		wrapper.find('p').simulate('click');
+		wrapper.find('button.unmount').simulate('scroll');
+		wrapper.find('div').first().simulate('click');
 		expect(mockHandler.mock.calls.length).toEqual(0);
 	});
 
-	it('should not trigger on the outside', () => {
+	it('should not trigger click on the outside', () => {
 		const mockHandler = jest.fn(() => {});
  		wrapper = mount(
 			<main>
@@ -173,7 +224,8 @@ describe('interaction', () => {
 							const props = {
 								addEventListener: context.addEventListener,
 								removeEventListener: context.removeEventListener,
-								mockHandler: mockHandler
+								clickHandler: mockHandler,
+								scrollHandler: () => {},
 							}
 
 							return (
@@ -190,7 +242,9 @@ describe('interaction', () => {
 	});
 
 	it('should trigger all "click" events on click', () => {
-		const mockHandler = jest.fn(() => {});
+		const mockHandler1 = jest.fn(() => {});
+		const mockHandler2 = jest.fn(() => {});
+		const mockHandler3 = jest.fn(() => {});
  		wrapper = mount(
 			<Provider>
 				<ProviderContext.Consumer>
@@ -198,7 +252,8 @@ describe('interaction', () => {
 						const props = {
 							addEventListener: context.addEventListener,
 							removeEventListener: context.removeEventListener,
-							mockHandler: mockHandler
+							clickHandler: mockHandler1,
+							scrollHandler: () => {},
 						}
 
 						return (
@@ -211,7 +266,8 @@ describe('interaction', () => {
 						const props = {
 							addEventListener: context.addEventListener,
 							removeEventListener: context.removeEventListener,
-							mockHandler: mockHandler
+							clickHandler: mockHandler2,
+							scrollHandler: () => {},
 						}
 
 						return (
@@ -224,7 +280,8 @@ describe('interaction', () => {
 						const props = {
 							addEventListener: context.addEventListener,
 							removeEventListener: context.removeEventListener,
-							mockHandler: mockHandler
+							clickHandler: mockHandler3,
+							scrollHandler: () => {},
 						}
 
 						return (
@@ -236,6 +293,33 @@ describe('interaction', () => {
 		);
 
 		wrapper.find('p').first().simulate('click');
-		expect(mockHandler.mock.calls.length).toEqual(3);
+		expect(mockHandler1.mock.calls.length).toEqual(1);
+		expect(mockHandler2.mock.calls.length).toEqual(1);
+		expect(mockHandler3.mock.calls.length).toEqual(1);
+	});
+
+	it('should add On Scroll event listener', () => {
+		const mockHandler = jest.fn(() => {});
+ 		wrapper = mount(
+			<Provider>
+				<ProviderContext.Consumer>
+					{context => {
+						const props = {
+							addEventListener: context.addEventListener,
+							removeEventListener: context.removeEventListener,
+							clickHandler: () => {},
+							scrollHandler: mockHandler,
+						}
+
+						return (
+							<Inside {...props} />
+						);
+					}}
+				</ProviderContext.Consumer>
+			</Provider>
+		);
+
+		wrapper.find('p').simulate('scroll');
+		expect(mockHandler.mock.calls.length).toEqual(1);
 	});
 });
