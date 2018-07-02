@@ -11,8 +11,8 @@ const Main = Loadable({
   loading: Loading,
 });
 
-const Other = Loadable({
-  loader: () => import('./other/other'),
+const LoginPage = Loadable({
+  loader: () => import('./login/login-page'),
   loading: Loading,
 });
 
@@ -22,7 +22,7 @@ class Routes extends React.Component {
       <div>
           <Switch>
             <Route exact path="/" component={Main} />
-            <Route path="/other/" component={Other} />
+            <Route path="/login/" component={LoginPage} />
           </Switch>
       </div>
     );

@@ -2,33 +2,41 @@
 
 import * as React from 'react';
 import { shallow, mount, ShallowWrapper, ReactWrapper } from 'enzyme';
-import { Provider, ProviderContext} from './provider';
+import { EventWrapper, EventContext, IEventHandler, eventProvider, eventConsumer} from './event-listener';
 
 let wrapper: ShallowWrapper | ReactWrapper;
 
-describe('Render ProviderContext', () => {
+class Elem extends React.Component<null, null> {
+	render() {
+		return (
+			<p></p>
+		)
+	}
+}
+
+describe('Render EventContext', () => {
 	it('matches the snapshot', () => {
 		wrapper = mount(
-			<ProviderContext.Consumer>
+			<EventContext.Consumer>
 				{context => {
 					return (
 						<p></p>
 					);
 				}}
-			</ProviderContext.Consumer>
+			</EventContext.Consumer>
 		);
 		expect(wrapper).toMatchSnapshot();
 	});
 
 	it('should have a p', () => {
 		wrapper = mount(
-			<ProviderContext.Consumer>
+			<EventContext.Consumer>
 				{context => {
 					return (
 						<p></p>
 					);
 				}}
-			</ProviderContext.Consumer>
+			</EventContext.Consumer>
 		);
 		const child = wrapper.find('p');
 		expect(child.length).toEqual(1);
@@ -36,30 +44,30 @@ describe('Render ProviderContext', () => {
 
 	it('should have a p that contains "child"', () => {
 		wrapper = mount(
-			<ProviderContext.Consumer>
+			<EventContext.Consumer>
 				{context => {
 					return (
 						<p>child</p>
 					);
 				}}
-			</ProviderContext.Consumer>
+			</EventContext.Consumer>
 		);
 		const child = wrapper.find('p').contains('child');
 		expect(child).toEqual(true);
 	});
 });
 
-describe('Render Provider component', () => {
+describe('Render Event component', () => {
 	it('matches the snapshot', () => {
-		wrapper = shallow(<Provider />);
+		wrapper = shallow(<EventWrapper />);
 		expect(wrapper).toMatchSnapshot();
 	});
 
 	it('should have a p', () => {
 		wrapper = shallow(
-			<Provider>
+			<EventWrapper>
 				<p>child</p>
-			</Provider>
+			</EventWrapper>
 		);
 		const child = wrapper.find('p');
 		expect(child.length).toEqual(1);
@@ -67,12 +75,28 @@ describe('Render Provider component', () => {
 
 	it('should have a p that contains "child"', () => {
 		wrapper = shallow(
-			<Provider>
+			<EventWrapper>
 				<p>child</p>
-			</Provider>
+			</EventWrapper>
 		);
 		const child = wrapper.find('p').contains('child');
 		expect(child).toEqual(true);
+	});
+});
+
+describe('Render eventProvider', () => {
+	it('matches the snapshot', () => {
+		const EP = eventProvider(Elem);
+		wrapper = shallow(<EP />);
+		expect(wrapper).toMatchSnapshot();
+	});
+});
+
+describe('Render eventConsumer', () => {
+	it('matches the snapshot', () => {
+		const EC = eventConsumer(Elem);
+		wrapper = shallow(<EC />);
+		expect(wrapper).toMatchSnapshot();
 	});
 });
 
@@ -121,10 +145,10 @@ describe('interaction', () => {
 
 
 	interface IInsideProps {
-		addEventListener:Provider["addEventListener"];
-		removeEventListener:Provider["removeEventListener"];
-		clickHandler: Function;
-		scrollHandler: Function;
+		addEventListener: EventWrapper["addEventListener"];
+		removeEventListener: EventWrapper["removeEventListener"];
+		clickHandler: IEventHandler;
+		scrollHandler: IEventHandler;
 	}	
 	interface IInsideState {
 		uniqueNumber: number;
@@ -160,8 +184,8 @@ describe('interaction', () => {
 	it('should add onClick event listener', () => {
 		const mockHandler = jest.fn(() => {});
  		wrapper = mount(
-			<Provider>
-				<ProviderContext.Consumer>
+			<EventWrapper>
+				<EventContext.Consumer>
 					{context => {
 						const props = {
 							addEventListener: context.addEventListener,
@@ -174,8 +198,8 @@ describe('interaction', () => {
 							<Inside {...props} />
 						);
 					}}
-				</ProviderContext.Consumer>
-			</Provider>
+				</EventContext.Consumer>
+			</EventWrapper>
 		);
 
 		
@@ -188,8 +212,8 @@ describe('interaction', () => {
 		const mockHandler = jest.fn(() => {});
 		let props;
  		wrapper = mount(
-			<Provider>
-				<ProviderContext.Consumer>
+			<EventWrapper>
+				<EventContext.Consumer>
 					{context => {
 						props = {
 							addEventListener: context.addEventListener,
@@ -206,8 +230,8 @@ describe('interaction', () => {
 							</Unmount>
 						);
 					}}
-				</ProviderContext.Consumer>
-			</Provider>
+				</EventContext.Consumer>
+			</EventWrapper>
 		);
 		wrapper.find('button.unmount').simulate('scroll');
 		wrapper.find('div').first().simulate('click');
@@ -218,8 +242,8 @@ describe('interaction', () => {
 		const mockHandler = jest.fn(() => {});
  		wrapper = mount(
 			<main>
-				<Provider>
-					<ProviderContext.Consumer>
+				<EventWrapper>
+					<EventContext.Consumer>
 						{context => {
 							const props = {
 								addEventListener: context.addEventListener,
@@ -232,8 +256,8 @@ describe('interaction', () => {
 								<Inside {...props} />
 							);
 						}}
-					</ProviderContext.Consumer>
-				</Provider>
+					</EventContext.Consumer>
+				</EventWrapper>
 			</main>
 		);
 
@@ -246,8 +270,8 @@ describe('interaction', () => {
 		const mockHandler2 = jest.fn(() => {});
 		const mockHandler3 = jest.fn(() => {});
  		wrapper = mount(
-			<Provider>
-				<ProviderContext.Consumer>
+			<EventWrapper>
+				<EventContext.Consumer>
 					{context => {
 						const props = {
 							addEventListener: context.addEventListener,
@@ -260,8 +284,8 @@ describe('interaction', () => {
 							<Inside {...props} />
 						);
 					}}
-				</ProviderContext.Consumer>
-				<ProviderContext.Consumer>
+				</EventContext.Consumer>
+				<EventContext.Consumer>
 					{context => {
 						const props = {
 							addEventListener: context.addEventListener,
@@ -274,8 +298,8 @@ describe('interaction', () => {
 							<Inside {...props} />
 						);
 					}}
-				</ProviderContext.Consumer>
-				<ProviderContext.Consumer>
+				</EventContext.Consumer>
+				<EventContext.Consumer>
 					{context => {
 						const props = {
 							addEventListener: context.addEventListener,
@@ -288,8 +312,8 @@ describe('interaction', () => {
 							<Inside {...props} />
 						);
 					}}
-				</ProviderContext.Consumer>
-			</Provider>
+				</EventContext.Consumer>
+			</EventWrapper>
 		);
 
 		wrapper.find('p').first().simulate('click');
@@ -301,8 +325,8 @@ describe('interaction', () => {
 	it('should add On Scroll event listener', () => {
 		const mockHandler = jest.fn(() => {});
  		wrapper = mount(
-			<Provider>
-				<ProviderContext.Consumer>
+			<EventWrapper>
+				<EventContext.Consumer>
 					{context => {
 						const props = {
 							addEventListener: context.addEventListener,
@@ -315,11 +339,26 @@ describe('interaction', () => {
 							<Inside {...props} />
 						);
 					}}
-				</ProviderContext.Consumer>
-			</Provider>
+				</EventContext.Consumer>
+			</EventWrapper>
 		);
 
 		wrapper.find('p').simulate('scroll');
 		expect(mockHandler.mock.calls.length).toEqual(1);
+	});
+
+	it('should be same when using just the wrappper or EventProvider', () => {
+		const EP = eventProvider(Elem);
+		wrapper = mount(
+			<EP />
+		);
+
+		const conatins = wrapper.contains(
+			<EventWrapper>
+				<Elem />
+			</EventWrapper>
+		);
+
+		expect(conatins).toEqual(true);
 	});
 });

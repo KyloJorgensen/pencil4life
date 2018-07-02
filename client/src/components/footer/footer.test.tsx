@@ -2,15 +2,15 @@
 
 import * as React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import Header from './header';
+import Footer from './footer';
 
 let wrapper: ShallowWrapper;
 
-describe('Render Header', () => {
+describe('Render Footer', () => {
 	it('matches the snapshot', () => {
 		wrapper = shallow(
-			<Header>
-			</Header>
+			<Footer>
+			</Footer>
 		);
 		expect(wrapper).toMatchSnapshot();
 	});

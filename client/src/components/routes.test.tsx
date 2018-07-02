@@ -5,8 +5,6 @@ import { shallow, mount, render } from 'enzyme';
 import { StaticRouter as Router } from 'react-router-dom';
 import { MemoryRouter } from 'react-router';
 import Routes from './routes';
-import Main from './main/main';
-import Other from './other/other';
 
 describe('Render router component', () => {
 	it('matches the snapshot', () => {

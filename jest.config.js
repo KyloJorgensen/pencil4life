@@ -23,7 +23,7 @@ module.exports = {
 	testPathIgnorePatterns: ["/lib/", "/node_modules/"],
     globals: {
 		"ts-jest": {
-			"useBabelrc": true
+			"useBabelrc": true,
 		}
     }
 };

@@ -9,19 +9,17 @@ import * as faSignInAlt from '@fortawesome/fontawesome-free-solid/faSignInAlt';
 import * as faSignOutAlt from '@fortawesome/fontawesome-free-solid/faSignOutAlt';
 import * as faUserAlt from '@fortawesome/fontawesome-free-solid/faUserAlt';
 import { withRouter } from 'react-router';
-import { providerConsumer, Context } from '../provider/provider';
+import { eventConsumer, Context as EventContext } from '../event-listener/event-listener';
 import Dropdown from '../utilities/dropdown';
-// import userActions from '../../actions/user.actions';
-
-fontawesome.library.add(faCheckSquare, faSignInAlt, faSignOutAlt, faUserAlt);
+import { userConsumer, Context as UserContext } from '../user/user-provider';
 
 import './header.less';
 
-export interface IHeaderProps extends Context {
-	location: any;
-	dispatch: any;
-	adminAccess: boolean;
-	userAccess: boolean;
+fontawesome.library.add(faCheckSquare, faSignInAlt, faSignOutAlt, faUserAlt);
+
+export interface IHeaderProps extends EventContext {
+	location: Location;
+	user: UserContext;
 }
 
 export interface IHeaderState {
@@ -42,11 +40,9 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 
 	componentDidMount() {
 		this.props.addEventListener('scroll', this.handleScroll);
-	    // window.addEventListener('scroll', this.handleScroll);
 	}
 
 	componentWillUnmount() {
-		// window.removeEventListener('scroll', this.handleScroll);
 		this.props.removeEventListener('scroll', this.handleScroll);
 	}
 	
@@ -55,7 +51,6 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 
 	handleScroll(event: UIEvent, ref: React.RefObject<HTMLDivElement>) {
 		this.setState((prevState, props) => {
-			// const scroll = window.pageYOffset;
 			const scroll = ref.current.scrollTop;
 			const imgHeight = this.logoRef.current.clientHeight;
 			const navBarHeight = this.navRef.current.clientHeight;
@@ -69,7 +64,7 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 	}
 
 	logout() {
-		// this.props.dispatch(userActions.userLogout());
+		this.props.user.logout();
 	}
 
 	render() {
@@ -81,7 +76,7 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 			adminClasses += " selected ";
 		}
 
-		let admin = this.props.adminAccess ? (
+		let admin = this.props.user.admin ? (
 			<Dropdown key="admin" toggleClass={adminClasses} menuClass="dropdown-menu-right" toggleChild='ADMIN'>
 				<NavLink exact className="dropdown-item" role="menuitem" tabIndex={-1} to={'/image'} activeClassName="selected" >IMAGES</NavLink>
 			</Dropdown>
@@ -94,7 +89,7 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 			profileClasses += " selected ";
 		}
 
-		let profile = this.props.userAccess ? (
+		let profile = this.props.user.userAccess ? (
 			<NavLink exact key="profile" className="btn mytooltip" role="menuitem" tabIndex={-1} to={'/profile'} activeClassName="selected" >
 				<FontAwesomeIcon icon={["fas", "user-alt"]} />
 				<span className="btn mytooltiptext">PROFILE</span>
@@ -102,7 +97,7 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 		) : ''; 
 		user.push(profile);
 
-		let logInOut = this.props.userAccess ? (
+		let logInOut = this.props.user.userAccess ? (
 			<a key="logout" className="btn mytooltip" onClick={this.logout} >
 				<FontAwesomeIcon icon={["fas", "sign-out-alt"]} />
  				<span className="btn mytooltiptext">SIGN OUT</span>
@@ -157,4 +152,4 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 	}
 };
 
-export default withRouter(providerConsumer(Header));
+export default userConsumer(eventConsumer(withRouter(Header)));

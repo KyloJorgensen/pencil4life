@@ -9,7 +9,4 @@ describe('Render main route component', () => {
 		let wrapper = shallow(<App />);
 		expect(wrapper).toMatchSnapshot();
 	});
-	it('should have a div', () => {
-
-	});
 });
