@@ -4,7 +4,7 @@ exports[`Render Footer matches the snapshot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <EventConsumer />,
+  Symbol(enzyme.__unrendered__): <EventListenerConsumer />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],

@@ -6,8 +6,8 @@ import * as Loadable from 'react-loadable';
 
 const Loading = () => <div>Loading...</div>;
 
-const Main = Loadable({
-  loader: () => import('./main/main'),
+const HomePage = Loadable({
+  loader: () => import('./home/homepage'),
   loading: Loading,
 });
 
@@ -16,13 +16,25 @@ const LoginPage = Loadable({
   loading: Loading,
 });
 
+const SignupPage = Loadable({
+  loader: () => import('./signup/signup-page'),
+  loading: Loading,
+});
+
+const EventSwitch = Loadable({
+  loader: () => import('./event/event-switch'),
+  loading: Loading,
+});
+
 class Routes extends React.Component {
   render() {
     return (
       <div>
           <Switch>
-            <Route exact path="/" component={Main} />
+            <Route exact path="/" component={HomePage} />
             <Route path="/login/" component={LoginPage} />
+            <Route path="/signup/" component={SignupPage} />
+            <Route path="/event/" component={EventSwitch} />
           </Switch>
       </div>
     );

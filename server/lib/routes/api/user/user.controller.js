@@ -100,11 +100,11 @@ UserController.prototype.login = function (req, res, next) {
     }).then(function (user) {
         if (user == null) {
             var error = new Error('Invaild Username.');
-            error.name = 'LoginError';
+            error.message = 'LoginError';
             return next(error);
         }
         return new Promise(function (resolve, reject) {
-            user.validatePassword(password, function (error, isVaild) {
+            user.validatePassword(password, user.password, function (error, isVaild) {
                 if (error) {
                     reject(error);
                 }
@@ -123,7 +123,7 @@ UserController.prototype.login = function (req, res, next) {
             }
             else {
                 var error = new Error('Invaild Password.');
-                error.name = 'LoginError';
+                error.message = 'LoginError';
                 return next(error);
             }
         }).catch(function (error) {
@@ -223,7 +223,7 @@ UserController.prototype.updateUserPassword = function (req, res, next) {
             return next(error);
         }
         return new Promise(function (resolve, reject) {
-            user.validatePassword(oldpassword, function (error, isVaild) {
+            user.validatePassword(oldpassword, user.password, function (error, isVaild) {
                 if (error) {
                     reject(error);
                 }

@@ -3,14 +3,14 @@
 import * as React from 'react';
 // import userActions from '../../actions/user.actions';
 import * as objectPath from 'object-path';
-import { withRouter } from 'react-router-dom';
-import { Context as UserContext, userConsumer } from '../user/user-provider';
+import { withRouter, Link } from 'react-router-dom';
+import { IUserContext, userConsumer } from '../user/user-provider';
 import { Location } from 'history';
 
 import {Redirect} from 'react-router-dom';
 
 export interface LoginPageProps {
-	user: UserContext;
+	user: IUserContext;
 	location: Location;
 }
 
@@ -51,8 +51,8 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 		let email, password;
 		let invalid = null;
 		// Validate email
-		if (this.emailRef.current.nodeValue) {
-			email = this.emailRef.current.nodeValue;
+		if (this.emailRef.current.value) {
+			email = this.emailRef.current.value;
 		} else {
 			invalid = invalid || {};
 			invalid.email = {
@@ -60,8 +60,8 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 			}
 		}
 		// Validate password
-		if (this.passwordRef.current.nodeValue){
-			password = this.passwordRef.current.nodeValue;
+		if (this.passwordRef.current.value){
+			password = this.passwordRef.current.value;
 		} else {
 			invalid = invalid || {};
 			invalid.password = {
@@ -70,17 +70,15 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 		}
 
 		if (invalid) {
-			this.emailRef.current.nodeValue = '';
-			this.passwordRef.current.nodeValue = '';
+			this.emailRef.current.value = '';
+			this.passwordRef.current.value = '';
 			this.setState(() => {
 				return {badAuth: true};
 			});
 			return;
 		}
-		
 		// Login in with vaildated email and password
-
-		// this.props.dispatch(userActions.userLogin(email, password, this.loginResult));
+		this.props.user.login(email, password, this.loginResult);
 
 		this.setState(() => {
 			return {badAuth: true};
@@ -89,8 +87,8 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 
 	loginResult(result) {
     	if (!result) {
-			this.emailRef.current.nodeValue = '';
-			this.passwordRef.current.nodeValue = '';
+			this.emailRef.current.value = '';
+			this.passwordRef.current.value = '';
 			this.setState(() => {
 				return {badAuth: true};
 			});
@@ -121,16 +119,17 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 						<br/>
 						<label htmlFor="email"><b>Email:</b></label>
 						<br/>
-    					<input type="text" onKeyPress={hitKey} placeholder="Enter youremail@example.com" name="email" ref={emailRef} required />
+    					<input type="text" onKeyPress={hitKey} placeholder="Enter youremail@example.com" name="email" ref={emailRef} autoComplete='email' required />
     					{badAuth ? (<span className="errortext" >* Required</span>) : ''}
     					<br/>
     					<label htmlFor="password"><b>Password:</b></label>
 						<br/>
-    					<input type="password" onKeyPress={hitKey} placeholder="Enter Password" name="password" ref={passwordRef} required />
+    					<input type="password" onKeyPress={hitKey} placeholder="Enter Password" name="password" ref={passwordRef} autoComplete='password' required />
 						{badAuth ? (<span className="errortext" >* Required</span>) : ''}
 						<br/>
 						<input type="submit" onClick={login} value="LOGIN"/>
 					</form>
+					<p>or <Link className="btn" to={'/signup'} >Signup</Link></p>
 				</div>
 			</div>
 		);			

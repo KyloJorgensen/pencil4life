@@ -1,12 +1,16 @@
 'use strict';
 
-import { Event, IEventModel } from './event.model';
+import { Event, IEvent } from './event.model';
 
 function EventItemController() {};
 
 // Creates Event Item.
 EventItemController.prototype.createEventItem = function(req, res, next) {
-    let newEventDoc: IEventModel;
+    let newEventDoc: IEvent = {
+        title: '',
+        start_date: Date.now(),
+        end_date: Date.now(),
+    };
     if ('body' in req) {
         if ('title' in req.body) {
             newEventDoc.title = req.body.title;
@@ -97,7 +101,7 @@ EventItemController.prototype.getEventItems = function(req, res, next) {
 };
 // Update Event queries: _id update: title, start_date returns: new shop item 
 EventItemController.prototype.updateEventItem = function(req, res, next) {
-    let changes: IEventModel;
+    let changes: any = {};
     if ('body' in req) {
         if (!('_id' in req.body)) {        
             var error = new Error('missing _id');

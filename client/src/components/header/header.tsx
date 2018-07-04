@@ -1,25 +1,24 @@
 'use strict';
 
 import * as React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import * as  fontawesome from '@fortawesome/fontawesome';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as faCheckSquare from '@fortawesome/fontawesome-free-solid/faCheckSquare';
 import * as faSignInAlt from '@fortawesome/fontawesome-free-solid/faSignInAlt';
 import * as faSignOutAlt from '@fortawesome/fontawesome-free-solid/faSignOutAlt';
 import * as faUserAlt from '@fortawesome/fontawesome-free-solid/faUserAlt';
-import { withRouter } from 'react-router';
-import { eventConsumer, Context as EventContext } from '../event-listener/event-listener';
+import { eventListenerConsumer, IEventListenerContext } from '../event-listener/event-listener';
 import Dropdown from '../utilities/dropdown';
-import { userConsumer, Context as UserContext } from '../user/user-provider';
+import { userConsumer, IUserContext } from '../user/user-provider';
 
 import './header.less';
 
 fontawesome.library.add(faCheckSquare, faSignInAlt, faSignOutAlt, faUserAlt);
 
-export interface IHeaderProps extends EventContext {
+export interface IHeaderProps extends IEventListenerContext {
 	location: Location;
-	user: UserContext;
+	user: IUserContext;
 }
 
 export interface IHeaderState {
@@ -39,6 +38,7 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
     }
 
 	componentDidMount() {
+		this.props.user.getUser();
 		this.props.addEventListener('scroll', this.handleScroll);
 	}
 
@@ -59,7 +59,6 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 				navPosition: scroll >= imgHeight && navBarWidth > 900 ? 'fixed' : 'initial',
 				logoMargin: scroll >= imgHeight && navBarWidth > 900 ? navBarHeight+20 : 0,
 			}
-
 		});
 	}
 
@@ -152,4 +151,4 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 	}
 };
 
-export default userConsumer(eventConsumer(withRouter(Header)));
+export default userConsumer(eventListenerConsumer(withRouter(Header)));

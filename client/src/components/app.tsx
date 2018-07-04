@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { HashRouter as Router } from 'react-router-dom';
-import Event from './event-listener/event-listener';
+import EventListener from './event-listener/event-listener';
 import UserWrapper from './user/user-provider'
 import Header from './header/header';
 import Footer from './footer/footer';
@@ -12,7 +12,7 @@ class App extends React.Component {
   render() {
     return (
       <UserWrapper>
-        <Event>
+        <EventListener>
           <Router>
             <div>
             <Header/>
@@ -20,7 +20,7 @@ class App extends React.Component {
             <Footer/>
             </div>
           </Router>
-        </Event>
+        </EventListener>
     </UserWrapper>      
     );
   }

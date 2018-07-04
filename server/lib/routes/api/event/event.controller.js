@@ -5,7 +5,11 @@ function EventItemController() { }
 ;
 // Creates Event Item.
 EventItemController.prototype.createEventItem = function (req, res, next) {
-    var newEventDoc;
+    var newEventDoc = {
+        title: '',
+        start_date: Date.now(),
+        end_date: Date.now(),
+    };
     if ('body' in req) {
         if ('title' in req.body) {
             newEventDoc.title = req.body.title;
@@ -95,7 +99,7 @@ EventItemController.prototype.getEventItems = function (req, res, next) {
 };
 // Update Event queries: _id update: title, start_date returns: new shop item 
 EventItemController.prototype.updateEventItem = function (req, res, next) {
-    var changes;
+    var changes = {};
     if ('body' in req) {
         if (!('_id' in req.body)) {
             var error = new Error('missing _id');

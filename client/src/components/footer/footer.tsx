@@ -4,7 +4,7 @@ import * as React from 'react';
 import fontawesome from '@fortawesome/fontawesome';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import brands from '@fortawesome/fontawesome-free-brands';
-import { eventConsumer, Context as EventContext } from '../event-listener/event-listener';
+import { eventListenerConsumer, IEventListenerContext } from '../event-listener/event-listener';
 
 import './footer.less'; 
 
@@ -24,7 +24,7 @@ export interface FooterMethods {
 	handleClick: () => void;
 }
 
-class Footer extends React.Component<EventContext, FooterState, FooterMethods> {
+class Footer extends React.Component<IEventListenerContext, FooterState, FooterMethods> {
     constructor(props) {
         super(props);
         this.state = {
@@ -112,4 +112,4 @@ class Footer extends React.Component<EventContext, FooterState, FooterMethods> {
 	}
 };
 
-export default eventConsumer(Footer);
+export default eventListenerConsumer(Footer);

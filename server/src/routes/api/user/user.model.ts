@@ -13,11 +13,19 @@ export interface IUser {
     discontinued: boolean;
 }
 
+export type IValidatePassword = (password: string, hash: string, callback: Function) => void;
+
 export interface IUserModel extends IUser, Document {
-    validatePassword (password: string, callback: Function): string;
+    validatePassword: IValidatePassword;
 }
 
-const userSchema = new Schema({
+export interface IUserSchema extends Schema {
+    methods: {
+        validatePassword: IValidatePassword;
+    }
+}
+
+const userSchema: IUserSchema = new Schema({
 	email: {
 		type: String,
 		required: true,
@@ -50,8 +58,8 @@ const userSchema = new Schema({
     }
 }, {timestamps: true});
 
-userSchema.methods.validatePassword = (password: string, callback: Function): void => {
-    bcrypt.compare(password, this.password, function(err, isValid) {
+userSchema.methods.validatePassword = (password, hash, callback) => {
+    bcrypt.compare(password, hash, function(err, isValid) {
         if (err) {
             callback(err);
             return;

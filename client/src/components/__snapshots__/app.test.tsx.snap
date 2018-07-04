@@ -17,15 +17,15 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <EventWrapper>
+      "children": <EventListenerWrapper>
         <HashRouter>
           <div>
             <UserConsumer />
             <Routes />
-            <EventConsumer />
+            <EventListenerConsumer />
           </div>
         </HashRouter>
-      </EventWrapper>,
+      </EventListenerWrapper>,
       "initialState": Object {
         "admin": false,
         "email": null,
@@ -45,7 +45,7 @@ ShallowWrapper {
           <div>
             <UserConsumer />
             <Routes />
-            <EventConsumer />
+            <EventListenerConsumer />
           </div>
         </HashRouter>,
       },
@@ -58,7 +58,7 @@ ShallowWrapper {
           "children": <div>
             <UserConsumer />
             <Routes />
-            <EventConsumer />
+            <EventListenerConsumer />
           </div>,
         },
         "ref": null,
@@ -70,7 +70,7 @@ ShallowWrapper {
             "children": Array [
               <UserConsumer />,
               <Routes />,
-              <EventConsumer />,
+              <EventListenerConsumer />,
             ],
           },
           "ref": null,
@@ -117,15 +117,15 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "children": <EventWrapper>
+        "children": <EventListenerWrapper>
           <HashRouter>
             <div>
               <UserConsumer />
               <Routes />
-              <EventConsumer />
+              <EventListenerConsumer />
             </div>
           </HashRouter>
-        </EventWrapper>,
+        </EventListenerWrapper>,
         "initialState": Object {
           "admin": false,
           "email": null,
@@ -145,7 +145,7 @@ ShallowWrapper {
             <div>
               <UserConsumer />
               <Routes />
-              <EventConsumer />
+              <EventListenerConsumer />
             </div>
           </HashRouter>,
         },
@@ -158,7 +158,7 @@ ShallowWrapper {
             "children": <div>
               <UserConsumer />
               <Routes />
-              <EventConsumer />
+              <EventListenerConsumer />
             </div>,
           },
           "ref": null,
@@ -170,7 +170,7 @@ ShallowWrapper {
               "children": Array [
                 <UserConsumer />,
                 <Routes />,
-                <EventConsumer />,
+                <EventListenerConsumer />,
               ],
             },
             "ref": null,

@@ -1,5 +1,4 @@
 'use strict';
-var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = require("mongoose");
 var bcrypt = require("bcryptjs");
@@ -35,8 +34,8 @@ var userSchema = new mongoose_1.Schema({
         default: false,
     }
 }, { timestamps: true });
-userSchema.methods.validatePassword = function (password, callback) {
-    bcrypt.compare(password, _this.password, function (err, isValid) {
+userSchema.methods.validatePassword = function (password, hash, callback) {
+    bcrypt.compare(password, hash, function (err, isValid) {
         if (err) {
             callback(err);
             return;

@@ -2,10 +2,10 @@
 
 import * as React from 'react';
 
-export interface Context extends UserWrapperMethods, IUserState{
+export interface IUserContext extends UserWrapperMethods, IUserState{
 }
 
-const Context: Context = {
+const Context: IUserContext = {
   signup: () => {
     console.error('Error: Cannot signup no UserContext.Provider element in parents');
   },
@@ -63,15 +63,15 @@ export interface IUserState {
 }
 
 export interface UserWrapperMethods {
-  signup: (params: SignupParams) => void;
+  signup: (params: SignupParams, callback: (error) => void) => void;
   getUser: () => void;
-  login: (username: string, password: string) => void;
+  login: (username: string, password: string, callback: (error) => void) => void;
   logout: () => void;
   updateUser: (params: UpdateUserParams) => void;
   updatePassword: (oldpassword: string, newpassword: string) => void;
 }
 
-export class UserWrapper extends React.Component<IUserProps, IUserState, UserWrapperMethods>  {
+export class UserWrapper extends React.Component<IUserProps, IUserState> implements UserWrapperMethods {
   public static defaultProps: IUserProps = {
     initialState: {
       email: null,
@@ -93,11 +93,6 @@ export class UserWrapper extends React.Component<IUserProps, IUserState, UserWra
     this.updatePassword = this.updatePassword.bind(this);
   }
 
-  componentDidMount() {
-    // get user with return to here to check set user
-    // this.getUser();
-  }
-
   getUser() {
     const request = new Request('/api/user/', {
       method: 'GET',
@@ -107,9 +102,17 @@ export class UserWrapper extends React.Component<IUserProps, IUserState, UserWra
           'Accept': 'application/json',
       },
     });
-    fetch(request).then((response) => {
-      return response.json();
-    }).then((body: Context) => {
+    fetch(request)
+    .then((response) => {
+      if (response.status == 200) {
+        return response.json();
+      } else {
+        const error = new Error(response.statusText)
+        error.message = String(response)
+        throw error;
+      }
+    })
+    .then((body: IUserContext) => {
       let user: IUserState = {
         email: body.email,
         username: body.username,
@@ -121,12 +124,13 @@ export class UserWrapper extends React.Component<IUserProps, IUserState, UserWra
       this.setState(() => {
         return user;
       });
-    }).catch((error) => {
+    })
+    .catch((error) => {
       console.log(error);
     });
   }
 
-  signup(params) {
+  signup(params, callback) {
 
     const payload: SignupParams = {
       email: params.email,
@@ -150,7 +154,7 @@ export class UserWrapper extends React.Component<IUserProps, IUserState, UserWra
     .then((response) => {
       return response.json();
     })
-    .then((body: Context) => {
+    .then((body: IUserContext) => {
       let user: IUserState = {
         email: body.email,
         username: body.username,
@@ -162,15 +166,17 @@ export class UserWrapper extends React.Component<IUserProps, IUserState, UserWra
       this.setState(() => {
         return user;
       });
+      callback(false);
     })
     .catch((error) => {
+      callback(error);
       console.error(error);
     });
   }
 
-  login(username, password) {
+  login(email, password, callback) {
     const payload = {
-      username: username,
+      email: email,
       password: password,
     }
     
@@ -186,9 +192,15 @@ export class UserWrapper extends React.Component<IUserProps, IUserState, UserWra
 
     fetch(request)
     .then((response) => {
-      return response.json();
+      if (response.status == 200) {
+        return response.json();
+      } else {
+        const error = new Error(response.statusText)
+        error.message = String(response)
+        throw error;
+      }
     })
-    .then((body: Context) => {
+    .then((body: IUserContext) => {
       let user: IUserState = {
         email: body.email,
         username: body.username,
@@ -200,8 +212,10 @@ export class UserWrapper extends React.Component<IUserProps, IUserState, UserWra
       this.setState(() => {
         return user;
       });
+      callback(false);
     })
     .catch((error) => {
+      callback(error);
       console.error(error);
     });
   }
@@ -261,7 +275,7 @@ export class UserWrapper extends React.Component<IUserProps, IUserState, UserWra
       .then((response) => {
         return response.json();
       })
-      .then((body: Context) => {  
+      .then((body: IUserContext) => {  
         let user: IUserState = {
           email: body.email,
           username: body.username,
@@ -302,7 +316,7 @@ export class UserWrapper extends React.Component<IUserProps, IUserState, UserWra
       .then((response) => {
         return response.json();
       })
-      .then((body: Context) => {  
+      .then((body: IUserContext) => {  
         let user: IUserState = {
           email: body.email,
           username: body.username,
@@ -324,7 +338,7 @@ export class UserWrapper extends React.Component<IUserProps, IUserState, UserWra
 
   render() {
     const { email, firstname, lastname, username, userAccess, admin } = this.state;
-      const context: Context = {
+      const context: IUserContext = {
         email: email,
         firstname: firstname,
         lastname: lastname,
@@ -374,7 +388,7 @@ export const userProvider = (Component, options?: userProviderOptions) => {
 }
 
 export const userConsumer = (Component) => {
-    class UserConsumer extends React.Component<null, null> {
+    class UserConsumer extends React.Component<any> {
     render () {
         return (
           <UserContext.Consumer>

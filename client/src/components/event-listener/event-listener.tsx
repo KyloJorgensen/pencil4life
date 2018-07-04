@@ -3,59 +3,60 @@
 import * as React from 'react';
 import './event-listener.less';
 
-export type IEventType = 'click' | 'scroll';
+export type IEventType = 'click' | 'scroll' | 'resize';
 
-export interface IEventHandler {
-  (event: UIEvent, ref: React.RefObject<HTMLDivElement>): void;
-}
+export type IEventHandler = (event: UIEvent, ref: React.RefObject<HTMLDivElement>) => void;
 
-export interface Context {
+export interface IEventListenerContext {
   addEventListener: (eventType: IEventType, eventHandler: IEventHandler) => boolean;
   removeEventListener: (eventType: IEventType, eventHandler: IEventHandler) => boolean;
 }
 
-const Context: Context =  {
+const Context: IEventListenerContext =  {
 	addEventListener: (eventType, eventHandler) => {
-    console.error('Error: Cannot addEventListener no EventContext.Provider element in parents');
+    console.error('Error: Cannot addEventListener no EventListenerContext.Provider element in parents');
     return false;
   },
 	removeEventListener: (eventType, eventHandler) => {
-	  console.error('Error: Cannot removeEventListener no EventContext.Provider element in parents');
+	  console.error('Error: Cannot removeEventListener no EventListenerContext.Provider element in parents');
     return false;  
   },
 }
 
-export const EventContext = React.createContext(Context);
+export const EventListenerContext = React.createContext(Context);
 
 export interface IEventListener {
   eventType: IEventType,
   eventHandler: IEventHandler;
 }
 
-export interface IEventWrapperState {
+export interface IEventListenerWrapperState {
   vaildEventTypes: IEventType[];
   eventListeners: IEventListener[];
 }
 
-export interface IEventWrapperMethods {
+export interface IEventListenerWrapperMethods {
   handleClick: (event: UIEvent) => void;
   handleScroll: (event: UIEvent) => void;
+  handleResize: (event: UIEvent) => void;
   addEventListener: (eventType: IEventType, eventHandler: IEventHandler) => boolean;
   removeEventListener: (eventType: IEventType, eventHandler: IEventHandler) => boolean;
 }
 
-export class EventWrapper extends React.Component<null, IEventWrapperState, IEventWrapperMethods> {
+export class EventListenerWrapper extends React.Component<null, IEventListenerWrapperState> implements IEventListenerWrapperMethods {
   constructor(props) {
     super(props);
     this.state = {
       vaildEventTypes: [
         'click',
-        'scroll'
+        'scroll',
+        'resize'
       ],
       eventListeners: [],
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
+    this.handleResize = this.handleResize.bind(this);
     this.addEventListener = this.addEventListener.bind(this);
     this.removeEventListener = this.removeEventListener.bind(this);
   }
@@ -68,6 +69,18 @@ export class EventWrapper extends React.Component<null, IEventWrapperState, IEve
 
   handleScroll(event) {
     this.state.eventListeners.filter(listener => listener.eventType == 'scroll').forEach(listener => listener.eventHandler(event, this.eventRef));
+  }
+
+  handleResize(event) {
+    this.state.eventListeners.filter(listener => listener.eventType == 'resize').forEach(listener => listener.eventHandler(event, this.eventRef));
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
   }
 
   addEventListener(eventType, eventHandler) {
@@ -117,54 +130,54 @@ export class EventWrapper extends React.Component<null, IEventWrapperState, IEve
   }
 
   render() {
-    const { addEventListener, removeEventListener, handleClick, handleScroll } = this;
+    const { addEventListener, removeEventListener, handleClick, handleScroll, handleResize } = this;
 		const context = {
 			addEventListener: addEventListener,
 			removeEventListener: removeEventListener,
     }
     
     return (
-      <EventContext.Provider value={context}>
-        <div className="event-provider" ref={this.eventRef} onClick={handleClick} onScroll={handleScroll} >
+      <EventListenerContext.Provider value={context}>
+        <div className="eventlistener-provider" ref={this.eventRef} onClick={handleClick} onScroll={handleScroll} >
             {this.props.children}
         </div>
-      </EventContext.Provider>
+      </EventListenerContext.Provider>
     );
   }
 }
 
-export default EventWrapper;
+export default EventListenerWrapper;
 
 
-export const eventProvider = (Component) => {
-  class EventProvider extends React.Component<null, null> {
+export const eventListenerProvider = (Component) => {
+  class EventListenerProvider extends React.Component<null, null> {
   render () {
       return (
-        <EventWrapper>
+        <EventListenerWrapper>
           <Component {...this.props} />  
-        </EventWrapper>
+        </EventListenerWrapper>
       );
     }
   }
 
-  return EventProvider;
+  return EventListenerProvider;
 }
 
-export const eventConsumer = (Component) => {
-  class EventConsumer extends React.Component<null, null> {
+export const eventListenerConsumer = (Component) => {
+  class EventListenerConsumer extends React.Component<null, null> {
     render () {
       return (
-        <EventContext.Consumer>
+        <EventListenerContext.Consumer>
           {(context) => {
 
             return (
               <Component {...this.props} {...context} />
             )
           }}
-        </EventContext.Consumer>
+        </EventListenerContext.Consumer>
       );
     }
   }
 
-  return EventConsumer;
+  return EventListenerConsumer;
 }

@@ -5,10 +5,10 @@ import { Document, Schema, Model, model } from 'mongoose';
 
 export interface IEvent {
     title: string;
-    start_date: Date;
-    end_date: Date;
-    details: string;
-    discontinued: boolean;
+    start_date: number;
+    end_date: number;
+    details?: string;
+    discontinued?: boolean;
 }
 
 export interface IEventModel extends IEvent, Document {
