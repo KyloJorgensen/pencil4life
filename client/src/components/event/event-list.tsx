@@ -1,7 +1,7 @@
 'use strict';
 
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import EventListItem, { EventListItemProps } from './event-list-item';
 import { userConsumer, IUserContext } from '../user/user-provider';
 import { eventConsumer, IEventContext } from './event-provider';
@@ -63,7 +63,6 @@ class EventList extends React.Component<EventListProps> {
 		let EventItemList = [];
 		if (eventItems) {
             eventItems.forEach((eventItemKey) => {
-				console.log(eventItemKey)
 				EventItemList.push(<EventListItem key={eventItemKey} _eventItemId={eventItemKey} displayDetails={displayDetails} />)
 			});
 		}
@@ -83,4 +82,4 @@ class EventList extends React.Component<EventListProps> {
 	}
 };
 
-export default userConsumer(eventConsumer(EventList));
+export default userConsumer(eventConsumer(withRouter(EventList)));

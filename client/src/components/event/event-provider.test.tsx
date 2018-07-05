@@ -17,26 +17,30 @@ class Elem extends React.Component<null, null> {
 describe('Render EventContext', () => {
 	it('matches the snapshot', () => {
 		wrapper = mount(
-			<EventContext.Consumer>
-				{context => {
-					return (
-						<p></p>
-					);
-				}}
-			</EventContext.Consumer>
+			<div>
+				<EventContext.Consumer>
+					{context => {
+						return (
+							<p></p>
+						);
+					}}
+				</EventContext.Consumer>
+			</div>
 		);
 		expect(wrapper).toMatchSnapshot();
 	});
 
 	it('should have a p', () => {
 		wrapper = mount(
-			<EventContext.Consumer>
-				{context => {
-					return (
-						<p></p>
-					);
-				}}
-			</EventContext.Consumer>
+			<div>
+				<EventContext.Consumer>
+					{context => {
+						return (
+							<p></p>
+						);
+					}}
+				</EventContext.Consumer>
+			</div>
 		);
 		const child = wrapper.find('p');
 		expect(child.length).toEqual(1);
@@ -44,13 +48,15 @@ describe('Render EventContext', () => {
 
 	it('should have a p that contains "child"', () => {
 		wrapper = mount(
-			<EventContext.Consumer>
-				{context => {
-					return (
-						<p>child</p>
-					);
-				}}
-			</EventContext.Consumer>
+			<div>
+				<EventContext.Consumer>
+					{context => {
+						return (
+							<p>child</p>
+						);
+					}}
+				</EventContext.Consumer>
+			</div>
 		);
 		const child = wrapper.find('p').contains('child');
 		expect(child).toEqual(true);
@@ -98,59 +104,89 @@ describe('Render eventConsumer', () => {
 		wrapper = shallow(<EC />);
 		expect(wrapper).toMatchSnapshot();
 	});
+});	
 
-	describe('with item id passed as prop', () => {
-		it('should pass the id along', () => {
+describe('evntConsumer with item id passed as prop', () => {
+	beforeEach(() => {
+		interface ItemProps {
+			event: IEventContext;
+		}
 
-			interface ItemProps {
-				event: IEventContext;
+		class Item extends React.Component<ItemProps> {
+			render() {
+				return (
+					<div>
+						<p className="_eventItemId" >{this.props.event.eventItem._eventItemId}</p>
+						<p className="title">{this.props.event.eventItem.title}</p>
+						<p className="start_date">{this.props.event.eventItem.start_date}</p>
+						<p className="end_date">{this.props.event.eventItem.end_date}</p>
+						<p className="details">{this.props.event.eventItem.details}</p>
+						<p className="createdUpdatedDateTime">{this.props.event.eventItem.createdUpdatedDateTime}</p>
+						<p className="discontinued">{this.props.event.eventItem.discontinued? "true" : "false"}</p>
+					</div>
+				);
 			}
+		}
 
-			class Item extends React.Component<ItemProps> {
-				render() {
-					return (
-						<p>{this.props.event.eventItem._eventItemId}</p>
-					);
+		const EC = eventConsumer(Item);
+
+		class Test extends React.Component {
+			render() {
+				return (
+					<EC _eventItemId={'12345'} />
+				);
+			}
+		}
+
+		const eventProvideroptions: eventProviderOptions = {
+			props: {
+				initialState: {
+					eventItemList: {
+						"12345": {
+							_eventItemId: "12345",
+							title: 'blah',
+							start_date: '0',
+							end_date: '1',
+							details: 'stuff',
+							createdUpdatedDateTime: 'date',
+							discontinued: false,
+						}
+					},
+					eventItems: ['12345'],
+					limit: 10,
+					page: 1,
+					pageTotal: 1,
+					total: 1,
+					totalPages: 1,
 				}
 			}
-
-			const EC = eventConsumer(Item);
-
-			class Test extends React.Component {
-				render() {
-					return (
-						<EC _eventItemId={'12345'} />
-					);
-				}
-			}
-
-			const eventProvideroptions: eventProviderOptions = {
-				props: {
-					initialState: {
-						eventItemList: {
-							"12345": {
-								_eventItemId: "12345"
-							}
-						},
-						eventItems: ['12345'],
-						limit: 10,
-						page: 1,
-						pageTotal: 1,
-						total: 1,
-						totalPages: 1,
-					}
-				}
-			};
+		};
 
 
-			const EP = eventProvider(Test, eventProvideroptions)
+		const EP = eventProvider(Test, eventProvideroptions)
 
-			wrapper = mount(<EP />);
-			expect(wrapper.find('p').text()).toEqual('12345');
-
-			expect(true).toEqual(false);
-			
-		})
-		
+		wrapper = mount(<EP />);
 	});
+
+	it('should pass the id along', () => {
+		expect(wrapper.find('p._eventItemId').text()).toEqual('12345');			
+	})
+	it('should pass the id along', () => {
+		expect(wrapper.find('p.title').text()).toEqual('blah');			
+	})
+	it('should pass the id along', () => {
+		expect(wrapper.find('p.start_date').text()).toEqual('0');			
+	})
+	it('should pass the id along', () => {
+		expect(wrapper.find('p.end_date').text()).toEqual('1');			
+	})
+	it('should pass the id along', () => {
+		expect(wrapper.find('p.details').text()).toEqual('stuff');			
+	})
+	it('should pass the id along', () => {
+		expect(wrapper.find('p.createdUpdatedDateTime').text()).toEqual('date');			
+	})
+	it('should pass the id along', () => {
+		expect(wrapper.find('p.discontinued').text()).toEqual('false');			
+	})
 });

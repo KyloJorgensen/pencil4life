@@ -231,7 +231,6 @@ export class EventWrapper extends React.Component<IEventWrapperProps, IEventWrap
                     createdUpdatedDateTime: createdUpdatedDateTime,
                     discontinued: discontinued,
                 };
-                console.log(eventItemList)
 
                 return {eventItemList: eventItemList};
             });
@@ -345,7 +344,6 @@ export const eventConsumer = (Component) => {
             <EventContext.Consumer>
                 {(context) => {
                     if (_eventItemId) {
-
                         context.eventItem = {
                             _eventItemId: _eventItemId,
                             title: '',
@@ -359,16 +357,14 @@ export const eventConsumer = (Component) => {
                         if (_eventItemId in context.eventItemList) {
                             context.eventItem = {
                                 _eventItemId: _eventItemId,
-                                title: 'title' in context.eventItemList[_eventItemId] ? this.props.event.eventItem.title : '',
-                                start_date: 'state_date' in context.eventItemList[_eventItemId] ? this.props.event.eventItem.start_date : '',
-                                end_date: 'end_date' in context.eventItemList[_eventItemId] ? this.props.event.eventItem.end_date : '',
-                                details: 'details' in context.eventItemList[_eventItemId] ? this.props.event.eventItem.details : '',
-                                createdUpdatedDateTime: 'createdUpdatedDateTime' in context.eventItemList[_eventItemId] ? this.props.event.eventItem.createdUpdatedDateTime : '',
-                                discontinued: 'discontinued' in context.eventItemList[_eventItemId] ? this.props.event.eventItem.discontinued : false,
+                                title:                                   'title' in context.eventItemList[_eventItemId] ? context.eventItemList[_eventItemId].title : '',
+                                start_date:                         'start_date' in context.eventItemList[_eventItemId] ? context.eventItemList[_eventItemId].start_date : '',
+                                end_date:                             'end_date' in context.eventItemList[_eventItemId] ? context.eventItemList[_eventItemId].end_date : '',
+                                details:                               'details' in context.eventItemList[_eventItemId] ? context.eventItemList[_eventItemId].details : '',
+                                createdUpdatedDateTime: 'createdUpdatedDateTime' in context.eventItemList[_eventItemId] ? context.eventItemList[_eventItemId].createdUpdatedDateTime : '',
+                                discontinued:                     'discontinued' in context.eventItemList[_eventItemId] ? context.eventItemList[_eventItemId].discontinued : false,
                             };
                         }
-
-                        console.log(context.eventItem)
                     }
 
                     return (

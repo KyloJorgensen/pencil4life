@@ -181,9 +181,11 @@ ShallowWrapper {
 exports[`Render EventContext matches the snapshot 1`] = `
 ReactWrapper {
   "length": 1,
-  Symbol(enzyme.__unrendered__): <Context.Consumer>
-    [Function]
-  </Context.Consumer>,
+  Symbol(enzyme.__unrendered__): <div>
+    <Context.Consumer>
+      [Function]
+    </Context.Consumer>
+  </div>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -193,27 +195,59 @@ ReactWrapper {
   },
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__node__): Object {
-    "instance": <p />,
+    "instance": <div>
+      <p />
+    </div>,
     "key": undefined,
     "nodeType": "host",
-    "props": Object {},
+    "props": Object {
+      "children": <Context.Consumer>
+        [Function]
+      </Context.Consumer>,
+    },
     "ref": null,
     "rendered": Array [
-      undefined,
+      Object {
+        "instance": <p />,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {},
+        "ref": null,
+        "rendered": Array [
+          undefined,
+        ],
+        "type": "p",
+      },
     ],
-    "type": "p",
+    "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
-      "instance": <p />,
+      "instance": <div>
+        <p />
+      </div>,
       "key": undefined,
       "nodeType": "host",
-      "props": Object {},
+      "props": Object {
+        "children": <Context.Consumer>
+          [Function]
+        </Context.Consumer>,
+      },
       "ref": null,
       "rendered": Array [
-        undefined,
+        Object {
+          "instance": <p />,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {},
+          "ref": null,
+          "rendered": Array [
+            undefined,
+          ],
+          "type": "p",
+        },
       ],
-      "type": "p",
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {
