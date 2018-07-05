@@ -24,25 +24,7 @@ class EventListItem extends React.Component<EventListItemProps> {
 
 	render() {
 		const { displayDetails, _eventItemId} = this.props;
-		let title, start_date, end_date, details, createdUpdatedDateTime;
-
-		if ('eventItem' in this.props.event) {
-			if ('title' in this.props.event.eventItem) {
-				title = this.props.event.eventItem.title;
-			}
-			if ('start_date' in this.props.event.eventItem) {
-				start_date = this.props.event.eventItem.start_date;
-			}
-			if ('end_date' in this.props.event.eventItem) {
-				end_date = this.props.event.eventItem.end_date;
-			}
-			if ('details' in this.props.event.eventItem) {
-				details = this.props.event.eventItem.details;
-			}
-			if ('createdUpdatedDateTime' in this.props.event.eventItem) {
-				createdUpdatedDateTime = this.props.event.eventItem.createdUpdatedDateTime;
-			}
-		}
+		const { title, start_date, end_date, details, createdUpdatedDateTime } = this.props.event.eventItem;
 
 		let startDateTime = moment(start_date);
 		let endDateTime = moment(end_date);
@@ -102,17 +84,3 @@ class EventListItem extends React.Component<EventListItemProps> {
 
 
 export default eventConsumer(EventListItem);
-
-
-// const Test = eventConsumer(EventListItem);
-
-
-// class EventItem extends React.Component<any> {
-// 	render() {
-// 		return (
-// 			<Test {...this.props}/>
-// 		);
-// 	}
-// }
-
-// export default withRouter(EventItem);

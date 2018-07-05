@@ -2,32 +2,31 @@
 
 import * as React from 'react';
 import RichTextEditor from 'react-rte';
-import { Link, match } from "react-router-dom";
+import { Link, match, withRouter, NavLinkProps } from "react-router-dom";
 import * as  moment from 'moment';
 import { IEventContext, eventConsumer } from './event-provider';
 import { IUserContext, userConsumer } from '../user/user-provider';
 import { Location } from 'history';
 
-export interface EventEditProps {
+export interface EventItemProps {
 	event: IEventContext;
 	user: IUserContext;
 	match: match<{_eventItemId: string}>;
 }
 
-class EventEdit extends React.Component<EventEditProps> {
+class EventItem extends React.Component<EventItemProps> {
     constructor(props) {
 		super(props);
     }
 
     componentDidMount() {
-		this.props.event.getEventItem(this.props.match.params._eventItemId);
-    }
+		this.props.event.getEventItem(this.props.event.eventItem._eventItemId);
+	}	
 
 	render() {
-
 		const {  } = this.props;
 		const { admin } = this.props.user;
-		const { _eventItemId,  title, start_date, end_date, details, createdUpdatedDateTime } = this.props.event.eventItem;
+		const { _eventItemId, title, start_date, end_date, details, createdUpdatedDateTime } = this.props.event.eventItem;
 
 		let startDateTime = moment(start_date);
 		let endDateTime = moment(end_date);
@@ -72,4 +71,4 @@ class EventEdit extends React.Component<EventEditProps> {
 	}
 };
 
-export default userConsumer(eventConsumer(EventEdit));
+export default userConsumer(eventConsumer(EventItem));

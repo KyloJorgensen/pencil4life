@@ -20,6 +20,9 @@ const Context: IEventContext =  {
     addEventItem: (params, callback) => {
         console.log('Error: Cannot addEventItem no EventContext.Provider element in parents');
     },
+    updateEventItem: (params, callback) => {
+        console.log('Error: Cannot updateEventItemParams no EventContext.Provider element in parents');
+    },
     eventItemList: {},
     eventItems: [],
     page: 0,
@@ -64,10 +67,20 @@ export interface addEventItemParams {
     details: string;
 }
 
+export interface updateEventItemParams {
+    _id: string,
+    title?: string; 
+    start_date?: string | moment.Moment | Date; 
+    end_date?: string | moment.Moment | Date;
+    details?: string;
+    discontinued?: boolean,
+}
+
 export interface IEventWrapperMethods {
     getEventItems: (query: getEventItemsQuery) => void;
     getEventItem: (_eventItemId: string) => void;
     addEventItem: (params: addEventItemParams , callback: (error, _eventItemId) => void) => void;
+    updateEventItem: (params: updateEventItemParams, callback: (error: boolean) => void) => void;
 }
 
 export class EventWrapper extends React.Component<IEventWrapperProps, IEventWrapperState, IEventWrapperMethods> implements IEventWrapperMethods {
@@ -88,6 +101,7 @@ export class EventWrapper extends React.Component<IEventWrapperProps, IEventWrap
         this.getEventItems = this.getEventItems.bind(this);
         this.getEventItem = this.getEventItem.bind(this);
         this.addEventItem = this.addEventItem.bind(this);
+        this.updateEventItem = this.updateEventItem.bind(this);
     }
 
     getEventItems(query) {
@@ -192,11 +206,11 @@ export class EventWrapper extends React.Component<IEventWrapperProps, IEventWrap
                 let updatedDateTime = moment(updatedAt);
 
                 let daymessages = {
-                    sameDay: '[Today]',
-                    nextDay: '[Tomorrow]',
+                    sameDay: '[today]',
+                    nextDay: '[tomorrow]',
                     nextWeek: 'dddd',
-                    lastDay: '[Yesterday]',
-                    lastWeek: '[Last] dddd',
+                    lastDay: '[yesterday]',
+                    lastWeek: '[last] dddd',
                     sameElse: 'MM/DD/YYYY',
                 };
                 let createdDay = createDateTime.calendar(null, daymessages);
@@ -206,21 +220,23 @@ export class EventWrapper extends React.Component<IEventWrapperProps, IEventWrap
                 let updatedTime = updatedDateTime.format("h:mm a");
 
                 let createdUpdatedDateTime = 'Created ';
-                if (createdDay !== 'Today' && createdDay !== 'Yesterday') {
+                if (createdDay !== 'today' && createdDay !== 'yesterday') {
                     createdUpdatedDateTime += 'on '
                 }
                 createdUpdatedDateTime +=  createdDay + ' at ' + createdTime;
 
                 if (createdDay !== updatedDay) {
-                    createdUpdatedDateTime += ' Updated '
-                    if (updatedDay !== 'Today' && updatedDay !== 'Yesterday') {
+                    createdUpdatedDateTime += ' updated '
+                    if (updatedDay !== 'today' && updatedDay !== 'yesterday') {
                         createdUpdatedDateTime += 'on ';
                     }
                     createdUpdatedDateTime += updatedDay + ' at ' + updatedTime;
 
                 } else if (createdTime !== updatedTime) {
-                    createdUpdatedDateTime += ' Updated at ' + updatedTime;
+                    createdUpdatedDateTime += ' updated at ' + updatedTime;
                 } 
+
+                createdUpdatedDateTime += '.';
                 
                 eventItemList[_id] = {
                     _eventItemId: _id,
@@ -278,8 +294,58 @@ export class EventWrapper extends React.Component<IEventWrapperProps, IEventWrap
         });
     }
 
+    updateEventItem(params:updateEventItemParams, callback) {
+
+        let payload: updateEventItemParams = {
+            _id: params._id
+        };
+
+        if ('title' in params) {
+            payload.title = params.title;
+        }
+        if ('start_date' in params) {
+            payload.start_date = params.start_date;
+        }
+        if ('end_date' in params) {
+            payload.end_date = params.end_date;
+        }
+        if ('details' in params) {
+            payload.details = params.details;
+        }
+        if ('discontinued' in params) {
+            payload.discontinued = params.discontinued;
+        }
+
+        const request = new Request('/api/event', {
+            method: 'PUT',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify(payload), 
+        });
+
+        return fetch(request)
+        .then((response) => {
+            if (response.status < 200 || response.status >= 300) {
+                const error = new Error(response.statusText)
+                error.message = String(response);
+                throw error;
+            }
+            return response;
+        })
+        .then((response) => {
+            callback(false);
+        })
+        .catch((error) => {
+            callback(true);
+            console.log(error);
+        });
+    }
+
     render() {
-        const { getEventItems, getEventItem, addEventItem } = this;
+        const { getEventItems, getEventItem, addEventItem, updateEventItem } = this;
         const { eventItems, page, pageTotal, totalPages, limit, total, eventItemList } = this.state;
 
         const context = {
@@ -293,6 +359,7 @@ export class EventWrapper extends React.Component<IEventWrapperProps, IEventWrap
             getEventItems: getEventItems,
             getEventItem: getEventItem,
             addEventItem: addEventItem,
+            updateEventItem: updateEventItem,
         }
         
         return (
@@ -334,12 +401,18 @@ export const eventProvider = (Component, options?: eventProviderOptions) => {
 type ANY = any;
 interface eventConsumerprops extends ANY {
     _eventItemId?: string
+    match?: match<{_eventItemId: string}>
 }
 
 export const eventConsumer = (Component) => {
   class EventConsumer extends React.Component<eventConsumerprops, null> {
     render () {
         let { _eventItemId } = this.props;
+        if ('match' in this.props) {
+            if ('_eventItemId' in this.props.match.params) {
+                _eventItemId = this.props.match.params._eventItemId;
+            }
+        }
         return (
             <EventContext.Consumer>
                 {(context) => {

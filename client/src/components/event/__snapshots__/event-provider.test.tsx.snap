@@ -41,6 +41,7 @@ ShallowWrapper {
         "pageTotal": 0,
         "total": 0,
         "totalPages": 0,
+        "updateEventItem": [Function],
       },
     },
     "ref": null,
@@ -67,6 +68,7 @@ ShallowWrapper {
           "pageTotal": 0,
           "total": 0,
           "totalPages": 0,
+          "updateEventItem": [Function],
         },
         "_currentValue2": Object {
           "addEventItem": [Function],
@@ -79,6 +81,7 @@ ShallowWrapper {
           "pageTotal": 0,
           "total": 0,
           "totalPages": 0,
+          "updateEventItem": [Function],
         },
         "_defaultValue": Object {
           "addEventItem": [Function],
@@ -91,6 +94,7 @@ ShallowWrapper {
           "pageTotal": 0,
           "total": 0,
           "totalPages": 0,
+          "updateEventItem": [Function],
         },
       },
     },
@@ -113,6 +117,7 @@ ShallowWrapper {
           "pageTotal": 0,
           "total": 0,
           "totalPages": 0,
+          "updateEventItem": [Function],
         },
       },
       "ref": null,
@@ -139,6 +144,7 @@ ShallowWrapper {
             "pageTotal": 0,
             "total": 0,
             "totalPages": 0,
+            "updateEventItem": [Function],
           },
           "_currentValue2": Object {
             "addEventItem": [Function],
@@ -151,6 +157,7 @@ ShallowWrapper {
             "pageTotal": 0,
             "total": 0,
             "totalPages": 0,
+            "updateEventItem": [Function],
           },
           "_defaultValue": Object {
             "addEventItem": [Function],
@@ -163,6 +170,7 @@ ShallowWrapper {
             "pageTotal": 0,
             "total": 0,
             "totalPages": 0,
+            "updateEventItem": [Function],
           },
         },
       },
@@ -304,6 +312,7 @@ ShallowWrapper {
         "pageTotal": 0,
         "total": 0,
         "totalPages": 0,
+        "updateEventItem": [Function],
       },
       "_currentValue2": Object {
         "addEventItem": [Function],
@@ -316,6 +325,7 @@ ShallowWrapper {
         "pageTotal": 0,
         "total": 0,
         "totalPages": 0,
+        "updateEventItem": [Function],
       },
       "_defaultValue": Object {
         "addEventItem": [Function],
@@ -328,6 +338,7 @@ ShallowWrapper {
         "pageTotal": 0,
         "total": 0,
         "totalPages": 0,
+        "updateEventItem": [Function],
       },
     },
   },
@@ -364,6 +375,7 @@ ShallowWrapper {
           "pageTotal": 0,
           "total": 0,
           "totalPages": 0,
+          "updateEventItem": [Function],
         },
         "_currentValue2": Object {
           "addEventItem": [Function],
@@ -376,6 +388,7 @@ ShallowWrapper {
           "pageTotal": 0,
           "total": 0,
           "totalPages": 0,
+          "updateEventItem": [Function],
         },
         "_defaultValue": Object {
           "addEventItem": [Function],
@@ -388,6 +401,7 @@ ShallowWrapper {
           "pageTotal": 0,
           "total": 0,
           "totalPages": 0,
+          "updateEventItem": [Function],
         },
       },
     },
