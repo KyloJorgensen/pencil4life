@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { shallow, mount, ShallowWrapper, ReactWrapper } from 'enzyme';
 import * as fetch from 'jest-fetch-mock';
-import { UserContext, userProvider, userConsumer, UserWrapper, Context, UpdateUserParams } from './user-provider';
+import { UserContext, userProvider, userConsumer, UserWrapper, IUserContext, UpdateUserParams } from './user-provider';
 
 let wrapper: ShallowWrapper | ReactWrapper;
 
@@ -15,9 +15,9 @@ class Elem extends React.Component {
 	}
 }
 
-const methodTest = (methodTest) => {
+const methodTest = (methodTest: (user: IUserContext) => void) => {
     interface MethodTestProps {
-        user: Context;
+        user: IUserContext;
     }
     class MethodTest extends React.Component<MethodTestProps> {
         constructor(props) {
@@ -101,13 +101,15 @@ describe('User-Provider', () => {
     });
 
     describe('signup', () => {
-        const UP = userProvider(userConsumer(methodTest((user: Context) => {user.signup({
-            email: 'test@example.com',
-            username: 'coolguy123',
-            firstname: 'Joe',
-            lastname: 'Doe',
-            password: 'password',
-        })})));
+        const UP = userProvider(userConsumer(methodTest((user) => {
+            user.signup({
+                email: 'test@example.com',
+                username: 'coolguy123',
+                firstname: 'Joe',
+                lastname: 'Doe',
+                password: 'password',
+            }, (error) => {});
+        })));
 
         const body = JSON.stringify({
             email: 'test@example.com',
@@ -152,7 +154,7 @@ describe('User-Provider', () => {
     });
 
     describe('getUser', () => {
-        const UP = userProvider(userConsumer(methodTest((user: Context) => {user.getUser()})));
+        const UP = userProvider(userConsumer(methodTest((user) => {user.getUser()})));
 
         const body = JSON.stringify({
             email: 'test@example.com',
@@ -194,7 +196,13 @@ describe('User-Provider', () => {
     });
 
     describe('login', () => {
-        const UP = userProvider(userConsumer(methodTest((user: Context) => {user.login('coolguy', 'password')})));
+        const UP = userProvider(
+            userConsumer(
+                methodTest((user) => {
+                    user.login('coolguy', 'password', (error) => {});
+                })
+            )
+        );
 
         const body = JSON.stringify({
             email: 'test@example.com',
@@ -239,18 +247,24 @@ describe('User-Provider', () => {
     });
 
     describe('logout', () => {
-        const UP = userProvider(userConsumer(methodTest((user: Context) => {user.logout()})),{
-            props: {
-                initialState: {
-                    email: 'test@example.com',
-                    username: 'coolguy123',
-                    firstname: 'Joe',
-                    lastname: 'Doe',
-                    userAccess: true,
-                    admin: false,
+        const UP = userProvider(
+            userConsumer(
+                methodTest((user) => {
+                    user.logout()
+                })
+            ),{
+                props: {
+                    initialState: {
+                        email: 'test@example.com',
+                        username: 'coolguy123',
+                        firstname: 'Joe',
+                        lastname: 'Doe',
+                        userAccess: true,
+                        admin: false,
+                    },
                 },
-            },
-        });
+            }
+        );
 
         const body = JSON.stringify({
         });
@@ -296,7 +310,13 @@ describe('User-Provider', () => {
             firstname: 'Joesph',
             lastname: 'Smith',
         }
-        const UP = userProvider(userConsumer(methodTest((user: Context) => {user.updateUser(params)})));
+        const UP = userProvider(
+            userConsumer(
+                methodTest((user) => {
+                    user.updateUser(params)
+                })
+            )
+        );
 
 
         const body = JSON.stringify({

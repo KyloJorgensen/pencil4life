@@ -1,13 +1,12 @@
 'use strict';
 
-import React, { Component } from 'react';
-import {NavLink} from "react-router-dom";
-import NewsList from '../news/news-list.container.js';
+import * as React from 'react';
+import { NavLink } from 'react-router-dom';
+import NewsList from '../news/news-list';
 
-class HomeNews extends Component {
+class HomeNews extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
     }
 
 	render() {

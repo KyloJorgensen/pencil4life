@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import RichTextEditor from 'react-rte';
-import { Redirect, match } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import * as Datetime from 'react-datetime';
 import * as moment from 'moment';
 import { Location } from 'history';
@@ -11,7 +11,6 @@ import { IUserContext, userConsumer } from '../user/user-provider';
 
 
 export interface EventItemEditProps {
-	match: match<{_eventItemId: string}>;
 	location: Location;
 	event: IEventContext;
 	user: IUserContext;
@@ -78,7 +77,7 @@ class EventItemEdit extends React.Component<EventItemEditProps, EventItemEditSta
 		let _state = null;
 		propsToCheck.forEach((propToCheck) => {
 			if (prevProps.event.eventItem[propToCheck] !== this.props.event.eventItem[propToCheck]) {
-				_state = _state == null ? this.state : _state;
+				_state = _state == null ? {} : _state;
 				_state[propToCheck] = this.props.event.eventItem[propToCheck];
 				if (propToCheck == 'details') {
 					_state[propToCheck] = RichTextEditor.createValueFromString(this.props.event.eventItem[propToCheck], 'html');

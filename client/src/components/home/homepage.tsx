@@ -3,7 +3,7 @@
 import * as React from 'react';
 import TwitchIframe from './home-twitch';
 import Event from './home-event';
-// import NewSection from './home-news';
+import NewSection from './home-news';
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -19,20 +19,10 @@ class HomePage extends React.Component {
 						<TwitchIframe />
 						<Event />
 					</div>
+					<NewSection/>
 				</div>
 		    </div>
 		);
-		// return (
-		//     <div className="home-page-wrapper" >
-		// 		<div className="container">
-		// 			<div className="row" >
-		// 				<TwitchIframe />
-		// 				{/* <Event /> */}
-		// 			</div>
-		// 			{/* <NewSection/> */}
-		// 		</div>
-		//     </div>
-		// );
 	}
 };
 

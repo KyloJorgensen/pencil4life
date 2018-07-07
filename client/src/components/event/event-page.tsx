@@ -27,9 +27,12 @@ class EventPage extends React.Component<EventPageProps, EventPageState, EventPag
     }
 
     handleCheckboxChange(event) {
-        let _state = this.state;
-        _state[event.target.name] = event.target.checked;
-        this.setState(_state);
+        const { name, checked } = event.target;
+
+        this.setState((prevState) => {
+            prevState[name] = checked;
+            return prevState;
+        });
     }
 
 	render() {

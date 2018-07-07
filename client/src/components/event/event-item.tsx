@@ -2,16 +2,14 @@
 
 import * as React from 'react';
 import RichTextEditor from 'react-rte';
-import { Link, match, withRouter, NavLinkProps } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as  moment from 'moment';
 import { IEventContext, eventConsumer } from './event-provider';
 import { IUserContext, userConsumer } from '../user/user-provider';
-import { Location } from 'history';
 
 export interface EventItemProps {
 	event: IEventContext;
 	user: IUserContext;
-	match: match<{_eventItemId: string}>;
 }
 
 class EventItem extends React.Component<EventItemProps> {

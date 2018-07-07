@@ -26,6 +26,11 @@ const EventSwitch = Loadable({
   loading: Loading,
 });
 
+const NewsSwitch = Loadable({
+  loader: () => import('./news/news-switch'),
+  loading: Loading,
+});
+
 class Routes extends React.Component {
   render() {
     return (
@@ -35,6 +40,7 @@ class Routes extends React.Component {
             <Route path="/login/" component={LoginPage} />
             <Route path="/signup/" component={SignupPage} />
             <Route path="/event/" component={EventSwitch} />
+            <Route path="/news/" component={NewsSwitch} />
           </Switch>
       </div>
     );

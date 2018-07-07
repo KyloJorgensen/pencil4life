@@ -5,7 +5,7 @@ function NewsItemController() { }
 ;
 // Creates NewsItem Item.
 NewsItemController.prototype.createNewsItem = function (req, res, next) {
-    var newNewsItem;
+    var newNewsItem = {};
     if ('body' in req) {
         if ('post' in req.body) {
             newNewsItem.post = req.body.post;
@@ -87,7 +87,7 @@ NewsItemController.prototype.getNewsItems = function (req, res, next) {
 };
 // Update NewsItem queries: _id update: post, price returns: new news item 
 NewsItemController.prototype.updateNewsItem = function (req, res, next) {
-    var changes;
+    var changes = {};
     if ('body' in req) {
         if (!('_id' in req.body)) {
             var error = new Error('missing _id');

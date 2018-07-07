@@ -68,12 +68,12 @@ export interface addEventItemParams {
 }
 
 export interface updateEventItemParams {
-    _id: string,
+    _id: string;
     title?: string; 
     start_date?: string | moment.Moment | Date; 
     end_date?: string | moment.Moment | Date;
     details?: string;
-    discontinued?: boolean,
+    discontinued?: boolean;
 }
 
 export interface IEventWrapperMethods {

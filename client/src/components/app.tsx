@@ -7,21 +7,24 @@ import UserWrapper from './user/user-provider'
 import Header from './header/header';
 import Footer from './footer/footer';
 import Routes from './routes';
+import { NewsWrapper } from './news/news-provider';
 
 class App extends React.Component {
   render() {
     return (
-      <UserWrapper>
-        <EventListener>
-          <Router>
-            <div>
-            <Header/>
-            <Routes/>
-            <Footer/>
-            </div>
-          </Router>
-        </EventListener>
-    </UserWrapper>      
+      <NewsWrapper>
+        <UserWrapper>
+          <EventListener>
+            <Router>
+              <div>
+              <Header/>
+              <Routes/>
+              <Footer/>
+              </div>
+            </Router>
+          </EventListener>
+      </UserWrapper>      
+    </NewsWrapper>
     );
   }
 }
