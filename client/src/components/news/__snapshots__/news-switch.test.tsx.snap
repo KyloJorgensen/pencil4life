@@ -33,7 +33,20 @@ ShallowWrapper {
         <Switch>
           <Route
             component={[Function]}
+            exact={true}
+            path="/news"
+          />
+          <Route
+            component={[Function]}
             path="/news/newitem"
+          />
+          <Route
+            component={[Function]}
+            path="/news/item/:_newsItemId"
+          />
+          <Route
+            component={[Function]}
+            path="/news/edit/:_newsItemId"
           />
           <Route
             component={[Function]}
@@ -62,7 +75,20 @@ ShallowWrapper {
           <Switch>
             <Route
               component={[Function]}
+              exact={true}
+              path="/news"
+            />
+            <Route
+              component={[Function]}
               path="/news/newitem"
+            />
+            <Route
+              component={[Function]}
+              path="/news/item/:_newsItemId"
+            />
+            <Route
+              component={[Function]}
+              path="/news/edit/:_newsItemId"
             />
             <Route
               component={[Function]}
@@ -108,7 +134,20 @@ ShallowWrapper {
             "children": Array [
               <Route
                 component={[Function]}
+                exact={true}
+                path="/news"
+              />,
+              <Route
+                component={[Function]}
                 path="/news/newitem"
+              />,
+              <Route
+                component={[Function]}
+                path="/news/item/:_newsItemId"
+              />,
+              <Route
+                component={[Function]}
+                path="/news/edit/:_newsItemId"
               />,
               <Route
                 component={[Function]}
@@ -123,7 +162,44 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "component": [Function],
+                "exact": true,
+                "path": "/news",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "component": [Function],
                 "path": "/news/newitem",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "component": [Function],
+                "path": "/news/item/:_newsItemId",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "component": [Function],
+                "path": "/news/edit/:_newsItemId",
               },
               "ref": null,
               "rendered": null,
@@ -170,7 +246,20 @@ ShallowWrapper {
           <Switch>
             <Route
               component={[Function]}
+              exact={true}
+              path="/news"
+            />
+            <Route
+              component={[Function]}
               path="/news/newitem"
+            />
+            <Route
+              component={[Function]}
+              path="/news/item/:_newsItemId"
+            />
+            <Route
+              component={[Function]}
+              path="/news/edit/:_newsItemId"
             />
             <Route
               component={[Function]}
@@ -199,7 +288,20 @@ ShallowWrapper {
             <Switch>
               <Route
                 component={[Function]}
+                exact={true}
+                path="/news"
+              />
+              <Route
+                component={[Function]}
                 path="/news/newitem"
+              />
+              <Route
+                component={[Function]}
+                path="/news/item/:_newsItemId"
+              />
+              <Route
+                component={[Function]}
+                path="/news/edit/:_newsItemId"
               />
               <Route
                 component={[Function]}
@@ -245,7 +347,20 @@ ShallowWrapper {
               "children": Array [
                 <Route
                   component={[Function]}
+                  exact={true}
+                  path="/news"
+                />,
+                <Route
+                  component={[Function]}
                   path="/news/newitem"
+                />,
+                <Route
+                  component={[Function]}
+                  path="/news/item/:_newsItemId"
+                />,
+                <Route
+                  component={[Function]}
+                  path="/news/edit/:_newsItemId"
                 />,
                 <Route
                   component={[Function]}
@@ -260,7 +375,44 @@ ShallowWrapper {
                 "nodeType": "class",
                 "props": Object {
                   "component": [Function],
+                  "exact": true,
+                  "path": "/news",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "component": [Function],
                   "path": "/news/newitem",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "component": [Function],
+                  "path": "/news/item/:_newsItemId",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "component": [Function],
+                  "path": "/news/edit/:_newsItemId",
                 },
                 "ref": null,
                 "rendered": null,

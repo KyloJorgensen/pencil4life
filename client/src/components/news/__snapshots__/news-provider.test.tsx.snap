@@ -97,6 +97,7 @@ ShallowWrapper {
         "pageTotal": 0,
         "total": 0,
         "totalPages": 0,
+        "updateNewsItem": [Function],
       },
     },
     "ref": null,
@@ -123,6 +124,7 @@ ShallowWrapper {
           "pageTotal": 0,
           "total": 0,
           "totalPages": 0,
+          "updateNewsItem": [Function],
         },
         "_currentValue2": Object {
           "addNewsItem": [Function],
@@ -135,6 +137,7 @@ ShallowWrapper {
           "pageTotal": 0,
           "total": 0,
           "totalPages": 0,
+          "updateNewsItem": [Function],
         },
         "_defaultValue": Object {
           "addNewsItem": [Function],
@@ -147,6 +150,7 @@ ShallowWrapper {
           "pageTotal": 0,
           "total": 0,
           "totalPages": 0,
+          "updateNewsItem": [Function],
         },
       },
     },
@@ -169,6 +173,7 @@ ShallowWrapper {
           "pageTotal": 0,
           "total": 0,
           "totalPages": 0,
+          "updateNewsItem": [Function],
         },
       },
       "ref": null,
@@ -195,6 +200,7 @@ ShallowWrapper {
             "pageTotal": 0,
             "total": 0,
             "totalPages": 0,
+            "updateNewsItem": [Function],
           },
           "_currentValue2": Object {
             "addNewsItem": [Function],
@@ -207,6 +213,7 @@ ShallowWrapper {
             "pageTotal": 0,
             "total": 0,
             "totalPages": 0,
+            "updateNewsItem": [Function],
           },
           "_defaultValue": Object {
             "addNewsItem": [Function],
@@ -219,6 +226,7 @@ ShallowWrapper {
             "pageTotal": 0,
             "total": 0,
             "totalPages": 0,
+            "updateNewsItem": [Function],
           },
         },
       },
@@ -278,6 +286,7 @@ ShallowWrapper {
         "pageTotal": 0,
         "total": 0,
         "totalPages": 0,
+        "updateNewsItem": [Function],
       },
       "_currentValue2": Object {
         "addNewsItem": [Function],
@@ -290,6 +299,7 @@ ShallowWrapper {
         "pageTotal": 0,
         "total": 0,
         "totalPages": 0,
+        "updateNewsItem": [Function],
       },
       "_defaultValue": Object {
         "addNewsItem": [Function],
@@ -302,6 +312,7 @@ ShallowWrapper {
         "pageTotal": 0,
         "total": 0,
         "totalPages": 0,
+        "updateNewsItem": [Function],
       },
     },
   },
@@ -338,6 +349,7 @@ ShallowWrapper {
           "pageTotal": 0,
           "total": 0,
           "totalPages": 0,
+          "updateNewsItem": [Function],
         },
         "_currentValue2": Object {
           "addNewsItem": [Function],
@@ -350,6 +362,7 @@ ShallowWrapper {
           "pageTotal": 0,
           "total": 0,
           "totalPages": 0,
+          "updateNewsItem": [Function],
         },
         "_defaultValue": Object {
           "addNewsItem": [Function],
@@ -362,6 +375,7 @@ ShallowWrapper {
           "pageTotal": 0,
           "total": 0,
           "totalPages": 0,
+          "updateNewsItem": [Function],
         },
       },
     },

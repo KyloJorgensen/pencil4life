@@ -25,7 +25,43 @@ ShallowWrapper {
         />
         <Route
           component={[Function]}
-          path="/login/"
+          path="/event"
+        />
+        <Route
+          component={[Function]}
+          path="/project"
+        />
+        <Route
+          component={[Function]}
+          path="/doodles"
+        />
+        <Route
+          component={[Function]}
+          path="/comics"
+        />
+        <Route
+          component={[Function]}
+          path="/soundboard"
+        />
+        <Route
+          component={[Function]}
+          path="/shop"
+        />
+        <Route
+          component={[Function]}
+          path="/commission"
+        />
+        <Route
+          component={[Function]}
+          path="/info"
+        />
+        <Route
+          component={[Function]}
+          path="/contact"
+        />
+        <Route
+          component={[Function]}
+          path="/login"
         />
         <Route
           component={[Function]}
@@ -33,11 +69,18 @@ ShallowWrapper {
         />
         <Route
           component={[Function]}
-          path="/event/"
+          path="/news"
         />
         <Route
           component={[Function]}
-          path="/news/"
+          path="/profile"
+        />
+        <Route
+          component={[Function]}
+          path="/image"
+        />
+        <Route
+          component={[Function]}
         />
       </Switch>,
     },
@@ -55,7 +98,43 @@ ShallowWrapper {
           />,
           <Route
             component={[Function]}
-            path="/login/"
+            path="/event"
+          />,
+          <Route
+            component={[Function]}
+            path="/project"
+          />,
+          <Route
+            component={[Function]}
+            path="/doodles"
+          />,
+          <Route
+            component={[Function]}
+            path="/comics"
+          />,
+          <Route
+            component={[Function]}
+            path="/soundboard"
+          />,
+          <Route
+            component={[Function]}
+            path="/shop"
+          />,
+          <Route
+            component={[Function]}
+            path="/commission"
+          />,
+          <Route
+            component={[Function]}
+            path="/info"
+          />,
+          <Route
+            component={[Function]}
+            path="/contact"
+          />,
+          <Route
+            component={[Function]}
+            path="/login"
           />,
           <Route
             component={[Function]}
@@ -63,11 +142,18 @@ ShallowWrapper {
           />,
           <Route
             component={[Function]}
-            path="/event/"
+            path="/news"
           />,
           <Route
             component={[Function]}
-            path="/news/"
+            path="/profile"
+          />,
+          <Route
+            component={[Function]}
+            path="/image"
+          />,
+          <Route
+            component={[Function]}
           />,
         ],
       },
@@ -92,7 +178,115 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "component": [Function],
-            "path": "/login/",
+            "path": "/event",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "component": [Function],
+            "path": "/project",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "component": [Function],
+            "path": "/doodles",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "component": [Function],
+            "path": "/comics",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "component": [Function],
+            "path": "/soundboard",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "component": [Function],
+            "path": "/shop",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "component": [Function],
+            "path": "/commission",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "component": [Function],
+            "path": "/info",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "component": [Function],
+            "path": "/contact",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "component": [Function],
+            "path": "/login",
           },
           "ref": null,
           "rendered": null,
@@ -116,7 +310,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "component": [Function],
-            "path": "/event/",
+            "path": "/news",
           },
           "ref": null,
           "rendered": null,
@@ -128,7 +322,30 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "component": [Function],
-            "path": "/news/",
+            "path": "/profile",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "component": [Function],
+            "path": "/image",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "component": [Function],
           },
           "ref": null,
           "rendered": null,
@@ -153,7 +370,43 @@ ShallowWrapper {
           />
           <Route
             component={[Function]}
-            path="/login/"
+            path="/event"
+          />
+          <Route
+            component={[Function]}
+            path="/project"
+          />
+          <Route
+            component={[Function]}
+            path="/doodles"
+          />
+          <Route
+            component={[Function]}
+            path="/comics"
+          />
+          <Route
+            component={[Function]}
+            path="/soundboard"
+          />
+          <Route
+            component={[Function]}
+            path="/shop"
+          />
+          <Route
+            component={[Function]}
+            path="/commission"
+          />
+          <Route
+            component={[Function]}
+            path="/info"
+          />
+          <Route
+            component={[Function]}
+            path="/contact"
+          />
+          <Route
+            component={[Function]}
+            path="/login"
           />
           <Route
             component={[Function]}
@@ -161,11 +414,18 @@ ShallowWrapper {
           />
           <Route
             component={[Function]}
-            path="/event/"
+            path="/news"
           />
           <Route
             component={[Function]}
-            path="/news/"
+            path="/profile"
+          />
+          <Route
+            component={[Function]}
+            path="/image"
+          />
+          <Route
+            component={[Function]}
           />
         </Switch>,
       },
@@ -183,7 +443,43 @@ ShallowWrapper {
             />,
             <Route
               component={[Function]}
-              path="/login/"
+              path="/event"
+            />,
+            <Route
+              component={[Function]}
+              path="/project"
+            />,
+            <Route
+              component={[Function]}
+              path="/doodles"
+            />,
+            <Route
+              component={[Function]}
+              path="/comics"
+            />,
+            <Route
+              component={[Function]}
+              path="/soundboard"
+            />,
+            <Route
+              component={[Function]}
+              path="/shop"
+            />,
+            <Route
+              component={[Function]}
+              path="/commission"
+            />,
+            <Route
+              component={[Function]}
+              path="/info"
+            />,
+            <Route
+              component={[Function]}
+              path="/contact"
+            />,
+            <Route
+              component={[Function]}
+              path="/login"
             />,
             <Route
               component={[Function]}
@@ -191,11 +487,18 @@ ShallowWrapper {
             />,
             <Route
               component={[Function]}
-              path="/event/"
+              path="/news"
             />,
             <Route
               component={[Function]}
-              path="/news/"
+              path="/profile"
+            />,
+            <Route
+              component={[Function]}
+              path="/image"
+            />,
+            <Route
+              component={[Function]}
             />,
           ],
         },
@@ -220,7 +523,115 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "component": [Function],
-              "path": "/login/",
+              "path": "/event",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "component": [Function],
+              "path": "/project",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "component": [Function],
+              "path": "/doodles",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "component": [Function],
+              "path": "/comics",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "component": [Function],
+              "path": "/soundboard",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "component": [Function],
+              "path": "/shop",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "component": [Function],
+              "path": "/commission",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "component": [Function],
+              "path": "/info",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "component": [Function],
+              "path": "/contact",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "component": [Function],
+              "path": "/login",
             },
             "ref": null,
             "rendered": null,
@@ -244,7 +655,7 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "component": [Function],
-              "path": "/event/",
+              "path": "/news",
             },
             "ref": null,
             "rendered": null,
@@ -256,7 +667,30 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "component": [Function],
-              "path": "/news/",
+              "path": "/profile",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "component": [Function],
+              "path": "/image",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "component": [Function],
             },
             "ref": null,
             "rendered": null,
