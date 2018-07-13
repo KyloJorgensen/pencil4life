@@ -3,7 +3,7 @@
 import formidable from 'formidable';
 import * as path from 'path';
 import { sync as mkdirpSync } from 'mkdirp';
-import { Image, IImageModel } from './image.model';
+import { Image, IImage, IImageModel } from './image.model';
 import { IMAGE_DIR } from '../../../config/variables.express';
 
 
@@ -11,7 +11,12 @@ function ImageController() {};
 
 // Creates Image Item.
 ImageController.prototype.createImage = function(req, res, next) {
-    let newImageDoc: IImageModel;
+    let newImageDoc: {
+        name?: string;
+        alt?: string;
+        discontinued?: boolean;
+        originalName?: string;
+    } = {};
 
     if ('body' in req) {
         if ('name' in req.body) {
@@ -133,7 +138,12 @@ ImageController.prototype.getImages = function(req, res, next) {
 
 // Update Image queries: _id update: name, start_date returns: new shop item 
 ImageController.prototype.updateImage = function(req, res, next) {
-    let changes: IImageModel;
+    let changes: {
+        name?: string;
+        alt?: string;
+        discontinued?: boolean;
+        originalName?: string;
+    } = {};
     if ('body' in req) {
         if (!('_id' in req.body)) {        
             var error = new Error('missing _id');
@@ -159,7 +169,7 @@ ImageController.prototype.updateImage = function(req, res, next) {
         if (req.files != null) {
             if ('image' in req.files) {
                 let { image } = req.files;
-                // changes.originalName = image.name;
+                changes.originalName = image.name;
                 const types = ['jpeg','jpg','png','gif',];
                 const extenstion = image.name.split('.').pop().toLowerCase();
                 if (!types.includes(extenstion)) {

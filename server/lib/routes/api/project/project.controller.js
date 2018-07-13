@@ -5,17 +5,11 @@ function ProjectController() { }
 ;
 // Creates Project.
 ProjectController.prototype.createProject = function (req, res, next) {
-    var changes;
+    var newProjectDoc = {};
     if ('body' in req) {
         var body = req.body;
-        // if ('image' in body) {
-        //     const { image } = body;
-        //     if ('_imageId' in image) {
-        //         changes.image._imageId = image;
-        //     }
-        // }
         if ('title' in body) {
-            changes.title = body.title;
+            newProjectDoc.title = body.title;
         }
         else {
             var error = new Error('missing title');
@@ -23,20 +17,22 @@ ProjectController.prototype.createProject = function (req, res, next) {
             return next(error);
         }
         if ('year' in body) {
-            changes.year = body.year;
+            newProjectDoc.year = body.year;
         }
         if ('details' in body) {
-            changes.details = body.details;
+            newProjectDoc.details = body.details;
         }
         if ('coverImage' in body) {
             var coverImage = body.coverImage;
+            if (!newProjectDoc.coverImage) {
+                newProjectDoc.coverImage = {};
+            }
             if ('_imageId' in coverImage) {
-                // changes.coverImage = changes.coverImage || {};
-                changes.coverImage._imageId = coverImage._imageId;
+                newProjectDoc.coverImage._imageId = coverImage._imageId;
             }
         }
         if ('discontinued' in body) {
-            changes.discontinued = body.discontinued;
+            newProjectDoc.discontinued = body.discontinued;
         }
     }
     else {
@@ -44,7 +40,7 @@ ProjectController.prototype.createProject = function (req, res, next) {
         error.name = 'BadRequestError';
         return next(error);
     }
-    var query = project_model_1.Project.create(changes);
+    var query = project_model_1.Project.create(newProjectDoc);
     query.then(function (projectDoc) {
         res.status(200).json({ _id: projectDoc._id });
     }).catch(function (error) {
@@ -104,7 +100,7 @@ ProjectController.prototype.getProjects = function (req, res, next) {
 };
 // Update Project queries: _id update: title, year returns: new shop item 
 ProjectController.prototype.updateProject = function (req, res, next) {
-    var changes;
+    var changes = {};
     if ('body' in req) {
         var body = req.body;
         if (!('_id' in body)) {
@@ -124,7 +120,7 @@ ProjectController.prototype.updateProject = function (req, res, next) {
         if ('coverImage' in body) {
             var coverImage = body.coverImage;
             if ('_imageId' in coverImage) {
-                // changes.coverImage = changes.coverImage || {};
+                changes.coverImage = changes.coverImage || {};
                 changes.coverImage._imageId = coverImage._imageId;
             }
         }
@@ -146,7 +142,7 @@ ProjectController.prototype.updateProject = function (req, res, next) {
 };
 // Creates ProjectPage.
 ProjectController.prototype.createProjectPage = function (req, res, next) {
-    var newpage;
+    var newpage = {};
     if ('body' in req) {
         var body = req.body;
         if ('_imageId' in body) {
@@ -173,6 +169,7 @@ ProjectController.prototype.createProjectPage = function (req, res, next) {
     var project = project_model_1.Project.findOne({ _id: req.params._projectId });
     project.then(function (projectDoc) {
         newpage.page = projectDoc.pages.length + 1;
+        // @ts-ignore
         projectDoc.pages.push(newpage);
         projectDoc.save().then(function (projectDoc) {
             if ('page' in req.body) {
@@ -233,7 +230,6 @@ ProjectController.prototype.getProjectPage = function (req, res, next) {
         var vaildFields = ['_id', 'title', 'details', 'page', 'discontinued'];
         var requestedFields = req.query.field || [];
         var selectFields = ['_id', 'title', 'details', 'page', 'discontinued'];
-        console.log(req.query.field);
         requestedFields.forEach(function (field) {
             if (vaildFields.includes(field) && !selectFields.includes(field)) {
                 selectFields.push(field);
@@ -281,14 +277,14 @@ ProjectController.prototype.getProjectPages = function (req, res, next) {
             pages: pages,
         };
         res.status(200).json(res_body);
-        res.status(200).json(projectDoc);
+        // res.status(200).json(projectDoc);
     }).catch(function (error) {
         return next(error);
     });
 };
 // Update ProjectPage queries: _id update: title, year returns: new shop item 
 ProjectController.prototype.updateProjectPage = function (req, res, next) {
-    var changes;
+    var changes = {};
     if ('body' in req) {
         var body = req.body;
         if ('_imageId' in body) {
@@ -312,7 +308,6 @@ ProjectController.prototype.updateProjectPage = function (req, res, next) {
         error.name = 'BadRequestError';
         return next(error);
     }
-    // let query = Project.findOneAndUpdate({_id: req.params._projectId}, {$set: changes}, {new: true});
     var project = project_model_1.Project.findOne({ _id: req.params._projectId });
     project.then(function (projectDoc) {
         var _pageId = req.params._pageId;
@@ -326,23 +321,7 @@ ProjectController.prototype.updateProjectPage = function (req, res, next) {
             var pageIndex_2 = projectDoc.pages.findIndex(function (page) {
                 return page._id == _pageId;
             });
-            projectDoc.pages.forEach(function (page, index) {
-                if (index == pageIndex_2) {
-                    projectDoc.pages[index].page = changes.page;
-                    projectDoc.markModified('pages.' + index + '.page');
-                }
-                else if (page.page > changes.page || (changes.page == 1 && page.page == changes.page)) {
-                    projectDoc.pages[index].page++;
-                    projectDoc.markModified('pages.' + index + '.page');
-                }
-                else {
-                    projectDoc.pages[index].page--;
-                    projectDoc.markModified('pages.' + index + '.page');
-                }
-            });
-            projectDoc.pages.sort(function (a, b) {
-                return a.page - b.page;
-            });
+            projectDoc.pages.splice(changes.page - 1, 0, projectDoc.pages.splice(pageIndex_2, 1)[0]);
             projectDoc.pages.forEach(function (page, index) {
                 projectDoc.pages[index].page = index + 1;
                 projectDoc.markModified('pages.' + index + '.page');

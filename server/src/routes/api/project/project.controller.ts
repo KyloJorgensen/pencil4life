@@ -1,42 +1,51 @@
 'use strict';
 
-import { Project, IProjectModel, IPageModel } from './project.model';
+import { Project } from './project.model';
+import { Schema } from 'mongoose';
 
 function ProjectController() {};
 
+export interface projectDoc {
+    title?: string;
+    year?: Date;
+    details?: string;
+    coverImage?: {
+        _imageId?: string;
+    };
+    discontinued?: boolean;
+}
+
 // Creates Project.
-ProjectController.prototype.createProject = function(req, res, next) {
-    let changes: IProjectModel;
+ProjectController.prototype.createProject = (req, res, next) => {
+    let newProjectDoc: projectDoc = {};
     if ('body' in req) {
         const { body } = req;
-        // if ('image' in body) {
-        //     const { image } = body;
-        //     if ('_imageId' in image) {
-        //         changes.image._imageId = image;
-        //     }
-        // }
         if ('title' in body) {
-            changes.title = body.title;
+            newProjectDoc.title = body.title;
         } else {
             var error = new Error('missing title');
             error.message = 'BadRequestError'
             return next(error);
         }
         if ('year' in body) {
-            changes.year = body.year;
+            newProjectDoc.year = body.year;
         }
         if ('details' in body) {
-            changes.details = body.details;
+            newProjectDoc.details = body.details;
         }
         if ('coverImage' in body) {
             const { coverImage } = body;
+
+            if (!newProjectDoc.coverImage) {
+                newProjectDoc.coverImage = {};
+            }
+
             if ('_imageId' in  coverImage) {
-                // changes.coverImage = changes.coverImage || {};
-                changes.coverImage._imageId = coverImage._imageId;
+                newProjectDoc.coverImage._imageId = coverImage._imageId;
             }
         }
         if ('discontinued' in body) {
-            changes.discontinued = body.discontinued;
+            newProjectDoc.discontinued = body.discontinued;
         }
     } else {
         var error = new Error('missing body');
@@ -44,10 +53,10 @@ ProjectController.prototype.createProject = function(req, res, next) {
         return next(error);
     }
 
-    let query = Project.create(changes);
-    query.then(function(projectDoc) {
+    let query = Project.create(newProjectDoc);
+    query.then((projectDoc) => {
         res.status(200).json({_id: projectDoc._id});    
-    }).catch(function(error) {
+    }).catch((error) => {
         console.log(error)
         next(error);
     });
@@ -108,7 +117,7 @@ ProjectController.prototype.getProjects = function(req, res, next) {
 
 // Update Project queries: _id update: title, year returns: new shop item 
 ProjectController.prototype.updateProject = function(req, res, next) {
-    let changes: IProjectModel;
+    let changes: projectDoc = {};
     if ('body' in req) {
         const { body } = req; 
         if (!('_id' in body)) {        
@@ -128,7 +137,7 @@ ProjectController.prototype.updateProject = function(req, res, next) {
         if ('coverImage' in body) {
             const { coverImage } = body;
             if ('_imageId' in  coverImage) {
-                // changes.coverImage = changes.coverImage || {};
+                changes.coverImage = changes.coverImage || {};
                 changes.coverImage._imageId = coverImage._imageId;
             }
         }
@@ -151,7 +160,13 @@ ProjectController.prototype.updateProject = function(req, res, next) {
 
 // Creates ProjectPage.
 ProjectController.prototype.createProjectPage = function(req, res, next) {
-    let newpage: IPageModel;
+    let newpage: {
+        _imageId?: Schema.Types.ObjectId;
+        title?: string;
+        details?: string;
+        page?: number;
+        discontinued?: boolean;
+    } = {};
     if ('body' in req) {
         const { body } = req;
         if ('_imageId' in body) {
@@ -180,7 +195,7 @@ ProjectController.prototype.createProjectPage = function(req, res, next) {
     project.then(function(projectDoc) {
 
         newpage.page = projectDoc.pages.length + 1;
-
+        // @ts-ignore
         projectDoc.pages.push(newpage);
         projectDoc.save().then(function(projectDoc) {
             if ('page' in req.body) {
@@ -244,7 +259,6 @@ ProjectController.prototype.getProjectPage = function(req, res, next) {
         let vaildFields = ['_id', 'title', 'details', 'page', 'discontinued'];
         let requestedFields = req.query.field || [];
         let selectFields = ['_id', 'title', 'details', 'page', 'discontinued'];
-        console.log(req.query.field)
         requestedFields.forEach(function(field) {
             if ( vaildFields.includes(field) && !selectFields.includes(field)) {
                 selectFields.push(field);
@@ -270,7 +284,6 @@ ProjectController.prototype.getProjectPage = function(req, res, next) {
 ProjectController.prototype.getProjectPages = function(req, res, next) {  
     let project = Project.findOne({_id: req.params._projectId});
     project.then(function(projectDoc) {
-
         const _pages = projectDoc.pages.filter((page) => {
             return {
                 _id: page._id,
@@ -298,7 +311,7 @@ ProjectController.prototype.getProjectPages = function(req, res, next) {
         };
         res.status(200).json(res_body);
 
-        res.status(200).json(projectDoc);
+        // res.status(200).json(projectDoc);
     }).catch(function(error) {
         return next(error);
     });
@@ -306,7 +319,13 @@ ProjectController.prototype.getProjectPages = function(req, res, next) {
 
 // Update ProjectPage queries: _id update: title, year returns: new shop item 
 ProjectController.prototype.updateProjectPage = function(req, res, next) {
-    var changes: IPageModel;
+    var changes: {
+        _imageId?: string;
+        title?: string;
+        page?: number;
+        details?: string;
+        discontinued?: boolean;
+    } = {};
     if ('body' in req) {
         const { body } = req;
         if ('_imageId' in body) {
@@ -330,9 +349,8 @@ ProjectController.prototype.updateProjectPage = function(req, res, next) {
         return next(error);
     }
 
-    // let query = Project.findOneAndUpdate({_id: req.params._projectId}, {$set: changes}, {new: true});
     let project = Project.findOne({_id: req.params._projectId});
-    project.then(function(projectDoc) {
+    project.then((projectDoc) => {
         const _pageId = req.params._pageId;
 
         if ('page' in changes) {
@@ -347,22 +365,7 @@ ProjectController.prototype.updateProjectPage = function(req, res, next) {
                 return page._id == _pageId;
             })
 
-            projectDoc.pages.forEach((page, index) => {
-                if (index == pageIndex) {
-                    projectDoc.pages[index].page = changes.page;
-                    projectDoc.markModified('pages.'+index+'.page');
-                } else if (page.page > changes.page || (changes.page == 1 && page.page == changes.page)) {
-                    projectDoc.pages[index].page++;
-                    projectDoc.markModified('pages.'+index+'.page');
-                } else {
-                    projectDoc.pages[index].page--;
-                    projectDoc.markModified('pages.'+index+'.page');
-                }
-            });
-
-            projectDoc.pages.sort((a, b) => {
-                return a.page - b.page;
-            });
+            projectDoc.pages.splice(changes.page - 1, 0, projectDoc.pages.splice(pageIndex, 1)[0])
 
             projectDoc.pages.forEach((page, index) => {
                 projectDoc.pages[index].page = index + 1;

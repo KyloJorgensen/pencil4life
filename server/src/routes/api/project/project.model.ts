@@ -18,11 +18,11 @@ const CoverImageSchema = new Schema({
 }, {timestamps: true});
 
 export interface IPage {
-    _imageId: Schema.Types.ObjectId;
-    title: string;
-    details: string;
-    page: number;
-    discontinued: Boolean;
+    _imageId?: Schema.Types.ObjectId;
+    title?: string;
+    details?: string;
+    page?: number;
+    discontinued?: Boolean;
 }
 
 export interface IPageModel extends IPage, Document {

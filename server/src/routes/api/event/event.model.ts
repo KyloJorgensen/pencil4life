@@ -2,7 +2,6 @@
 
 import { Document, Schema, Model, model } from 'mongoose';
 
-
 export interface IEvent {
     title: string;
     start_date: number;

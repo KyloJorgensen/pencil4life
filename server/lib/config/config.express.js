@@ -10,6 +10,17 @@ var variables_express_1 = require("./variables.express");
 var MongoStore = connectMongo(session);
 var configExpress = function (app) {
     app
+        // .use(function(req, res, next) {
+        //     if (req.headers.host.split('.').length < 3) {
+        //         res.redirect('https://' + 'www.' + req.headers.host + req.url);
+        //     } else {
+        //         if (req.secure) {
+        //             next();
+        //         } else {
+        //             res.redirect('https://' + req.headers.host + req.url);
+        //         }
+        //     }
+        // })
         .use(fileUpload())
         .use(bodyParser.json())
         .use(bodyParser.json({ type: 'application/json' }))

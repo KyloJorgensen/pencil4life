@@ -67,8 +67,8 @@ export interface UserWrapperMethods {
   getUser: () => void;
   login: (username: string, password: string, callback: (error) => void) => void;
   logout: () => void;
-  updateUser: (params: UpdateUserParams) => void;
-  updatePassword: (oldpassword: string, newpassword: string) => void;
+  updateUser: (params: UpdateUserParams, callback: (error) => void) => void;
+  updatePassword: (oldpassword: string, newpassword: string, callback: (error) => void) => void;
 }
 
 export class UserWrapper extends React.Component<IUserProps, IUserState> implements UserWrapperMethods {
@@ -253,7 +253,7 @@ export class UserWrapper extends React.Component<IUserProps, IUserState> impleme
     });
   }
 
-  updateUser(params) {
+  updateUser(params, callback) {
     let payload:UpdateUserParams = {};
     if ('email' in params) {payload.email = params.email}
     if ('username' in params) {payload.username = params.username}
@@ -288,15 +288,17 @@ export class UserWrapper extends React.Component<IUserProps, IUserState> impleme
         this.setState(() => {
           return user;
         });
+        callback(false);
       })
       .catch((error) => {
+        callback(true);
         console.log(error);
       });
     }
 
   }
 
-  updatePassword(oldpassword, newpassword) {
+  updatePassword(oldpassword, newpassword, callback) {
     const payload = {
       oldpassword: oldpassword,
       newpassword: newpassword
@@ -329,8 +331,10 @@ export class UserWrapper extends React.Component<IUserProps, IUserState> impleme
         this.setState(() => {
           return user;
         });
+        callback(false);
       })
       .catch((error) => {
+        callback(true);
         console.log(error);
       });
     }

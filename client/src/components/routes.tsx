@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router';
 import * as Loadable from 'react-loadable';
+// import CommingSoon from './comming-soon';
 import NoMatch from './no-match';
 
 const Loading = () => <div>Loading...</div>;
@@ -32,10 +33,10 @@ const NewsSwitch = Loadable({
   loading: Loading,
 });
 
-// const ProjectSwitch = Loadable({
-//   loader: () => import('./project/project-switch'),
-//   loading: Loading,
-// });
+const ProjectSwitch = Loadable({
+  loader: () => import('./project/project-switch'),
+  loading: Loading,
+});
 
 const DoodlesSwitch = Loadable({
   loader: () => import('./doodles/doodles-switch'),
@@ -72,15 +73,15 @@ const ContactSwitch = Loadable({
   loading: Loading,
 });
 
-// const ProfilePage = Loadable({
-//   loader: () => import('./profile/profile-page'),
-//   loading: Loading,
-// });
+const ProfilePage = Loadable({
+  loader: () => import('./profile/profile-switch'),
+  loading: Loading,
+});
 
-// const ImageSwitch = Loadable({
-//   loader: () => import('./image/image-switch'),
-//   loading: Loading,
-// });
+const ImageSwitch = Loadable({
+  loader: () => import('./image/image-switch'),
+  loading: Loading,
+});
 
 class Routes extends React.Component {
   render() {
@@ -89,7 +90,7 @@ class Routes extends React.Component {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/event" component={EventSwitch} />
-            {/* <Route path="/project" component={ProjectSwitch} /> */}
+            <Route path="/project" component={ProjectSwitch} />
             <Route path="/doodles" component={DoodlesSwitch} />
             <Route path="/comics" component={ComicsSwitch} />
             <Route path="/soundboard" component={SoundboardSwitch} />
@@ -100,8 +101,8 @@ class Routes extends React.Component {
             <Route path="/login" component={LoginPage} />
             <Route path="/signup/" component={SignupPage} />
             <Route path="/news" component={NewsSwitch} />
-            {/* <Route path="/profile" component={ProfilePage} /> */}
-            {/* <Route path="/image" component={ImageSwitch} /> */}
+            <Route path="/profile" component={ProfilePage} />
+            <Route path="/image" component={ImageSwitch} />
             <Route component={NoMatch}/>
           </Switch>
       </div>

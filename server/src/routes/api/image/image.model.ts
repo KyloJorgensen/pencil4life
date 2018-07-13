@@ -32,8 +32,8 @@ export interface IImage {
     originalSrc?: string;
     originalName: string;
     filename?: string;
-    secure: boolean;
-    discontinued: boolean;
+    secure?: boolean;
+    discontinued?: boolean;
 }
 
 export interface IImageModel extends IImage, Document {
@@ -77,11 +77,10 @@ const pad = (n: number | string, width:10, z?: string): string => {
 }
 
 ImageSchema.pre('save', function(next) {
-    var doc: any = this;
-    Counter.findByIdAndUpdate({type: 'imageId'}, {$inc: { seq: 1} }, {upsert: true, setDefaultsOnInsert: true}, function(error, counter)   {
+    Counter.findOneAndUpdate({type: 'imageId'}, {$inc: { seq: 1} }, {upsert: true, setDefaultsOnInsert: true}, (error, counter) => {
         if(error)
             return next(error);
-        doc.filename = pad(counter.seq, 10) + '.' + doc.originalName.split('.').pop().toLowerCase();
+        this.filename = pad(counter.seq, 10) + '.' + this.originalName.split('.').pop().toLowerCase();
         next();
     });
 

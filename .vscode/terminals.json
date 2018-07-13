@@ -23,13 +23,13 @@
       "description": "WEBPACK",
       "commands": [
         "npm run server:watch",
-        "pm2 logs pencil4life"
+        "pm2 logs devpencil4life"
       ]
     },
     {
       "name": "STOP SERVER",
       "description": "STOP SERVER",
-      "command": "pm2 stop pencil4life",
+      "command": "pm2 stop devpencil4life",
       "focus": true,
       "onlySingle": true
     }

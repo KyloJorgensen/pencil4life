@@ -2,6 +2,7 @@
 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     entry: ['babel-polyfill', './client/src/index.tsx'],
@@ -19,7 +20,7 @@ module.exports = {
         rules: [
             {
                 test: /\.tsx?$/,
-                exclude: [ /node_modules/, "./clinet/**/*.test.*"],
+                exclude: [ "./clinet/**/*.test.*"],
                 use: {
                     loader: 'ts-loader',
                     options: {
@@ -42,6 +43,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.join(__dirname, '/client/src/index.html')
-        })
+        }),
+        new BundleAnalyzerPlugin(),
     ]
 };

@@ -8,7 +8,7 @@ function ImageController() { }
 ;
 // Creates Image Item.
 ImageController.prototype.createImage = function (req, res, next) {
-    var newImageDoc;
+    var newImageDoc = {};
     if ('body' in req) {
         if ('name' in req.body) {
             newImageDoc.name = req.body.name;
@@ -122,7 +122,7 @@ ImageController.prototype.getImages = function (req, res, next) {
 };
 // Update Image queries: _id update: name, start_date returns: new shop item 
 ImageController.prototype.updateImage = function (req, res, next) {
-    var changes;
+    var changes = {};
     if ('body' in req) {
         if (!('_id' in req.body)) {
             var error = new Error('missing _id');
@@ -148,7 +148,7 @@ ImageController.prototype.updateImage = function (req, res, next) {
         if (req.files != null) {
             if ('image' in req.files) {
                 var image = req.files.image;
-                // changes.originalName = image.name;
+                changes.originalName = image.name;
                 var types = ['jpeg', 'jpg', 'png', 'gif',];
                 var extenstion = image.name.split('.').pop().toLowerCase();
                 if (!types.includes(extenstion)) {

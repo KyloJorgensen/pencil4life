@@ -29,15 +29,29 @@ ShallowWrapper {
           }
         }
       >
-        <EventListenerWrapper>
-          <HashRouter>
-            <div>
-              <UserConsumer />
-              <Routes />
-              <EventListenerConsumer />
-            </div>
-          </HashRouter>
-        </EventListenerWrapper>
+        <ImageWrapper
+          initialState={
+            Object {
+              "imageList": Object {},
+              "images": Array [],
+              "limit": 0,
+              "page": 0,
+              "pageTotal": 0,
+              "total": 0,
+              "totalPages": 0,
+            }
+          }
+        >
+          <EventListenerWrapper>
+            <HashRouter>
+              <div>
+                <LoadableComponent />
+                <Routes />
+                <LoadableComponent />
+              </div>
+            </HashRouter>
+          </EventListenerWrapper>
+        </ImageWrapper>
       </UserWrapper>,
       "initialState": Object {
         "limit": 0,
@@ -55,15 +69,29 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "children": <EventListenerWrapper>
-          <HashRouter>
-            <div>
-              <UserConsumer />
-              <Routes />
-              <EventListenerConsumer />
-            </div>
-          </HashRouter>
-        </EventListenerWrapper>,
+        "children": <ImageWrapper
+          initialState={
+            Object {
+              "imageList": Object {},
+              "images": Array [],
+              "limit": 0,
+              "page": 0,
+              "pageTotal": 0,
+              "total": 0,
+              "totalPages": 0,
+            }
+          }
+        >
+          <EventListenerWrapper>
+            <HashRouter>
+              <div>
+                <LoadableComponent />
+                <Routes />
+                <LoadableComponent />
+              </div>
+            </HashRouter>
+          </EventListenerWrapper>
+        </ImageWrapper>,
         "initialState": Object {
           "admin": false,
           "email": null,
@@ -79,138 +107,23 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": <HashRouter>
-            <div>
-              <UserConsumer />
-              <Routes />
-              <EventListenerConsumer />
-            </div>
-          </HashRouter>,
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "children": <div>
-              <UserConsumer />
-              <Routes />
-              <EventListenerConsumer />
-            </div>,
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <UserConsumer />,
-                <Routes />,
-                <EventListenerConsumer />,
-              ],
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {},
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {},
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {},
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-            ],
-            "type": "div",
-          },
-          "type": [Function],
-        },
-        "type": [Function],
-      },
-      "type": [Function],
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": <UserWrapper
-          initialState={
-            Object {
-              "admin": false,
-              "email": null,
-              "firstname": null,
-              "lastname": null,
-              "userAccess": false,
-              "username": null,
-            }
-          }
-        >
-          <EventListenerWrapper>
-            <HashRouter>
-              <div>
-                <UserConsumer />
-                <Routes />
-                <EventListenerConsumer />
-              </div>
-            </HashRouter>
-          </EventListenerWrapper>
-        </UserWrapper>,
-        "initialState": Object {
-          "limit": 0,
-          "newsItemList": Object {},
-          "newsItems": Array [],
-          "page": 0,
-          "pageTotal": 0,
-          "total": 0,
-          "totalPages": 0,
-        },
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
           "children": <EventListenerWrapper>
             <HashRouter>
               <div>
-                <UserConsumer />
+                <LoadableComponent />
                 <Routes />
-                <EventListenerConsumer />
+                <LoadableComponent />
               </div>
             </HashRouter>
           </EventListenerWrapper>,
           "initialState": Object {
-            "admin": false,
-            "email": null,
-            "firstname": null,
-            "lastname": null,
-            "userAccess": false,
-            "username": null,
+            "imageList": Object {},
+            "images": Array [],
+            "limit": 0,
+            "page": 0,
+            "pageTotal": 0,
+            "total": 0,
+            "totalPages": 0,
           },
         },
         "ref": null,
@@ -221,9 +134,9 @@ ShallowWrapper {
           "props": Object {
             "children": <HashRouter>
               <div>
-                <UserConsumer />
+                <LoadableComponent />
                 <Routes />
-                <EventListenerConsumer />
+                <LoadableComponent />
               </div>
             </HashRouter>,
           },
@@ -234,9 +147,9 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": <div>
-                <UserConsumer />
+                <LoadableComponent />
                 <Routes />
-                <EventListenerConsumer />
+                <LoadableComponent />
               </div>,
             },
             "ref": null,
@@ -246,9 +159,9 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": Array [
-                  <UserConsumer />,
+                  <LoadableComponent />,
                   <Routes />,
-                  <EventListenerConsumer />,
+                  <LoadableComponent />,
                 ],
               },
               "ref": null,
@@ -282,6 +195,203 @@ ShallowWrapper {
                 },
               ],
               "type": "div",
+            },
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <UserWrapper
+          initialState={
+            Object {
+              "admin": false,
+              "email": null,
+              "firstname": null,
+              "lastname": null,
+              "userAccess": false,
+              "username": null,
+            }
+          }
+        >
+          <ImageWrapper
+            initialState={
+              Object {
+                "imageList": Object {},
+                "images": Array [],
+                "limit": 0,
+                "page": 0,
+                "pageTotal": 0,
+                "total": 0,
+                "totalPages": 0,
+              }
+            }
+          >
+            <EventListenerWrapper>
+              <HashRouter>
+                <div>
+                  <LoadableComponent />
+                  <Routes />
+                  <LoadableComponent />
+                </div>
+              </HashRouter>
+            </EventListenerWrapper>
+          </ImageWrapper>
+        </UserWrapper>,
+        "initialState": Object {
+          "limit": 0,
+          "newsItemList": Object {},
+          "newsItems": Array [],
+          "page": 0,
+          "pageTotal": 0,
+          "total": 0,
+          "totalPages": 0,
+        },
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <ImageWrapper
+            initialState={
+              Object {
+                "imageList": Object {},
+                "images": Array [],
+                "limit": 0,
+                "page": 0,
+                "pageTotal": 0,
+                "total": 0,
+                "totalPages": 0,
+              }
+            }
+          >
+            <EventListenerWrapper>
+              <HashRouter>
+                <div>
+                  <LoadableComponent />
+                  <Routes />
+                  <LoadableComponent />
+                </div>
+              </HashRouter>
+            </EventListenerWrapper>
+          </ImageWrapper>,
+          "initialState": Object {
+            "admin": false,
+            "email": null,
+            "firstname": null,
+            "lastname": null,
+            "userAccess": false,
+            "username": null,
+          },
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <EventListenerWrapper>
+              <HashRouter>
+                <div>
+                  <LoadableComponent />
+                  <Routes />
+                  <LoadableComponent />
+                </div>
+              </HashRouter>
+            </EventListenerWrapper>,
+            "initialState": Object {
+              "imageList": Object {},
+              "images": Array [],
+              "limit": 0,
+              "page": 0,
+              "pageTotal": 0,
+              "total": 0,
+              "totalPages": 0,
+            },
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <HashRouter>
+                <div>
+                  <LoadableComponent />
+                  <Routes />
+                  <LoadableComponent />
+                </div>
+              </HashRouter>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <div>
+                  <LoadableComponent />
+                  <Routes />
+                  <LoadableComponent />
+                </div>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <LoadableComponent />,
+                    <Routes />,
+                    <LoadableComponent />,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {},
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {},
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {},
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                ],
+                "type": "div",
+              },
+              "type": [Function],
             },
             "type": [Function],
           },

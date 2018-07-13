@@ -49,11 +49,11 @@ var pad = function (n, width, z) {
     return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 };
 ImageSchema.pre('save', function (next) {
-    var doc = this;
-    exports.Counter.findByIdAndUpdate({ type: 'imageId' }, { $inc: { seq: 1 } }, { upsert: true, setDefaultsOnInsert: true }, function (error, counter) {
+    var _this = this;
+    exports.Counter.findOneAndUpdate({ type: 'imageId' }, { $inc: { seq: 1 } }, { upsert: true, setDefaultsOnInsert: true }, function (error, counter) {
         if (error)
             return next(error);
-        doc.filename = pad(counter.seq, 10) + '.' + doc.originalName.split('.').pop().toLowerCase();
+        _this.filename = pad(counter.seq, 10) + '.' + _this.originalName.split('.').pop().toLowerCase();
         next();
     });
 });

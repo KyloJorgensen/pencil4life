@@ -3,7 +3,6 @@
 import * as React from 'react';
 import * as querystring from 'querystring';
 import * as moment from 'moment';
-import eventListItem from './event-list-item';
 import { match } from 'react-router';
 
 export interface IEventContext extends IEventWrapperState, IEventWrapperMethods {
@@ -258,6 +257,7 @@ export class EventWrapper extends React.Component<IEventWrapperProps, IEventWrap
 
     addEventItem(params, callback) {
         const payload = {
+            _id: params._id,
             title: params.title,
             start_date: params.start_date,
             end_date: params.end_date,
