@@ -59,6 +59,10 @@ class ProjectPageNew extends React.Component<ProjectPageNewProps, ProjectPageNew
 			this.addNewProject(event);
 		}
 	}
+	
+	componentDidMount() {
+		this.props.projectPage.getProjectPages(this.props.projectPage._projectId, {});
+	}
 
 	titleRef: React.RefObject<HTMLInputElement> = React.createRef();
 	pageRef: React.RefObject<HTMLInputElement> = React.createRef();
@@ -153,7 +157,7 @@ class ProjectPageNew extends React.Component<ProjectPageNewProps, ProjectPageNew
 					<br/>
 					<label>Page</label>
 					<br/>
-					<input type="number" min={1} max={total} onKeyPress={hitKey} ref={pageRef} defaultValue={total.toString()} />
+					<input type="number" min={1} max={total+1} onKeyPress={hitKey} ref={pageRef} defaultValue={total.toString()} />
 					<br/>
 					<label>Details</label>
 					<br/>

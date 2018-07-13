@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">7.26% </span>
+        <span class="strong">7.09% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>9/124</span>
+        <span class='fraction'>9/127</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>0/18</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">7.26% </span>
+        <span class="strong">7.09% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/124</span>
+        <span class='fraction'>9/127</span>
       </div>
     </div>
     <p class="quiet">
@@ -259,7 +259,17 @@
 <a name='L211'></a><a href='#L211'>211</a>
 <a name='L212'></a><a href='#L212'>212</a>
 <a name='L213'></a><a href='#L213'>213</a>
-<a name='L214'></a><a href='#L214'>214</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a>
+<a name='L216'></a><a href='#L216'>216</a>
+<a name='L217'></a><a href='#L217'>217</a>
+<a name='L218'></a><a href='#L218'>218</a>
+<a name='L219'></a><a href='#L219'>219</a>
+<a name='L220'></a><a href='#L220'>220</a>
+<a name='L221'></a><a href='#L221'>221</a>
+<a name='L222'></a><a href='#L222'>222</a>
+<a name='L223'></a><a href='#L223'>223</a>
+<a name='L224'></a><a href='#L224'>224</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -274,6 +284,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -395,6 +410,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -420,7 +440,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -477,7 +497,7 @@
 import formidable from 'formidable';
 import * as path from 'path';
 import { sync as mkdirpSync } from 'mkdirp';
-import { Image, IImageModel } from './image.model';
+import { Image, IImage, IImageModel } from './image.model';
 import { IMAGE_DIR } from '../../../config/variables.express';
 &nbsp;
 &nbsp;
@@ -485,7 +505,12 @@ import { IMAGE_DIR } from '../../../config/variables.express';
 &nbsp;
 // Creates Image Item.
 ImageController.prototype.createImage = <span class="fstat-no" title="function not covered" >function(</span>req, res, next) {
-    let newImageDoc: IImageModel;
+    let newImageDoc: {
+        name?: string;
+        alt?: string;
+        discontinued?: boolean;
+        originalName?: string;
+    } = <span class="cstat-no" title="statement not covered" >{};</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    if ('body' in req) {</span>
 <span class="cstat-no" title="statement not covered" >        if ('name' in req.body) {</span>
@@ -607,7 +632,12 @@ ImageController.prototype.getImages = <span class="fstat-no" title="function not
 &nbsp;
 // Update Image queries: _id update: name, start_date returns: new shop item 
 ImageController.prototype.updateImage = <span class="fstat-no" title="function not covered" >function(</span>req, res, next) {
-    let changes: IImageModel;
+    let changes: {
+        name?: string;
+        alt?: string;
+        discontinued?: boolean;
+        originalName?: string;
+    } = <span class="cstat-no" title="statement not covered" >{};</span>
 <span class="cstat-no" title="statement not covered" >    if ('body' in req) {</span>
 <span class="cstat-no" title="statement not covered" >        if (!('_id' in req.body)) {        </span>
             var error = <span class="cstat-no" title="statement not covered" >new Error('missing _id');</span>
@@ -633,7 +663,7 @@ ImageController.prototype.updateImage = <span class="fstat-no" title="function n
 <span class="cstat-no" title="statement not covered" >        if (req.files != null) {</span>
 <span class="cstat-no" title="statement not covered" >            if ('image' in req.files) {</span>
                 let { <span class="cstat-no" title="statement not covered" >image </span>} = req.files;
-                // changes.originalName = image.name;
+<span class="cstat-no" title="statement not covered" >                changes.originalName = image.name;</span>
                 const types = <span class="cstat-no" title="statement not covered" >['jpeg','jpg','png','gif',];</span>
                 const extenstion = <span class="cstat-no" title="statement not covered" >image.name.split('.').pop().toLowerCase();</span>
 <span class="cstat-no" title="statement not covered" >                if (!types.includes(extenstion)) {</span>
@@ -691,7 +721,7 @@ export default ImageController.prototype;</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Jun 26 2018 14:19:39 GMT-0600 (Mountain Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jul 13 2018 07:55:58 GMT-0600 (Mountain Daylight Time)
 </div>
 </div>
 <script src="..\..\..\..\..\..\prettify.js"></script>

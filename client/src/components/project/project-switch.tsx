@@ -11,7 +11,6 @@ import ProjectPage from './page/project-page';
 import ProjectPageNew from './page/project-page-new';
 import ProjectPageEdit from './page/project-page-edit';
 import NoMatch from '../no-match';
-import CommingSoon from '../comming-soon'
 import { projectProvider } from './project-provider';
 import { projectPageProvider } from './page/project-page-provider';
 import './project.less';
