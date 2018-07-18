@@ -34,15 +34,13 @@ class App extends React.Component {
       <NewsWrapper>
         <UserWrapper>
           <ImageWrapper>
-            <EventListener>
-              <Router>
-                <div>
+            <Router>
+              <EventListener>
                 <Header/>
                 <Routes/>
                 <Footer/>
-                </div>
-              </Router>
-            </EventListener>
+              </EventListener>
+            </Router>
           </ImageWrapper>
         </UserWrapper>      
      </NewsWrapper>
