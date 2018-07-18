@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var dotenv_1 = require("dotenv");
 dotenv_1.config();
 var path = require("path");
-exports.HTTP_PORT = process.env.HTTP_PORT || '8080';
+exports.HTTP_PORT = process.env.HTTP_PORT || '9001';
 exports.EXPRESS_LISTEN_MESSAGE = 'Listening on port: ';
 exports.MONGODB_PORT = process.env.MONGODB_PORT || "";
 exports.MONGODB_URL = process.env.MONGODB_URL || 'mongodb://localhost/pencil4life';

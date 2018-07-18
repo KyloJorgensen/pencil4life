@@ -4,7 +4,7 @@ config();
 
 import * as path from 'path';
 
-export const HTTP_PORT = process.env.HTTP_PORT || '8080';
+export const HTTP_PORT = process.env.HTTP_PORT || '9001';
 export const EXPRESS_LISTEN_MESSAGE = 'Listening on port: ';
 export const MONGODB_PORT = process.env.MONGODB_PORT || "";
 export const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://localhost/pencil4life';
