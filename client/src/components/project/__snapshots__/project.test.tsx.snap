@@ -1,0 +1,477 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Project matches the snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Project
+    project={
+      Object {
+        "addProject": [Function],
+        "getProject": [Function],
+        "getProjects": [Function],
+        "limit": 0,
+        "page": 0,
+        "pageTotal": 0,
+        "project": Object {
+          "_projectId": "",
+          "coverImage": Object {
+            "_imageId": "",
+          },
+          "details": "<p><br></p>",
+          "discontinued": false,
+          "title": "",
+          "year": 1970-01-01T00:00:00.000Z,
+        },
+        "projectList": Object {},
+        "projects": Array [],
+        "total": 0,
+        "totalPages": 0,
+        "updateProject": [Function],
+      }
+    }
+    user={
+      Object {
+        "admin": false,
+        "email": null,
+        "firstname": null,
+        "getUser": [Function],
+        "lastname": null,
+        "login": [Function],
+        "logout": [Function],
+        "signup": [Function],
+        "updatePassword": [Function],
+        "updateUser": [Function],
+        "userAccess": false,
+        "username": null,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        "",
+        <div
+          className="title-year-wrapper"
+        >
+          <NavLink
+            activeClassName="active"
+            aria-current="page"
+            to="/project/item/"
+          >
+            <h2
+              className="title"
+            >
+              
+            </h2>
+          </NavLink>
+          <p
+            className="year"
+          >
+            1969
+          </p>
+        </div>,
+        "",
+        "",
+        <UserConsumer />,
+        <Switch>
+          <Route
+            component={[Function]}
+            exact={true}
+            path="/project/new/:_projectId/"
+          />
+          <Route
+            component={[Function]}
+            exact={true}
+            path="/project/item/:_projectId/:_projectPageId"
+          />
+          <Route
+            component={[Function]}
+            exact={true}
+            path="/project/edit/:_projectId/:_projectPageId"
+          />
+        </Switch>,
+      ],
+      "className": "project-wrapper",
+    },
+    "ref": null,
+    "rendered": Array [
+      "",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <NavLink
+              activeClassName="active"
+              aria-current="page"
+              to="/project/item/"
+            >
+              <h2
+                className="title"
+              >
+                
+              </h2>
+            </NavLink>,
+            <p
+              className="year"
+            >
+              1969
+            </p>,
+          ],
+          "className": "title-year-wrapper",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "activeClassName": "active",
+              "aria-current": "page",
+              "children": <h2
+                className="title"
+              >
+                
+              </h2>,
+              "to": "/project/item/",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "",
+                "className": "title",
+              },
+              "ref": null,
+              "rendered": "",
+              "type": "h2",
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "1969",
+              "className": "year",
+            },
+            "ref": null,
+            "rendered": "1969",
+            "type": "p",
+          },
+        ],
+        "type": "div",
+      },
+      "",
+      "",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <Route
+              component={[Function]}
+              exact={true}
+              path="/project/new/:_projectId/"
+            />,
+            <Route
+              component={[Function]}
+              exact={true}
+              path="/project/item/:_projectId/:_projectPageId"
+            />,
+            <Route
+              component={[Function]}
+              exact={true}
+              path="/project/edit/:_projectId/:_projectPageId"
+            />,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "component": [Function],
+              "exact": true,
+              "path": "/project/new/:_projectId/",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "component": [Function],
+              "exact": true,
+              "path": "/project/item/:_projectId/:_projectPageId",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "component": [Function],
+              "exact": true,
+              "path": "/project/edit/:_projectId/:_projectPageId",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          "",
+          <div
+            className="title-year-wrapper"
+          >
+            <NavLink
+              activeClassName="active"
+              aria-current="page"
+              to="/project/item/"
+            >
+              <h2
+                className="title"
+              >
+                
+              </h2>
+            </NavLink>
+            <p
+              className="year"
+            >
+              1969
+            </p>
+          </div>,
+          "",
+          "",
+          <UserConsumer />,
+          <Switch>
+            <Route
+              component={[Function]}
+              exact={true}
+              path="/project/new/:_projectId/"
+            />
+            <Route
+              component={[Function]}
+              exact={true}
+              path="/project/item/:_projectId/:_projectPageId"
+            />
+            <Route
+              component={[Function]}
+              exact={true}
+              path="/project/edit/:_projectId/:_projectPageId"
+            />
+          </Switch>,
+        ],
+        "className": "project-wrapper",
+      },
+      "ref": null,
+      "rendered": Array [
+        "",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <NavLink
+                activeClassName="active"
+                aria-current="page"
+                to="/project/item/"
+              >
+                <h2
+                  className="title"
+                >
+                  
+                </h2>
+              </NavLink>,
+              <p
+                className="year"
+              >
+                1969
+              </p>,
+            ],
+            "className": "title-year-wrapper",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "activeClassName": "active",
+                "aria-current": "page",
+                "children": <h2
+                  className="title"
+                >
+                  
+                </h2>,
+                "to": "/project/item/",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "",
+                  "className": "title",
+                },
+                "ref": null,
+                "rendered": "",
+                "type": "h2",
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "1969",
+                "className": "year",
+              },
+              "ref": null,
+              "rendered": "1969",
+              "type": "p",
+            },
+          ],
+          "type": "div",
+        },
+        "",
+        "",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <Route
+                component={[Function]}
+                exact={true}
+                path="/project/new/:_projectId/"
+              />,
+              <Route
+                component={[Function]}
+                exact={true}
+                path="/project/item/:_projectId/:_projectPageId"
+              />,
+              <Route
+                component={[Function]}
+                exact={true}
+                path="/project/edit/:_projectId/:_projectPageId"
+              />,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "component": [Function],
+                "exact": true,
+                "path": "/project/new/:_projectId/",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "component": [Function],
+                "exact": true,
+                "path": "/project/item/:_projectId/:_projectPageId",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "component": [Function],
+                "exact": true,
+                "path": "/project/edit/:_projectId/:_projectPageId",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

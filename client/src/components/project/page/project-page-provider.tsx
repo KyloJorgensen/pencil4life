@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { stringify } from 'querystring';
-import { match } from 'react-router';
+import { match, withRouter } from 'react-router';
 
 export interface IProjectPageContext extends ProjectPageWrapperMethods, ProjectPageWrapperState{
     _projectId?: string;
@@ -138,7 +138,7 @@ export class ProjectPageWrapper extends React.Component<ProjectPageWrapperProps,
         .then(function(response) {
             if (response.status < 200 || response.status >= 300) {
                 const error = new Error(response.statusText);
-                error.message = String(response);
+                error.message = JSON.stringify(response);
                 throw error;
             }
             return response;
@@ -198,7 +198,7 @@ export class ProjectPageWrapper extends React.Component<ProjectPageWrapperProps,
         .then((response) => {
             if (response.status < 200 || response.status >= 300) {
                 const error = new Error(response.statusText);
-                error.message = String(response);
+                error.message = JSON.stringify(response);
                 throw error;
             }
             return response;
@@ -208,7 +208,6 @@ export class ProjectPageWrapper extends React.Component<ProjectPageWrapperProps,
         })
         .then((body) => {
             const { _id, title, details, _imageId, discontinued, page } = body;
-            let { coverImage } = body;
 
             this.setState((preState) => {
                 preState.projectPageList[_id] = {
@@ -252,7 +251,7 @@ export class ProjectPageWrapper extends React.Component<ProjectPageWrapperProps,
         .then(function(response) {
             if (response.status < 200 || response.status >= 300) {
                 const error = new Error(response.statusText);
-                error.message = String(response);
+                error.message = JSON.stringify(response);
                 throw error;
             }
             return response;
@@ -300,7 +299,7 @@ export class ProjectPageWrapper extends React.Component<ProjectPageWrapperProps,
         .then((response) => {
             if (response.status < 200 || response.status >= 300) {
                 const error = new Error(response.statusText)
-                error.message = String(response);
+                error.message = JSON.stringify(response);
                 throw error;
             }
             return response;
@@ -378,7 +377,7 @@ export const projectPageConsumer = (Component) => {
 
     class ProjectPageConsumer extends React.Component<ProjectPageConsumerProps> {
         render () {
-            let _projectPageId, _projectId = this.props._projectId;
+            let _projectPageId, _projectId;
             if ('match' in this.props) {
                 if ('_projectPageId' in this.props.match.params) {
                     _projectPageId = this.props.match.params._projectPageId;
@@ -387,43 +386,50 @@ export const projectPageConsumer = (Component) => {
                     _projectId = this.props.match.params._projectId;
                 }
             }
+            if ('_projectId' in this.props) {
+                _projectId = this.props._projectId;
+            }
+            if ('_projectPageId' in this.props) {
+                _projectPageId = this.props._projectPageId;
+            }
             return (
-            <ProjectPageContext.Consumer>
-                {(context) => {
-                    if (_projectPageId) {
-                        context.projectPage = {
-                            _projectPageId: _projectPageId,
-                            title: '',
-                            page: 0,
-                            details: '',
-                            _imageId: null,
-                            discontinued: false,
-                        };
-
-                        if (_projectPageId in context.projectPageList) {
-
-                            const projectPage = context.projectPageList[_projectPageId];
+                <ProjectPageContext.Consumer>
+                    {(context) => {
+                        if (_projectPageId) {
                             context.projectPage = {
                                 _projectPageId: _projectPageId,
-                                title:               'title' in projectPage ? projectPage.title : '',
-                                page:                 'page' in projectPage ? projectPage.page : 0,
-                                details:           'details' in projectPage ? projectPage.details : '',
-                                _imageId:         '_imageId' in projectPage ? projectPage._imageId : null,
-                                discontinued: 'discontinued' in projectPage ? projectPage.discontinued : false,
+                                title: '',
+                                page: 0,
+                                details: '',
+                                _imageId: null,
+                                discontinued: false,
                             };
-                        }
-                    }
-                    if (_projectId) {
-                        context._projectId = _projectId;
-                    }
 
-                    return (
-                        <Component {...this.props} {...{projectPage: context}} />
-                    )
-                }}
-            </ProjectPageContext.Consumer>
+                            if (_projectPageId in context.projectPageList) {
+                                const projectPage = context.projectPageList[_projectPageId];
+
+                                context.projectPage = {
+                                    _projectPageId: _projectPageId,
+                                    title:               'title' in projectPage ? projectPage.title : '',
+                                    page:                 'page' in projectPage ? projectPage.page : 0,
+                                    details:           'details' in projectPage ? projectPage.details : '',
+                                    _imageId:         '_imageId' in projectPage ? projectPage._imageId : null,
+                                    discontinued: 'discontinued' in projectPage ? projectPage.discontinued : false,
+                                };
+                            }
+                        }
+                        if (_projectId) {
+                            context._projectId = _projectId;
+                        }
+
+                        return (
+                            <Component {...this.props} {...{projectPage: context}} />
+                        )
+                    }}
+                </ProjectPageContext.Consumer>
             );
         }
     }
-    return ProjectPageConsumer;
+    //@ts-ignore
+    return withRouter(ProjectPageConsumer);
 }

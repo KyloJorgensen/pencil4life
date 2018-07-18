@@ -2,12 +2,13 @@
 
 import * as React from 'react';
 import RichTextEditor from 'react-rte';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import ImageNew from '../../image/image-new';
 import ImageEdit from '../../image/image-edit';
 import { IUserContext, userConsumer } from '../../user/user-provider';
 import { Location } from 'history';
 import { projectPageConsumer, IProjectPageContext, addProjectPageParams } from './project-page-provider';
+import { Popout } from '../../utilities/styled.components';
 
 export interface ProjectPageNewProps {
 	user: IUserContext;
@@ -16,13 +17,13 @@ export interface ProjectPageNewProps {
 }
 
 export interface ProjectPageNewState {
-	_projectId: string;
+	_projectPageId: string;
 	required: boolean;
 	imageRequired: boolean;
 	title: string;
 	details: any;
 	page: number;
-	 _imageId?: string;
+	_imageId?: string;
 }
 
 export interface ProjectPageNewMethods {
@@ -38,7 +39,7 @@ class ProjectPageNew extends React.Component<ProjectPageNewProps, ProjectPageNew
     constructor(props) {
         super(props);
         this.state = {
-        	_projectId: null,
+        	_projectPageId: null,
         	required: false,
         	imageRequired: false,
 			title: null,
@@ -72,12 +73,6 @@ class ProjectPageNew extends React.Component<ProjectPageNewProps, ProjectPageNew
 		const title = this.titleRef.current.value;
 		const page: number = Number(this.pageRef.current.value);
 		const { details, _imageId } = this.state;
-		if (!title) {
-			this.setState(() => {
-				return {required: true};
-			});
-			return;
-		}
 
 		const newProject: addProjectPageParams = {
 			title: title,
@@ -95,14 +90,14 @@ class ProjectPageNew extends React.Component<ProjectPageNewProps, ProjectPageNew
 		});
 	}
 
-	addNewProjectResult = (error, _projectId) => {
+	addNewProjectResult = (error, _projectPageId) => {
 		if (error) {
 			this.setState(() => {
 				return {required: true};
 			});
 		} else {
 			this.setState(() => {
-				return {_projectId: _projectId};
+				return {_projectPageId: _projectPageId};
 			});
 		} 
 	}
@@ -130,42 +125,47 @@ class ProjectPageNew extends React.Component<ProjectPageNewProps, ProjectPageNew
 	
 	render() {
 		const { addNewImageResult, addNewProject, hitKey, onRichTextChange, titleRef, pageRef } = this;
-		const { _imageId, imageRequired, _projectId, required, details, page } = this.state;
+		const { _imageId, imageRequired, _projectPageId, required, details, page } = this.state;
+		const { _projectId } = this.props.projectPage;
 		const { admin } = this.props.user;
 		const { pathname } = this.props.location;
 		const { total } = this.props.projectPage;
 
 		
 
-		if (_projectId) {
-			return (<Redirect to={'/project/item/'+this.state._projectId} />);
+		if (_projectPageId) {
+			return (<Redirect to={'/project/item/'+this.state._projectPageId} />);
 		}
 		if (!admin) {
 			return (<Redirect to={{pathname: '/login', state: {redirectPath: pathname}}}/>)
 		}
 	
 		return (
-			<div className="project-page-new-wrapper" >
-				<form onSubmit={addNewProject}>
-					<h3>New Project Page</h3>
-					<label>Image</label>
-					{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
-					
-					<label>Title{required ? (<span className="errortext" >*</span>) : ''}</label>
-					<br/>
-					<input type='text' onKeyPress={hitKey} placeholder="Great Project" ref={titleRef} />
-					<br/>
-					<label>Page</label>
-					<br/>
-					<input type="number" min={1} max={total+1} onKeyPress={hitKey} ref={pageRef} defaultValue={total.toString()} />
-					<br/>
-					<label>Details</label>
-					<br/>
-					<RichTextEditor value={details} onChange={onRichTextChange} />
-					<br/>
-					<input type='submit' onClick={addNewProject} value='SAVE' />
-				</form>	
-			</div>
+			<Popout>
+				<div className="project-page-new-wrapper container" >
+					<form onSubmit={addNewProject}>
+						{admin ? <p className="text-right" ><Link to={'/project/item/'+ _projectId}>X</Link></p> : ''}
+
+						<h3>New Project Page</h3>
+						<label>Image</label>
+						{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
+						
+						<label>Title{required ? (<span className="errortext" >*</span>) : ''}</label>
+						<br/>
+						<input type='text' onKeyPress={hitKey} placeholder="Great Project" ref={titleRef} />
+						<br/>
+						<label>Page</label>
+						<br/>
+						<input type="number" min={1} max={total+1} onKeyPress={hitKey} ref={pageRef} defaultValue={(total+1).toString()} />
+						<br/>
+						<label>Details</label>
+						<br/>
+						<RichTextEditor value={details} onChange={onRichTextChange} />
+						<br/>
+						<input type='submit' onClick={addNewProject} value='SAVE' />
+					</form>	
+				</div>
+			</Popout>
 		);			
 	}
 };

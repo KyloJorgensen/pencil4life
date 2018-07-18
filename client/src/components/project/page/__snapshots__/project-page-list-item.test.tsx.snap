@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Project Page List Item matches the snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ProjectPageListItem
+    _projectPageId=""
+    projectPage={
+      Object {
+        "addProjectPage": [Function],
+        "getProjectPage": [Function],
+        "getProjectPages": [Function],
+        "limit": 0,
+        "page": 0,
+        "pageTotal": 0,
+        "projectPage": Object {
+          "_imageId": "",
+          "_projectPageId": "",
+          "details": "<p><br></p>",
+          "discontinued": false,
+          "page": 0,
+          "title": "",
+        },
+        "projectPageList": Object {},
+        "projectPages": Array [],
+        "total": 0,
+        "totalPages": 0,
+        "updateProjectPage": [Function],
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <Link
+        className="project-link"
+        replace={false}
+        to="/project/item/undefined/"
+      >
+        <div
+          className="image-wrapper"
+        >
+          
+        </div>
+      </Link>,
+      "className": "project-page-list-item-wrapper",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <div
+          className="image-wrapper"
+        >
+          
+        </div>,
+        "className": "project-link",
+        "replace": false,
+        "to": "/project/item/undefined/",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "",
+          "className": "image-wrapper",
+        },
+        "ref": null,
+        "rendered": "",
+        "type": "div",
+      },
+      "type": [Function],
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <Link
+          className="project-link"
+          replace={false}
+          to="/project/item/undefined/"
+        >
+          <div
+            className="image-wrapper"
+          >
+            
+          </div>
+        </Link>,
+        "className": "project-page-list-item-wrapper",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <div
+            className="image-wrapper"
+          >
+            
+          </div>,
+          "className": "project-link",
+          "replace": false,
+          "to": "/project/item/undefined/",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "",
+            "className": "image-wrapper",
+          },
+          "ref": null,
+          "rendered": "",
+          "type": "div",
+        },
+        "type": [Function],
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

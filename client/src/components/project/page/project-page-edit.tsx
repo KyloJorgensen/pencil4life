@@ -2,13 +2,14 @@
 
 import * as React from 'react';
 import RichTextEditor from 'react-rte';
-import {Redirect} from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import * as Datetime from 'react-datetime';
 import ImageNew from '../../image/image-new';
 import ImageEdit from '../../image/image-edit';
 import { IProjectPageContext, updateProjectPageParams, projectPageConsumer } from './project-page-provider';
 import { IUserContext, userConsumer } from '../../user/user-provider';
 import { Location } from 'history';
+import { Popout } from '../../utilities/styled.components';
 
 export interface ProjectPageEditProps {
 	projectPage: IProjectPageContext;
@@ -88,13 +89,6 @@ class ProjectPageEdit extends React.Component<ProjectPageEditProps, ProjectPageE
 		event.preventDefault();
 
 		const { title, page, details, _imageId, discontinued } = this.state;
-
-		if (!title) {
-			this.setState(() => {
-				return {required: true};
-			});
-			return;
-		}
 
 		const changes: updateProjectPageParams = {
 			title: title,
@@ -198,7 +192,8 @@ class ProjectPageEdit extends React.Component<ProjectPageEditProps, ProjectPageE
 		const { title, _imageId, imageRequired, redirect, required, page, details, discontinued } = this.state;
 		const { admin } = this.props.user;
 		const { pathname } = this.props.location;
-		const { total } = this.props.projectPage;
+		const { total, _projectId } = this.props.projectPage;
+		const { _projectPageId } = this.props.projectPage.projectPage;
 
 
 		if (redirect) {
@@ -210,31 +205,35 @@ class ProjectPageEdit extends React.Component<ProjectPageEditProps, ProjectPageE
 		}
 
 		return (
-			<div className="project-page-edit-wrapper" >
-				<form onSubmit={updateProjectPage}>
-					<h3>EDIT PROJECT PAGE</h3>
+			<Popout>
+				<div className="project-page-edit-wrapper container" >
+					<form onSubmit={updateProjectPage}>
+						{admin ? <p className="text-right" ><Link to={'/project/item/'+ _projectId + '/' + _projectPageId}>X</Link></p> : ''}
 
-					<label>Image</label>
-					{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
-					
-					<label>Title{required ? (<span className="errortext" >*</span>) : ''}</label>
-					<br/>
-					<input type='text' onKeyPress={hitKey} onChange={editField} name='title' placeholder="Great ProjectPage" value={title} />
-					<br/>
-					<label>Page</label>
-					<br/>
-					<input type="number" onKeyPress={hitKey} onChange={editField} name="page" min={1} max={total} value={page}/>
-					<br/>
-					<label>Details</label>
-					<br/>
-					<RichTextEditor value={details} onChange={onRichTextChange} />
-					<label>Discontinued</label>
-					<br/>
-					<input type='checkbox' checked={!!discontinued} name="discontinued" onChange={handleCheckboxChange} />
-					<br/>
-					<input type='submit' onClick={updateProjectPage} value='SAVE' />
-				</form>	
-			</div>
+						<h3>EDIT PROJECT PAGE</h3>
+
+						<label>Image</label>
+						{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
+						
+						<label>Title{required ? (<span className="errortext" >*</span>) : ''}</label>
+						<br/>
+						<input type='text' onKeyPress={hitKey} onChange={editField} name='title' placeholder="Great ProjectPage" value={title} />
+						<br/>
+						<label>Page</label>
+						<br/>
+						<input type="number" onKeyPress={hitKey} onChange={editField} name="page" min={1} max={total} value={page}/>
+						<br/>
+						<label>Details</label>
+						<br/>
+						<RichTextEditor value={details} onChange={onRichTextChange} />
+						<label>Discontinued</label>
+						<br/>
+						<input type='checkbox' checked={!!discontinued} name="discontinued" onChange={handleCheckboxChange} />
+						<br/>
+						<input type='submit' onClick={updateProjectPage} value='SAVE' />
+					</form>	
+				</div>
+			</Popout>
 		);			
 	}
 };

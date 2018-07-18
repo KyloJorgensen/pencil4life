@@ -7,6 +7,82 @@ import ImageTag from '../../image/image-tag';
 import { IUserContext, userConsumer } from '../../user/user-provider';
 import { projectPageConsumer, IProjectPageContext } from './project-page-provider';
 import { ProjectPageChanger, BackArrow, NextArrow } from './project-page-changer';
+import { Popout } from '../../utilities/styled.components';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+	display: grid;
+	grid-template-columns: auto auto auto min-content;
+
+	> .back {
+		grid-row: 1;
+	}
+
+	> .edit {
+		grid-column: 2;
+		align-self: center;
+		text-align: center;
+	}
+
+	> .next {
+		grid-column: 3;  
+		grid-row: 1;
+	}
+
+	> .exit {
+		color: white;
+		background-color: #e98383;
+		width: 2em;
+		height: 2em;
+		line-height: 2;
+		padding: 0;
+		text-align: center;
+		grid-column: 4;  
+	}
+
+	> .content {
+		grid-column-start: 1;
+		grid-column-end: -1;
+		> img {
+			max-width: 100%;
+		}
+		> div {
+			padding: 1em 0;
+		}
+	}
+
+	@media (min-width: 575px) {
+		grid-template-columns: auto 1fr auto;
+		> .back {
+			grid-row: unset;
+		}
+		> .edit {
+			text-align: left; 
+		}
+		> .next {
+			grid-row: unset;
+		}
+		> .exit {
+			grid-column: 3;  
+		}
+
+		> .content {
+			grid-column: unset;
+		}
+	}
+
+	@media (min-width: 1200px) {
+		> .content {
+			display: flex;
+			flex-wrap: wrap;
+			> div {
+				flex-grow: 1;
+				padding: 0 1em;
+			}
+		}
+	}
+
+`;
 
 export interface ProjectPageProps {
     projectPage: IProjectPageContext;
@@ -28,12 +104,10 @@ class ProjectPage extends React.Component<ProjectPageProps> {
 	componentDidUpdate(prevProps: ProjectPageProps, prevState) {
 		const {_projectId} = this.props.projectPage;
         const {_projectPageId} = this.props.projectPage.projectPage;
-
 		if (prevProps.projectPage.projectPage._projectPageId != _projectPageId) {
 			this.props.projectPage.getProjectPage(_projectId, _projectPageId);
 		}
 	}
-
 
 	render() {
 		const { _projectId } = this.props.projectPage;
@@ -41,19 +115,23 @@ class ProjectPage extends React.Component<ProjectPageProps> {
 		const { admin } = this.props.user;
 
 		const coverImageElem = _imageId ? (<ImageTag _imageId={_imageId} />) : '';
+
 		return (
-			<div className="project-page-wrapper" >
-				{admin ? <p className="text-right" ><Link to={'/project/edit/'+ _projectId + '/' + _projectPageId }>EDIT</Link></p> : ''}
-				{coverImageElem}
-				<div className="title-year-wrapper">
-					<p className="title">{title}</p>
-                    <p className="page">{page}</p>
-				</div>
-				<RichTextEditor value={RichTextEditor.createValueFromString(details, 'html')} readOnly={true} />
-				<ProjectPageChanger _projectId={_projectId} />
-				<BackArrow _projectId={_projectId} />
-				<NextArrow _projectId={_projectId} />
-			</div>
+			<Popout>
+				<Wrapper>
+					{admin ? <Link className="edit" to={'/project/edit/'+ _projectId + '/' + _projectPageId}>EDIT</Link> : ''}
+					<Link className="exit" to={'/project/item/'+ _projectId}>X</Link>
+					<BackArrow _projectId={_projectId} />
+					<div className="content">
+						{coverImageElem}
+						<div>
+							<h2 className="title">{title}</h2>
+							{details != '<p><br></p>' ? <RichTextEditor value={RichTextEditor.createValueFromString(details, 'html')} readOnly={true} /> : ''}
+						</div>
+					</div>
+					<NextArrow _projectId={_projectId} />
+				</Wrapper>
+			</Popout>
 		);			
 	}
 };

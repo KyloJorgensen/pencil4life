@@ -2,12 +2,31 @@
 
 import * as React from 'react';
 import RichTextEditor from 'react-rte';
-import { Link } from "react-router-dom";
+import { Link, Switch, Route, NavLink } from "react-router-dom";
 import * as moment from 'moment';
 import { projectConsumer, IProjectContext } from './project-provider';
 import { IUserContext, userConsumer } from '../user/user-provider';
 import ImageTag from '../image/image-tag';
-import ProjectPageChanger from './page/project-page-changer';
+import ProjectPageList from './page/project-page-list';
+import { projectPageProvider } from './page/project-page-provider';
+import ProjectPage from './page/project-page';
+import ProjectPageNew from './page/project-page-new';
+import ProjectPageEdit from './page/project-page-edit';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+	display: grid;
+	grid-row-gap: 1em;
+	> .title-year-wrapper {
+		display: flex;
+		justify-content: space-between;
+	}
+	> img {
+		max-width: 100%;
+		margin: 0 auto;
+	}
+
+`;
 
 export interface ProjectProps {
 	project: IProjectContext;
@@ -31,19 +50,28 @@ class Project extends React.Component<ProjectProps> {
 		const formatedYear = moment(year).format("YYYY");
 		const coverImageElem = _imageId? (<ImageTag _imageId={_imageId} />) : '';
 		const convertedDetails = RichTextEditor.createValueFromString(details, 'html');
+
 		return (
-			<div className="project-wrapper" >
+			<Wrapper className="project-wrapper" >
 				{admin ? <p className="text-right" ><Link to={'/project/edit/'+_projectId}>EDIT</Link></p> : ''}
-				{coverImageElem}
 				<div className="title-year-wrapper">
-					<p className="title">{title}</p>
+					<NavLink to={'/project/item/'+_projectId} ><h2 className="title">{title}</h2></NavLink>
 					<p className="year">{formatedYear}</p>
 				</div>
+				{coverImageElem}
 				{ details != '<p><br></p>' ? <RichTextEditor value={convertedDetails} readOnly={true} /> : ''}
-				<ProjectPageChanger _projectId={_projectId} />
-			</div>
+				<ProjectPageList />
+				<Switch>
+					<Route exact path="/project/new/:_projectId/" component={ProjectPageNew} />
+					<Route exact path="/project/item/:_projectId/:_projectPageId" component={ProjectPage} />
+					<Route exact path="/project/edit/:_projectId/:_projectPageId" component={ProjectPageEdit} />				
+				</Switch>
+			</Wrapper>
 		);			
 	}
 };
 
-export default userConsumer(projectConsumer(Project));
+
+export { Project };
+
+export default userConsumer(projectConsumer(projectPageProvider(Project)));

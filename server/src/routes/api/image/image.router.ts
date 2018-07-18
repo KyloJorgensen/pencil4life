@@ -8,7 +8,7 @@ const router = Router();
 
 router.post('/', adminAuth, controller.createImage)
 	.put('/', adminAuth, controller.updateImage)
-	.get('/', adminAuth, controller.getImages)
-	.get('/:_imageId', adminAuth, controller.getImage)
+	.get('/', controller.getImages)
+	.get('/:_imageId', controller.getImage)
 
 export default router;

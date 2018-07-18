@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Project Page List matches the snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ProjectPageList
+    discontinued={false}
+    displayDetails={true}
+    limit={20}
+    projectPage={
+      Object {
+        "addProjectPage": [Function],
+        "getProjectPage": [Function],
+        "getProjectPages": [Function],
+        "limit": 0,
+        "page": 0,
+        "pageTotal": 0,
+        "projectPage": Object {
+          "_imageId": "",
+          "_projectPageId": "",
+          "details": "<p><br></p>",
+          "discontinued": false,
+          "page": 0,
+          "title": "",
+        },
+        "projectPageList": Object {},
+        "projectPages": Array [],
+        "total": 0,
+        "totalPages": 0,
+        "updateProjectPage": [Function],
+      }
+    }
+    user={
+      Object {
+        "admin": false,
+        "email": null,
+        "firstname": null,
+        "getUser": [Function],
+        "lastname": null,
+        "login": [Function],
+        "logout": [Function],
+        "signup": [Function],
+        "updatePassword": [Function],
+        "updateUser": [Function],
+        "userAccess": false,
+        "username": null,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        "",
+        <ul
+          className="project-list"
+        />,
+      ],
+      "className": "project-page-list-wrapper",
+    },
+    "ref": null,
+    "rendered": Array [
+      "",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [],
+          "className": "project-list",
+        },
+        "ref": null,
+        "rendered": Array [],
+        "type": "ul",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          "",
+          <ul
+            className="project-list"
+          />,
+        ],
+        "className": "project-page-list-wrapper",
+      },
+      "ref": null,
+      "rendered": Array [
+        "",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [],
+            "className": "project-list",
+          },
+          "ref": null,
+          "rendered": Array [],
+          "type": "ul",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

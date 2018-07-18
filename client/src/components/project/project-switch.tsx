@@ -7,9 +7,9 @@ import ProjectMain from './project-main';
 import Project from './project';
 import ProjectEdit from './project-edit';
 import ProjectNew from './project-new';
-import ProjectPage from './page/project-page';
-import ProjectPageNew from './page/project-page-new';
-import ProjectPageEdit from './page/project-page-edit';
+// import ProjectPage from './page/project-page';
+// import ProjectPageNew from './page/project-page-new';
+// import ProjectPageEdit from './page/project-page-edit';
 import NoMatch from '../no-match';
 import { projectProvider } from './project-provider';
 import { projectPageProvider } from './page/project-page-provider';
@@ -27,11 +27,11 @@ class ProjectSwitch extends React.Component {
 					<NavLink exact to={'/project'} activeClassName="selected" ><h2>Projects</h2></NavLink>
 					<Switch>
 						<Route exact path="/project" component={ProjectMain} />
-						<Route exact path="/project/new/:_projectId" component={ProjectPageNew} />
+						<Route exact path="/project/new/:_projectId" component={Project} />
 						<Route exact path="/project/new" component={ProjectNew} />
-						<Route exact path="/project/item/:_projectId/:_projectPageId" component={ProjectPage} />
+						<Route exact path="/project/item/:_projectId/:_projectPageId" component={Project} />
 						<Route exact path="/project/item/:_projectId" component={Project} />
-						<Route exact path="/project/edit/:_projectId/:_projectPageId" component={ProjectPageEdit} />
+						<Route exact path="/project/edit/:_projectId/:_projectPageId" component={Project} />
 						<Route exact path="/project/edit/:_projectId" component={ProjectEdit} />
 						<Route component={NoMatch}/>
 					</Switch>

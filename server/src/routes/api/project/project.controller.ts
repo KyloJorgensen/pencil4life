@@ -256,9 +256,9 @@ ProjectController.prototype.createProjectPage = function(req, res, next) {
 ProjectController.prototype.getProjectPage = function(req, res, next) {
     let query = Project.findOne({_id: req.params._projectId});
     query.then(function(projectDoc) {
-        let vaildFields = ['_id', 'title', 'details', 'page', 'discontinued'];
+        let vaildFields = ['_id', 'title', 'details', 'page', '_imageId', 'discontinued'];
         let requestedFields = req.query.field || [];
-        let selectFields = ['_id', 'title', 'details', 'page', 'discontinued'];
+        let selectFields = ['_id', 'title', 'details', 'page', '_imageId', 'discontinued'];
         requestedFields.forEach(function(field) {
             if ( vaildFields.includes(field) && !selectFields.includes(field)) {
                 selectFields.push(field);

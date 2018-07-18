@@ -12,7 +12,7 @@ module.exports = {
       env: {
         COMMON_VARIABLE: 'true'
       },
-      watch: './server/lib/*',
+      watch: true,
       ignore_watch: [
         './client/*',
         './server/src/*',

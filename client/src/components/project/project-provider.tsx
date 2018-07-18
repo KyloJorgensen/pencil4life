@@ -1,6 +1,7 @@
 'use strict';
 
 import * as React from 'react';
+import * as RichTextEditor from 'react-rte';
 import { stringify } from 'querystring';
 
 import './project.less';
@@ -405,7 +406,7 @@ export const projectConsumer = (Component) => {
                             _projectId: _projectId,
                             title: '',
                             year: new Date(),
-                            details: '',
+                            details: RichTextEditor.createEmptyValue().toString('html'),
                             coverImage: {_imageId: null},
                             discontinued: false,
                         };
@@ -417,7 +418,7 @@ export const projectConsumer = (Component) => {
                                 _projectId: _projectId,
                                 title:               'title' in project ? project.title : '',
                                 year:                 'year' in project ? project.year : new Date(),
-                                details:           'details' in project ? project.details : '',
+                                details:           'details' in project ? project.details : RichTextEditor.createEmptyValue().toString('html'),
                                 coverImage:     'coverImage' in project ? '_imageId' in project.coverImage ? project.coverImage : {_imageId: null} : {_imageId: ''},
                                 discontinued: 'discontinued' in project ? project.discontinued : false,
                             };

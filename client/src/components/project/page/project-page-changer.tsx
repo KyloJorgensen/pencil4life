@@ -8,6 +8,7 @@ import * as faCaretRight from '@fortawesome/fontawesome-free-solid/faCaretRight'
 import * as faCaretLeft from '@fortawesome/fontawesome-free-solid/faCaretLeft';
 import { IUserContext, userConsumer } from '../../user/user-provider';
 import { projectPageConsumer, IProjectPageContext } from './project-page-provider';
+import styled from 'styled-components';
 
 fontawesome.library.add(faCaretRight, faCaretLeft);
 
@@ -69,6 +70,31 @@ export interface BackArrowProps {
     projectPage: IProjectPageContext;
 }
 
+const ArrowStyle = styled.div`
+    > a {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 0 1em;
+        > svg {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;                    
+            width: 2em !important;
+            height: 5em;
+            color: #494949;
+        }
+    }
+    &:hover {
+        > a > svg {
+            color: white;
+        }
+    }
+`;
+
 class BackArrow extends React.Component<BackArrowProps> {
     constructor(props) {
         super(props);
@@ -88,11 +114,11 @@ class BackArrow extends React.Component<BackArrowProps> {
         const index = pages.findIndex((page) => page == ('projectPage' in projectPage? projectPage.projectPage._projectPageId : ''));
 
 		return (
-			<div className="project-page-changer-next-wrapper" >
+			<ArrowStyle className='back' >
                 <Link to={'/project/item/'+_projectId+'/'+pages[(index+pages.length-1)%pages.length]} >
                     <FontAwesomeIcon icon={["fas", "caret-left"]} />
                 </Link>
-			</div>
+			</ArrowStyle>
 		);			
 	}
 };
@@ -123,11 +149,11 @@ class NextArrow extends React.Component<NextArrowProps> {
         const index = pages.findIndex((page) => page == ('projectPage' in projectPage? projectPage.projectPage._projectPageId : ''));
 
 		return (
-			<div className="project-page-changer-back-wrapper" >
+			<ArrowStyle className='next' >
                 <Link to={'/project/item/'+_projectId+'/'+pages[(index+pages.length+1)%pages.length]} >
                     <FontAwesomeIcon icon={["fas", "caret-right"]} />
                 </Link>
-			</div>
+			</ArrowStyle>
 		);			
 	}
 };
