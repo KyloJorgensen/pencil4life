@@ -4,6 +4,5 @@ composer.lock
 package-lock.json
 sshkey.ppk
 sftp-config.json
-dist
 assests/images/site/
 .env
