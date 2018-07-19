@@ -8,6 +8,7 @@ import imageRouter from './image/image.router';
 import newsitemRouter from './newsitem/newsitem.router';
 import shopitemRouter from './shopitem/shopitem.router';
 import userRouter from './user/user.router';
+import commmissionsRouter from './commissions/commissions.router';
 
 const router = Router();
 
@@ -19,5 +20,6 @@ router
     .use('/newsitem', newsitemRouter)
     .use('/shopitem', shopitemRouter)
     .use('/user', userRouter)
+    .use('/commissions', commmissionsRouter)
 
 export default router;

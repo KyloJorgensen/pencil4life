@@ -11,7 +11,6 @@ if (result.error) {
 
 console.log(result.parsed)
 
-
 export const HTTP_PORT = process.env.HTTP_PORT || '9001';
 export const EXPRESS_LISTEN_MESSAGE = 'Listening on port: ';
 export const MONGODB_PORT = process.env.MONGODB_PORT || "";
@@ -23,6 +22,8 @@ export const BT_ENVIRONMENT = process.env.BT_ENVIRONMENT || 'sandbox';
 export const BT_MERCHANT_ID = process.env.BT_MERCHANT_ID || 'cvnqcc9z7srpfkcf';
 export const BT_PUBLIC_KEY = process.env.BT_PUBLIC_KEY || 'k7x3r67pkqn4m59p';
 export const BT_PRIVATE_KEY = process.env.BT_PRIVATE_KEY || 'e4614ba54f975cd132f2b52437b5fbe6';
+export const NM_SMTP_ADDRESS = process.env.NM_SMTP_ADDRESS || 'pencil4life.com';
+export const NM_SMTP_PORT = process.env.NM_SMTP_PORT || '587';
 
 export default {
     HTTP_PORT: HTTP_PORT,
@@ -36,4 +37,6 @@ export default {
     BT_MERCHANT_ID: BT_MERCHANT_ID,
     BT_PUBLIC_KEY: BT_PUBLIC_KEY,
     BT_PRIVATE_KEY: BT_PRIVATE_KEY,
+    NM_SMTP_ADDRESS: NM_SMTP_ADDRESS,
+    NM_SMTP_PORT: NM_SMTP_PORT,
 };

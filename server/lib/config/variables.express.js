@@ -18,6 +18,8 @@ exports.BT_ENVIRONMENT = process.env.BT_ENVIRONMENT || 'sandbox';
 exports.BT_MERCHANT_ID = process.env.BT_MERCHANT_ID || 'cvnqcc9z7srpfkcf';
 exports.BT_PUBLIC_KEY = process.env.BT_PUBLIC_KEY || 'k7x3r67pkqn4m59p';
 exports.BT_PRIVATE_KEY = process.env.BT_PRIVATE_KEY || 'e4614ba54f975cd132f2b52437b5fbe6';
+exports.NM_SMTP_ADDRESS = process.env.NM_SMTP_ADDRESS || 'pencil4life.com';
+exports.NM_SMTP_PORT = process.env.NM_SMTP_PORT || '587';
 exports.default = {
     HTTP_PORT: exports.HTTP_PORT,
     EXPRESS_LISTEN_MESSAGE: exports.EXPRESS_LISTEN_MESSAGE,
@@ -30,4 +32,6 @@ exports.default = {
     BT_MERCHANT_ID: exports.BT_MERCHANT_ID,
     BT_PUBLIC_KEY: exports.BT_PUBLIC_KEY,
     BT_PRIVATE_KEY: exports.BT_PRIVATE_KEY,
+    NM_SMTP_ADDRESS: exports.NM_SMTP_ADDRESS,
+    NM_SMTP_PORT: exports.NM_SMTP_PORT,
 };

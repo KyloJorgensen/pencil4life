@@ -28,7 +28,8 @@
     "express-session": "^1.15.6",
     "helmet": "^3.12.1",
     "log-to-file": "^1.2.2",
-    "mongoose-diff-history": "^1.5.3"
+    "mongoose-diff-history": "^1.5.3",
+    "nodemailer": "^4.6.7"
   },
   "devDependencies": {
     "@fortawesome/fontawesome": "^1.1.8",
@@ -48,6 +49,7 @@
     "@types/helmet": "0.0.38",
     "@types/jest": "^23.1.0",
     "@types/mkdirp": "^0.5.2",
+    "@types/nodemailer": "^4.6.2",
     "@types/object-path": "^0.9.29",
     "@types/react": "^16.3.17",
     "@types/react-dom": "^16.0.6",

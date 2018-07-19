@@ -1,97 +1,8 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[24],{
 
-/***/ "./client/src/components/event/event-list-item.tsx":
-/*!*********************************************************!*\
-  !*** ./client/src/components/event/event-list-item.tsx ***!
-  \*********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_rte__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-rte */ "./node_modules/react-rte/dist/react-rte.js");
-/* harmony import */ var react_rte__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_rte__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _event_provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./event-provider */ "./client/src/components/event/event-provider.tsx");
-
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-
-
-
-var EventListItem = /** @class */ (function (_super) {
-    __extends(EventListItem, _super);
-    function EventListItem(props) {
-        return _super.call(this, props) || this;
-    }
-    EventListItem.prototype.componentDidMount = function () {
-        this.props.event.getEventItem(this.props._eventItemId);
-    };
-    EventListItem.prototype.render = function () {
-        var _a = this.props, displayDetails = _a.displayDetails, _eventItemId = _a._eventItemId;
-        var _b = this.props.event.eventItem, title = _b.title, start_date = _b.start_date, end_date = _b.end_date, details = _b.details, createdUpdatedDateTime = _b.createdUpdatedDateTime;
-        var startDateTime = moment__WEBPACK_IMPORTED_MODULE_3__(start_date);
-        var endDateTime = moment__WEBPACK_IMPORTED_MODULE_3__(end_date);
-        var startDay = startDateTime.calendar(null, {
-            sameDay: '[Today]',
-            nextDay: '[Tomorrow]',
-            nextWeek: 'dddd',
-            lastDay: '[Yesterday]',
-            lastWeek: '[Last] dddd',
-            sameElse: 'MM/DD/YYYY',
-        });
-        var endDay = endDateTime.calendar(null, {
-            sameDay: '[Today]',
-            nextDay: '[Tomorrow]',
-            nextWeek: 'dddd',
-            lastDay: '[Yesterday]',
-            lastWeek: '[Last] dddd',
-            sameElse: 'MM/DD/YYYY',
-        });
-        var startTime = startDateTime.format("h:mm a");
-        var endTime = endDateTime.format("h:mm a");
-        var dateTime = startDay + ' at ' + startTime;
-        if (moment__WEBPACK_IMPORTED_MODULE_3__() >= startDateTime) {
-            dateTime = 'Now';
-        }
-        if (startDay !== endDay) {
-            dateTime += ' to ' + endDay + ' at ' + endTime;
-        }
-        else if (startTime !== endTime) {
-            dateTime += ' until ' + endTime;
-        }
-        var content = '<h5>' + title + '</h5>' + '<p className="event-date-time">' + dateTime + '</p>' + (displayDetails ? details : '');
-        var createdDetails = displayDetails ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: 'event-created-updated-date-time' }, createdUpdatedDateTime)) : '';
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "event-list-item-wrapper" },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { className: "event-link", to: '/event/item/' + _eventItemId },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_rte__WEBPACK_IMPORTED_MODULE_1___default.a, { value: react_rte__WEBPACK_IMPORTED_MODULE_1___default.a.createValueFromString(content, 'html'), readOnly: true })),
-            createdDetails));
-    };
-    return EventListItem;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
-;
-/* harmony default export */ __webpack_exports__["default"] = (Object(_event_provider__WEBPACK_IMPORTED_MODULE_4__["eventConsumer"])(EventListItem));
-
-
-/***/ }),
-
-/***/ "./client/src/components/event/event-list.tsx":
+/***/ "./client/src/components/image/image-edit.tsx":
 /*!****************************************************!*\
-  !*** ./client/src/components/event/event-list.tsx ***!
+  !*** ./client/src/components/image/image-edit.tsx ***!
   \****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -101,9 +12,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-/* harmony import */ var _event_list_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./event-list-item */ "./client/src/components/event/event-list-item.tsx");
-/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
-/* harmony import */ var _event_provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./event-provider */ "./client/src/components/event/event-provider.tsx");
+/* harmony import */ var _utilities_dropzone__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utilities/dropzone */ "./client/src/components/utilities/dropzone.tsx");
+/* harmony import */ var _image_provider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./image-provider */ "./client/src/components/image/image-provider.tsx");
+/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
 
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -120,80 +31,177 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
-var EventList = /** @class */ (function (_super) {
-    __extends(EventList, _super);
-    function EventList(props) {
-        return _super.call(this, props) || this;
-    }
-    EventList.prototype.componentDidMount = function () {
-        var query = {
-            limit: this.props.limit,
+var ImageEdit = /** @class */ (function (_super) {
+    __extends(ImageEdit, _super);
+    function ImageEdit(props) {
+        var _this = _super.call(this, props) || this;
+        _this.state = {
+            redirect: false,
+            _imageId: false,
+            required: false,
+            discontinued: false,
+            name: '',
+            alt: '',
+            image: new File([], ''),
         };
-        this.props.event.getEventItems(query);
-    };
-    EventList.prototype.componentDidUpdate = function (prevProps, prevState, snapshot) {
-        var update = false;
-        var prevDiscontinued = prevProps.discontinued;
-        var currentDiscontinued = this.props.discontinued;
-        if (prevDiscontinued != currentDiscontinued) {
-            update = true;
-        }
-        if (update) {
-            var query = {
-                discontinued: this.props.discontinued,
-                limit: this.props.limit || 10,
+        _this.hitKey = _this.hitKey.bind(_this);
+        _this.updateImage = _this.updateImage.bind(_this);
+        _this.updateImageResult = _this.updateImageResult.bind(_this);
+        _this.redirect = _this.redirect.bind(_this);
+        _this.imageDetailChanged = _this.imageDetailChanged.bind(_this);
+        _this.imageChanged = _this.imageChanged.bind(_this);
+        _this.handleCheckboxChange = _this.handleCheckboxChange.bind(_this);
+        return _this;
+    }
+    ImageEdit.prototype.componentWillMount = function () {
+        var _a = this.props.image.image, name = _a.name, alt = _a.alt, discontinued = _a.discontinued;
+        this.setState(function () {
+            return {
+                name: name,
+                alt: alt,
+                discontinued: discontinued,
             };
-            this.props.event.getEventItems(query);
+        });
+    };
+    ImageEdit.prototype.componentDidUpdate = function (prevProps, prevState) {
+        var _this = this;
+        var propsToCheck = ['name', 'alt', 'discontinued'];
+        var _state = null;
+        propsToCheck.forEach(function (propToCheck) {
+            if (prevProps.image.image[propToCheck] !== _this.props.image.image[propToCheck]) {
+                _state = _state == null ? {} : _state;
+                _state[propToCheck] = _this.props.image.image[propToCheck];
+            }
+        });
+        if (_state) {
+            this.setState(_state);
         }
     };
-    EventList.prototype.render = function () {
-        var displayDetails = this.props.displayDetails;
-        var eventItems = this.props.event.eventItems;
-        var admin = this.props.user.admin;
-        var EventItemList = [];
-        if (eventItems) {
-            eventItems.forEach(function (eventItemKey) {
-                EventItemList.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_event_list_item__WEBPACK_IMPORTED_MODULE_2__["default"], { key: eventItemKey, _eventItemId: eventItemKey, displayDetails: displayDetails }));
+    ImageEdit.prototype.componentDidMount = function () {
+        this.props.image.getImage(this.props.image.image._imageId);
+    };
+    ImageEdit.prototype.hitKey = function (event) {
+        if (event.key == 'Enter') {
+            this.updateImage(event);
+        }
+    };
+    ImageEdit.prototype.imageDetailChanged = function (event) {
+        var _a = event.target, name = _a.name, value = _a.value;
+        this.setState(function (prevState) {
+            prevState[name] = value;
+            return prevState;
+        });
+    };
+    ImageEdit.prototype.updateImage = function (event) {
+        event.preventDefault();
+        var _a = this.state, image = _a.image, name = _a.name, alt = _a.alt;
+        if (!name) {
+            this.setState(function (prevState) {
+                return { required: true };
+            });
+            return;
+        }
+        this.props.image.updateImage(this.state, this.props.image.image, this.updateImageResult);
+        this.setState(function (prevState) {
+            return { required: false };
+        });
+    };
+    ImageEdit.prototype.updateImageResult = function (error) {
+        if (error) {
+            this.setState(function (prevState) {
+                return { required: true };
             });
         }
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "event-list-wrapper" },
-            admin ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], { to: "/event/newitem" }, "NEW EVENT"),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null))) : '',
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("ul", { className: 'event-item-list' }, EventItemList)));
+        else {
+            if (this.props.updateRedirect) {
+                this.redirect();
+            }
+        }
     };
-    EventList.defaultProps = {
-        limit: 3,
-        discontinued: false,
-        displayDetails: true,
+    ImageEdit.prototype.imageChanged = function (images) {
+        var _state = this.state;
+        this.setState(function () {
+            return { image: images[0] };
+        });
     };
-    return EventList;
+    ImageEdit.prototype.handleCheckboxChange = function (event) {
+        var _a = event.target, name = _a.name, checked = _a.checked;
+        this.setState(function (prevState) {
+            prevState[name] = checked;
+            return prevState;
+        });
+    };
+    ImageEdit.prototype.redirect = function () {
+        this.setState(function () {
+            return { redirect: true };
+        });
+    };
+    ImageEdit.prototype.render = function () {
+        var _a = this, imageDetailChanged = _a.imageDetailChanged, hitKey = _a.hitKey, updateImage = _a.updateImage, imageChanged = _a.imageChanged, handleCheckboxChange = _a.handleCheckboxChange;
+        var _b = this.state, redirect = _b.redirect, image = _b.image, name = _b.name, alt = _b.alt, required = _b.required, discontinued = _b.discontinued;
+        var _c = this.props.image.image, filename = _c.filename, _imageId = _c._imageId;
+        var admin = this.props.user.admin;
+        if (redirect) {
+            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], { to: '/image/item/' + _imageId }));
+        }
+        if (!admin) {
+            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], { to: { pathname: '/login', state: { redirectPath: this.props.location.pathname } } }));
+        }
+        var dropzoneDisplay = image.name ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'dropzone-display' },
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: window.URL.createObjectURL(image), alt: alt }),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Drop Image or Click to Browse"))) : filename ?
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'dropzone-display' },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: filename, alt: alt }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Drop Image or Click to Browse")) : '';
+        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "image-edit-item-wrapper" },
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'image-wrapper' },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "image" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "image-pic" },
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_dropzone__WEBPACK_IMPORTED_MODULE_2__["default"], { multiple: false, handleChange: imageChanged, fileTypes: ['image/jpeg', 'image/pjpeg', 'image/png'] }, dropzoneDisplay)),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "image-info" },
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "image-info-details" },
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "Edit Image"),
+                            required ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "errortext" }, "Image required")) : '',
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, image.name),
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null,
+                                image.type,
+                                " ")))),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "image-input" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Name"),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", onKeyPress: hitKey, name: "name", value: name, onChange: imageDetailChanged, placeholder: "Great Image" }),
+                    required ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "errortext" }, "*")) : '',
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Alt"),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", onKeyPress: hitKey, name: "alt", value: alt, onChange: imageDetailChanged, placeholder: "blue tree pencil4life" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Discontinued"),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'checkbox', checked: !!discontinued, name: "discontinued", onChange: handleCheckboxChange }))),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'submit', onClick: updateImage, value: 'SAVE' })));
+    };
+    ImageEdit.defaultProps = {
+        updateRedirect: true,
+    };
+    return ImageEdit;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
-/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_3__["userConsumer"])(Object(_event_provider__WEBPACK_IMPORTED_MODULE_4__["eventConsumer"])(Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(EventList))));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_4__["userConsumer"])(Object(_image_provider__WEBPACK_IMPORTED_MODULE_3__["imageConsumer"])(ImageEdit)));
 
 
 /***/ }),
 
-/***/ "./client/src/components/event/event-provider.tsx":
-/*!********************************************************!*\
-  !*** ./client/src/components/event/event-provider.tsx ***!
-  \********************************************************/
-/*! exports provided: EventContext, EventWrapper, default, eventProvider, eventConsumer */
+/***/ "./client/src/components/image/image-new.tsx":
+/*!***************************************************!*\
+  !*** ./client/src/components/image/image-new.tsx ***!
+  \***************************************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventContext", function() { return EventContext; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventWrapper", function() { return EventWrapper; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "eventProvider", function() { return eventProvider; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "eventConsumer", function() { return eventConsumer; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var querystring__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! querystring */ "./node_modules/querystring-es3/index.js");
-/* harmony import */ var querystring__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(querystring__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _utilities_dropzone__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utilities/dropzone */ "./client/src/components/utilities/dropzone.tsx");
+/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
+/* harmony import */ var _image_provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./image-provider */ "./client/src/components/image/image-provider.tsx");
 
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -205,369 +213,362 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __assign = (undefined && undefined.__assign) || Object.assign || function(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-            t[p] = s[p];
-    }
-    return t;
-};
 
 
 
-var Context = {
-    getEventItems: function (query) {
-        console.error('Error: Cannot getEventItems no EventContext.Provider element in parents');
-    },
-    getEventItem: function (_eventItemId) {
-        console.log('Error: Cannot getEventItem no EventContext.Provider element in parents');
-    },
-    addEventItem: function (params, callback) {
-        console.log('Error: Cannot addEventItem no EventContext.Provider element in parents');
-    },
-    updateEventItem: function (params, callback) {
-        console.log('Error: Cannot updateEventItemParams no EventContext.Provider element in parents');
-    },
-    eventItemList: {},
-    eventItems: [],
-    page: 0,
-    totalPages: 0,
-    limit: 0,
-    total: 0,
-    pageTotal: 0,
-};
-var EventContext = react__WEBPACK_IMPORTED_MODULE_0__["createContext"](Context);
-var EventWrapper = /** @class */ (function (_super) {
-    __extends(EventWrapper, _super);
-    function EventWrapper(props) {
+
+
+var ImageNew = /** @class */ (function (_super) {
+    __extends(ImageNew, _super);
+    function ImageNew(props) {
         var _this = _super.call(this, props) || this;
-        _this.state = _this.props.initialState;
-        _this.getEventItems = _this.getEventItems.bind(_this);
-        _this.getEventItem = _this.getEventItem.bind(_this);
-        _this.addEventItem = _this.addEventItem.bind(_this);
-        _this.updateEventItem = _this.updateEventItem.bind(_this);
+        _this.state = {
+            redirect: false,
+            _imageId: null,
+            required: false,
+            name: '',
+            alt: '',
+            currentImage: new File([], 'file'),
+        };
+        _this.hitKey = _this.hitKey.bind(_this);
+        _this.addNewImage = _this.addNewImage.bind(_this);
+        _this.addNewImageResult = _this.addNewImageResult.bind(_this);
+        _this.redirect = _this.redirect.bind(_this);
+        _this.imageDetailChanged = _this.imageDetailChanged.bind(_this);
+        _this.imageChanged = _this.imageChanged.bind(_this);
+        _this.deleteImage = _this.deleteImage.bind(_this);
         return _this;
     }
-    EventWrapper.prototype.getEventItems = function (query) {
-        var _this = this;
-        var querydefaults = {
-            limit: 100,
-            format: 'json',
+    ImageNew.prototype.hitKey = function (event) {
+        if (event.key == 'Enter') {
+            this.addNewImage(event);
+        }
+    };
+    ImageNew.prototype.imageDetailChanged = function (event) {
+        var _a = event.target, name = _a.name, value = _a.value;
+        this.setState(function (preState) {
+            preState[name] = value;
+            return preState;
+        });
+    };
+    ImageNew.prototype.addNewImage = function (event) {
+        event.preventDefault();
+        var _a = this.state, currentImage = _a.currentImage, name = _a.name, alt = _a.alt;
+        if (!name || !currentImage.name) {
+            this.setState(function () {
+                return { required: true };
+            });
+            return;
+        }
+        var params = {
+            image: currentImage,
+            name: name,
+            alt: alt,
         };
-        if (query) {
-            if (!query.discontinued) {
-                querydefaults.discontinued = false;
-            }
-            if (query.limit) {
-                querydefaults.limit = query.limit;
-            }
+        var addNewImageResult = 'addNewImageResult' in this.props ? this.props.addNewImageResult : this.addNewImageResult;
+        this.props.image.addImage(params, addNewImageResult);
+        this.setState(function () {
+            return { required: false };
+        });
+    };
+    ImageNew.prototype.addNewImageResult = function (error, _imageId) {
+        if (error) {
+            this.setState(function () {
+                return { required: true };
+            });
         }
         else {
-            querydefaults.discontinued = false;
-        }
-        var _query = querystring__WEBPACK_IMPORTED_MODULE_1__["stringify"](querydefaults);
-        _query = _query ? '?' + _query : '';
-        var request = new Request('/api/event/' + _query, {
-            method: 'GET',
-            credentials: 'same-origin',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-        });
-        fetch(request)
-            .then(function (response) {
-            return response.json();
-        })
-            .then(function (body) {
-            _this.setState(function () {
-                return {
-                    page: body.page,
-                    totalPages: body.totalPages,
-                    limit: body.limit,
-                    total: body.total,
-                    pageTotal: body.pageTotal,
-                    eventItems: body.eventItems,
-                };
+            this.setState(function () {
+                return { _imageId: _imageId };
             });
-        })
-            .catch(function (error) {
-            _this.setState(function () {
-                return {
-                    eventItems: null,
-                    page: null,
-                    totalPages: null,
-                    limit: null,
-                    total: null,
-                    pageTotal: null,
-                };
-            });
-        });
+        }
     };
-    EventWrapper.prototype.getEventItem = function (_eventItemId) {
-        var _this = this;
-        var query = querystring__WEBPACK_IMPORTED_MODULE_1__["stringify"]({
-            field: [
-                '_id',
-                'title',
-                'start_date',
-                'end_date',
-                'details',
-                'discontinued',
-            ],
-            format: 'json',
-        });
-        query = query ? '?' + query : '';
-        var request = new Request('/api/event/' + _eventItemId + query, {
-            method: 'GET',
-            credentials: 'same-origin',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-        });
-        fetch(request).then(function (response) {
-            if (response.status < 200 || response.status >= 300) {
-                var error = new Error(response.statusText);
-                error.message = String(response);
-                throw error;
+    ImageNew.prototype.imageChanged = function (images) {
+        this.setState(function () {
+            if (images.length > 0) {
+                return { currentImage: images[0] };
             }
-            return response;
-        })
-            .then(function (response) {
-            return response.json();
-        })
-            .then(function (body) {
-            var _id = body._id, title = body.title, start_date = body.start_date, end_date = body.end_date, details = body.details, createdAt = body.createdAt, updatedAt = body.updatedAt, discontinued = body.discontinued;
-            _this.setState(function (preState) {
-                var eventItemList = preState.eventItemList;
-                var createDateTime = moment__WEBPACK_IMPORTED_MODULE_2__(createdAt);
-                var updatedDateTime = moment__WEBPACK_IMPORTED_MODULE_2__(updatedAt);
-                var daymessages = {
-                    sameDay: '[today]',
-                    nextDay: '[tomorrow]',
-                    nextWeek: 'dddd',
-                    lastDay: '[yesterday]',
-                    lastWeek: '[last] dddd',
-                    sameElse: 'MM/DD/YYYY',
-                };
-                var createdDay = createDateTime.calendar(null, daymessages);
-                var updatedDay = updatedDateTime.calendar(null, daymessages);
-                var createdTime = createDateTime.format("h:mm a");
-                var updatedTime = updatedDateTime.format("h:mm a");
-                var createdUpdatedDateTime = 'Created ';
-                if (createdDay !== 'today' && createdDay !== 'yesterday') {
-                    createdUpdatedDateTime += 'on ';
-                }
-                createdUpdatedDateTime += createdDay + ' at ' + createdTime;
-                if (createdDay !== updatedDay) {
-                    createdUpdatedDateTime += ' updated ';
-                    if (updatedDay !== 'today' && updatedDay !== 'yesterday') {
-                        createdUpdatedDateTime += 'on ';
-                    }
-                    createdUpdatedDateTime += updatedDay + ' at ' + updatedTime;
-                }
-                else if (createdTime !== updatedTime) {
-                    createdUpdatedDateTime += ' updated at ' + updatedTime;
-                }
-                createdUpdatedDateTime += '.';
-                eventItemList[_id] = {
-                    _eventItemId: _id,
-                    title: title,
-                    start_date: start_date,
-                    end_date: end_date,
-                    details: details,
-                    createdUpdatedDateTime: createdUpdatedDateTime,
-                    discontinued: discontinued,
-                };
-                return { eventItemList: eventItemList };
-            });
-        })
-            .catch(function (error) {
-            console.log(error);
+            return;
         });
     };
-    ;
-    EventWrapper.prototype.addEventItem = function (params, callback) {
-        var payload = {
-            _id: params._id,
-            title: params.title,
-            start_date: params.start_date,
-            end_date: params.end_date,
-            details: params.details,
-        };
-        var url = '/api/event';
-        var request = new Request('/api/event/', {
-            method: 'POST',
-            credentials: 'same-origin',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            body: JSON.stringify(payload),
-        });
-        fetch(request)
-            .then(function (response) {
-            if (response.status < 200 || response.status >= 300) {
-                var error = new Error(response.statusText);
-                error.message = String(response);
-                throw error;
-            }
-            return response;
-        })
-            .then(function (response) {
-            return response.json();
-        })
-            .then(function (response) {
-            callback(false, response._id);
-        })
-            .catch(function (error) {
-            callback(true);
+    ImageNew.prototype.deleteImage = function (event) {
+        this.setState(function () {
+            return {
+                required: false,
+                name: '',
+                alt: '',
+                currentImage: new File([], 'file'),
+            };
         });
     };
-    EventWrapper.prototype.updateEventItem = function (params, callback) {
-        var payload = {
-            _id: params._id
-        };
-        if ('title' in params) {
-            payload.title = params.title;
-        }
-        if ('start_date' in params) {
-            payload.start_date = params.start_date;
-        }
-        if ('end_date' in params) {
-            payload.end_date = params.end_date;
-        }
-        if ('details' in params) {
-            payload.details = params.details;
-        }
-        if ('discontinued' in params) {
-            payload.discontinued = params.discontinued;
-        }
-        var request = new Request('/api/event', {
-            method: 'PUT',
-            credentials: 'same-origin',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            body: JSON.stringify(payload),
-        });
-        return fetch(request)
-            .then(function (response) {
-            if (response.status < 200 || response.status >= 300) {
-                var error = new Error(response.statusText);
-                error.message = String(response);
-                throw error;
-            }
-            return response;
-        })
-            .then(function (response) {
-            callback(false);
-        })
-            .catch(function (error) {
-            callback(true);
-            console.log(error);
+    ImageNew.prototype.redirect = function (event) {
+        this.setState(function () {
+            return { redirect: true };
         });
     };
-    EventWrapper.prototype.render = function () {
-        var _a = this, getEventItems = _a.getEventItems, getEventItem = _a.getEventItem, addEventItem = _a.addEventItem, updateEventItem = _a.updateEventItem;
-        var _b = this.state, eventItems = _b.eventItems, page = _b.page, pageTotal = _b.pageTotal, totalPages = _b.totalPages, limit = _b.limit, total = _b.total, eventItemList = _b.eventItemList;
-        var context = {
-            eventItems: eventItems,
-            eventItemList: eventItemList,
-            page: page,
-            pageTotal: pageTotal,
-            totalPages: totalPages,
-            limit: limit,
-            total: total,
-            getEventItems: getEventItems,
-            getEventItem: getEventItem,
-            addEventItem: addEventItem,
-            updateEventItem: updateEventItem,
-        };
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](EventContext.Provider, { value: context }, this.props.children));
-    };
-    EventWrapper.defaultProps = {
-        initialState: {
-            eventItemList: {},
-            eventItems: [],
-            page: 0,
-            totalPages: 0,
-            limit: 0,
-            total: 0,
-            pageTotal: 0,
+    ImageNew.prototype.render = function () {
+        var _a = this.state, redirect = _a.redirect, _imageId = _a._imageId;
+        var admin = this.props.user.admin;
+        if (redirect) {
+            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], { to: '/image' }));
         }
+        if (_imageId) {
+            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], { to: '/image/item/' + this.state._imageId }));
+        }
+        if (!admin) {
+            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], { to: { pathname: '/login', state: { redirectPath: this.props.location.pathname } } }));
+        }
+        // variables
+        var currentImage = 'currentImage' in this.props ? this.props.currentImage : this.state.currentImage;
+        var name = 'name' in this.props ? this.props.name : this.state.name;
+        var alt = 'alt' in this.props ? this.props.alt : this.state.alt;
+        var required = 'required' in this.props ? this.props.required : this.state.required;
+        // functions
+        var deleteImage = 'deleteImage' in this.props ? this.props.deleteImage : this.deleteImage;
+        var imageDetailChanged = 'imageDetailChanged' in this.props ? this.props.imageDetailChanged : this.imageDetailChanged;
+        var hitKey = 'hitKey' in this.props ? this.props.hitKey : this.hitKey;
+        var addNewImage = 'addNewImage' in this.props ? this.props.addNewImage : this.addNewImage;
+        var imageChanged = 'imageChanged' in this.props ? this.props.imageChanged : this.imageChanged;
+        var dropzoneDisplay = 'name' in currentImage ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'dropzone-display' },
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: window.URL.createObjectURL(currentImage), alt: alt }),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Drop Image or Click to Browse"))) : '';
+        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "image-new-item-wrapper" },
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'image-wrapper' },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "image" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "image-pic" },
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_dropzone__WEBPACK_IMPORTED_MODULE_2__["default"], { multiple: false, handleChange: imageChanged, fileTypes: ['image/jpeg', 'image/pjpeg', 'image/png'] }, dropzoneDisplay)),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "image-info" },
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { onClick: deleteImage }, "X"),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "image-info-details" },
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "New Image"),
+                            required ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "errortext" }, "Image required")) : '',
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, currentImage.name),
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null,
+                                currentImage.type,
+                                " ")))),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "image-input" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Name"),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", onKeyPress: hitKey, name: "name", value: name, onChange: imageDetailChanged, placeholder: "Great Image" }),
+                    required ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "errortext" }, "*")) : '',
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Alt"),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", onKeyPress: hitKey, name: "alt", value: alt, onChange: imageDetailChanged, placeholder: "blue tree pencil4life" }))),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'submit', onClick: addNewImage, value: 'SAVE' })));
     };
-    return EventWrapper;
+    return ImageNew;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
+;
+/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_3__["userConsumer"])(Object(_image_provider__WEBPACK_IMPORTED_MODULE_4__["imageConsumer"])(ImageNew)));
 
-/* harmony default export */ __webpack_exports__["default"] = (EventWrapper);
-var eventProvider = function (Component, options) {
-    var EventProvider = /** @class */ (function (_super) {
-        __extends(EventProvider, _super);
-        function EventProvider() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        EventProvider.prototype.render = function () {
-            var eventWrapperProps = {};
-            if (options) {
-                if ('props' in options) {
-                    eventWrapperProps = options.props;
-                }
-            }
-            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](EventWrapper, __assign({}, eventWrapperProps),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Component, __assign({}, this.props))));
+
+/***/ }),
+
+/***/ "./client/src/components/utilities/dropzone.less":
+/*!*******************************************************!*\
+  !*** ./client/src/components/utilities/dropzone.less ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/less-loader/dist/cjs.js!./dropzone.less */ "./node_modules/css-loader/index.js!./node_modules/less-loader/dist/cjs.js!./client/src/components/utilities/dropzone.less");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./client/src/components/utilities/dropzone.tsx":
+/*!******************************************************!*\
+  !*** ./client/src/components/utilities/dropzone.tsx ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _dropzone_less__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dropzone.less */ "./client/src/components/utilities/dropzone.less");
+/* harmony import */ var _dropzone_less__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_dropzone_less__WEBPACK_IMPORTED_MODULE_1__);
+
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+var Dropzone = /** @class */ (function (_super) {
+    __extends(Dropzone, _super);
+    function Dropzone(props) {
+        var _this = _super.call(this, props) || this;
+        _this.state = {
+            over: false,
+            vaildFiles: [],
+            badFiles: [],
         };
-        return EventProvider;
-    }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
-    return EventProvider;
-};
-var eventConsumer = function (Component) {
-    var EventConsumer = /** @class */ (function (_super) {
-        __extends(EventConsumer, _super);
-        function EventConsumer() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        EventConsumer.prototype.render = function () {
-            var _this = this;
-            var _eventItemId = this.props._eventItemId;
-            if ('match' in this.props) {
-                if ('_eventItemId' in this.props.match.params) {
-                    _eventItemId = this.props.match.params._eventItemId;
+        _this.onFilesSelected = _this.onFilesSelected.bind(_this);
+        _this.handleDragOver = _this.handleDragOver.bind(_this);
+        _this.handleDragEnter = _this.handleDragEnter.bind(_this);
+        _this.handleDragLeave = _this.handleDragLeave.bind(_this);
+        _this.handleDrop = _this.handleDrop.bind(_this);
+        _this.handleFiles = _this.handleFiles.bind(_this);
+        _this.clearBadFile = _this.clearBadFile.bind(_this);
+        _this.validateFileType = _this.validateFileType.bind(_this);
+        _this.clearAllBadFiles = _this.clearAllBadFiles.bind(_this);
+        return _this;
+    }
+    Dropzone.prototype.onFilesSelected = function (event) {
+        event.preventDefault();
+        this.handleFiles(event.target.files);
+    };
+    Dropzone.prototype.handleDragOver = function (event) {
+        event.preventDefault();
+    };
+    Dropzone.prototype.handleDragEnter = function (event) {
+        this.setState({ over: true });
+    };
+    Dropzone.prototype.handleDragLeave = function (event) {
+        this.setState({ over: false });
+    };
+    Dropzone.prototype.handleDrop = function (event) {
+        event.preventDefault();
+        this.handleFiles(event.dataTransfer.files);
+    };
+    Dropzone.prototype.handleFiles = function (_files) {
+        var _this = this;
+        var validateFileType = this.validateFileType;
+        var multiple = this.props.multiple;
+        var files = Object.values(_files);
+        this.setState(function () {
+            return {
+                badFiles: [],
+                vaildFiles: []
+            };
+        });
+        var vaildFiles = [];
+        files.forEach(function (file) {
+            if (validateFileType(file)) {
+                if (!!multiple) {
+                    vaildFiles.push(file);
                 }
-            }
-            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](EventContext.Consumer, null, function (context) {
-                if (_eventItemId) {
-                    context.eventItem = {
-                        _eventItemId: _eventItemId,
-                        title: '',
-                        start_date: '',
-                        end_date: '',
-                        details: '',
-                        createdUpdatedDateTime: '',
-                        discontinued: false,
-                    };
-                    if (_eventItemId in context.eventItemList) {
-                        context.eventItem = {
-                            _eventItemId: _eventItemId,
-                            title: 'title' in context.eventItemList[_eventItemId] ? context.eventItemList[_eventItemId].title : '',
-                            start_date: 'start_date' in context.eventItemList[_eventItemId] ? context.eventItemList[_eventItemId].start_date : '',
-                            end_date: 'end_date' in context.eventItemList[_eventItemId] ? context.eventItemList[_eventItemId].end_date : '',
-                            details: 'details' in context.eventItemList[_eventItemId] ? context.eventItemList[_eventItemId].details : '',
-                            createdUpdatedDateTime: 'createdUpdatedDateTime' in context.eventItemList[_eventItemId] ? context.eventItemList[_eventItemId].createdUpdatedDateTime : '',
-                            discontinued: 'discontinued' in context.eventItemList[_eventItemId] ? context.eventItemList[_eventItemId].discontinued : false,
-                        };
+                else {
+                    if (vaildFiles.length == 0) {
+                        vaildFiles.push(file);
+                    }
+                    else {
+                        var _state = _this.state;
+                        _state.badFiles.push(file.name + " -- Only One File");
+                        _this.setState(_state);
                     }
                 }
-                return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Component, __assign({}, _this.props, { event: context })));
-            }));
-        };
-        return EventConsumer;
-    }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
-    return EventConsumer;
-};
+            }
+        });
+        if ('handleChange' in this.props) {
+            this.props.handleChange(vaildFiles);
+        }
+        this.setState(function () {
+            return {
+                vaildFiles: vaildFiles,
+            };
+        });
+    };
+    Dropzone.prototype.validateFileType = function (file) {
+        var fileTypes = [];
+        if ('fileTypes' in this.props) {
+            if (Array.isArray(fileTypes)) {
+                fileTypes = this.props.fileTypes;
+            }
+        }
+        if (fileTypes.includes(file.type)) {
+            return true;
+        }
+        else {
+            var _state = this.state;
+            _state.badFiles.push(file.name + ' -- Invaild Type');
+            this.setState(_state);
+        }
+        return false;
+    };
+    Dropzone.prototype.clearAllBadFiles = function () {
+        this.setState(function () {
+            return { badFiles: [] };
+        });
+    };
+    Dropzone.prototype.clearBadFile = function (index) {
+        this.setState(function (preState) {
+            preState.badFiles.splice(index, 1);
+            return preState;
+        });
+    };
+    Dropzone.prototype.render = function () {
+        var badFiles = [];
+        var clearBadFile = this.clearBadFile;
+        this.state.badFiles.forEach(function (badFile, index, array) {
+            var _clearBadFile = function () {
+                clearBadFile(index);
+            };
+            badFiles.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("li", { className: "bad-file-wrapper", key: index },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null,
+                    "Bad File: ",
+                    badFile),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { onClick: _clearBadFile }, "X")));
+        });
+        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "dropzone-wrapper" },
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "dropzone" },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "bad-file-display" },
+                    badFiles.length > 1 ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { onClick: this.clearAllBadFiles }, "Clear all bad files") : '',
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("ul", { className: "bad-files-wrapper" }, badFiles)),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "custom-dropzone" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "file", multiple: true, className: "custom-dropzone-input dropzone", onChange: this.onFilesSelected, onDrop: this.handleDrop, onDragOver: this.handleDragOver, onDragLeave: this.handleDragLeave, onDragEnter: this.handleDragEnter }),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", { className: "custom-dropzone-label" }, this.props.children ? this.props.children : react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Drop Files or Click to Browse"))))));
+    };
+    Dropzone.defaultProps = {
+        multiple: false,
+    };
+    return Dropzone;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
+;
+/* harmony default export */ __webpack_exports__["default"] = (Dropzone);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/less-loader/dist/cjs.js!./client/src/components/utilities/dropzone.less":
+/*!************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/less-loader/dist/cjs.js!./client/src/components/utilities/dropzone.less ***!
+  \************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".dropzone-wrapper .dropzone .bad-files-wrapper .bad-file-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-between;\n  background: #ffb2b2;\n  margin: 0.25em;\n}\n.dropzone-wrapper .dropzone .bad-files-wrapper .bad-file-wrapper p {\n  align-self: center;\n  margin: 0 1em;\n}\n.dropzone-wrapper .dropzone .bad-files-wrapper .bad-file-wrapper button {\n  background-color: #e98383;\n  width: 2em;\n  height: 2em;\n  line-height: 0;\n  padding: 0;\n  margin: 0.5em 1.5em;\n}\n.dropzone-wrapper .dropzone .custom-dropzone {\n  position: relative;\n  display: inline-block;\n  width: 202px;\n  height: 202px;\n  margin: 0;\n  border: 1px solid #ced4da;\n}\n.dropzone-wrapper .dropzone .custom-dropzone .custom-dropzone-input {\n  position: relative;\n  z-index: 2;\n  width: 200px;\n  height: 200px;\n  margin: 0;\n  opacity: 0;\n}\n.dropzone-wrapper .dropzone .custom-dropzone .custom-dropzone-label {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  z-index: 1;\n  height: 200px;\n  width: 200px;\n  padding: 0;\n  margin: 0;\n  align-content: center;\n  text-align: center;\n  align-items: center;\n}\n.dropzone-wrapper .dropzone .custom-dropzone .custom-dropzone-label > * {\n  max-width: 200px;\n  max-height: 200px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  padding: 0;\n  margin: 0;\n}\n", ""]);
+
+// exports
 
 
 /***/ })

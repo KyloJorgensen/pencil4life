@@ -49,7 +49,7 @@ var Header = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
     loading: Loading,
 });
 var Footer = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(19), __webpack_require__.e(22), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./footer/footer */ "./client/src/components/footer/footer.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(19), __webpack_require__.e(23), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./footer/footer */ "./client/src/components/footer/footer.tsx")); },
     loading: Loading,
 });
 var App = /** @class */ (function (_super) {
@@ -1100,7 +1100,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 var Loading = function () { return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, "Loading..."); };
 var HomePage = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(18), __webpack_require__.e(24), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ./home/homepage */ "./client/src/components/home/homepage.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(18), __webpack_require__.e(25), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ./home/homepage */ "./client/src/components/home/homepage.tsx")); },
     loading: Loading,
 });
 var LoginPage = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
@@ -1112,7 +1112,7 @@ var SignupPage = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
     loading: Loading,
 });
 var EventSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(18), __webpack_require__.e(20), __webpack_require__.e(24), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./event/event-switch */ "./client/src/components/event/event-switch.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(18), __webpack_require__.e(20), __webpack_require__.e(25), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./event/event-switch */ "./client/src/components/event/event-switch.tsx")); },
     loading: Loading,
 });
 var NewsSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
@@ -1120,7 +1120,7 @@ var NewsSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
     loading: Loading,
 });
 var ProjectSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(18), __webpack_require__.e(19), __webpack_require__.e(20), __webpack_require__.e(23), __webpack_require__.e(8), __webpack_require__.e(25)]).then(__webpack_require__.bind(null, /*! ./project/project-switch */ "./client/src/components/project/project-switch.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(18), __webpack_require__.e(19), __webpack_require__.e(20), __webpack_require__.e(22), __webpack_require__.e(24), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./project/project-switch */ "./client/src/components/project/project-switch.tsx")); },
     loading: Loading,
 });
 var DoodlesSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
@@ -1156,7 +1156,7 @@ var ProfilePage = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
     loading: Loading,
 });
 var ImageSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! ./image/image-switch */ "./client/src/components/image/image-switch.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(24), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! ./image/image-switch */ "./client/src/components/image/image-switch.tsx")); },
     loading: Loading,
 });
 var Routes = /** @class */ (function (_super) {
