@@ -1,15 +1,19 @@
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
 var dotenv_1 = require("dotenv");
-dotenv_1.config();
-var path = require("path");
+var path_1 = require("path");
+var result = dotenv_1.config({ path: path_1.join(__dirname, '../../../.env') });
+if (result.error) {
+    throw result.error;
+}
+console.log(result.parsed);
 exports.HTTP_PORT = process.env.HTTP_PORT || '9001';
 exports.EXPRESS_LISTEN_MESSAGE = 'Listening on port: ';
 exports.MONGODB_PORT = process.env.MONGODB_PORT || "";
 exports.MONGODB_URL = process.env.MONGODB_URL || 'mongodb://localhost/pencil4life';
 exports.SESSION_SECRET = process.env.SESSION_SECRET || '374c62f257a71467e636c59b1dde6';
 exports.SESSION_COLLECTION = process.env.SESSION_COLLECTION || 'sessions';
-exports.IMAGE_DIR = path.join(__dirname, process.env.IMAGE_DIR || '../../../assests/images/');
+exports.IMAGE_DIR = path_1.join(__dirname, '../../../', process.env.IMAGE_DIR || 'assests/images/');
 exports.BT_ENVIRONMENT = process.env.BT_ENVIRONMENT || 'sandbox';
 exports.BT_MERCHANT_ID = process.env.BT_MERCHANT_ID || 'cvnqcc9z7srpfkcf';
 exports.BT_PUBLIC_KEY = process.env.BT_PUBLIC_KEY || 'k7x3r67pkqn4m59p';
