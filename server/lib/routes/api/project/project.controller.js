@@ -253,10 +253,12 @@ ProjectController.prototype.getProjectPages = function (req, res, next) {
     var project = project_model_1.Project.findOne({ _id: req.params._projectId });
     project.then(function (projectDoc) {
         var _pages = projectDoc.pages.filter(function (page) {
-            return {
-                _id: page._id,
-                page: page.page
-            };
+            if ('discontinued' in req.query) {
+                if (page.discontinued != (req.query.discontinued == 'true')) {
+                    return false;
+                }
+            }
+            return true;
         });
         var page = !Number.isNaN(Number(req.query.page)) ? Math.abs(Number(req.query.page)) : 1;
         var limit = !Number.isNaN(Number(req.query.limit)) ? Math.abs(Number(req.query.limit)) : 200;

@@ -33,9 +33,26 @@ export interface ProjectProps {
 	user: IUserContext;
 }
 
-class Project extends React.Component<ProjectProps> {
+export interface ProjectState {
+	discontinued: boolean;
+}
+
+class Project extends React.Component<ProjectProps, ProjectState> {
     constructor(props) {
         super(props);
+        this.state = {
+        	discontinued: false,
+        };
+
+		this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
+    }
+
+    handleCheckboxChange(event) {
+        const { name, checked } = event.target;
+        this.setState((prevState) => {
+            prevState[name] = checked; 
+            return prevState;
+        });
     }
 
     componentDidMount() {
@@ -46,11 +63,11 @@ class Project extends React.Component<ProjectProps> {
 		const { _projectId, title, year, details, coverImage } = this.props.project.project;
 		const { _imageId } = coverImage;
 		const { admin } = this.props.user;
+		const { discontinued } = this.state;
 
 		const formatedYear = moment(year).format("YYYY");
 		const coverImageElem = _imageId? (<ImageTag _imageId={_imageId} />) : '';
 		const convertedDetails = RichTextEditor.createValueFromString(details, 'html');
-
 		return (
 			<Wrapper className="project-wrapper" >
 				{admin ? <p className="text-right" ><Link to={'/project/edit/'+_projectId}>EDIT</Link></p> : ''}
@@ -60,7 +77,13 @@ class Project extends React.Component<ProjectProps> {
 				</div>
 				{coverImageElem}
 				{ details != '<p><br></p>' ? <RichTextEditor value={convertedDetails} readOnly={true} /> : ''}
-				<ProjectPageList />
+				{admin ? (
+					<div>
+						<Link to={"/project/new/"+_projectId}>NEW PAGE</Link>
+						<label>Discontinued</label><input type='checkbox' checked={!!this.state.discontinued} name="discontinued" onChange={this.handleCheckboxChange} />
+					</div>
+				) : ''}
+				<ProjectPageList discontinued={discontinued} />
 				<Switch>
 					<Route exact path="/project/new/:_projectId/" component={ProjectPageNew} />
 					<Route exact path="/project/item/:_projectId/:_projectPageId" component={ProjectPage} />

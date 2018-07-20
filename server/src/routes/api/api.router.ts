@@ -20,6 +20,6 @@ router
     .use('/newsitem', newsitemRouter)
     .use('/shopitem', shopitemRouter)
     .use('/user', userRouter)
-    .use('/commissions', commmissionsRouter)
+    // .use('/commissions', commmissionsRouter)
 
 export default router;

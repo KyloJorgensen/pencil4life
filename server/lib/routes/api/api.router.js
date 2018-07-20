@@ -7,7 +7,6 @@ var image_router_1 = require("./image/image.router");
 var newsitem_router_1 = require("./newsitem/newsitem.router");
 var shopitem_router_1 = require("./shopitem/shopitem.router");
 var user_router_1 = require("./user/user.router");
-var commissions_router_1 = require("./commissions/commissions.router");
 var router = express_1.Router();
 router
     // .use('/checkout', checkoutRouter)
@@ -16,6 +15,6 @@ router
     .use('/image', image_router_1.default)
     .use('/newsitem', newsitem_router_1.default)
     .use('/shopitem', shopitem_router_1.default)
-    .use('/user', user_router_1.default)
-    .use('/commissions', commissions_router_1.default);
+    .use('/user', user_router_1.default);
+// .use('/commissions', commmissionsRouter)
 exports.default = router;

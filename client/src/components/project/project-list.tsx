@@ -35,7 +35,7 @@ class ProjectList extends React.Component<ProjectListProps> {
     	let update = false;
     	let prevDiscontinued = prevProps.discontinued || false;
     	let currentDiscontinued = this.props.discontinued || false;
-
+		console.log(prevDiscontinued, currentDiscontinued)
     	if (prevDiscontinued != currentDiscontinued) {
 	    	update = true;
     	}

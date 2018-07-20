@@ -18,6 +18,8 @@ export interface ProjectPageListProps {
 class ProjectPageList extends React.Component<ProjectPageListProps> {
 	public static defaultProps = {
 		displayDetails: true,
+		discontinued: false,
+		limit: 10,
 	};
     constructor(props) {
         super(props);
@@ -29,21 +31,24 @@ class ProjectPageList extends React.Component<ProjectPageListProps> {
     		query.limit = this.props.limit;
     	}
 		this.props.projectPage.getProjectPages(this.props.projectPage._projectId, query)
-    }
+	}
 
     componentDidUpdate(prevProps, prevState, snapshot) {
     	let update = false;
-    	let prevDiscontinued = prevProps.discontinued || false;
-    	let currentDiscontinued = this.props.discontinued || false;
+    	let prevDiscontinued = prevProps.discontinued;
+    	let currentDiscontinued = this.props.discontinued;
+		console.log(prevDiscontinued, currentDiscontinued)
 
     	if (prevDiscontinued != currentDiscontinued) {
 	    	update = true;
-    	}
+		}
+		console.log(prevDiscontinued, currentDiscontinued)
 
+		console.log(update, prevDiscontinued, currentDiscontinued)
     	if (update) {
     		let query = {
-    			discontinued: this.props.discontinued || false,
-    			limit: this.props.limit || 10,
+    			discontinued: this.props.discontinued,
+    			limit: this.props.limit,
     		}
     		this.props.projectPage.getProjectPages(this.props.projectPage._projectId, query);
     	}
@@ -52,7 +57,7 @@ class ProjectPageList extends React.Component<ProjectPageListProps> {
 
 	render() {
 		const { displayDetails } = this.props;
-		const { projectPages, _projectId } = this.props.projectPage;
+		const { projectPages } = this.props.projectPage;
 
 		let ProjectPageList = [];
 		if (projectPages) {
@@ -62,11 +67,6 @@ class ProjectPageList extends React.Component<ProjectPageListProps> {
 		}
 		return (
 			<div className="project-page-list-wrapper" >
-				{this.props.user.admin ? (
-					<div>
-						<Link to={"/project/new/"+_projectId}>NEW PAGE</Link>
-					</div>
-				) : ''}
 				<ul className='project-list' >
 					{ProjectPageList}
 				</ul>

@@ -43,11 +43,16 @@ const Wrapper = styled.div`
 	> .content {
 		grid-column-start: 1;
 		grid-column-end: -1;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		
+		> * {
+			padding: 1em;
+		}
 		> img {
 			max-width: 100%;
-		}
-		> div {
-			padding: 1em 0;
+			align-self: center;
 		}
 	}
 
@@ -68,17 +73,6 @@ const Wrapper = styled.div`
 
 		> .content {
 			grid-column: unset;
-		}
-	}
-
-	@media (min-width: 1200px) {
-		> .content {
-			display: flex;
-			flex-wrap: wrap;
-			> div {
-				flex-grow: 1;
-				padding: 0 1em;
-			}
 		}
 	}
 
@@ -124,10 +118,10 @@ class ProjectPage extends React.Component<ProjectPageProps> {
 					<BackArrow _projectId={_projectId} />
 					<div className="content">
 						{coverImageElem}
-						<div>
-							<h2 className="title">{title}</h2>
+						{title || details != '<p><br></p>' ? <div>
+							{title ? <h2 className="title">{title}</h2> : ''}
 							{details != '<p><br></p>' ? <RichTextEditor value={RichTextEditor.createValueFromString(details, 'html')} readOnly={true} /> : ''}
-						</div>
+						</div> : ''}
 					</div>
 					<NextArrow _projectId={_projectId} />
 				</Wrapper>

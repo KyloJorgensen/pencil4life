@@ -285,17 +285,19 @@ ProjectController.prototype.getProjectPages = function(req, res, next) {
     let project = Project.findOne({_id: req.params._projectId});
     project.then(function(projectDoc) {
         const _pages = projectDoc.pages.filter((page) => {
-            return {
-                _id: page._id,
-                page: page.page
-            };
+            if ('discontinued' in req.query) {
+                if (page.discontinued != (req.query.discontinued == 'true')) {
+                    return false;
+                }
+            }
+            return true;
         });
 
         let page = !Number.isNaN(Number(req.query.page)) ? Math.abs(Number(req.query.page)) : 1;
         let limit = !Number.isNaN(Number(req.query.limit)) ? Math.abs(Number(req.query.limit)) : 200;
         let pagesLimited = _pages.slice(limit*(page-1), limit*(page-1)+limit);
         let pages = []; 
-        pagesLimited.forEach((page) => {
+        pagesLimited.forEach((page) => {        
             pages.push(page._id);
         });
         let total = projectDoc.pages.length;

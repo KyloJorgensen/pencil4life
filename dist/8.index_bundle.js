@@ -473,10 +473,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProjectPageList", function() { return ProjectPageList; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-/* harmony import */ var _project_page_list_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project-page-list-item */ "./client/src/components/project/page/project-page-list-item.tsx");
-/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../user/user-provider */ "./client/src/components/user/user-provider.tsx");
-/* harmony import */ var _project_page_provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./project-page-provider */ "./client/src/components/project/page/project-page-provider.tsx");
+/* harmony import */ var _project_page_list_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project-page-list-item */ "./client/src/components/project/page/project-page-list-item.tsx");
+/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../user/user-provider */ "./client/src/components/user/user-provider.tsx");
+/* harmony import */ var _project_page_provider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./project-page-provider */ "./client/src/components/project/page/project-page-provider.tsx");
 
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -488,7 +487,6 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-
 
 
 
@@ -507,40 +505,43 @@ var ProjectPageList = /** @class */ (function (_super) {
     };
     ProjectPageList.prototype.componentDidUpdate = function (prevProps, prevState, snapshot) {
         var update = false;
-        var prevDiscontinued = prevProps.discontinued || false;
-        var currentDiscontinued = this.props.discontinued || false;
+        var prevDiscontinued = prevProps.discontinued;
+        var currentDiscontinued = this.props.discontinued;
+        console.log(prevDiscontinued, currentDiscontinued);
         if (prevDiscontinued != currentDiscontinued) {
             update = true;
         }
+        console.log(prevDiscontinued, currentDiscontinued);
+        console.log(update, prevDiscontinued, currentDiscontinued);
         if (update) {
             var query = {
-                discontinued: this.props.discontinued || false,
-                limit: this.props.limit || 10,
+                discontinued: this.props.discontinued,
+                limit: this.props.limit,
             };
             this.props.projectPage.getProjectPages(this.props.projectPage._projectId, query);
         }
     };
     ProjectPageList.prototype.render = function () {
         var displayDetails = this.props.displayDetails;
-        var _a = this.props.projectPage, projectPages = _a.projectPages, _projectId = _a._projectId;
+        var projectPages = this.props.projectPage.projectPages;
         var ProjectPageList = [];
         if (projectPages) {
             projectPages.forEach(function (_projectPageId) {
-                ProjectPageList.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_project_page_list_item__WEBPACK_IMPORTED_MODULE_2__["default"], { key: _projectPageId, _projectPageId: _projectPageId, displayDetails: displayDetails }));
+                ProjectPageList.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_project_page_list_item__WEBPACK_IMPORTED_MODULE_1__["default"], { key: _projectPageId, _projectPageId: _projectPageId, displayDetails: displayDetails }));
             });
         }
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "project-page-list-wrapper" },
-            this.props.user.admin ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], { to: "/project/new/" + _projectId }, "NEW PAGE"))) : '',
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("ul", { className: 'project-list' }, ProjectPageList)));
     };
     ProjectPageList.defaultProps = {
         displayDetails: true,
+        discontinued: false,
+        limit: 10,
     };
     return ProjectPageList;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
-/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_3__["userConsumer"])(Object(_project_page_provider__WEBPACK_IMPORTED_MODULE_4__["projectPageConsumer"])(ProjectPageList)));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_2__["userConsumer"])(Object(_project_page_provider__WEBPACK_IMPORTED_MODULE_3__["projectPageConsumer"])(ProjectPageList)));
 
 
 
@@ -1130,7 +1131,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
-var Wrapper = styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tdisplay: grid;\n\tgrid-template-columns: auto auto auto min-content;\n\n\t> .back {\n\t\tgrid-row: 1;\n\t}\n\n\t> .edit {\n\t\tgrid-column: 2;\n\t\talign-self: center;\n\t\ttext-align: center;\n\t}\n\n\t> .next {\n\t\tgrid-column: 3;  \n\t\tgrid-row: 1;\n\t}\n\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\theight: 2em;\n\t\tline-height: 2;\n\t\tpadding: 0;\n\t\ttext-align: center;\n\t\tgrid-column: 4;  \n\t}\n\n\t> .content {\n\t\tgrid-column-start: 1;\n\t\tgrid-column-end: -1;\n\t\t> img {\n\t\t\tmax-width: 100%;\n\t\t}\n\t\t> div {\n\t\t\tpadding: 1em 0;\n\t\t}\n\t}\n\n\t@media (min-width: 575px) {\n\t\tgrid-template-columns: auto 1fr auto;\n\t\t> .back {\n\t\t\tgrid-row: unset;\n\t\t}\n\t\t> .edit {\n\t\t\ttext-align: left; \n\t\t}\n\t\t> .next {\n\t\t\tgrid-row: unset;\n\t\t}\n\t\t> .exit {\n\t\t\tgrid-column: 3;  \n\t\t}\n\n\t\t> .content {\n\t\t\tgrid-column: unset;\n\t\t}\n\t}\n\n\t@media (min-width: 1200px) {\n\t\t> .content {\n\t\t\tdisplay: flex;\n\t\t\tflex-wrap: wrap;\n\t\t\t> div {\n\t\t\t\tflex-grow: 1;\n\t\t\t\tpadding: 0 1em;\n\t\t\t}\n\t\t}\n\t}\n\n"], ["\n\tdisplay: grid;\n\tgrid-template-columns: auto auto auto min-content;\n\n\t> .back {\n\t\tgrid-row: 1;\n\t}\n\n\t> .edit {\n\t\tgrid-column: 2;\n\t\talign-self: center;\n\t\ttext-align: center;\n\t}\n\n\t> .next {\n\t\tgrid-column: 3;  \n\t\tgrid-row: 1;\n\t}\n\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\theight: 2em;\n\t\tline-height: 2;\n\t\tpadding: 0;\n\t\ttext-align: center;\n\t\tgrid-column: 4;  \n\t}\n\n\t> .content {\n\t\tgrid-column-start: 1;\n\t\tgrid-column-end: -1;\n\t\t> img {\n\t\t\tmax-width: 100%;\n\t\t}\n\t\t> div {\n\t\t\tpadding: 1em 0;\n\t\t}\n\t}\n\n\t@media (min-width: 575px) {\n\t\tgrid-template-columns: auto 1fr auto;\n\t\t> .back {\n\t\t\tgrid-row: unset;\n\t\t}\n\t\t> .edit {\n\t\t\ttext-align: left; \n\t\t}\n\t\t> .next {\n\t\t\tgrid-row: unset;\n\t\t}\n\t\t> .exit {\n\t\t\tgrid-column: 3;  \n\t\t}\n\n\t\t> .content {\n\t\t\tgrid-column: unset;\n\t\t}\n\t}\n\n\t@media (min-width: 1200px) {\n\t\t> .content {\n\t\t\tdisplay: flex;\n\t\t\tflex-wrap: wrap;\n\t\t\t> div {\n\t\t\t\tflex-grow: 1;\n\t\t\t\tpadding: 0 1em;\n\t\t\t}\n\t\t}\n\t}\n\n"])));
+var Wrapper = styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tdisplay: grid;\n\tgrid-template-columns: auto auto auto min-content;\n\n\t> .back {\n\t\tgrid-row: 1;\n\t}\n\n\t> .edit {\n\t\tgrid-column: 2;\n\t\talign-self: center;\n\t\ttext-align: center;\n\t}\n\n\t> .next {\n\t\tgrid-column: 3;  \n\t\tgrid-row: 1;\n\t}\n\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\theight: 2em;\n\t\tline-height: 2;\n\t\tpadding: 0;\n\t\ttext-align: center;\n\t\tgrid-column: 4;  \n\t}\n\n\t> .content {\n\t\tgrid-column-start: 1;\n\t\tgrid-column-end: -1;\n\t\tdisplay: flex;\n\t\tjustify-content: center;\n\t\tflex-wrap: wrap;\n\t\t\n\t\t> * {\n\t\t\tpadding: 1em;\n\t\t}\n\t\t> img {\n\t\t\tmax-width: 100%;\n\t\t\talign-self: center;\n\t\t}\n\t}\n\n\t@media (min-width: 575px) {\n\t\tgrid-template-columns: auto 1fr auto;\n\t\t> .back {\n\t\t\tgrid-row: unset;\n\t\t}\n\t\t> .edit {\n\t\t\ttext-align: left; \n\t\t}\n\t\t> .next {\n\t\t\tgrid-row: unset;\n\t\t}\n\t\t> .exit {\n\t\t\tgrid-column: 3;  \n\t\t}\n\n\t\t> .content {\n\t\t\tgrid-column: unset;\n\t\t}\n\t}\n\n"], ["\n\tdisplay: grid;\n\tgrid-template-columns: auto auto auto min-content;\n\n\t> .back {\n\t\tgrid-row: 1;\n\t}\n\n\t> .edit {\n\t\tgrid-column: 2;\n\t\talign-self: center;\n\t\ttext-align: center;\n\t}\n\n\t> .next {\n\t\tgrid-column: 3;  \n\t\tgrid-row: 1;\n\t}\n\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\theight: 2em;\n\t\tline-height: 2;\n\t\tpadding: 0;\n\t\ttext-align: center;\n\t\tgrid-column: 4;  \n\t}\n\n\t> .content {\n\t\tgrid-column-start: 1;\n\t\tgrid-column-end: -1;\n\t\tdisplay: flex;\n\t\tjustify-content: center;\n\t\tflex-wrap: wrap;\n\t\t\n\t\t> * {\n\t\t\tpadding: 1em;\n\t\t}\n\t\t> img {\n\t\t\tmax-width: 100%;\n\t\t\talign-self: center;\n\t\t}\n\t}\n\n\t@media (min-width: 575px) {\n\t\tgrid-template-columns: auto 1fr auto;\n\t\t> .back {\n\t\t\tgrid-row: unset;\n\t\t}\n\t\t> .edit {\n\t\t\ttext-align: left; \n\t\t}\n\t\t> .next {\n\t\t\tgrid-row: unset;\n\t\t}\n\t\t> .exit {\n\t\t\tgrid-column: 3;  \n\t\t}\n\n\t\t> .content {\n\t\t\tgrid-column: unset;\n\t\t}\n\t}\n\n"])));
 var ProjectPage = /** @class */ (function (_super) {
     __extends(ProjectPage, _super);
     function ProjectPage(props) {
@@ -1160,9 +1161,9 @@ var ProjectPage = /** @class */ (function (_super) {
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_project_page_changer__WEBPACK_IMPORTED_MODULE_6__["BackArrow"], { _projectId: _projectId }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "content" },
                     coverImageElem,
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", { className: "title" }, title),
-                        details != '<p><br></p>' ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_rte__WEBPACK_IMPORTED_MODULE_1___default.a, { value: react_rte__WEBPACK_IMPORTED_MODULE_1___default.a.createValueFromString(details, 'html'), readOnly: true }) : '')),
+                    title || details != '<p><br></p>' ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
+                        title ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", { className: "title" }, title) : '',
+                        details != '<p><br></p>' ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_rte__WEBPACK_IMPORTED_MODULE_1___default.a, { value: react_rte__WEBPACK_IMPORTED_MODULE_1___default.a.createValueFromString(details, 'html'), readOnly: true }) : '') : ''),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_project_page_changer__WEBPACK_IMPORTED_MODULE_6__["NextArrow"], { _projectId: _projectId }))));
     };
     return ProjectPage;
@@ -1537,6 +1538,7 @@ var ProjectList = /** @class */ (function (_super) {
         var update = false;
         var prevDiscontinued = prevProps.discontinued || false;
         var currentDiscontinued = this.props.discontinued || false;
+        console.log(prevDiscontinued, currentDiscontinued);
         if (prevDiscontinued != currentDiscontinued) {
             update = true;
         }
@@ -2351,8 +2353,20 @@ var Wrapper = styled_components__WEBPACK_IMPORTED_MODULE_12__["default"].div(tem
 var Project = /** @class */ (function (_super) {
     __extends(Project, _super);
     function Project(props) {
-        return _super.call(this, props) || this;
+        var _this = _super.call(this, props) || this;
+        _this.state = {
+            discontinued: false,
+        };
+        _this.handleCheckboxChange = _this.handleCheckboxChange.bind(_this);
+        return _this;
     }
+    Project.prototype.handleCheckboxChange = function (event) {
+        var _a = event.target, name = _a.name, checked = _a.checked;
+        this.setState(function (prevState) {
+            prevState[name] = checked;
+            return prevState;
+        });
+    };
     Project.prototype.componentDidMount = function () {
         this.props.project.getProject(this.props.project.project._projectId);
     };
@@ -2360,6 +2374,7 @@ var Project = /** @class */ (function (_super) {
         var _a = this.props.project.project, _projectId = _a._projectId, title = _a.title, year = _a.year, details = _a.details, coverImage = _a.coverImage;
         var _imageId = coverImage._imageId;
         var admin = this.props.user.admin;
+        var discontinued = this.state.discontinued;
         var formatedYear = moment__WEBPACK_IMPORTED_MODULE_3__(year).format("YYYY");
         var coverImageElem = _imageId ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_tag__WEBPACK_IMPORTED_MODULE_6__["default"], { _imageId: _imageId })) : '';
         var convertedDetails = react_rte__WEBPACK_IMPORTED_MODULE_1___default.a.createValueFromString(details, 'html');
@@ -2372,7 +2387,11 @@ var Project = /** @class */ (function (_super) {
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "year" }, formatedYear)),
             coverImageElem,
             details != '<p><br></p>' ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_rte__WEBPACK_IMPORTED_MODULE_1___default.a, { value: convertedDetails, readOnly: true }) : '',
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_page_project_page_list__WEBPACK_IMPORTED_MODULE_7__["default"], null),
+            admin ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: "/project/new/" + _projectId }, "NEW PAGE"),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Discontinued"),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'checkbox', checked: !!this.state.discontinued, name: "discontinued", onChange: this.handleCheckboxChange }))) : '',
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_page_project_page_list__WEBPACK_IMPORTED_MODULE_7__["default"], { discontinued: discontinued }),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null,
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], { exact: true, path: "/project/new/:_projectId/", component: _page_project_page_new__WEBPACK_IMPORTED_MODULE_10__["default"] }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], { exact: true, path: "/project/item/:_projectId/:_projectPageId", component: _page_project_page__WEBPACK_IMPORTED_MODULE_9__["default"] }),
@@ -2423,7 +2442,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".project-wrapper .project-list {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n  grid-gap: 2rem;\n}\n.project-wrapper .project-list .project-link {\n  display: grid;\n  grid-template-rows: 1fr auto;\n  width: 100%;\n  height: 100%;\n  color: black;\n  border-color: #ffffff;\n  border-style: solid;\n}\n.project-wrapper .project-list .project-link:hover {\n  border-style: solid;\n  border-color: black;\n  transition: border-color 2s linear;\n}\n.project-wrapper .project-list .image-wrapper {\n  align-self: stretch;\n  width: 100%;\n}\n.project-wrapper .project-list .image-wrapper img {\n  max-width: 100%;\n  position: relative;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n.project-wrapper .project-list .title-year-wrapper {\n  align-self: end;\n}\n.project-wrapper .project-list .title-year-wrapper > .title,\n.project-wrapper .project-list .title-year-wrapper > .year {\n  margin: 0.25em;\n  display: inline-block;\n}\n.project-wrapper .project-list .title-year-wrapper > .year {\n  float: right;\n}\n", ""]);
+exports.push([module.i, ".project-wrapper .project-list {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n  grid-template-rows: minmax(100px, 1fr);\n  grid-gap: 2rem;\n}\n.project-wrapper .project-list .project-link {\n  display: grid;\n  grid-template-rows: 1fr auto;\n  width: 100%;\n  height: 100%;\n  color: black;\n  border-color: #ffffff;\n  border-style: solid;\n}\n.project-wrapper .project-list .project-link:hover {\n  border-style: solid;\n  border-color: black;\n  transition: border-color 2s linear;\n}\n.project-wrapper .project-list .image-wrapper {\n  align-self: stretch;\n  width: 100%;\n}\n.project-wrapper .project-list .image-wrapper img {\n  max-width: 100%;\n  position: relative;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n.project-wrapper .project-list .title-year-wrapper {\n  align-self: end;\n}\n.project-wrapper .project-list .title-year-wrapper > .title,\n.project-wrapper .project-list .title-year-wrapper > .year {\n  margin: 0.25em;\n  display: inline-block;\n}\n.project-wrapper .project-list .title-year-wrapper > .year {\n  float: right;\n}\n", ""]);
 
 // exports
 
