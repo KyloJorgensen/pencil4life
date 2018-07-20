@@ -1538,7 +1538,6 @@ var ProjectList = /** @class */ (function (_super) {
         var update = false;
         var prevDiscontinued = prevProps.discontinued || false;
         var currentDiscontinued = this.props.discontinued || false;
-        console.log(prevDiscontinued, currentDiscontinued);
         if (prevDiscontinued != currentDiscontinued) {
             update = true;
         }
