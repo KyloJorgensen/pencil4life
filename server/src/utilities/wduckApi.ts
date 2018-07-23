@@ -150,7 +150,7 @@ export interface SubmitMessageOptions {
 
 export interface NewUserOptions {
 
-  name: string;	
+  nameuser: string;	
   // Username of the User. Dots are allowed but informational only ("user.name" is the same as "username").
   
   password: string | false;	
@@ -286,7 +286,7 @@ export const submitMessage = (submitMessageOptions: SubmitMessageOptions, callba
       return userId;
     } else {
       return newUser(username, {
-        name: username,
+        nameuser: username,
         password: false,
         receivedMax: 0,
       })
