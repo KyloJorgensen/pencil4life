@@ -3,8 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var node_fetch_1 = require("node-fetch");
 exports.fetchFromWDuckApi = function (endpoint, requestInit) {
     requestInit = requestInit || {};
-    if (requestInit.method.toLocaleUpperCase() != "GET") {
-        requestInit.headers['Content-Type'] = 'application/json';
+    if ('method' in requestInit) {
+        if (requestInit.method.toLocaleUpperCase() != "GET") {
+            requestInit.headers['Content-Type'] = 'application/json';
+        }
     }
     var request = new node_fetch_1.Request("http://localhost:8080" + endpoint, requestInit);
     return node_fetch_1.default(request).then(function (response) {

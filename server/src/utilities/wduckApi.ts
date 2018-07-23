@@ -150,8 +150,10 @@ export interface SubmitMessageOptions {
 
 export const fetchFromWDuckApi = (endpoint: string, requestInit?: RequestInit) => {
   requestInit = requestInit || {};
-  if (requestInit.method.toLocaleUpperCase() != "GET") {    
-    requestInit.headers['Content-Type'] = 'application/json';
+  if ('method' in requestInit) {
+    if (requestInit.method.toLocaleUpperCase() != "GET") {    
+      requestInit.headers['Content-Type'] = 'application/json';
+    }
   }
   let request = new Request(`http://localhost:8080${endpoint}`, requestInit);
 
