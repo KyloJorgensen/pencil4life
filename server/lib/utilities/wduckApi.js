@@ -62,7 +62,7 @@ exports.submitMessage = function (submitMessageOptions, callback) {
         }
         else {
             return exports.newUser(username, {
-                nameuser: username,
+                username: username,
                 password: false,
                 receivedMax: 0,
             });
