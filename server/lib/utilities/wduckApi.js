@@ -18,6 +18,7 @@ exports.fetchFromWDuckApi = function (endpoint, requestInit) {
         }
         return response.json();
     }).then(function (info) {
+        console.log(info);
         return info;
     });
 };
@@ -66,11 +67,12 @@ exports.submitMessage = function (submitMessageOptions, callback) {
                 receivedMax: 0,
             });
         }
+    }).then(function (userId) {
+        return exports.fetchFromWDuckApi("/users/" + userId + "/submit", {
+            method: 'POST',
+            body: JSON.stringify(submitMessageOptions),
+        });
+    }).then(function (info) {
+        return info;
     });
-    // return fetchFromWDuckApi(`/users/${userId}/submit`, {
-    //   method: 'POST',
-    //   body: JSON.stringify(submitMessageOptions),
-    // }).then((info) => {
-    //   return info;
-    // })
 };

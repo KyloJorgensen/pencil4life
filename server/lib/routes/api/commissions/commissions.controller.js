@@ -42,7 +42,7 @@ exports.createCommissionRequest = function (req, res, next) {
     wduckApi_1.submitMessage({
         from: {
             name: 'Commissions',
-            address: variables_express_1.NM_NOREPLY_EMAIL
+            address: 'noreply@dev.pencil4life.com' || variables_express_1.NM_NOREPLY_EMAIL
         },
         to: [{
                 name: 'Commissions',

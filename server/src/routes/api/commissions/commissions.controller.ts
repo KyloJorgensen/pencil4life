@@ -46,7 +46,7 @@ export const createCommissionRequest = (req, res, next) => {
     submitMessage({
         from: {
             name: 'Commissions',
-            address: NM_NOREPLY_EMAIL
+            address: 'noreply@dev.pencil4life.com' ||NM_NOREPLY_EMAIL
         },
         to: [{
             name: 'Commissions', 

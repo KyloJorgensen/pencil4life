@@ -240,6 +240,7 @@ export const fetchFromWDuckApi = (endpoint: string, requestInit?: RequestInit) =
       }
       return response.json();
   }).then((info) => {
+    console.log(info)
     return info;
   })
 };
@@ -290,14 +291,16 @@ export const submitMessage = (submitMessageOptions: SubmitMessageOptions, callba
         receivedMax: 0,
       })
     }
+  }).then((userId) => {
+    return fetchFromWDuckApi(`/users/${userId}/submit`, {
+      method: 'POST',
+      body: JSON.stringify(submitMessageOptions),
+    })
+  }).then((info) => {
+    return info;
   })
   
-  // return fetchFromWDuckApi(`/users/${userId}/submit`, {
-  //   method: 'POST',
-  //   body: JSON.stringify(submitMessageOptions),
-  // }).then((info) => {
-  //   return info;
-  // })
+
 };
 
 
