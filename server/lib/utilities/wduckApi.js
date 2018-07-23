@@ -5,6 +5,7 @@ exports.fetchFromWDuckApi = function (endpoint, requestInit) {
     requestInit = requestInit || {};
     if ('method' in requestInit) {
         if (requestInit.method.toLocaleUpperCase() != "GET") {
+            requestInit.headers = requestInit.headers || {};
             requestInit.headers['Content-Type'] = 'application/json';
         }
     }

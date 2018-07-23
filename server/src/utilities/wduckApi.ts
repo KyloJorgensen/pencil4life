@@ -225,7 +225,8 @@ export interface NewUserOptions {
 export const fetchFromWDuckApi = (endpoint: string, requestInit?: RequestInit) => {
   requestInit = requestInit || {};
   if ('method' in requestInit) {
-    if (requestInit.method.toLocaleUpperCase() != "GET") {    
+    if (requestInit.method.toLocaleUpperCase() != "GET") {
+      requestInit.headers = requestInit.headers || {}; 
       requestInit.headers['Content-Type'] = 'application/json';
     }
   }
