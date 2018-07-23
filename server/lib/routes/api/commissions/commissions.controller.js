@@ -41,12 +41,12 @@ exports.createCommissionRequest = function (req, res, next) {
     // });
     wduckApi_1.submitMessage({
         from: {
-            name: 'Commissions',
+            name: 'noreply',
             address: 'noreply@dev.pencil4life.com' || variables_express_1.NM_NOREPLY_EMAIL
         },
         to: [{
                 name: 'Commissions',
-                address: 'kylo@pencil4life.com' || variables_express_1.NM_COMMISSIONS_EMAIL,
+                address: 'commissions@pencil4life.com' || variables_express_1.NM_COMMISSIONS_EMAIL,
             }],
         subject: 'Testing',
         text: '',

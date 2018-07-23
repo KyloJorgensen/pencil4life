@@ -45,12 +45,12 @@ export const createCommissionRequest = (req, res, next) => {
     
     submitMessage({
         from: {
-            name: 'Commissions',
+            name: 'noreply',
             address: 'noreply@dev.pencil4life.com' ||NM_NOREPLY_EMAIL
         },
         to: [{
             name: 'Commissions', 
-            address: 'kylo@pencil4life.com' || NM_COMMISSIONS_EMAIL,
+            address: 'commissions@pencil4life.com' || NM_COMMISSIONS_EMAIL,
         }],
         subject: 'Testing',
         text: '',
