@@ -38,6 +38,10 @@ exports.default = (function (router) {
             console.log(error.errors);
             return res.status(240).json(error);
         }
+        if (error.name == 'BadRequestError') {
+            console.log(error);
+            return res.status(400).json(error);
+        }
         res.status(500);
         console.log(error);
         if (error) {
