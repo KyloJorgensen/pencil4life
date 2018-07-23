@@ -7,6 +7,8 @@ if (result.error) {
     throw result.error;
 }
 console.log(result.parsed);
+console.log(process.env.NODE_ENV);
+exports.NODE_ENV = process.env.NODE_ENV || 'production';
 exports.HTTP_PORT = process.env.HTTP_PORT || '9001';
 exports.EXPRESS_LISTEN_MESSAGE = 'Listening on port: ';
 exports.MONGODB_PORT = process.env.MONGODB_PORT || "";
@@ -18,9 +20,10 @@ exports.BT_ENVIRONMENT = process.env.BT_ENVIRONMENT || 'sandbox';
 exports.BT_MERCHANT_ID = process.env.BT_MERCHANT_ID || 'cvnqcc9z7srpfkcf';
 exports.BT_PUBLIC_KEY = process.env.BT_PUBLIC_KEY || 'k7x3r67pkqn4m59p';
 exports.BT_PRIVATE_KEY = process.env.BT_PRIVATE_KEY || 'e4614ba54f975cd132f2b52437b5fbe6';
-exports.NM_SMTP_ADDRESS = process.env.NM_SMTP_ADDRESS || 'pencil4life.com';
-exports.NM_SMTP_PORT = process.env.NM_SMTP_PORT || '587';
+exports.NM_NOREPLY_EMAIL = process.env.NM_NOREPLY_EMAIL || 'noreply@pencil4life.com';
+exports.NM_COMMISSIONS_EMAIL = process.env.NM_COMMISSIONS_EMAIL || 'commissons@pencil4life.com';
 exports.default = {
+    NODE_ENV: exports.NODE_ENV,
     HTTP_PORT: exports.HTTP_PORT,
     EXPRESS_LISTEN_MESSAGE: exports.EXPRESS_LISTEN_MESSAGE,
     MONGODB_PORT: exports.MONGODB_PORT,
@@ -32,6 +35,6 @@ exports.default = {
     BT_MERCHANT_ID: exports.BT_MERCHANT_ID,
     BT_PUBLIC_KEY: exports.BT_PUBLIC_KEY,
     BT_PRIVATE_KEY: exports.BT_PRIVATE_KEY,
-    NM_SMTP_ADDRESS: exports.NM_SMTP_ADDRESS,
-    NM_SMTP_PORT: exports.NM_SMTP_PORT,
+    NM_NOREPLY_EMAIL: exports.NM_NOREPLY_EMAIL,
+    NM_COMMISSIONS_EMAIL: exports.NM_COMMISSIONS_EMAIL,
 };

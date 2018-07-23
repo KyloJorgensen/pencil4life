@@ -6,7 +6,7 @@
       "name": "JEST",
       "description": "JEST TESTING",
       "focus": true,
-      "command": "npm test -- --watchAll"
+      "command": "npm test -- --watch"
     },
     {
       "name": "WEBPACK",

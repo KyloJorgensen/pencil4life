@@ -2,6 +2,17 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var nodemailer_1 = require("nodemailer");
 var variables_express_1 = require("../config/variables.express");
+// import { SMTPServer, SMTPServerOptions } from 'smtp-server';
+// const options: SMTPServerOptions = {
+//     onAuth(auth, session, callback){
+//         if(auth.username !== 'kylo@pencil4life.com' || auth.password !== 'govp afmn mdof ryvg'){
+//             return callback(new Error('Invalid username or password'), null);
+//         }
+//         callback(null, {user: 123}); // where 123 is the user id or similar property
+//     }
+// }
+// const server = new SMTPServer(options);
+// server.listen(587);
 exports.sendEmail = function (username, password, mailOptions, callback) {
     // create reusable transporter object using the default SMTP transport
     var transport = {};
@@ -14,18 +25,12 @@ exports.sendEmail = function (username, password, mailOptions, callback) {
         pass: password,
     };
     transport.tls = {};
-    transport.tls.rejectUnauthorized = false;
-    transport.debug = true;
-    transport.logger = true;
+    if (variables_express_1.NODE_ENV == 'development') {
+        transport.tls.rejectUnauthorized = false;
+        transport.debug = true;
+        transport.logger = true;
+    }
     var transporter = nodemailer_1.createTransport(transport);
-    // // setup email data with unicode symbols
-    // let mailOptions: SendMailOptions = {};
-    // mailOptions.from = '"Fred Foo 👻" <foo@example.com>', // sender address
-    // mailOptions.to = to, // list of receivers
-    // mailOptions.subject = 'Hello ✔', // Subject line
-    // mailOptions.text = 'Hello world?', // plain text body
-    // mailOptions.html = '<b>Hello world?</b>' // html body
-    // send mail with defined transport object
     if (callback) {
         transporter.sendMail(mailOptions, callback);
     }
@@ -40,18 +45,3 @@ exports.sendEmail = function (username, password, mailOptions, callback) {
         });
     }
 };
-exports.sendEmail('testuser', 'secretpass', {
-    from: {
-        name: 'testuser',
-        address: 'testuser@pencil4life.com'
-    },
-    to: {
-        name: 'Kylo',
-        address: 'kylo@pencil4life.com'
-    },
-    subject: 'Testing',
-}).then(function (info) {
-    console.log(info);
-}).catch(function (error) {
-    console.error(error);
-});

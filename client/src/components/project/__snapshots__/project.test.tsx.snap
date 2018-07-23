@@ -83,7 +83,10 @@ ShallowWrapper {
         </div>,
         "",
         "",
-        <UserConsumer />,
+        "",
+        <UserConsumer
+          discontinued={false}
+        />,
         <Switch>
           <Route
             component={[Function]}
@@ -180,11 +183,14 @@ ShallowWrapper {
       },
       "",
       "",
+      "",
       Object {
         "instance": null,
         "key": undefined,
         "nodeType": "class",
-        "props": Object {},
+        "props": Object {
+          "discontinued": false,
+        },
         "ref": null,
         "rendered": null,
         "type": [Function],
@@ -289,7 +295,10 @@ ShallowWrapper {
           </div>,
           "",
           "",
-          <UserConsumer />,
+          "",
+          <UserConsumer
+            discontinued={false}
+          />,
           <Switch>
             <Route
               component={[Function]}
@@ -386,11 +395,14 @@ ShallowWrapper {
         },
         "",
         "",
+        "",
         Object {
           "instance": null,
           "key": undefined,
           "nodeType": "class",
-          "props": Object {},
+          "props": Object {
+            "discontinued": false,
+          },
           "ref": null,
           "rendered": null,
           "type": [Function],

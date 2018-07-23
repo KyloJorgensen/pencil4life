@@ -9,7 +9,7 @@
     "dev:build": "webpack --mode development",
     "build:watch": "webpack --watch --mode development",
     "tsc": "tsc",
-    "server:watch": "pm2 restart ecosystem.config.js --only devpencil4life",
+    "server:watch": "pm2 delete devpencil4life",
     "postserver:watch": "pm2 reload ecosystem.config.js --only devpencil4life",
     "server": "pm2 start ecosystem.config.js --env production --only pencil4life",
     "compile": "tsc -p ./server/tsconfig.json",
@@ -29,7 +29,7 @@
     "helmet": "^3.12.1",
     "log-to-file": "^1.2.2",
     "mongoose-diff-history": "^1.5.3",
-    "nodemailer": "^4.6.7"
+    "node-fetch": "^2.2.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome": "^1.1.8",
@@ -49,7 +49,7 @@
     "@types/helmet": "0.0.38",
     "@types/jest": "^23.1.0",
     "@types/mkdirp": "^0.5.2",
-    "@types/nodemailer": "^4.6.2",
+    "@types/node-fetch": "^2.1.2",
     "@types/object-path": "^0.9.29",
     "@types/react": "^16.3.17",
     "@types/react-dom": "^16.0.6",
