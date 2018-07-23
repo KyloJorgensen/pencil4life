@@ -67,7 +67,7 @@ export const createCommissionRequest = (req, res, next) => {
             }],
             subject: 'Commission Request',
             text: message.replace(/<\s*br[^>]?>/,'\n').replace(/(<([^>]+)>)/g, ""),
-            // html: message,
+            html: message,
         })
     }).then(info => {
         console.log(info);

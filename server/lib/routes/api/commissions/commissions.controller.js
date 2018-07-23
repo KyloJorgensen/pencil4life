@@ -55,6 +55,7 @@ exports.createCommissionRequest = function (req, res, next) {
                 }],
             subject: 'Commission Request',
             text: message.replace(/<\s*br[^>]?>/, '\n').replace(/(<([^>]+)>)/g, ""),
+            html: message,
         });
     }).then(function (info) {
         console.log(info);
