@@ -18,7 +18,6 @@ exports.fetchFromWDuckApi = function (endpoint, requestInit) {
         }
         return response.json();
     }).then(function (info) {
-        console.log(info);
         return info;
     });
 };

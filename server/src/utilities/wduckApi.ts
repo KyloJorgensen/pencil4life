@@ -102,10 +102,10 @@ export interface SubmitMessageOptions {
   subject:	string;
   // Message subject. If not then resolved from Reference message
 
-  text:	string;
+  text?:	string;
   // Plaintext message
 
-  html:	string;
+  html?:	string;
   // HTML formatted message
 
   headers?: {
@@ -240,7 +240,6 @@ export const fetchFromWDuckApi = (endpoint: string, requestInit?: RequestInit) =
       }
       return response.json();
   }).then((info) => {
-    console.log(info)
     return info;
   })
 };

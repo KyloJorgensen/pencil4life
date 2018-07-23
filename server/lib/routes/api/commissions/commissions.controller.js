@@ -39,6 +39,7 @@ exports.createCommissionRequest = function (req, res, next) {
     }
     var query = commissions_model_1.Commissions.create(newCommissionRequest);
     query.then(function (commissionRequest) {
+        var message = "<div>\n            <p>Requestor: " + commissionRequest.requestor + "</p>\n            <br>\n            <p>Email: " + commissionRequest.email + "</p>\n            <br>\n            <p>Details:</p>\n            <br>\n            <div>" + commissionRequest.details + "</div>\n        </div>";
         return wduckApi_1.submitMessage({
             from: {
                 name: 'Commissions',
@@ -53,8 +54,7 @@ exports.createCommissionRequest = function (req, res, next) {
                     address: 'kylo@pencil4life.com'
                 }],
             subject: 'Commission Request',
-            text: '',
-            html: "<div>\n                <h1>" + commissionRequest.requestor + "</h1>\n                <p>" + commissionRequest.email + "</p>\n                <div>" + commissionRequest.details + "</div>\n            </div>"
+            text: message.replace(/<\s*br[^>]?>/, '\n').replace(/(<([^>]+)>)/g, ""),
         });
     }).then(function (info) {
         console.log(info);

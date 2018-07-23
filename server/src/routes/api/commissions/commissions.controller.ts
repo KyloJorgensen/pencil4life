@@ -42,6 +42,16 @@ export const createCommissionRequest = (req, res, next) => {
 
     let query = Commissions.create(newCommissionRequest);
     query.then((commissionRequest) => {
+
+        let message = `<div>
+            <p>Requestor: ${commissionRequest.requestor}</p>
+            <br>
+            <p>Email: ${commissionRequest.email}</p>
+            <br>
+            <p>Details:</p>
+            <br>
+            <div>${commissionRequest.details}</div>
+        </div>`;
         return     submitMessage({
             from: {
                 name: 'Commissions',
@@ -56,12 +66,8 @@ export const createCommissionRequest = (req, res, next) => {
                 address: 'kylo@pencil4life.com'
             }],
             subject: 'Commission Request',
-            text: '',
-            html: `<div>
-                <h1>${commissionRequest.requestor}</h1>
-                <p>${commissionRequest.email}</p>
-                <div>${commissionRequest.details}</div>
-            </div>`
+            text: message.replace(/<\s*br[^>]?>/,'\n').replace(/(<([^>]+)>)/g, ""),
+            // html: message,
         })
     }).then(info => {
         console.log(info);
