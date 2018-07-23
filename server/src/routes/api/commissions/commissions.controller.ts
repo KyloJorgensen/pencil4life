@@ -3,11 +3,15 @@
 import { join } from 'path';
 import { submitMessage } from '../../../utilities/wduckApi';
 import { NM_COMMISSIONS_EMAIL, NM_NOREPLY_EMAIL } from '../../../config/variables.express';
-import { ICommissionsModel, Commissions } from './commissions.model';
+import { Commissions } from './commissions.model';
 
 // Creates Commission request Item.
 export const createCommissionRequest = (req, res, next) => {
-    let newCommissionRequest: ICommissionsModel;
+    let newCommissionRequest: {
+        requestor?: string;
+        email?: number;
+        details?: string;
+    } = {};
     if ('body' in req) {
         if ('requestor' in req.body) {
             newCommissionRequest.requestor = req.body.requestor;

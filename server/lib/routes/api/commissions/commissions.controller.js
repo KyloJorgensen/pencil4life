@@ -5,7 +5,7 @@ var variables_express_1 = require("../../../config/variables.express");
 var commissions_model_1 = require("./commissions.model");
 // Creates Commission request Item.
 exports.createCommissionRequest = function (req, res, next) {
-    var newCommissionRequest;
+    var newCommissionRequest = {};
     if ('body' in req) {
         if ('requestor' in req.body) {
             newCommissionRequest.requestor = req.body.requestor;
