@@ -268,7 +268,6 @@ export const newUser = (username: string, newUserOptions: NewUserOptions) => {
     body: JSON.stringify(newUserOptions),
   })
   .then((user) => {
-    console.log(user)
     if (user.success == true) {
       return user.id;
     } else {

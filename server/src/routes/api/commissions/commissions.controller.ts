@@ -50,7 +50,7 @@ export const createCommissionRequest = (req, res, next) => {
         },
         to: [{
             name: 'Commissions', 
-            address: NM_COMMISSIONS_EMAIL,
+            address: 'kylo@pencil4life.com' || NM_COMMISSIONS_EMAIL,
         }],
         subject: 'Testing',
         text: '',

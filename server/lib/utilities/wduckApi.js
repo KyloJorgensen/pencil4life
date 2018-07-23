@@ -44,7 +44,6 @@ exports.newUser = function (username, newUserOptions) {
         body: JSON.stringify(newUserOptions),
     })
         .then(function (user) {
-        console.log(user);
         if (user.success == true) {
             return user.id;
         }

@@ -46,7 +46,7 @@ exports.createCommissionRequest = function (req, res, next) {
         },
         to: [{
                 name: 'Commissions',
-                address: variables_express_1.NM_COMMISSIONS_EMAIL,
+                address: 'kylo@pencil4life.com' || variables_express_1.NM_COMMISSIONS_EMAIL,
             }],
         subject: 'Testing',
         text: '',
