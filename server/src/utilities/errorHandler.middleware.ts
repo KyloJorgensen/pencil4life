@@ -10,7 +10,7 @@ export default (router) => {
 			res.status(500).json('missing error');
 		}
 	});
-	router.use(function(error, req, res, next) {
+	router.use(function(error: Error, req, res, next) {
 		if (res.headerSent) {
 			return next(error);
 		}
@@ -38,14 +38,9 @@ export default (router) => {
 			return res.status(401).end();
 		}
 
-		if (error.name == 'ValidationError') {
-			console.log(error.errors);
-			return res.status(240).json(error);
-		}
-
 		if (error.name == 'BadRequestError') {
 			console.log(error);
-			return res.status(400).json(error);
+			return res.status(400).json(error.message);
 		}
 
 		res.status(500);

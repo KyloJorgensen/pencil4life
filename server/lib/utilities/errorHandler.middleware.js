@@ -34,13 +34,9 @@ exports.default = (function (router) {
             }));
             return res.status(401).end();
         }
-        if (error.name == 'ValidationError') {
-            console.log(error.errors);
-            return res.status(240).json(error);
-        }
         if (error.name == 'BadRequestError') {
             console.log(error);
-            return res.status(400).json(error);
+            return res.status(400).json(error.message);
         }
         res.status(500);
         console.log(error);
