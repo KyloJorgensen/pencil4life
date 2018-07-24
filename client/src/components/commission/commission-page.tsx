@@ -302,8 +302,8 @@ class CommissionPage extends React.Component<CommissionPageProps, CommissionPage
 		if (limit) {
 			displayMessage = (
 				<div>
-					<p>Now Accepting Commission Requests</p>
-					<p>Accepting {limit} more Commission(s).</p>
+					<p>Not accepting commission requests currently.</p>
+					<p>Accepting {limit} more Commission Request(s).</p>
 				</div>
 			);
 			acceptingRequests = true;
@@ -311,7 +311,7 @@ class CommissionPage extends React.Component<CommissionPageProps, CommissionPage
 		if (accepting) {
 			displayMessage = (
 				<div>
-					<p>Now Accepting Commission Requests</p>
+					<p>Not accepting commission requests currently.</p>
 				</div>
 			);
 			acceptingRequests = true;
@@ -322,16 +322,16 @@ class CommissionPage extends React.Component<CommissionPageProps, CommissionPage
 			if (start_date < new Date()) {
 				displayMessage = (
 					<div>
-						<p>Now accepting commission requests</p>
-						<p>Commissions will be accepted until {end}.</p>
+						<p>Now accepting commission requests.</p>
+						<p>Commission requests will be accepted until {end}.</p>
 					</div>
 				);
 				acceptingRequests = true;
 			} else {
 				displayMessage = (
 					<div>
-						<p>Not accepting commissions at this time.</p>
-						<p>Will be accepting commissions on {start} until {end}.</p>
+						<p>Not accepting commission requests currently.</p>
+						<p>Will be accepting commission requests on {start} until {end}.</p>
 					</div>
 				);
 			}
@@ -361,7 +361,7 @@ class CommissionPage extends React.Component<CommissionPageProps, CommissionPage
 		if (_commissionRequestId) {
 			commissionRequest = (
 				<div>
-					<p>Commission Request Submited</p>
+					<p>Commission Request Submitted</p>
 				</div>
 			);
 		}

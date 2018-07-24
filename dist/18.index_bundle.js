@@ -281,16 +281,16 @@ var CommissionPage = /** @class */ (function (_super) {
         var acceptingRequests = false;
         if (limit) {
             displayMessage = (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Now Accepting Commission Requests"),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Not accepting commission requests currently."),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null,
                     "Accepting ",
                     limit,
-                    " more Commission(s).")));
+                    " more Commission Request(s).")));
             acceptingRequests = true;
         }
         if (accepting) {
             displayMessage = (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Now Accepting Commission Requests")));
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Not accepting commission requests currently.")));
             acceptingRequests = true;
         }
         var start = moment__WEBPACK_IMPORTED_MODULE_3__(start_date).format("MMM Do YYYY [at] h:mm a ");
@@ -298,18 +298,18 @@ var CommissionPage = /** @class */ (function (_super) {
         if (end_date > new Date()) {
             if (start_date < new Date()) {
                 displayMessage = (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Now accepting commission requests"),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Now accepting commission requests."),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null,
-                        "Commissions will be accepted until ",
+                        "Commission requests will be accepted until ",
                         end,
                         ".")));
                 acceptingRequests = true;
             }
             else {
                 displayMessage = (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Not accepting commissions at this time."),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Not accepting commission requests currently."),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null,
-                        "Will be accepting commissions on ",
+                        "Will be accepting commission requests on ",
                         start,
                         " until ",
                         end,
@@ -338,7 +338,7 @@ var CommissionPage = /** @class */ (function (_super) {
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'submit', onClick: submitCommissionRequest, value: 'REQUEST' }))) : '';
         if (_commissionRequestId) {
             commissionRequest = (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Commission Request Submited")));
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Commission Request Submitted")));
         }
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "commission-page-wrapper" },
             !edit && admin ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { onClick: toggleEdit }, "EDIT")) : '',
