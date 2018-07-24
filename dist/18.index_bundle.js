@@ -149,9 +149,39 @@ var CommissionPage = /** @class */ (function (_super) {
             }
             return response.json();
         })
-            .then(function (toggle) {
-            _this.setState(function () {
-                return { _commissionRequestId: toggle.message.id };
+            .then(function (commissionRequestRes) {
+            var request = new Request('/api/commissions/toggle', {
+                method: 'GET',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+            });
+            fetch(request)
+                .then(function (response) {
+                if (response.status < 200 || response.status >= 300) {
+                    var error = new Error(response.statusText);
+                    error.message = String(response);
+                    throw error;
+                }
+                return response.json();
+            })
+                .then(function (toggle) {
+                _this.setState(function () {
+                    return {
+                        _commissionRequestId: commissionRequestRes.message.id,
+                        accepting: toggle.accepting,
+                        limit: toggle.limit,
+                        start_date: moment__WEBPACK_IMPORTED_MODULE_3__(toggle.start_date),
+                        end_date: moment__WEBPACK_IMPORTED_MODULE_3__(toggle.end_date),
+                        comment: toggle.comment,
+                        convertedComment: react_rte__WEBPACK_IMPORTED_MODULE_1___default.a.createValueFromString(toggle.comment, 'html')
+                    };
+                });
+            })
+                .catch(function (error) {
+                console.error(error);
             });
         })
             .catch(function (error) {
@@ -255,7 +285,7 @@ var CommissionPage = /** @class */ (function (_super) {
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null,
                     "Accepting ",
                     limit,
-                    " more Commissions.")));
+                    " more Commission(s).")));
             acceptingRequests = true;
         }
         if (accepting) {

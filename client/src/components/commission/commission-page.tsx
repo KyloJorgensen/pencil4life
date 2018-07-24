@@ -135,10 +135,40 @@ class CommissionPage extends React.Component<CommissionPageProps, CommissionPage
             }
             return response.json();
         })
-		.then((toggle) => {
-			this.setState(() => {
-				return {_commissionRequestId: toggle.message.id};
+		.then((commissionRequestRes) => {
+			const request = new Request('/api/commissions/toggle', {
+				method: 'GET',
+				credentials: 'same-origin',
+				headers: {
+					'Content-Type': 'application/json',
+					'Accept': 'application/json',
+				},
 			});
+			fetch(request)
+			.then((response) => {
+				if (response.status < 200 || response.status >= 300) {
+					const error = new Error(response.statusText);
+					error.message = String(response);
+					throw error;
+				}
+				return response.json();
+			})
+			.then((toggle: ICommissionsToggle) => {
+				this.setState(() => {
+					return {
+						_commissionRequestId: commissionRequestRes.message.id,
+						accepting: toggle.accepting,
+						limit: toggle.limit,
+						start_date: moment(toggle.start_date),
+						end_date: moment(toggle.end_date),
+						comment: toggle.comment,
+						convertedComment: RichTextEditor.createValueFromString(toggle.comment, 'html')
+					}
+				})
+			})
+			.catch((error) => {
+				console.error(error);
+			})
 		})
 		.catch((error) => {
 			this.setState(() => {
@@ -273,7 +303,7 @@ class CommissionPage extends React.Component<CommissionPageProps, CommissionPage
 			displayMessage = (
 				<div>
 					<p>Now Accepting Commission Requests</p>
-					<p>Accepting {limit} more Commissions.</p>
+					<p>Accepting {limit} more Commission(s).</p>
 				</div>
 			);
 			acceptingRequests = true;
