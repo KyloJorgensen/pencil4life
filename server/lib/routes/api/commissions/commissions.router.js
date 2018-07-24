@@ -7,6 +7,6 @@ var router = express_1.Router();
 router
     .get('/', commissions_controller_1.commissionsAloud)
     .post('/', commissions_controller_1.createCommissionRequest)
-    .get('/toggle', user_middleware_1.adminAuth, commissions_controller_1.getCommissionsToggle)
+    .get('/toggle', commissions_controller_1.getCommissionsToggle)
     .put('/toggle', user_middleware_1.adminAuth, commissions_controller_1.updateCommissionToggle);
 exports.default = router;

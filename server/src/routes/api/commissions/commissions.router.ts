@@ -9,7 +9,7 @@ const router = Router();
 router
 	.get('/', commissionsAloud)
 	.post('/', createCommissionRequest)
-	.get('/toggle', adminAuth, getCommissionsToggle)
+	.get('/toggle', getCommissionsToggle)
 	.put('/toggle', adminAuth, updateCommissionToggle)
 
 export default router;
