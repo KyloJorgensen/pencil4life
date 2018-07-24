@@ -151,7 +151,6 @@ exports.updateCommissionToggle = function (req, res, next) {
         error.name = 'BadRequestError';
         return next(error);
     }
-    console.log(changesCommissionToggle, req.body);
     commissions_model_1.CommissionsToggle.update({}, { $set: changesCommissionToggle }, { upsert: true, setDefaultsOnInsert: true })
         .then(function () {
         return commissions_model_1.CommissionsToggle.find();

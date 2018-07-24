@@ -170,8 +170,6 @@ export const updateCommissionToggle = (req: Request, res: Response, next: NextFu
         error.name = 'BadRequestError';
         return next(error);
     }
-    console.log(changesCommissionToggle, req.body)
-
     CommissionsToggle.update({}, {$set: changesCommissionToggle}, {upsert: true, setDefaultsOnInsert: true})
     .then(() => {
         return CommissionsToggle.find()

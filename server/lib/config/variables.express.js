@@ -21,7 +21,7 @@ exports.BT_MERCHANT_ID = process.env.BT_MERCHANT_ID || 'cvnqcc9z7srpfkcf';
 exports.BT_PUBLIC_KEY = process.env.BT_PUBLIC_KEY || 'k7x3r67pkqn4m59p';
 exports.BT_PRIVATE_KEY = process.env.BT_PRIVATE_KEY || 'e4614ba54f975cd132f2b52437b5fbe6';
 exports.NM_NOREPLY_EMAIL = process.env.NM_NOREPLY_EMAIL || 'noreply@pencil4life.com';
-exports.NM_COMMISSIONS_EMAIL = process.env.NM_COMMISSIONS_EMAIL || 'commissons@pencil4life.com';
+exports.NM_COMMISSIONS_EMAIL = process.env.NM_COMMISSIONS_EMAIL || 'commissions@pencil4life.com';
 exports.default = {
     NODE_ENV: exports.NODE_ENV,
     HTTP_PORT: exports.HTTP_PORT,
