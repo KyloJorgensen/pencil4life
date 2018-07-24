@@ -137,7 +137,7 @@ class CommissionPage extends React.Component<CommissionPageProps, CommissionPage
         })
 		.then((toggle) => {
 			this.setState(() => {
-				return {_commissionRequestId: toggle._id};
+				return {_commissionRequestId: toggle.message.id};
 			});
 		})
 		.catch((error) => {

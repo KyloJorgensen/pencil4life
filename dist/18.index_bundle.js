@@ -151,7 +151,7 @@ var CommissionPage = /** @class */ (function (_super) {
         })
             .then(function (toggle) {
             _this.setState(function () {
-                return { _commissionRequestId: toggle._id };
+                return { _commissionRequestId: toggle.message.id };
             });
         })
             .catch(function (error) {
