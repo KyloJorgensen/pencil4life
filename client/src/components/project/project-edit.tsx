@@ -4,7 +4,6 @@ import * as React from 'react';
 import RichTextEditor from 'react-rte';
 import {Redirect} from "react-router-dom";
 import * as Datetime from 'react-datetime';
-import * as moment from 'moment';
 import ImageNew from '../image/image-new';
 import ImageEdit from '../image/image-edit';
 import { IProjectContext, updateProjectParams, projectConsumer } from './project-provider';
@@ -187,7 +186,6 @@ class ProjectEdit extends React.Component<ProjectEditProps, ProjectEditState> im
 			return {
 				title: title,
 				year: year,
-				// year: moment(year),
 				details: RichTextEditor.createValueFromString(details, 'html'),
 				coverImage: {
 					_imageId: _imageId,

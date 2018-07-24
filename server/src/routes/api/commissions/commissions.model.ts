@@ -44,6 +44,7 @@ export interface ICommissionsToggle {
     limit: number;
     start_date: Date;
     end_date: Date;
+    comment: string;
 }
 
 export interface ICommissionsToggleModel extends ICommissionsToggle, Document {
@@ -65,6 +66,10 @@ const CommissionsToggleSchema = new Schema({
     end_date: {
         type: Date,
         default: new Date(),
+    },
+    comment: {
+        type: String,
+        default: '<div><br></div>',
     },
 });
 

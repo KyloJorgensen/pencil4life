@@ -38,5 +38,9 @@ var CommissionsToggleSchema = new mongoose_1.Schema({
         type: Date,
         default: new Date(),
     },
+    comment: {
+        type: String,
+        default: '<div><br></div>',
+    },
 });
 exports.CommissionsToggle = mongoose_1.model('CommissionsToggle', CommissionsToggleSchema);

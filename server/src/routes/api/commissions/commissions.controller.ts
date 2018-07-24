@@ -152,48 +152,31 @@ export const updateCommissionToggle = (req: Request, res: Response, next: NextFu
     if ('body' in req) {
         if ('accepting' in req.body) {
             changesCommissionToggle.accepting = req.body.accepting;
-        } else {
-            var error = new Error('missing accepting');
-            error.name = 'BadRequestError'
-            return next(error);
         }
         if ('limit' in req.body) {
-            changesCommissionToggle.limit = req.body.limit;
-        } else {
-            var error = new Error('missing limit');
-            error.name = 'BadRequestError'
-            return next(error);
+            changesCommissionToggle.limit = Number(req.body.limit);
         }
         if ('start_date' in req.body) {
             changesCommissionToggle.start_date = req.body.start_date;
-        } else {
-            var error = new Error('missing start_date');
-            error.name = 'BadRequestError'
-            return next(error);
         }
         if ('end_date' in req.body) {
             changesCommissionToggle.end_date = req.body.end_date;
-        } else {
-            var error = new Error('missing end_date');
-            error.name = 'BadRequestError'
-            return next(error);
         }
         if ('comment' in req.body) {
             changesCommissionToggle.comment = req.body.comment;
-        } else {
-            var error = new Error('missing comment');
-            error.name = 'BadRequestError'
-            return next(error);
         }
     } else {
         var error = new Error('missing body');
-        error.name = 'BadRequestError'
+        error.name = 'BadRequestError';
         return next(error);
     }
+    console.log(changesCommissionToggle, req.body)
 
-    CommissionsToggle.findOneAndUpdate({}, {$set: changesCommissionToggle}, {new: true, upsert: true, setDefaultsOnInsert: true})
-    .then((toggle) => {
-        res.send(toggle);
+    CommissionsToggle.update({}, {$set: changesCommissionToggle}, {upsert: true, setDefaultsOnInsert: true})
+    .then(() => {
+        return CommissionsToggle.find()
+    }).then((toggle) => {
+        res.send(toggle[0]);
     }).catch((error) => {
         next(error);
     });

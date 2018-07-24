@@ -4,6 +4,7 @@ import * as React from 'react';
 import RichTextEditor from 'react-rte';
 import { Link, Switch, Route, NavLink } from "react-router-dom";
 import * as moment from 'moment';
+import styled from 'styled-components';
 import { projectConsumer, IProjectContext } from './project-provider';
 import { IUserContext, userConsumer } from '../user/user-provider';
 import ImageTag from '../image/image-tag';
@@ -12,7 +13,6 @@ import { projectPageProvider } from './page/project-page-provider';
 import ProjectPage from './page/project-page';
 import ProjectPageNew from './page/project-page-new';
 import ProjectPageEdit from './page/project-page-edit';
-import styled from 'styled-components';
 
 const Wrapper = styled.div`
 	display: grid;

@@ -1345,7 +1345,6 @@ var ProjectEdit = /** @class */ (function (_super) {
             return {
                 title: title,
                 year: year,
-                // year: moment(year),
                 details: react_rte__WEBPACK_IMPORTED_MODULE_1___default.a.createValueFromString(details, 'html'),
                 coverImage: {
                     _imageId: _imageId,
@@ -2311,15 +2310,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _project_provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./project-provider */ "./client/src/components/project/project-provider.tsx");
-/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
-/* harmony import */ var _image_image_tag__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../image/image-tag */ "./client/src/components/image/image-tag.tsx");
-/* harmony import */ var _page_project_page_list__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./page/project-page-list */ "./client/src/components/project/page/project-page-list.tsx");
-/* harmony import */ var _page_project_page_provider__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./page/project-page-provider */ "./client/src/components/project/page/project-page-provider.tsx");
-/* harmony import */ var _page_project_page__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./page/project-page */ "./client/src/components/project/page/project-page.tsx");
-/* harmony import */ var _page_project_page_new__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./page/project-page-new */ "./client/src/components/project/page/project-page-new.tsx");
-/* harmony import */ var _page_project_page_edit__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./page/project-page-edit */ "./client/src/components/project/page/project-page-edit.tsx");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
+/* harmony import */ var _project_provider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./project-provider */ "./client/src/components/project/project-provider.tsx");
+/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
+/* harmony import */ var _image_image_tag__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../image/image-tag */ "./client/src/components/image/image-tag.tsx");
+/* harmony import */ var _page_project_page_list__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./page/project-page-list */ "./client/src/components/project/page/project-page-list.tsx");
+/* harmony import */ var _page_project_page_provider__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./page/project-page-provider */ "./client/src/components/project/page/project-page-provider.tsx");
+/* harmony import */ var _page_project_page__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./page/project-page */ "./client/src/components/project/page/project-page.tsx");
+/* harmony import */ var _page_project_page_new__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./page/project-page-new */ "./client/src/components/project/page/project-page-new.tsx");
+/* harmony import */ var _page_project_page_edit__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./page/project-page-edit */ "./client/src/components/project/page/project-page-edit.tsx");
 
 var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
@@ -2348,7 +2347,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
-var Wrapper = styled_components__WEBPACK_IMPORTED_MODULE_12__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tdisplay: grid;\n\tgrid-row-gap: 1em;\n\t> .title-year-wrapper {\n\t\tdisplay: flex;\n\t\tjustify-content: space-between;\n\t}\n\t> img {\n\t\tmax-width: 100%;\n\t\tmargin: 0 auto;\n\t}\n\n"], ["\n\tdisplay: grid;\n\tgrid-row-gap: 1em;\n\t> .title-year-wrapper {\n\t\tdisplay: flex;\n\t\tjustify-content: space-between;\n\t}\n\t> img {\n\t\tmax-width: 100%;\n\t\tmargin: 0 auto;\n\t}\n\n"])));
+var Wrapper = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tdisplay: grid;\n\tgrid-row-gap: 1em;\n\t> .title-year-wrapper {\n\t\tdisplay: flex;\n\t\tjustify-content: space-between;\n\t}\n\t> img {\n\t\tmax-width: 100%;\n\t\tmargin: 0 auto;\n\t}\n\n"], ["\n\tdisplay: grid;\n\tgrid-row-gap: 1em;\n\t> .title-year-wrapper {\n\t\tdisplay: flex;\n\t\tjustify-content: space-between;\n\t}\n\t> img {\n\t\tmax-width: 100%;\n\t\tmargin: 0 auto;\n\t}\n\n"])));
 var Project = /** @class */ (function (_super) {
     __extends(Project, _super);
     function Project(props) {
@@ -2375,7 +2374,7 @@ var Project = /** @class */ (function (_super) {
         var admin = this.props.user.admin;
         var discontinued = this.state.discontinued;
         var formatedYear = moment__WEBPACK_IMPORTED_MODULE_3__(year).format("YYYY");
-        var coverImageElem = _imageId ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_tag__WEBPACK_IMPORTED_MODULE_6__["default"], { _imageId: _imageId })) : '';
+        var coverImageElem = _imageId ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_tag__WEBPACK_IMPORTED_MODULE_7__["default"], { _imageId: _imageId })) : '';
         var convertedDetails = react_rte__WEBPACK_IMPORTED_MODULE_1___default.a.createValueFromString(details, 'html');
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Wrapper, { className: "project-wrapper" },
             admin ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "text-right" },
@@ -2390,17 +2389,17 @@ var Project = /** @class */ (function (_super) {
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: "/project/new/" + _projectId }, "NEW PAGE"),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Discontinued"),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'checkbox', checked: !!this.state.discontinued, name: "discontinued", onChange: this.handleCheckboxChange }))) : '',
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_page_project_page_list__WEBPACK_IMPORTED_MODULE_7__["default"], { discontinued: discontinued }),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_page_project_page_list__WEBPACK_IMPORTED_MODULE_8__["default"], { discontinued: discontinued }),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], { exact: true, path: "/project/new/:_projectId/", component: _page_project_page_new__WEBPACK_IMPORTED_MODULE_10__["default"] }),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], { exact: true, path: "/project/item/:_projectId/:_projectPageId", component: _page_project_page__WEBPACK_IMPORTED_MODULE_9__["default"] }),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], { exact: true, path: "/project/edit/:_projectId/:_projectPageId", component: _page_project_page_edit__WEBPACK_IMPORTED_MODULE_11__["default"] }))));
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], { exact: true, path: "/project/new/:_projectId/", component: _page_project_page_new__WEBPACK_IMPORTED_MODULE_11__["default"] }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], { exact: true, path: "/project/item/:_projectId/:_projectPageId", component: _page_project_page__WEBPACK_IMPORTED_MODULE_10__["default"] }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], { exact: true, path: "/project/edit/:_projectId/:_projectPageId", component: _page_project_page_edit__WEBPACK_IMPORTED_MODULE_12__["default"] }))));
     };
     return Project;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_5__["userConsumer"])(Object(_project_provider__WEBPACK_IMPORTED_MODULE_4__["projectConsumer"])(Object(_page_project_page_provider__WEBPACK_IMPORTED_MODULE_8__["projectPageProvider"])(Project))));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_6__["userConsumer"])(Object(_project_provider__WEBPACK_IMPORTED_MODULE_5__["projectConsumer"])(Object(_page_project_page_provider__WEBPACK_IMPORTED_MODULE_9__["projectPageProvider"])(Project))));
 var templateObject_1;
 
 
