@@ -1,12 +1,61 @@
 'use strict';
 
-import { join } from 'path';
 import { submitMessage } from '../../../utilities/wduckApi';
 import { NM_COMMISSIONS_EMAIL, NM_NOREPLY_EMAIL } from '../../../config/variables.express';
-import { Commissions } from './commissions.model';
+import { Commissions, CommissionsToggle, ICommissionsToggle } from './commissions.model';
+import { Response, Request, NextFunction } from 'express';
+
+// export const createCommissionsToggle = () => {
+//     return CommissionsToggle.create({})
+//     .then((newtoggle) => {
+//         return [newtoggle]
+//     }).catch((error) => {
+//         throw new Error(error);
+//     })
+// }
+
+// Checks if Commissions are being Accepted
+const checkIfCommissionsAloud = () => {
+    return CommissionsToggle.find()
+    .then((toggle) => {
+        if (toggle.length == 0) {
+            CommissionsToggle.create({}, (error, newtoggle) => {
+                if (error) throw new Error(error);
+                toggle = [newtoggle];
+            });
+        }
+        return toggle[0];
+    }).then((toggle: ICommissionsToggle) =>{
+        if (toggle.end_date > new Date()) {
+            if (toggle.start_date > new Date()) {
+                return false;
+            }
+            return true;
+        }
+        if (toggle.limit > 0) {
+            return true;
+        }       
+        if (toggle.accepting) {
+            return true;
+        } 
+        return false;
+    })
+}
+
+// On get return if commssions are aloud
+export const commissionsAloud = (req: Request, res: Response, next: NextFunction) => {
+    checkIfCommissionsAloud()
+    .then((toggle) => { 
+        res.send(toggle);
+    })
+    .catch((error) => {
+        next(error);
+    });
+}
+
 
 // Creates Commission request Item.
-export const createCommissionRequest = (req, res, next) => {
+export const createCommissionRequest = (req: Request, res: Response, next: NextFunction) => {
     let newCommissionRequest: {
         requestor?: string;
         email?: number;
@@ -40,47 +89,121 @@ export const createCommissionRequest = (req, res, next) => {
         return next(error);
     }
 
-    let query = Commissions.create(newCommissionRequest);
-    query.then((commissionRequest) => {
-
+    checkIfCommissionsAloud()
+    .then((toggle) => {
+        if (!toggle) {
+            res.status(400).send({
+                message: 'Not accepting Commissions'
+            });
+            
+            throw 'breakWithOutError';
+        }
+        return Commissions.create(newCommissionRequest)
+    })
+    .then((commissionRequest) => {
         let message = `<div>
             <p>Requestor: ${commissionRequest.requestor}</p>
-            <br>
             <p>Email: ${commissionRequest.email}</p>
-            <br>
             <p>Details:</p>
-            <br>
             <div>${commissionRequest.details}</div>
         </div>`;
-        return     submitMessage({
+        return submitMessage({
             from: {
-                name: 'Commissions',
+                name: 'Commissions Request',
                 address: NM_NOREPLY_EMAIL
             },
             to: [{
                 name: 'Commissions', 
                 address: NM_COMMISSIONS_EMAIL,
             }],
-            bcc: [{
-                name: 'Kylo', 
-                address: 'kylo@pencil4life.com'
-            }],
             subject: 'Commission Request',
             text: message.replace(/<\s*br[^>]?>/,'\n').replace(/(<([^>]+)>)/g, ""),
             html: message,
         })
     }).then(info => {
-        console.log(info);
-        res.send(info);
-        // res.status(200).json({_id: commissionRequest._id});    
-    }).catch(function(error) {
-        console.log(error)
+        CommissionsToggle.findOne()
+        .then((toggle) => {
+            if (toggle.limit) {
+                toggle.limit--;
+                toggle.markModified('limit');
+                toggle.save().catch((error) => {
+                    console.error(error);
+                });
+            }
+            res.send(info);
+        }).catch((error) => {
+            next(error);
+        });
+
+    }).catch((error) => {
+        if (error != 'breakWithOutError')
         next(error);
     });
-
-    
-
-
 }
 
-export default { createCommissionRequest };
+export const updateCommissionToggle = (req: Request, res: Response, next: NextFunction) => {
+    let changesCommissionToggle: {  
+        accepting?: boolean;
+        limit?: number;
+        start_date?: Date;
+        end_date?: Date;
+        comment?: String;
+    } = {};
+    if ('body' in req) {
+        if ('accepting' in req.body) {
+            changesCommissionToggle.accepting = req.body.accepting;
+        } else {
+            var error = new Error('missing accepting');
+            error.name = 'BadRequestError'
+            return next(error);
+        }
+        if ('limit' in req.body) {
+            changesCommissionToggle.limit = req.body.limit;
+        } else {
+            var error = new Error('missing limit');
+            error.name = 'BadRequestError'
+            return next(error);
+        }
+        if ('start_date' in req.body) {
+            changesCommissionToggle.start_date = req.body.start_date;
+        } else {
+            var error = new Error('missing start_date');
+            error.name = 'BadRequestError'
+            return next(error);
+        }
+        if ('end_date' in req.body) {
+            changesCommissionToggle.end_date = req.body.end_date;
+        } else {
+            var error = new Error('missing end_date');
+            error.name = 'BadRequestError'
+            return next(error);
+        }
+        if ('comment' in req.body) {
+            changesCommissionToggle.comment = req.body.comment;
+        } else {
+            var error = new Error('missing comment');
+            error.name = 'BadRequestError'
+            return next(error);
+        }
+    } else {
+        var error = new Error('missing body');
+        error.name = 'BadRequestError'
+        return next(error);
+    }
+
+    CommissionsToggle.findOneAndUpdate({}, {$set: changesCommissionToggle}, {new: true, upsert: true, setDefaultsOnInsert: true})
+    .then((toggle) => {
+        res.send(toggle);
+    }).catch((error) => {
+        next(error);
+    });
+}
+
+export const getCommissionsToggle = (req: Request, res: Response, next: NextFunction) => {
+    CommissionsToggle.findOne()
+    .then((toggle) => {
+        res.send(toggle);
+    }).catch((error) => {
+        next(error);
+    });
+};

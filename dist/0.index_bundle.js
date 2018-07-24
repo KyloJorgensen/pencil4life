@@ -1100,7 +1100,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 var Loading = function () { return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, "Loading..."); };
 var HomePage = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(18), __webpack_require__.e(25), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ./home/homepage */ "./client/src/components/home/homepage.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(13), __webpack_require__.e(25), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ./home/homepage */ "./client/src/components/home/homepage.tsx")); },
     loading: Loading,
 });
 var LoginPage = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
@@ -1112,15 +1112,15 @@ var SignupPage = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
     loading: Loading,
 });
 var EventSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(18), __webpack_require__.e(20), __webpack_require__.e(25), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./event/event-switch */ "./client/src/components/event/event-switch.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(13), __webpack_require__.e(20), __webpack_require__.e(25), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./event/event-switch */ "./client/src/components/event/event-switch.tsx")); },
     loading: Loading,
 });
 var NewsSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(18), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ./news/news-switch */ "./client/src/components/news/news-switch.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(13), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ./news/news-switch */ "./client/src/components/news/news-switch.tsx")); },
     loading: Loading,
 });
 var ProjectSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(18), __webpack_require__.e(19), __webpack_require__.e(20), __webpack_require__.e(22), __webpack_require__.e(24), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./project/project-switch */ "./client/src/components/project/project-switch.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(13), __webpack_require__.e(19), __webpack_require__.e(20), __webpack_require__.e(22), __webpack_require__.e(24), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./project/project-switch */ "./client/src/components/project/project-switch.tsx")); },
     loading: Loading,
 });
 var DoodlesSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
@@ -1140,7 +1140,7 @@ var ShopSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
     loading: Loading,
 });
 var CommissionSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return __webpack_require__.e(/*! import() */ 13).then(__webpack_require__.bind(null, /*! ./commission/commission-switch */ "./client/src/components/commission/commission-switch.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(13), __webpack_require__.e(26)]).then(__webpack_require__.bind(null, /*! ./commission/commission-switch */ "./client/src/components/commission/commission-switch.tsx")); },
     loading: Loading,
 });
 var InfoSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({

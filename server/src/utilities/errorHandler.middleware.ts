@@ -10,17 +10,16 @@ export default (router) => {
 			res.status(500).json('missing error');
 		}
 	});
-	router.use(function(error: Error, req, res, next) {
+	interface IError extends Error {
+		code: number;
+	}	
+	router.use(function(error: IError, req, res, next) {
+
 		if (res.headerSent) {
 			return next(error);
 		}
 
 		if (error.name == 'AuthenticationError') {
-			if ('user' in error) {
-				if (!error.user) {
-					return res.status(444).json(error.message);					
-				}
-			}
 			return res.status(401).json(error.message);
 		}
 

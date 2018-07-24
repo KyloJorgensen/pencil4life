@@ -1,7 +1,6 @@
 'use strict';
 
 import * as React from 'react';
-import RichTextEditor from 'react-rte';
 import { Link } from 'react-router-dom';
 import * as moment from 'moment';
 import * as objectPath from 'object-path';

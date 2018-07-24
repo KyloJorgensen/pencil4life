@@ -21,3 +21,22 @@ var CommissionsSchema = new mongoose_1.Schema({
 }, { timestamps: true });
 exports.Commissions = mongoose_1.model('Commissions', CommissionsSchema);
 exports.default = exports.Commissions;
+var CommissionsToggleSchema = new mongoose_1.Schema({
+    accepting: {
+        type: Boolean,
+        default: false,
+    },
+    limit: {
+        type: Number,
+        default: 0,
+    },
+    start_date: {
+        type: Date,
+        default: new Date(),
+    },
+    end_date: {
+        type: Date,
+        default: new Date(),
+    },
+});
+exports.CommissionsToggle = mongoose_1.model('CommissionsToggle', CommissionsToggleSchema);

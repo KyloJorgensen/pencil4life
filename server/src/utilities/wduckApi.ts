@@ -276,8 +276,7 @@ export const newUser = (username: string, newUserOptions: NewUserOptions) => {
   })
 };
 
-export const submitMessage = (submitMessageOptions: SubmitMessageOptions, callback?: (error: Error, info?: any ) => void) => {
-
+export const submitMessage = (submitMessageOptions: SubmitMessageOptions) => {
   const username = 'noreply';
   return getUserId(username)
   .then((userId: string | null) => {
@@ -288,18 +287,16 @@ export const submitMessage = (submitMessageOptions: SubmitMessageOptions, callba
         username: username,
         password: false,
         receivedMax: 0,
-      })
+      });
     }
   }).then((userId) => {
     return fetchFromWDuckApi(`/users/${userId}/submit`, {
       method: 'POST',
       body: JSON.stringify(submitMessageOptions),
-    })
+    });
   }).then((info) => {
     return info;
   })
-  
-
 };
 
 

@@ -1,11 +1,15 @@
 'use strict';
 
 import { Router } from 'express';
-import { createCommissionRequest } from './commissions.controller';
+import { createCommissionRequest, commissionsAloud, updateCommissionToggle, getCommissionsToggle } from './commissions.controller';
+import { adminAuth } from '../user/user.middleware'
 
 const router = Router();
 
 router
+	.get('/', commissionsAloud)
 	.post('/', createCommissionRequest)
+	.get('/toggle', adminAuth, getCommissionsToggle)
+	.put('/toggle', adminAuth, updateCommissionToggle)
 
 export default router;

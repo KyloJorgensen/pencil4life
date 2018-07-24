@@ -52,7 +52,7 @@ exports.newUser = function (username, newUserOptions) {
         }
     });
 };
-exports.submitMessage = function (submitMessageOptions, callback) {
+exports.submitMessage = function (submitMessageOptions) {
     var username = 'noreply';
     return exports.getUserId(username)
         .then(function (userId) {
