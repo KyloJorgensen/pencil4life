@@ -38,7 +38,7 @@ const FooterWrapper = styled.footer`
 		color: #454545;
 		font-size: 1em;
 		padding-top: 0;
-		padding-bottom: 0;
+		padding-bottom: 1em;
 		margin-bottom: 0;
 	}
 
