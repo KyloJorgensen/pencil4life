@@ -159,6 +159,10 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 	logout() {
 		this.props.user.logout();
 	}
+	
+	componentDidMount() {
+		this.props.user.getUser();
+	}
 
 	render() {
 		let user = []

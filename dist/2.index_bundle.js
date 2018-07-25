@@ -66,6 +66,9 @@ var Header = /** @class */ (function (_super) {
     Header.prototype.logout = function () {
         this.props.user.logout();
     };
+    Header.prototype.componentDidMount = function () {
+        this.props.user.getUser();
+    };
     Header.prototype.render = function () {
         var user = [];
         var selectedAdmin = ['/image'];
