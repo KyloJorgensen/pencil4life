@@ -8,7 +8,7 @@ const FooterBarWrapper = styled.div`
 	background-color: black;
 	position: sticky;
 	bottom: 0;
-	z-index: 10;
+	z-index: 9;
 
 	.footer-bar {
 		height: 2em;

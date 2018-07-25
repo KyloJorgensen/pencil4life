@@ -31,7 +31,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
-var FooterBarWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tbackground-color: black;\n\tposition: sticky;\n\tbottom: 0;\n\tz-index: 10;\n\n\t.footer-bar {\n\t\theight: 2em;\n\t}\n"], ["\n\tbackground-color: black;\n\tposition: sticky;\n\tbottom: 0;\n\tz-index: 10;\n\n\t.footer-bar {\n\t\theight: 2em;\n\t}\n"])));
+var FooterBarWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tbackground-color: black;\n\tposition: sticky;\n\tbottom: 0;\n\tz-index: 9;\n\n\t.footer-bar {\n\t\theight: 2em;\n\t}\n"], ["\n\tbackground-color: black;\n\tposition: sticky;\n\tbottom: 0;\n\tz-index: 9;\n\n\t.footer-bar {\n\t\theight: 2em;\n\t}\n"])));
 var FooterBar = /** @class */ (function (_super) {
     __extends(FooterBar, _super);
     function FooterBar(props) {
