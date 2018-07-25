@@ -311,7 +311,7 @@ class CommissionPage extends React.Component<CommissionPageProps, CommissionPage
 		if (accepting) {
 			displayMessage = (
 				<div>
-					<p>Not accepting commission requests currently.</p>
+					<p>Now accepting commission requests.</p>
 				</div>
 			);
 			acceptingRequests = true;

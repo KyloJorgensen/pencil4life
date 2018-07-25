@@ -290,7 +290,7 @@ var CommissionPage = /** @class */ (function (_super) {
         }
         if (accepting) {
             displayMessage = (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Not accepting commission requests currently.")));
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Now accepting commission requests.")));
             acceptingRequests = true;
         }
         var start = moment__WEBPACK_IMPORTED_MODULE_3__(start_date).format("MMM Do YYYY [at] h:mm a ");
