@@ -893,7 +893,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_loadable__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _no_match__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./no-match */ "./client/src/components/no-match.tsx");
 /* harmony import */ var _utilities_loading__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utilities/loading */ "./client/src/components/utilities/loading.tsx");
+/* harmony import */ var _node_modules_styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../node_modules/styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
 
+var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -908,6 +913,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 // import CommingSoon from './comming-soon';
+
 
 
 var Loading = function () { return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_loading__WEBPACK_IMPORTED_MODULE_4__["LoadingSpinner"], null); };
@@ -971,13 +977,14 @@ var ImageSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
     loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(22), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! ./image/image-switch */ "./client/src/components/image/image-switch.tsx")); },
     loading: Loading,
 });
+var RoutesWrapper = _node_modules_styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  padding-bottom: 3em;\n"], ["\n  padding-bottom: 3em;\n"])));
 var Routes = /** @class */ (function (_super) {
     __extends(Routes, _super);
     function Routes() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Routes.prototype.render = function () {
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
+        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](RoutesWrapper, null,
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Switch"], null,
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/", component: HomePage }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/event", component: EventSwitch }),
@@ -999,6 +1006,7 @@ var Routes = /** @class */ (function (_super) {
     return Routes;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 /* harmony default export */ __webpack_exports__["default"] = (Routes);
+var templateObject_1;
 
 
 /***/ }),

@@ -7,6 +7,7 @@ import * as Loadable from 'react-loadable';
 import NoMatch from './no-match';
 
 import { LoadingSpinner } from './utilities/loading';
+import styled from '../../../node_modules/styled-components';
 const Loading = () => <LoadingSpinner/>;
 
 const HomePage = Loadable({
@@ -84,10 +85,14 @@ const ImageSwitch = Loadable({
   loading: Loading,
 });
 
+const RoutesWrapper = styled.div`
+  padding-bottom: 3em;
+`;
+
 class Routes extends React.Component {
   render() {
     return (
-      <div>
+      <RoutesWrapper>
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/event" component={EventSwitch} />
@@ -106,7 +111,7 @@ class Routes extends React.Component {
             <Route path="/image" component={ImageSwitch} />
             <Route component={NoMatch}/>
           </Switch>
-      </div>
+      </RoutesWrapper>
     );
   }
 }
