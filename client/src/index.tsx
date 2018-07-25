@@ -3,7 +3,8 @@ import { render } from 'react-dom';
 // import App from './components/app';
 
 import * as Loadable from 'react-loadable';
-const Loading = () => <div>Loading...</div>;
+import { LoadingSpinner } from './components/utilities/loading';
+const Loading = () => <LoadingSpinner/>;
 
 const App = Loadable({
   loader: () => import('./components/app'),

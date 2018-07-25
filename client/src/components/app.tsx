@@ -13,11 +13,12 @@ import Routes from './routes';
 import { NewsWrapper } from './news/news-provider';
 import styled from 'styled-components';
 
-const Loading = () => <div>Loading...</div>;
+import { LoadingSpinner } from './utilities/loading';
+const Loading = () => <LoadingSpinner/>;
 
 const Logo = Loadable({
   loader: () => import('./header/logo'),
-  loading: Loading,
+loading: Loading,
 });
 
 const Header = Loadable({

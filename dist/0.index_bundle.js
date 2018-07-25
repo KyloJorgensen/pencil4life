@@ -21,6 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./routes */ "./client/src/components/routes.tsx");
 /* harmony import */ var _news_news_provider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./news/news-provider */ "./client/src/components/news/news-provider.tsx");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
+/* harmony import */ var _utilities_loading__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./utilities/loading */ "./client/src/components/utilities/loading.tsx");
 
 var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
@@ -48,7 +49,8 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
-var Loading = function () { return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, "Loading..."); };
+
+var Loading = function () { return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_loading__WEBPACK_IMPORTED_MODULE_9__["LoadingSpinner"], null); };
 var Logo = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
     loader: function () { return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ./header/logo */ "./client/src/components/header/logo.tsx")); },
     loading: Loading,
@@ -890,6 +892,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-loadable */ "./node_modules/react-loadable/lib/index.js");
 /* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_loadable__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _no_match__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./no-match */ "./client/src/components/no-match.tsx");
+/* harmony import */ var _utilities_loading__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utilities/loading */ "./client/src/components/utilities/loading.tsx");
 
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -906,7 +909,8 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 // import CommingSoon from './comming-soon';
 
-var Loading = function () { return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, "Loading..."); };
+
+var Loading = function () { return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_loading__WEBPACK_IMPORTED_MODULE_4__["LoadingSpinner"], null); };
 var HomePage = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
     loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(18), __webpack_require__.e(25), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ./home/homepage */ "./client/src/components/home/homepage.tsx")); },
     loading: Loading,

@@ -6,7 +6,8 @@ import * as Loadable from 'react-loadable';
 // import CommingSoon from './comming-soon';
 import NoMatch from './no-match';
 
-const Loading = () => <div>Loading...</div>;
+import { LoadingSpinner } from './utilities/loading';
+const Loading = () => <LoadingSpinner/>;
 
 const HomePage = Loadable({
   loader: () => import('./home/homepage'),
