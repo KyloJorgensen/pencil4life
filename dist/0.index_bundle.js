@@ -52,19 +52,19 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 var Loading = function () { return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_loading__WEBPACK_IMPORTED_MODULE_9__["LoadingSpinner"], null); };
 var Logo = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ./header/logo */ "./client/src/components/header/logo.tsx")); },
+    loader: function () { return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ./header/logo */ "./client/src/components/header/logo.tsx")); },
     loading: Loading,
 });
 var Header = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(19), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ./header/header */ "./client/src/components/header/header.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./header/header */ "./client/src/components/header/header.tsx")); },
     loading: Loading,
 });
 var Footer = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(19), __webpack_require__.e(23), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./footer/footer */ "./client/src/components/footer/footer.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(23), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ./footer/footer */ "./client/src/components/footer/footer.tsx")); },
     loading: Loading,
 });
 var FooterBar = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(19), __webpack_require__.e(23), __webpack_require__.e(26)]).then(__webpack_require__.bind(null, /*! ./footer/footer-bar */ "./client/src/components/footer/footer-bar.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(23), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ./footer/footer-bar */ "./client/src/components/footer/footer-bar.tsx")); },
     loading: Loading,
 });
 var PageLayout = styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  height: 100%;\n  width: 100%;\n  display: grid;\n  grid-template-rows: auto auto 1fr;\n"], ["\n  height: 100%;\n  width: 100%;\n  display: grid;\n  grid-template-rows: auto auto 1fr;\n"])));
@@ -918,63 +918,63 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 var Loading = function () { return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_loading__WEBPACK_IMPORTED_MODULE_4__["LoadingSpinner"], null); };
 var HomePage = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(18), __webpack_require__.e(25), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ./home/homepage */ "./client/src/components/home/homepage.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(20), __webpack_require__.e(26), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ./home/homepage */ "./client/src/components/home/homepage.tsx")); },
     loading: Loading,
 });
 var LoginPage = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ./login/login-page */ "./client/src/components/login/login-page.tsx")); },
+    loader: function () { return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ./login/login-page */ "./client/src/components/login/login-page.tsx")); },
     loading: Loading,
 });
 var SignupPage = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ./signup/signup-page */ "./client/src/components/signup/signup-page.tsx")); },
+    loader: function () { return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ./signup/signup-page */ "./client/src/components/signup/signup-page.tsx")); },
     loading: Loading,
 });
 var EventSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(18), __webpack_require__.e(20), __webpack_require__.e(25), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./event/event-switch */ "./client/src/components/event/event-switch.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(20), __webpack_require__.e(22), __webpack_require__.e(26), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./event/event-switch */ "./client/src/components/event/event-switch.tsx")); },
     loading: Loading,
 });
 var NewsSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(18), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ./news/news-switch */ "./client/src/components/news/news-switch.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(20), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ./news/news-switch */ "./client/src/components/news/news-switch.tsx")); },
     loading: Loading,
 });
 var ProjectSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(18), __webpack_require__.e(19), __webpack_require__.e(20), __webpack_require__.e(22), __webpack_require__.e(24)]).then(__webpack_require__.bind(null, /*! ./project/project-switch */ "./client/src/components/project/project-switch.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(20), __webpack_require__.e(21), __webpack_require__.e(22), __webpack_require__.e(25), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./project/project-switch */ "./client/src/components/project/project-switch.tsx")); },
     loading: Loading,
 });
 var DoodlesSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! ./doodles/doodles-switch */ "./client/src/components/doodles/doodles-switch.tsx")); },
+    loader: function () { return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ./doodles/doodles-switch */ "./client/src/components/doodles/doodles-switch.tsx")); },
     loading: Loading,
 });
 var ComicsSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return __webpack_require__.e(/*! import() */ 10).then(__webpack_require__.bind(null, /*! ./comics/comics-switch */ "./client/src/components/comics/comics-switch.tsx")); },
+    loader: function () { return __webpack_require__.e(/*! import() */ 12).then(__webpack_require__.bind(null, /*! ./comics/comics-switch */ "./client/src/components/comics/comics-switch.tsx")); },
     loading: Loading,
 });
 var SoundboardSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ./soundboard/soundboard-switch */ "./client/src/components/soundboard/soundboard-switch.tsx")); },
+    loader: function () { return __webpack_require__.e(/*! import() */ 13).then(__webpack_require__.bind(null, /*! ./soundboard/soundboard-switch */ "./client/src/components/soundboard/soundboard-switch.tsx")); },
     loading: Loading,
 });
 var ShopSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return __webpack_require__.e(/*! import() */ 12).then(__webpack_require__.bind(null, /*! ./shop/shop-switch */ "./client/src/components/shop/shop-switch.tsx")); },
+    loader: function () { return __webpack_require__.e(/*! import() */ 14).then(__webpack_require__.bind(null, /*! ./shop/shop-switch */ "./client/src/components/shop/shop-switch.tsx")); },
     loading: Loading,
 });
 var CommissionSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(18), __webpack_require__.e(20), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! ./commission/commission-switch */ "./client/src/components/commission/commission-switch.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(20), __webpack_require__.e(22), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! ./commission/commission-switch */ "./client/src/components/commission/commission-switch.tsx")); },
     loading: Loading,
 });
 var InfoSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return __webpack_require__.e(/*! import() */ 14).then(__webpack_require__.bind(null, /*! ./info/info-switch */ "./client/src/components/info/info-switch.tsx")); },
+    loader: function () { return __webpack_require__.e(/*! import() */ 16).then(__webpack_require__.bind(null, /*! ./info/info-switch */ "./client/src/components/info/info-switch.tsx")); },
     loading: Loading,
 });
 var ContactSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return __webpack_require__.e(/*! import() */ 15).then(__webpack_require__.bind(null, /*! ./contact/contact-switch */ "./client/src/components/contact/contact-switch.tsx")); },
+    loader: function () { return __webpack_require__.e(/*! import() */ 17).then(__webpack_require__.bind(null, /*! ./contact/contact-switch */ "./client/src/components/contact/contact-switch.tsx")); },
     loading: Loading,
 });
 var ProfilePage = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return __webpack_require__.e(/*! import() */ 16).then(__webpack_require__.bind(null, /*! ./profile/profile-switch */ "./client/src/components/profile/profile-switch.tsx")); },
+    loader: function () { return __webpack_require__.e(/*! import() */ 18).then(__webpack_require__.bind(null, /*! ./profile/profile-switch */ "./client/src/components/profile/profile-switch.tsx")); },
     loading: Loading,
 });
 var ImageSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(22), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! ./image/image-switch */ "./client/src/components/image/image-switch.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(25), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! ./image/image-switch */ "./client/src/components/image/image-switch.tsx")); },
     loading: Loading,
 });
 var RoutesWrapper = _node_modules_styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  padding-bottom: 3em;\n"], ["\n  padding-bottom: 3em;\n"])));

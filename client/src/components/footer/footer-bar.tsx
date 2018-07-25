@@ -8,10 +8,12 @@ const FooterBarWrapper = styled.div`
 	background-color: black;
 	position: sticky;
 	bottom: 0;
-	z-index: 9;
+	z-index: 49;
 
 	.footer-bar {
+		background-color: black;
 		height: 2em;
+		transform: translate(0, 1px);
 	}
 `;
 
