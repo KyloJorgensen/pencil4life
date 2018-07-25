@@ -18,11 +18,11 @@ fontawesome.library.add(faCheckSquare, faSignInAlt, faSignOutAlt, faUserAlt);
 const HeaderWrapper = styled.header`
 	margin: 0 0 20px 0;
 	color: white;
-
 	
 	@media (min-width: 768px) {
 		position: sticky;
 		top: 0;
+		z-index: 9999;
 	}
 
 	.dropdown-toggle::after {
@@ -84,10 +84,6 @@ const HeaderWrapper = styled.header`
 	}
 
 	.nav-wrapper {
-		top: 0;
-		right: 0;
-		left: 0;
-		z-index: 9999; 
 		nav {
 			display: flex;
 			flex-wrap: wrap;

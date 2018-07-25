@@ -1,7 +1,6 @@
 'use strict';
 
 import * as React from 'react';
-import './event-listener.less';
 import styled from 'styled-components';
 
 export type IEventType = 'click' | 'scroll' | 'resize';
@@ -49,26 +48,8 @@ const EventListenerProviderWrapper = styled.div`
   width: 100%;
   > div {
     display: grid;
-    grid-template-rows: auto 1fr auto;
-    overflow: auto;
+    grid-template-rows: auto auto 1fr;
     height: 100%;
-    width: 100%;
-    
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #f1f1f1; 
-    }
-    
-    ::-webkit-scrollbar-thumb {
-      background: #888; 
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #555; 
-    }
   }
 `;
 
