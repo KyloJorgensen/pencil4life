@@ -281,7 +281,7 @@ var CommissionPage = /** @class */ (function (_super) {
         var acceptingRequests = false;
         if (limit) {
             displayMessage = (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Not accepting commission requests currently."),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Now accepting commission requests."),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null,
                     "Accepting ",
                     limit,

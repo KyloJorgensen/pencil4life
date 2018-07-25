@@ -302,7 +302,7 @@ class CommissionPage extends React.Component<CommissionPageProps, CommissionPage
 		if (limit) {
 			displayMessage = (
 				<div>
-					<p>Not accepting commission requests currently.</p>
+					<p>Now accepting commission requests.</p>
 					<p>Accepting {limit} more Commission Request(s).</p>
 				</div>
 			);
