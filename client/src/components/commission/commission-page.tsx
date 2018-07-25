@@ -348,7 +348,7 @@ class CommissionPage extends React.Component<CommissionPageProps, CommissionPage
 				<br/>
 				<label>Email{required ? (<span className="errortext" >*</span>) : ''}</label>
 				<br/>
-				<input type='text' onKeyPress={hitKey} placeholder="Joe Smith" ref={emailRef} />
+				<input type='text' onKeyPress={hitKey} placeholder="jsmith@example.com" ref={emailRef} />
 				<br/>
 				<label>Details</label>
 				<br/>

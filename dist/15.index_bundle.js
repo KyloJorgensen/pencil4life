@@ -329,7 +329,7 @@ var CommissionPage = /** @class */ (function (_super) {
                 "Email",
                 required ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "errortext" }, "*")) : ''),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'text', onKeyPress: hitKey, placeholder: "Joe Smith", ref: emailRef }),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'text', onKeyPress: hitKey, placeholder: "jsmith@example.com", ref: emailRef }),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Details"),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
