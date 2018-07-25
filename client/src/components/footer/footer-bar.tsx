@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import styled from 'styled-components';
-import { eventListenerConsumer, IEventListenerContext } from '../event-listener/event-listener';
 import Footer from './footer';
 
 const FooterBarWrapper = styled.div`
@@ -29,7 +28,7 @@ export interface FooterBarMethods {
 	handleMouseMove: () => void;
 }
 
-class FooterBar extends React.Component<IEventListenerContext, FooterBarState, FooterBarMethods> {
+class FooterBar extends React.Component<null, FooterBarState, FooterBarMethods> {
     constructor(props) {
         super(props);
         this.state = {
@@ -96,4 +95,4 @@ class FooterBar extends React.Component<IEventListenerContext, FooterBarState, F
 	}
 };
 
-export default eventListenerConsumer(FooterBar);
+export default FooterBar;

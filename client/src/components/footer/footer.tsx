@@ -5,7 +5,6 @@ import fontawesome from '@fortawesome/fontawesome';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import brands from '@fortawesome/fontawesome-free-brands';
 import styled from 'styled-components';
-import { eventListenerConsumer, IEventListenerContext } from '../event-listener/event-listener';
 
 fontawesome.library.add(brands);
 
@@ -69,4 +68,4 @@ class Footer extends React.Component<null> {
 	}
 };
 
-export default eventListenerConsumer(Footer);
+export default Footer;

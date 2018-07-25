@@ -14,14 +14,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-loadable */ "./node_modules/react-loadable/lib/index.js");
 /* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_loadable__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _event_listener_event_listener__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./event-listener/event-listener */ "./client/src/components/event-listener/event-listener.tsx");
-/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./user/user-provider */ "./client/src/components/user/user-provider.tsx");
-/* harmony import */ var _image_image_provider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./image/image-provider */ "./client/src/components/image/image-provider.tsx");
-/* harmony import */ var _css_index_less__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../css/index.less */ "./client/src/css/index.less");
-/* harmony import */ var _css_index_less__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_css_index_less__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./routes */ "./client/src/components/routes.tsx");
-/* harmony import */ var _news_news_provider__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./news/news-provider */ "./client/src/components/news/news-provider.tsx");
+/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./user/user-provider */ "./client/src/components/user/user-provider.tsx");
+/* harmony import */ var _image_image_provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./image/image-provider */ "./client/src/components/image/image-provider.tsx");
+/* harmony import */ var _css_index_less__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../css/index.less */ "./client/src/css/index.less");
+/* harmony import */ var _css_index_less__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_css_index_less__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./routes */ "./client/src/components/routes.tsx");
+/* harmony import */ var _news_news_provider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./news/news-provider */ "./client/src/components/news/news-provider.tsx");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
 
+var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -35,11 +39,12 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
-
+// import EventListener from './event-listener/event-listener';
 
 
 // import Header from './header/header';
 // import Footer from './footer/footer';
+
 
 
 
@@ -60,210 +65,27 @@ var FooterBar = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
     loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(19), __webpack_require__.e(23), __webpack_require__.e(26)]).then(__webpack_require__.bind(null, /*! ./footer/footer-bar */ "./client/src/components/footer/footer-bar.tsx")); },
     loading: Loading,
 });
+var PageLayout = styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  height: 100%;\n  width: 100%;\n  > div {\n    display: grid;\n    grid-template-rows: auto auto 1fr;\n    height: 100%;\n  }\n"], ["\n  height: 100%;\n  width: 100%;\n  > div {\n    display: grid;\n    grid-template-rows: auto auto 1fr;\n    height: 100%;\n  }\n"])));
 var App = /** @class */ (function (_super) {
     __extends(App, _super);
     function App() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     App.prototype.render = function () {
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_news_news_provider__WEBPACK_IMPORTED_MODULE_8__["NewsWrapper"], null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_user_user_provider__WEBPACK_IMPORTED_MODULE_4__["default"], null,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_provider__WEBPACK_IMPORTED_MODULE_5__["default"], null,
+        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_news_news_provider__WEBPACK_IMPORTED_MODULE_7__["NewsWrapper"], null,
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_user_user_provider__WEBPACK_IMPORTED_MODULE_3__["default"], null,
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_provider__WEBPACK_IMPORTED_MODULE_4__["default"], null,
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["HashRouter"], null,
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_event_listener_event_listener__WEBPACK_IMPORTED_MODULE_3__["default"], null,
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](PageLayout, null,
                             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Logo, null),
                             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Header, null),
-                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_routes__WEBPACK_IMPORTED_MODULE_7__["default"], null),
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_routes__WEBPACK_IMPORTED_MODULE_6__["default"], null),
                             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Footer, null),
                             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](FooterBar, null)))))));
     };
     return App;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 /* harmony default export */ __webpack_exports__["default"] = (App);
-
-
-/***/ }),
-
-/***/ "./client/src/components/event-listener/event-listener.tsx":
-/*!*****************************************************************!*\
-  !*** ./client/src/components/event-listener/event-listener.tsx ***!
-  \*****************************************************************/
-/*! exports provided: EventListenerContext, EventListenerWrapper, default, eventListenerProvider, eventListenerConsumer */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventListenerContext", function() { return EventListenerContext; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventListenerWrapper", function() { return EventListenerWrapper; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "eventListenerProvider", function() { return eventListenerProvider; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "eventListenerConsumer", function() { return eventListenerConsumer; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
-
-var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-};
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (undefined && undefined.__assign) || Object.assign || function(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-            t[p] = s[p];
-    }
-    return t;
-};
-
-
-var Context = {
-    addEventListener: function (eventType, eventHandler) {
-        console.error('Error: Cannot addEventListener no EventListenerContext.Provider element in parents');
-        return false;
-    },
-    removeEventListener: function (eventType, eventHandler) {
-        console.error('Error: Cannot removeEventListener no EventListenerContext.Provider element in parents');
-        return false;
-    },
-};
-var EventListenerContext = react__WEBPACK_IMPORTED_MODULE_0__["createContext"](Context);
-var EventListenerProviderWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  height: 100%;\n  width: 100%;\n  > div {\n    display: grid;\n    grid-template-rows: auto auto 1fr;\n    height: 100%;\n  }\n"], ["\n  height: 100%;\n  width: 100%;\n  > div {\n    display: grid;\n    grid-template-rows: auto auto 1fr;\n    height: 100%;\n  }\n"])));
-var EventListenerWrapper = /** @class */ (function (_super) {
-    __extends(EventListenerWrapper, _super);
-    function EventListenerWrapper(props) {
-        var _this = _super.call(this, props) || this;
-        _this.eventRef = react__WEBPACK_IMPORTED_MODULE_0__["createRef"]();
-        _this.state = {
-            vaildEventTypes: [
-                'click',
-                'scroll',
-                'resize'
-            ],
-            eventListeners: [],
-        };
-        _this.handleClick = _this.handleClick.bind(_this);
-        _this.handleScroll = _this.handleScroll.bind(_this);
-        _this.handleResize = _this.handleResize.bind(_this);
-        _this.addEventListener = _this.addEventListener.bind(_this);
-        _this.removeEventListener = _this.removeEventListener.bind(_this);
-        return _this;
-    }
-    EventListenerWrapper.prototype.handleClick = function (event) {
-        var _this = this;
-        this.state.eventListeners.filter(function (listener) { return listener.eventType == 'click'; }).forEach(function (listener) { return listener.eventHandler(event, _this.eventRef); });
-    };
-    ;
-    EventListenerWrapper.prototype.handleScroll = function (event) {
-        var _this = this;
-        this.state.eventListeners.filter(function (listener) { return listener.eventType == 'scroll'; }).forEach(function (listener) { return listener.eventHandler(event, _this.eventRef); });
-    };
-    EventListenerWrapper.prototype.handleResize = function (event) {
-        var _this = this;
-        this.state.eventListeners.filter(function (listener) { return listener.eventType == 'resize'; }).forEach(function (listener) { return listener.eventHandler(event, _this.eventRef); });
-    };
-    EventListenerWrapper.prototype.componentDidMount = function () {
-        window.addEventListener('resize', this.handleResize);
-    };
-    EventListenerWrapper.prototype.componentWillUnmount = function () {
-        window.removeEventListener('resize', this.handleResize);
-    };
-    EventListenerWrapper.prototype.addEventListener = function (eventType, eventHandler) {
-        var added = true;
-        this.setState(function (prevState) {
-            var eventListeners = prevState.eventListeners, vaildEventTypes = prevState.vaildEventTypes;
-            if (!vaildEventTypes.includes(eventType)) {
-                added = false;
-            }
-            var index = eventListeners.findIndex(function (listener) {
-                if ((listener.eventHandler === eventHandler) && (listener.eventType == eventType)) {
-                    return true;
-                }
-                return false;
-            });
-            if (index != -1) {
-                added = false;
-            }
-            if (added) {
-                eventListeners.push({
-                    eventType: eventType,
-                    eventHandler: eventHandler
-                });
-            }
-            return { eventListeners: eventListeners };
-        });
-        return added;
-    };
-    EventListenerWrapper.prototype.removeEventListener = function (eventType, eventHandler) {
-        var deleted = true;
-        this.setState(function (prevState, props) {
-            var eventListeners = prevState.eventListeners, vaildEventTypes = prevState.vaildEventTypes;
-            if (!vaildEventTypes.includes(eventType)) {
-                deleted = false;
-            }
-            var index = eventListeners.findIndex(function (listener) { return listener.eventHandler === eventHandler; });
-            if (index != -1) {
-                deleted = false;
-            }
-            if (deleted) {
-                eventListeners.splice(index, 1);
-            }
-            return { eventListeners: eventListeners };
-        });
-        return deleted;
-    };
-    EventListenerWrapper.prototype.render = function () {
-        var _a = this, addEventListener = _a.addEventListener, removeEventListener = _a.removeEventListener, handleClick = _a.handleClick, handleScroll = _a.handleScroll, handleResize = _a.handleResize;
-        var context = {
-            addEventListener: addEventListener,
-            removeEventListener: removeEventListener,
-        };
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](EventListenerContext.Provider, { value: context },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](EventListenerProviderWrapper, null,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { ref: this.eventRef, onClick: handleClick, onScroll: handleScroll }, this.props.children))));
-    };
-    return EventListenerWrapper;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
-
-/* harmony default export */ __webpack_exports__["default"] = (EventListenerWrapper);
-var eventListenerProvider = function (Component) {
-    var EventListenerProvider = /** @class */ (function (_super) {
-        __extends(EventListenerProvider, _super);
-        function EventListenerProvider() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        EventListenerProvider.prototype.render = function () {
-            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](EventListenerWrapper, null,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Component, __assign({}, this.props))));
-        };
-        return EventListenerProvider;
-    }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
-    return EventListenerProvider;
-};
-var eventListenerConsumer = function (Component) {
-    var EventListenerConsumer = /** @class */ (function (_super) {
-        __extends(EventListenerConsumer, _super);
-        function EventListenerConsumer() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        EventListenerConsumer.prototype.render = function () {
-            var _this = this;
-            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](EventListenerContext.Consumer, null, function (context) {
-                return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Component, __assign({}, _this.props, context)));
-            }));
-        };
-        return EventListenerConsumer;
-    }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
-    return EventListenerConsumer;
-};
 var templateObject_1;
 
 

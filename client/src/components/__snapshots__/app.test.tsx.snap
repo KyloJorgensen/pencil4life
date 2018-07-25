@@ -43,13 +43,13 @@ ShallowWrapper {
           }
         >
           <HashRouter>
-            <EventListenerWrapper>
+            <styled.div>
               <LoadableComponent />
               <LoadableComponent />
               <Routes />
               <LoadableComponent />
               <LoadableComponent />
-            </EventListenerWrapper>
+            </styled.div>
           </HashRouter>
         </ImageWrapper>
       </UserWrapper>,
@@ -83,13 +83,13 @@ ShallowWrapper {
           }
         >
           <HashRouter>
-            <EventListenerWrapper>
+            <styled.div>
               <LoadableComponent />
               <LoadableComponent />
               <Routes />
               <LoadableComponent />
               <LoadableComponent />
-            </EventListenerWrapper>
+            </styled.div>
           </HashRouter>
         </ImageWrapper>,
         "initialState": Object {
@@ -108,13 +108,13 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": <HashRouter>
-            <EventListenerWrapper>
+            <styled.div>
               <LoadableComponent />
               <LoadableComponent />
               <Routes />
               <LoadableComponent />
               <LoadableComponent />
-            </EventListenerWrapper>
+            </styled.div>
           </HashRouter>,
           "initialState": Object {
             "imageList": Object {},
@@ -132,13 +132,13 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": <EventListenerWrapper>
+            "children": <styled.div>
               <LoadableComponent />
               <LoadableComponent />
               <Routes />
               <LoadableComponent />
               <LoadableComponent />
-            </EventListenerWrapper>,
+            </styled.div>,
           },
           "ref": null,
           "rendered": Object {
@@ -244,13 +244,13 @@ ShallowWrapper {
             }
           >
             <HashRouter>
-              <EventListenerWrapper>
+              <styled.div>
                 <LoadableComponent />
                 <LoadableComponent />
                 <Routes />
                 <LoadableComponent />
                 <LoadableComponent />
-              </EventListenerWrapper>
+              </styled.div>
             </HashRouter>
           </ImageWrapper>
         </UserWrapper>,
@@ -284,13 +284,13 @@ ShallowWrapper {
             }
           >
             <HashRouter>
-              <EventListenerWrapper>
+              <styled.div>
                 <LoadableComponent />
                 <LoadableComponent />
                 <Routes />
                 <LoadableComponent />
                 <LoadableComponent />
-              </EventListenerWrapper>
+              </styled.div>
             </HashRouter>
           </ImageWrapper>,
           "initialState": Object {
@@ -309,13 +309,13 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": <HashRouter>
-              <EventListenerWrapper>
+              <styled.div>
                 <LoadableComponent />
                 <LoadableComponent />
                 <Routes />
                 <LoadableComponent />
                 <LoadableComponent />
-              </EventListenerWrapper>
+              </styled.div>
             </HashRouter>,
             "initialState": Object {
               "imageList": Object {},
@@ -333,13 +333,13 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <EventListenerWrapper>
+              "children": <styled.div>
                 <LoadableComponent />
                 <LoadableComponent />
                 <Routes />
                 <LoadableComponent />
                 <LoadableComponent />
-              </EventListenerWrapper>,
+              </styled.div>,
             },
             "ref": null,
             "rendered": Object {

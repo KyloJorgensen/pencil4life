@@ -9,7 +9,6 @@ import * as faSignInAlt from '@fortawesome/fontawesome-free-solid/faSignInAlt';
 import * as faSignOutAlt from '@fortawesome/fontawesome-free-solid/faSignOutAlt';
 import * as faUserAlt from '@fortawesome/fontawesome-free-solid/faUserAlt';
 import styled, { defaultTheme } from '../utilities/styled.components';
-import { eventListenerConsumer, IEventListenerContext } from '../event-listener/event-listener';
 import Dropdown from '../utilities/dropdown';
 import { userConsumer, IUserContext } from '../user/user-provider';
 
@@ -139,7 +138,7 @@ const HeaderWrapper = styled.header`
 	}
 `;
 
-export interface IHeaderProps extends IEventListenerContext {
+export interface IHeaderProps {
 	location: Location;
 	user: IUserContext;
 }
@@ -241,4 +240,4 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 	}
 };
 
-export default userConsumer(eventListenerConsumer(withRouter(Header)));
+export default userConsumer(withRouter(Header));

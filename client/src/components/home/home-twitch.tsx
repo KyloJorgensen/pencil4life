@@ -1,25 +1,8 @@
 'use strict';
 
-// width: 100%;
-//     display: grid;
-//     /* height: 400px; */
-//     height: 100%;
-//     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-//     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-
-
-// grid-column-start: 1;
-// grid-column-end: -1;
-// grid-row-start: 1;
-// grid-row-end: -1;
-// width: 100%;
-// height: 100%;
-
-
 import * as React from 'react';
-import { eventListenerConsumer, IEventListenerContext } from '../event-listener/event-listener';
 
-export interface TwitchIframeProps extends IEventListenerContext {
+export interface TwitchIframeProps {
 }
 
 export interface TwitchIframeState {
@@ -42,11 +25,11 @@ class TwitchIframe extends React.Component<TwitchIframeProps, TwitchIframeState,
     }
 
 	componentDidMount() {
-		this.props.addEventListener('resize', this.twitchIframeLoaded);
+		window.addEventListener('resize', this.twitchIframeLoaded);
 	}
 
 	componentWillMount() {
-		this.props.removeEventListener('resize', this.twitchIframeLoaded);
+		window.removeEventListener('resize', this.twitchIframeLoaded);
 	}
 
 	twitchIframeWrapperRef: React.RefObject<HTMLDivElement> = React.createRef();
@@ -72,4 +55,4 @@ class TwitchIframe extends React.Component<TwitchIframeProps, TwitchIframeState,
 	}
 };
 
-export default eventListenerConsumer(TwitchIframe);
+export default TwitchIframe;

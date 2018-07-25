@@ -109,7 +109,6 @@ var HomeNews = /** @class */ (function (_super) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _event_listener_event_listener__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../event-listener/event-listener */ "./client/src/components/event-listener/event-listener.tsx");
 
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -121,19 +120,6 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-// width: 100%;
-//     display: grid;
-//     /* height: 400px; */
-//     height: 100%;
-//     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-//     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-// grid-column-start: 1;
-// grid-column-end: -1;
-// grid-row-start: 1;
-// grid-row-end: -1;
-// width: 100%;
-// height: 100%;
-
 
 var TwitchIframe = /** @class */ (function (_super) {
     __extends(TwitchIframe, _super);
@@ -149,10 +135,10 @@ var TwitchIframe = /** @class */ (function (_super) {
         return _this;
     }
     TwitchIframe.prototype.componentDidMount = function () {
-        this.props.addEventListener('resize', this.twitchIframeLoaded);
+        window.addEventListener('resize', this.twitchIframeLoaded);
     };
     TwitchIframe.prototype.componentWillMount = function () {
-        this.props.removeEventListener('resize', this.twitchIframeLoaded);
+        window.removeEventListener('resize', this.twitchIframeLoaded);
     };
     TwitchIframe.prototype.twitchIframeLoaded = function () {
         var maxWidth = this.twitchIframeWrapperRef.current.clientWidth;
@@ -170,7 +156,7 @@ var TwitchIframe = /** @class */ (function (_super) {
     return TwitchIframe;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
-/* harmony default export */ __webpack_exports__["default"] = (Object(_event_listener_event_listener__WEBPACK_IMPORTED_MODULE_1__["eventListenerConsumer"])(TwitchIframe));
+/* harmony default export */ __webpack_exports__["default"] = (TwitchIframe);
 
 
 /***/ }),

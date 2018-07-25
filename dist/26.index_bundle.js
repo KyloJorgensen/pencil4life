@@ -12,8 +12,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
-/* harmony import */ var _event_listener_event_listener__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../event-listener/event-listener */ "./client/src/components/event-listener/event-listener.tsx");
-/* harmony import */ var _footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./footer */ "./client/src/components/footer/footer.tsx");
+/* harmony import */ var _footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./footer */ "./client/src/components/footer/footer.tsx");
 
 var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
@@ -29,7 +28,6 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-
 
 
 
@@ -83,13 +81,13 @@ var FooterBar = /** @class */ (function (_super) {
         var show = this.state.show;
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](FooterBarWrapper, null,
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { onMouseLeave: handleMouseLeave, onMouseMove: handleMouseMove, onMouseEnter: handleMouseEnter, onClick: popUpToggle },
-                show ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_footer__WEBPACK_IMPORTED_MODULE_3__["default"], null)) : '',
+                show ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_footer__WEBPACK_IMPORTED_MODULE_2__["default"], null)) : '',
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "footer-bar" }))));
     };
     return FooterBar;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
-/* harmony default export */ __webpack_exports__["default"] = (Object(_event_listener_event_listener__WEBPACK_IMPORTED_MODULE_2__["eventListenerConsumer"])(FooterBar));
+/* harmony default export */ __webpack_exports__["default"] = (FooterBar);
 var templateObject_1;
 
 
@@ -110,7 +108,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 /* harmony import */ var _fortawesome_fontawesome_free_brands__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/fontawesome-free-brands */ "./node_modules/@fortawesome/fontawesome-free-brands/index.es.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
-/* harmony import */ var _event_listener_event_listener__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../event-listener/event-listener */ "./client/src/components/event-listener/event-listener.tsx");
 
 var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
@@ -126,7 +123,6 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-
 
 
 
@@ -160,7 +156,7 @@ var Footer = /** @class */ (function (_super) {
     return Footer;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
-/* harmony default export */ __webpack_exports__["default"] = (Object(_event_listener_event_listener__WEBPACK_IMPORTED_MODULE_5__["eventListenerConsumer"])(Footer));
+/* harmony default export */ __webpack_exports__["default"] = (Footer);
 var templateObject_1;
 
 

@@ -23,9 +23,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_fontawesome_free_solid_faUserAlt__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fortawesome/fontawesome-free-solid/faUserAlt */ "./node_modules/@fortawesome/fontawesome-free-solid/faUserAlt.js");
 /* harmony import */ var _fortawesome_fontawesome_free_solid_faUserAlt__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_fontawesome_free_solid_faUserAlt__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _utilities_styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utilities/styled.components */ "./client/src/components/utilities/styled.components.tsx");
-/* harmony import */ var _event_listener_event_listener__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../event-listener/event-listener */ "./client/src/components/event-listener/event-listener.tsx");
-/* harmony import */ var _utilities_dropdown__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utilities/dropdown */ "./client/src/components/utilities/dropdown.tsx");
-/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
+/* harmony import */ var _utilities_dropdown__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utilities/dropdown */ "./client/src/components/utilities/dropdown.tsx");
+/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
 
 var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
@@ -41,7 +40,6 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-
 
 
 
@@ -75,7 +73,7 @@ var Header = /** @class */ (function (_super) {
         if (selectedAdmin.includes(this.props.location.pathname)) {
             adminClasses += " selected ";
         }
-        var admin = this.props.user.admin ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_dropdown__WEBPACK_IMPORTED_MODULE_10__["default"], { key: "admin", toggleClass: adminClasses, menuClass: "dropdown-menu-right", toggleChild: 'ADMIN' },
+        var admin = this.props.user.admin ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_dropdown__WEBPACK_IMPORTED_MODULE_9__["default"], { key: "admin", toggleClass: adminClasses, menuClass: "dropdown-menu-right", toggleChild: 'ADMIN' },
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { exact: true, className: "dropdown-item", role: "menuitem", tabIndex: -1, to: '/image', activeClassName: "selected" }, "IMAGES"))) : '';
         user.push(admin);
         var selectedProfile = ['/profile'];
@@ -110,7 +108,7 @@ var Header = /** @class */ (function (_super) {
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { exact: true, className: "btn", role: "menuitem", tabIndex: -1, to: '/project', activeClassName: "selected" }, "PROJECTS"),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { exact: true, className: "btn", role: "menuitem", tabIndex: -1, to: '/doodles', activeClassName: "selected" }, "DOODLES"),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { exact: true, className: "btn", role: "menuitem", tabIndex: -1, to: '/comics', activeClassName: "selected" }, "COMICS"),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_dropdown__WEBPACK_IMPORTED_MODULE_10__["default"], { toggleClass: communityClasses, toggleChild: 'COMMUNITY' },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_dropdown__WEBPACK_IMPORTED_MODULE_9__["default"], { toggleClass: communityClasses, toggleChild: 'COMMUNITY' },
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { className: "btn dropdown-item", exact: true, role: "menuitem", tabIndex: -1, to: '/event', activeClassName: "selected" }, "EVENTS"),
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { className: "btn dropdown-item", exact: true, role: "menuitem", tabIndex: -1, to: '/news', activeClassName: "selected" }, "NEWS"),
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { className: "btn dropdown-item", exact: true, role: "menuitem", tabIndex: -1, to: '/soundboard', activeClassName: "selected" }, "SOUNDBOARD")),
@@ -123,7 +121,7 @@ var Header = /** @class */ (function (_super) {
     return Header;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
-/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_11__["userConsumer"])(Object(_event_listener_event_listener__WEBPACK_IMPORTED_MODULE_9__["eventListenerConsumer"])(Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Header))));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_10__["userConsumer"])(Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Header)));
 var templateObject_1;
 
 

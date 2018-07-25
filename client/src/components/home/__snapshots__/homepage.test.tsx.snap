@@ -23,7 +23,7 @@ ShallowWrapper {
         <div
           className="row"
         >
-          <EventListenerConsumer />
+          <TwitchIframe />
           <EventProvider />
         </div>
         <HomeNews />
@@ -40,7 +40,7 @@ ShallowWrapper {
           <div
             className="row"
           >
-            <EventListenerConsumer />
+            <TwitchIframe />
             <EventProvider />
           </div>,
           <HomeNews />,
@@ -55,7 +55,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
-              <EventListenerConsumer />,
+              <TwitchIframe />,
               <EventProvider />,
             ],
             "className": "row",
@@ -109,7 +109,7 @@ ShallowWrapper {
           <div
             className="row"
           >
-            <EventListenerConsumer />
+            <TwitchIframe />
             <EventProvider />
           </div>
           <HomeNews />
@@ -126,7 +126,7 @@ ShallowWrapper {
             <div
               className="row"
             >
-              <EventListenerConsumer />
+              <TwitchIframe />
               <EventProvider />
             </div>,
             <HomeNews />,
@@ -141,7 +141,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": Array [
-                <EventListenerConsumer />,
+                <TwitchIframe />,
                 <EventProvider />,
               ],
               "className": "row",

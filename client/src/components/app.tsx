@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { HashRouter as Router } from 'react-router-dom';
 import * as Loadable from 'react-loadable';
-import EventListener from './event-listener/event-listener';
+// import EventListener from './event-listener/event-listener';
 import UserWrapper from './user/user-provider'
 import ImageWrapper from './image/image-provider'
 // import Header from './header/header';
@@ -11,6 +11,7 @@ import ImageWrapper from './image/image-provider'
 import '../css/index.less';
 import Routes from './routes';
 import { NewsWrapper } from './news/news-provider';
+import styled from 'styled-components';
 
 const Loading = () => <div>Loading...</div>;
 
@@ -34,6 +35,16 @@ const FooterBar = Loadable({
   loading: Loading,
 });
 
+const PageLayout = styled.div`
+  height: 100%;
+  width: 100%;
+  > div {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    height: 100%;
+  }
+`;
+
 class App extends React.Component {
   render() {
     return (
@@ -41,13 +52,13 @@ class App extends React.Component {
         <UserWrapper>
           <ImageWrapper>
             <Router>
-              <EventListener>
+              <PageLayout>
                 <Logo/>
                 <Header/>
                 <Routes/>
                 <Footer/>
                 <FooterBar/>
-              </EventListener>
+              </PageLayout>
             </Router>
           </ImageWrapper>
         </UserWrapper>      
