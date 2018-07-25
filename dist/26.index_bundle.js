@@ -33,7 +33,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
-var FooterBarWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tbackground-color: black;\n\tposition: sticky;\n\tbottom: 0;\n\n\t.footer-bar {\n\t\theight: 2em;\n\t\tz-index: 2;\n\t}\n"], ["\n\tbackground-color: black;\n\tposition: sticky;\n\tbottom: 0;\n\n\t.footer-bar {\n\t\theight: 2em;\n\t\tz-index: 2;\n\t}\n"])));
+var FooterBarWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tbackground-color: black;\n\tposition: sticky;\n\tbottom: 0;\n\tz-index: 10;\n\n\t.footer-bar {\n\t\theight: 2em;\n\t}\n"], ["\n\tbackground-color: black;\n\tposition: sticky;\n\tbottom: 0;\n\tz-index: 10;\n\n\t.footer-bar {\n\t\theight: 2em;\n\t}\n"])));
 var FooterBar = /** @class */ (function (_super) {
     __extends(FooterBar, _super);
     function FooterBar(props) {
@@ -44,6 +44,7 @@ var FooterBar = /** @class */ (function (_super) {
         };
         _this.popUpToggle = _this.popUpToggle.bind(_this);
         _this.handleOutsideClick = _this.handleOutsideClick.bind(_this);
+        _this.handleOutsideScroll = _this.handleOutsideScroll.bind(_this);
         _this.handleMouseEnter = _this.handleMouseEnter.bind(_this);
         _this.handleMouseLeave = _this.handleMouseLeave.bind(_this);
         _this.handleMouseMove = _this.handleMouseMove.bind(_this);
@@ -57,6 +58,9 @@ var FooterBar = /** @class */ (function (_super) {
             this.setState(function () { return { show: false }; });
         }
     };
+    FooterBar.prototype.handleOutsideScroll = function () {
+        this.setState(function () { return { show: false }; });
+    };
     FooterBar.prototype.handleMouseEnter = function () {
         this.setState(function () { return { over: true }; });
     };
@@ -67,12 +71,12 @@ var FooterBar = /** @class */ (function (_super) {
         this.setState(function () { return { over: true }; });
     };
     FooterBar.prototype.componentDidMount = function () {
-        this.props.addEventListener('scroll', this.handleOutsideClick);
-        this.props.addEventListener('click', this.handleOutsideClick);
+        window.addEventListener('scroll', this.handleOutsideScroll);
+        window.addEventListener('click', this.handleOutsideClick);
     };
     FooterBar.prototype.componentWillUnmount = function () {
-        this.props.removeEventListener('scroll', this.handleOutsideClick);
-        this.props.removeEventListener('click', this.handleOutsideClick);
+        window.removeEventListener('scroll', this.handleOutsideScroll);
+        window.removeEventListener('click', this.handleOutsideClick);
     };
     FooterBar.prototype.render = function () {
         var _a = this, handleMouseEnter = _a.handleMouseEnter, handleMouseLeave = _a.handleMouseLeave, handleMouseMove = _a.handleMouseMove, popUpToggle = _a.popUpToggle;

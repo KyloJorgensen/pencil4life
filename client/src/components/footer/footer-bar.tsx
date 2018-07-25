@@ -9,10 +9,10 @@ const FooterBarWrapper = styled.div`
 	background-color: black;
 	position: sticky;
 	bottom: 0;
+	z-index: 10;
 
 	.footer-bar {
 		height: 2em;
-		z-index: 2;
 	}
 `;
 
@@ -23,7 +23,7 @@ export interface FooterBarState {
 
 export interface FooterBarMethods {
 	popUpToggle: () => void;
-	handleOutsideClick: () => void;
+	handleOutside: () => void;
 	handleMouseEnter: () => void;
 	handleMouseLeave: () => void;
 	handleMouseMove: () => void;
@@ -38,6 +38,7 @@ class FooterBar extends React.Component<IEventListenerContext, FooterBarState, F
 		};
 		this.popUpToggle = this.popUpToggle.bind(this);
 		this.handleOutsideClick = this.handleOutsideClick.bind(this);
+		this.handleOutsideScroll = this.handleOutsideScroll.bind(this);
 		this.handleMouseEnter = this.handleMouseEnter.bind(this);
 		this.handleMouseLeave = this.handleMouseLeave.bind(this);
 		this.handleMouseMove = this.handleMouseMove.bind(this);
@@ -53,6 +54,10 @@ class FooterBar extends React.Component<IEventListenerContext, FooterBarState, F
 		}
 	}
 
+	handleOutsideScroll() {
+		this.setState(() => {return {show: false}});
+	}
+
 	handleMouseEnter() {
 		this.setState(() => {return {over: true}});
 	}
@@ -66,13 +71,13 @@ class FooterBar extends React.Component<IEventListenerContext, FooterBarState, F
 	}
 
 	componentDidMount() {
-		this.props.addEventListener('scroll', this.handleOutsideClick);
-		this.props.addEventListener('click', this.handleOutsideClick);
+		window.addEventListener('scroll', this.handleOutsideScroll);
+		window.addEventListener('click', this.handleOutsideClick);
 	}
 
 	componentWillUnmount() {
-		this.props.removeEventListener('scroll', this.handleOutsideClick);
-		this.props.removeEventListener('click', this.handleOutsideClick);
+		window.removeEventListener('scroll', this.handleOutsideScroll);
+		window.removeEventListener('click', this.handleOutsideClick);
 	}
 
 	render() {
