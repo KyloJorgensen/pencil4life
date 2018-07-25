@@ -38,11 +38,8 @@ const FooterBar = Loadable({
 const PageLayout = styled.div`
   height: 100%;
   width: 100%;
-  > div {
-    display: grid;
-    grid-template-rows: auto auto 1fr;
-    height: 100%;
-  }
+  display: grid;
+  grid-template-rows: auto auto 1fr;
 `;
 
 class App extends React.Component {
