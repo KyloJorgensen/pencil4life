@@ -1,35 +1,5 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[1],{
 
-/***/ "./client/src/components/header/header.less":
-/*!**************************************************!*\
-  !*** ./client/src/components/header/header.less ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/less-loader/dist/cjs.js!./header.less */ "./node_modules/css-loader/index.js!./node_modules/less-loader/dist/cjs.js!./client/src/components/header/header.less");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
 /***/ "./client/src/components/header/header.tsx":
 /*!*************************************************!*\
   !*** ./client/src/components/header/header.tsx ***!
@@ -52,12 +22,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_fontawesome_free_solid_faSignOutAlt__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_fontawesome_free_solid_faSignOutAlt__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _fortawesome_fontawesome_free_solid_faUserAlt__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fortawesome/fontawesome-free-solid/faUserAlt */ "./node_modules/@fortawesome/fontawesome-free-solid/faUserAlt.js");
 /* harmony import */ var _fortawesome_fontawesome_free_solid_faUserAlt__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_fontawesome_free_solid_faUserAlt__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _event_listener_event_listener__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../event-listener/event-listener */ "./client/src/components/event-listener/event-listener.tsx");
-/* harmony import */ var _utilities_dropdown__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utilities/dropdown */ "./client/src/components/utilities/dropdown.tsx");
-/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
-/* harmony import */ var _header_less__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./header.less */ "./client/src/components/header/header.less");
-/* harmony import */ var _header_less__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_header_less__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _utilities_styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utilities/styled.components */ "./client/src/components/utilities/styled.components.tsx");
+/* harmony import */ var _event_listener_event_listener__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../event-listener/event-listener */ "./client/src/components/event-listener/event-listener.tsx");
+/* harmony import */ var _utilities_dropdown__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utilities/dropdown */ "./client/src/components/utilities/dropdown.tsx");
+/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
 
+var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -81,40 +54,17 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 _fortawesome_fontawesome__WEBPACK_IMPORTED_MODULE_2__["library"].add(_fortawesome_fontawesome_free_solid_faCheckSquare__WEBPACK_IMPORTED_MODULE_4__, _fortawesome_fontawesome_free_solid_faSignInAlt__WEBPACK_IMPORTED_MODULE_5__, _fortawesome_fontawesome_free_solid_faSignOutAlt__WEBPACK_IMPORTED_MODULE_6__, _fortawesome_fontawesome_free_solid_faUserAlt__WEBPACK_IMPORTED_MODULE_7__);
+var HeaderWrapper = _utilities_styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].header(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tmargin: 0 0 20px 0;\n\tcolor: white;\n\n\t\n\t@media (min-width: 768px) {\n\t\tposition: sticky;\n\t\ttop: 0;\n\t}\n\n\t.dropdown-toggle::after {\n\t\tdisplay: inline-block;\n\t\twidth: 0;\n\t\theight: 0;\n\t\tmargin-left: .255em;\n\t\tvertical-align: .255em;\n\t\tcontent: \"\";\n\t\tborder-top: .3em solid;\n\t\tborder-right: .3em solid transparent;\n\t\tborder-bottom: 0;\n\t\tborder-left: .3em solid transparent;\n\t}\n\n\t.user-info {\n\t\tdisplay: flex;\n\t\tjustify-content: flex-end;\n\n\t\t> * {\n\t\t\tmargin: 0.3em 0.2em !important;\n\n\t\t}\n\n\t\t> .btn {\n\t\t\tbackground: ", ";\n\t\t\ta {\n\t\t\t\tpadding: 0;\n\t\t\t}\n\t\t}\n\n\t\t.mytooltip {\n\t\t\tposition: relative;\n\t\t\tdisplay: inline-block;\n\t\t}\n\t\t.mytooltip:hover {\n\t\t\tborder-radius: 0 0.25em 0.25em 0;\n\t\t}\n\n\t\t.mytooltip .mytooltiptext {\n\t\t\tdisplay: none;\n\t\t\tbackground-color: #2e4067;\n\t\t\tcolor: #fff;\n\t\t\tborder: 3px solid #172b57;\n\t\t\ttext-align: center;\n\t\t\tborder-radius: 0.25em 0 0 0.25em;\n\t\t\tposition: absolute;\n\t\t\tz-index: 1;\n\t\t\ttop: -1px;\n\t\t\tright: 100%;\n\t\t\tfont-size: 1em;\n\n\t\t\t.mytooltip:hover .mytooltiptext {\n\t\t\t\tdisplay: inline-block;\n\t\t\t\tbackground-color: ", ";\n\t\t\t\tborder-color: ", ";\n\t\t\t}\n\t\t}\n\t}\n\n\t.nav-wrapper {\n\t\ttop: 0;\n\t\tright: 0;\n\t\tleft: 0;\n\t\tz-index: 9999; \n\t\tnav {\n\t\t\tdisplay: flex;\n\t\t\tflex-wrap: wrap;\n\t\t\tjustify-content: space-around;\n\t\t\tbackground-color: ", ";\n\t\t\tmargin: 0;\n\t\t}\n\t}\n\t.user-info, .nav-wrapper nav {\n\t\t.selected {\n\t\t\ttext-decoration: underline;\n\t\t}\n\n\t\ta {\n\t\t\tfont-family: \"QueenOfCamelot\", \"Lato\", sans-serif;\n\t\t\tcolor: white;\n\t\t\tmargin: 0;\n\t\t\tfont-size: 1em;\n\t\t\ttext-decoration: none;\n\t\t\tpadding: 0.5em;\n\t\t\tbackground-color: ", ";\n\t\t}\n\n\t\ta:hover, a:focus{\n\t\t\toutline: none;\n\t\t\tcolor: white;\n\t\t\ttext-decoration: none;\n\t\t\tbox-shadow: none;\n\t\t\tbackground-color: ", ";\n\t\t}\n\t\t.dropdown-menu, .dropdown-menu-right {\n\t\t\tdisplay: none;\n\t\t\tborder: none;\n\t\t\tborder-radius: unset;\n\t\t\tmargin: 0.167rem 0 0 0;\n\t\t\tpadding: 0;\n\t\t\tbackground-color: ", ";\n\t\t\t.btn {\n\t\t\t\tdisplay: block;\n\t\t\t\ttext-align: unset;\n\t\t\t}\n\t\t}\n\t\t.dropdown-menu-right {\n\t\t\tposition: absolute;\n\t\t\tright: 0;\n\t\t\t> * {\n\t\t\t\tjustify-self: right;\n\t\t\t}\n\t\t}\n\t\t.show {\n\t\t\tdisplay: block;\n\t\t}\n\t}\n"], ["\n\tmargin: 0 0 20px 0;\n\tcolor: white;\n\n\t\n\t@media (min-width: 768px) {\n\t\tposition: sticky;\n\t\ttop: 0;\n\t}\n\n\t.dropdown-toggle::after {\n\t\tdisplay: inline-block;\n\t\twidth: 0;\n\t\theight: 0;\n\t\tmargin-left: .255em;\n\t\tvertical-align: .255em;\n\t\tcontent: \"\";\n\t\tborder-top: .3em solid;\n\t\tborder-right: .3em solid transparent;\n\t\tborder-bottom: 0;\n\t\tborder-left: .3em solid transparent;\n\t}\n\n\t.user-info {\n\t\tdisplay: flex;\n\t\tjustify-content: flex-end;\n\n\t\t> * {\n\t\t\tmargin: 0.3em 0.2em !important;\n\n\t\t}\n\n\t\t> .btn {\n\t\t\tbackground: ", ";\n\t\t\ta {\n\t\t\t\tpadding: 0;\n\t\t\t}\n\t\t}\n\n\t\t.mytooltip {\n\t\t\tposition: relative;\n\t\t\tdisplay: inline-block;\n\t\t}\n\t\t.mytooltip:hover {\n\t\t\tborder-radius: 0 0.25em 0.25em 0;\n\t\t}\n\n\t\t.mytooltip .mytooltiptext {\n\t\t\tdisplay: none;\n\t\t\tbackground-color: #2e4067;\n\t\t\tcolor: #fff;\n\t\t\tborder: 3px solid #172b57;\n\t\t\ttext-align: center;\n\t\t\tborder-radius: 0.25em 0 0 0.25em;\n\t\t\tposition: absolute;\n\t\t\tz-index: 1;\n\t\t\ttop: -1px;\n\t\t\tright: 100%;\n\t\t\tfont-size: 1em;\n\n\t\t\t.mytooltip:hover .mytooltiptext {\n\t\t\t\tdisplay: inline-block;\n\t\t\t\tbackground-color: ", ";\n\t\t\t\tborder-color: ", ";\n\t\t\t}\n\t\t}\n\t}\n\n\t.nav-wrapper {\n\t\ttop: 0;\n\t\tright: 0;\n\t\tleft: 0;\n\t\tz-index: 9999; \n\t\tnav {\n\t\t\tdisplay: flex;\n\t\t\tflex-wrap: wrap;\n\t\t\tjustify-content: space-around;\n\t\t\tbackground-color: ", ";\n\t\t\tmargin: 0;\n\t\t}\n\t}\n\t.user-info, .nav-wrapper nav {\n\t\t.selected {\n\t\t\ttext-decoration: underline;\n\t\t}\n\n\t\ta {\n\t\t\tfont-family: \"QueenOfCamelot\", \"Lato\", sans-serif;\n\t\t\tcolor: white;\n\t\t\tmargin: 0;\n\t\t\tfont-size: 1em;\n\t\t\ttext-decoration: none;\n\t\t\tpadding: 0.5em;\n\t\t\tbackground-color: ", ";\n\t\t}\n\n\t\ta:hover, a:focus{\n\t\t\toutline: none;\n\t\t\tcolor: white;\n\t\t\ttext-decoration: none;\n\t\t\tbox-shadow: none;\n\t\t\tbackground-color: ", ";\n\t\t}\n\t\t.dropdown-menu, .dropdown-menu-right {\n\t\t\tdisplay: none;\n\t\t\tborder: none;\n\t\t\tborder-radius: unset;\n\t\t\tmargin: 0.167rem 0 0 0;\n\t\t\tpadding: 0;\n\t\t\tbackground-color: ", ";\n\t\t\t.btn {\n\t\t\t\tdisplay: block;\n\t\t\t\ttext-align: unset;\n\t\t\t}\n\t\t}\n\t\t.dropdown-menu-right {\n\t\t\tposition: absolute;\n\t\t\tright: 0;\n\t\t\t> * {\n\t\t\t\tjustify-self: right;\n\t\t\t}\n\t\t}\n\t\t.show {\n\t\t\tdisplay: block;\n\t\t}\n\t}\n"])), function (props) { return props.theme.darkblue; }, function (props) { return props.theme.darkblue; }, function (props) { return props.theme.highlightblue; }, function (props) { return props.theme.darkblue; }, function (props) { return props.theme.darkblue; }, function (props) { return props.theme.highlightblue; }, function (props) { return props.theme.darkblue; });
 var Header = /** @class */ (function (_super) {
     __extends(Header, _super);
     function Header(props) {
         var _this = _super.call(this, props) || this;
-        _this.logoRef = react__WEBPACK_IMPORTED_MODULE_0__["createRef"]();
-        _this.navRef = react__WEBPACK_IMPORTED_MODULE_0__["createRef"]();
         _this.state = {
             navPosition: 'initial',
-            logoMargin: 0,
         };
         _this.logout = _this.logout.bind(_this);
-        _this.handleScroll = _this.handleScroll.bind(_this);
         return _this;
     }
-    Header.prototype.componentDidMount = function () {
-        this.props.user.getUser();
-        this.props.addEventListener('scroll', this.handleScroll);
-    };
-    Header.prototype.componentWillUnmount = function () {
-        this.props.removeEventListener('scroll', this.handleScroll);
-    };
-    Header.prototype.handleScroll = function (event, ref) {
-        var _this = this;
-        this.setState(function (prevState, props) {
-            var scroll = ref.current.scrollTop;
-            var imgHeight = _this.logoRef.current.clientHeight;
-            var navBarHeight = _this.navRef.current.clientHeight;
-            var navBarWidth = _this.navRef.current.clientWidth;
-            return {
-                navPosition: scroll >= imgHeight && navBarWidth > 900 ? 'fixed' : 'initial',
-                logoMargin: scroll >= imgHeight && navBarWidth > 900 ? navBarHeight + 20 : 0,
-            };
-        });
-    };
     Header.prototype.logout = function () {
         this.props.user.logout();
     };
@@ -125,7 +75,7 @@ var Header = /** @class */ (function (_super) {
         if (selectedAdmin.includes(this.props.location.pathname)) {
             adminClasses += " selected ";
         }
-        var admin = this.props.user.admin ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_dropdown__WEBPACK_IMPORTED_MODULE_9__["default"], { key: "admin", toggleClass: adminClasses, menuClass: "dropdown-menu-right", toggleChild: 'ADMIN' },
+        var admin = this.props.user.admin ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_dropdown__WEBPACK_IMPORTED_MODULE_10__["default"], { key: "admin", toggleClass: adminClasses, menuClass: "dropdown-menu-right", toggleChild: 'ADMIN' },
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { exact: true, className: "dropdown-item", role: "menuitem", tabIndex: -1, to: '/image', activeClassName: "selected" }, "IMAGES"))) : '';
         user.push(admin);
         var selectedProfile = ['/profile'];
@@ -153,18 +103,14 @@ var Header = /** @class */ (function (_super) {
         if (selectedCommunity.includes(this.props.location.pathname)) {
             communityClasses += " selected ";
         }
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("header", null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "container" },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "logo", ref: this.logoRef, style: { marginBottom: this.state.logoMargin + 'px' } },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { role: "menuitem", tabIndex: -1, to: '/' },
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { className: "logo-img", src: "/images/pencil4lifelogo-blue-transparent.png", alt: "Pencil4Life" })))),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "container nav-wrapper", ref: this.navRef, style: { position: this.state.navPosition } },
+        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](HeaderWrapper, { theme: _utilities_styled_components__WEBPACK_IMPORTED_MODULE_8__["defaultTheme"] },
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "container nav-wrapper" },
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("nav", null,
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { exact: true, className: "btn", role: "menuitem", tabIndex: -1, to: '/', activeClassName: "selected" }, "HOME"),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { exact: true, className: "btn", role: "menuitem", tabIndex: -1, to: '/project', activeClassName: "selected" }, "PROJECTS"),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { exact: true, className: "btn", role: "menuitem", tabIndex: -1, to: '/doodles', activeClassName: "selected" }, "DOODLES"),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { exact: true, className: "btn", role: "menuitem", tabIndex: -1, to: '/comics', activeClassName: "selected" }, "COMICS"),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_dropdown__WEBPACK_IMPORTED_MODULE_9__["default"], { toggleClass: communityClasses, toggleChild: 'COMMUNITY' },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_dropdown__WEBPACK_IMPORTED_MODULE_10__["default"], { toggleClass: communityClasses, toggleChild: 'COMMUNITY' },
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { className: "btn dropdown-item", exact: true, role: "menuitem", tabIndex: -1, to: '/event', activeClassName: "selected" }, "EVENTS"),
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { className: "btn dropdown-item", exact: true, role: "menuitem", tabIndex: -1, to: '/news', activeClassName: "selected" }, "NEWS"),
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { className: "btn dropdown-item", exact: true, role: "menuitem", tabIndex: -1, to: '/soundboard', activeClassName: "selected" }, "SOUNDBOARD")),
@@ -177,7 +123,8 @@ var Header = /** @class */ (function (_super) {
     return Header;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
-/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_10__["userConsumer"])(Object(_event_listener_event_listener__WEBPACK_IMPORTED_MODULE_8__["eventListenerConsumer"])(Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Header))));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_11__["userConsumer"])(Object(_event_listener_event_listener__WEBPACK_IMPORTED_MODULE_9__["eventListenerConsumer"])(Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Header))));
+var templateObject_1;
 
 
 /***/ }),
@@ -298,6 +245,46 @@ var Dropdown = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./client/src/components/utilities/styled.components.tsx":
+/*!***************************************************************!*\
+  !*** ./client/src/components/utilities/styled.components.tsx ***!
+  \***************************************************************/
+/*! exports provided: css, injectGlobal, keyframes, ThemeProvider, default, defaultTheme, Popout */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "css", function() { return css; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "injectGlobal", function() { return injectGlobal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "keyframes", function() { return keyframes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ThemeProvider", function() { return ThemeProvider; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultTheme", function() { return defaultTheme; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Popout", function() { return Popout; });
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
+
+var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+
+var _a = styled_components__WEBPACK_IMPORTED_MODULE_0__, styled = _a.default, css = _a.css, injectGlobal = _a.injectGlobal, keyframes = _a.keyframes, ThemeProvider = _a.ThemeProvider;
+
+/* harmony default export */ __webpack_exports__["default"] = (styled);
+var defaultTheme = {
+    primaryColor: '#172B57',
+    primaryColorInverted: '#4d5f86',
+    blue: '#002157',
+    darkblue: '#172B57',
+    lightblue: '#3B5CA3',
+    highlightblue: '#4d5f86',
+    gray: 'gray',
+};
+var Popout = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tposition: fixed;\n\ttop: 0;\n\tbottom: 0;\n\tleft: 0;\n\tright: 0;\n\tbackground: rgba(0, 0, 0, 0.85);\n\tz-index: 10000;\n\t> * {\n\t\tposition: relative;\n\t\ttop: 50%;\n\t\tleft: 50%;\n\t\ttransform: translate(-50%, -50%);\n\t\tmargin: 0;\n\t\toverflow: auto;    \n\t\tmax-height: 100%;\n\t\tpadding: 2em 0;\n\t}\n\t\n"], ["\n\tposition: fixed;\n\ttop: 0;\n\tbottom: 0;\n\tleft: 0;\n\tright: 0;\n\tbackground: rgba(0, 0, 0, 0.85);\n\tz-index: 10000;\n\t> * {\n\t\tposition: relative;\n\t\ttop: 50%;\n\t\tleft: 50%;\n\t\ttransform: translate(-50%, -50%);\n\t\tmargin: 0;\n\t\toverflow: auto;    \n\t\tmax-height: 100%;\n\t\tpadding: 2em 0;\n\t}\n\t\n"])));
+var templateObject_1;
+
+
+/***/ }),
+
 /***/ "./node_modules/@fortawesome/fontawesome-free-solid/faCheckSquare.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/@fortawesome/fontawesome-free-solid/faCheckSquare.js ***!
@@ -339,25 +326,6 @@ module.exports = { prefix: 'fas', iconName: 'sign-out-alt', icon: [512, 512, [],
 /***/ (function(module, exports) {
 
 module.exports = { prefix: 'fas', iconName: 'user-alt', icon: [512, 512, [], "f406", "M256 288c79.5 0 144-64.5 144-144S335.5 0 256 0 112 64.5 112 144s64.5 144 144 144zm128 32h-55.1c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16H128C57.3 320 0 377.3 0 448v16c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48v-16c0-70.7-57.3-128-128-128z"] };
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/less-loader/dist/cjs.js!./client/src/components/header/header.less":
-/*!*******************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/less-loader/dist/cjs.js!./client/src/components/header/header.less ***!
-  \*******************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "header {\n  margin: 0 0 20px 0;\n  color: white;\n}\nheader .dropdown-toggle::after {\n  display: inline-block;\n  width: 0;\n  height: 0;\n  margin-left: .255em;\n  vertical-align: .255em;\n  content: \"\";\n  border-top: .3em solid;\n  border-right: .3em solid transparent;\n  border-bottom: 0;\n  border-left: .3em solid transparent;\n}\nheader .logo {\n  background: -webkit-linear-gradient(#727c92, white);\n  background: -o-linear-gradient(#727c92, white);\n  background: linear-gradient(#727c92, white);\n}\nheader .logo a .logo-img {\n  width: 100%;\n  padding: 20px 0;\n}\nheader .user-info {\n  display: flex;\n  justify-content: flex-end;\n}\nheader .user-info > * {\n  margin: 0.3em 0.2em !important;\n}\nheader .user-info > .btn {\n  background: #172B57;\n}\nheader .user-info > .btn a {\n  padding: 0;\n}\nheader .user-info .mytooltip {\n  position: relative;\n  display: inline-block;\n}\nheader .user-info .mytooltip:hover {\n  border-radius: 0 0.25em 0.25em 0;\n}\nheader .user-info .mytooltip .mytooltiptext {\n  display: none;\n  background-color: #2e4067;\n  color: #fff;\n  border: 3px solid #172b57;\n  text-align: center;\n  border-radius: 0.25em 0 0 0.25em;\n  position: absolute;\n  z-index: 1;\n  top: -1px;\n  right: 100%;\n  font-size: 1em;\n  /*\t\t    visibility: hidden;\n\t\t    width: 120px;\n\t\t    background-color: black;\n\t\t    color: #fff;\n\t\t    text-align: center;\n\t\t    border-radius: 6px;\n\t\t    padding: 5px 0;*/\n  /* Position the mytooltip */\n  /*\t\t    position: absolute;\n\t\t    z-index: 1;\n\t\t    top: 0;\n\t\t    right: 125%;*/\n}\nheader .user-info .mytooltip:hover .mytooltiptext {\n  display: inline-block;\n  background-color: #172B57;\n  border-color: #4d5f86;\n}\nheader .nav-wrapper {\n  top: 0;\n  right: 0;\n  left: 0;\n  z-index: 9999;\n}\nheader .nav-wrapper nav {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n  background-color: #172B57;\n  margin: 0;\n}\nheader .user-info .selected,\nheader .nav-wrapper nav .selected {\n  text-decoration: underline;\n}\nheader .user-info a,\nheader .nav-wrapper nav a {\n  font-family: \"QueenOfCamelot\", \"Lato\", sans-serif;\n  color: white;\n  margin: 0;\n  font-size: 1em;\n  text-decoration: none;\n  padding: 0.5em;\n  background-color: #172B57;\n}\nheader .user-info a:hover,\nheader .nav-wrapper nav a:hover,\nheader .user-info a:focus,\nheader .nav-wrapper nav a:focus {\n  outline: none;\n  color: white;\n  text-decoration: none;\n  box-shadow: none;\n  background-color: #4d5f86;\n}\nheader .user-info .dropdown-menu,\nheader .nav-wrapper nav .dropdown-menu,\nheader .user-info .dropdown-menu-right,\nheader .nav-wrapper nav .dropdown-menu-right {\n  display: none;\n  border: none;\n  border-radius: unset;\n  margin: 0.167rem 0 0 0;\n  padding: 0;\n  background-color: #172B57;\n}\nheader .user-info .dropdown-menu .btn,\nheader .nav-wrapper nav .dropdown-menu .btn,\nheader .user-info .dropdown-menu-right .btn,\nheader .nav-wrapper nav .dropdown-menu-right .btn {\n  display: block;\n  text-align: unset;\n}\nheader .user-info .dropdown-menu-right,\nheader .nav-wrapper nav .dropdown-menu-right {\n  position: absolute;\n  right: 0;\n}\nheader .user-info .dropdown-menu-right > *,\nheader .nav-wrapper nav .dropdown-menu-right > * {\n  justify-self: right;\n}\nheader .user-info .show,\nheader .nav-wrapper nav .show {\n  display: block;\n}\n/*.header-wrapper {\n    \n\tbackground-color: white;\n\t> ul {\t\n\t\t> li {\n\t\t\tpadding: 0px 10px;\n\t\t\tdisplay: inline-block;\n\t\t\tcolor: @red;\n\t\t}\n\t}\n\n    > * {\n    \tpadding: 10px 0px;\n    \tmargin: 0;\n    }\n\n    .logo {\n\n\t\t.logo-img {\n\t\t\twidth: 100%;\n\t\t}\n    \tp {\n\t    \tcolor: @red;\n\t    \tfont-family: 'Pacifico', cursive;\n\t    \tmargin: 0;\n    \t}\n    }\n\n    a {\n\t    color: #ffffff;\n\t    display: inline-block;\n\t    padding: 0 10px;\n    \n    }\n    .selected {\n\t\tcolor: @red;\n\t}\n\n    .profile-image {\n\t\tborder-radius: 50%;\n\t\twidth: 25px;\n\t\theight: 25px;\n\t\tdisplay: inline-block;\n\t\tvertical-align: middle;\n\t\tmargin-left: 10px;\n\t\tposition: relative;\n\t\ttop: -2px;\n\t}\n\n    #navmenu-items {\n\t\tposition: absolute;\n\t\ttop: 31px;\n\t\tright: 0px;\n\t\tbackground-color: @black;\n\t\twidth: 200px;\n\t\tz-index: 99;\n\t\t> li {\n\t\t\t> a, > p {\n\t\t\t\tdisplay: block;\n\t\t\t\tpadding: 10px;\n\t\t\t\tmargin: 0;\n\t\t\t\tborder-top: 1px solid black;\n\t\t\t}\n\t\t\ta:hover {\n\t\t\t\ttext-decoration: none;\n\t\t\t\tbackground: #3a3a3a;\n\t\t\t}\n\t\t}\n    }\n}*/\n", ""]);
-
-// exports
-
 
 /***/ })
 

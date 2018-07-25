@@ -12,11 +12,12 @@ import '../css/index.less';
 import Routes from './routes';
 import { NewsWrapper } from './news/news-provider';
 
-
-
-
-
 const Loading = () => <div>Loading...</div>;
+
+const Logo = Loadable({
+  loader: () => import('./header/logo'),
+  loading: Loading,
+});
 
 const Header = Loadable({
   loader: () => import('./header/header'),
@@ -28,6 +29,11 @@ const Footer = Loadable({
   loading: Loading,
 });
 
+const FooterBar = Loadable({
+  loader: () => import('./footer/footer-bar'),
+  loading: Loading,
+});
+
 class App extends React.Component {
   render() {
     return (
@@ -36,9 +42,11 @@ class App extends React.Component {
           <ImageWrapper>
             <Router>
               <EventListener>
+                <Logo/>
                 <Header/>
                 <Routes/>
                 <Footer/>
+                <FooterBar/>
               </EventListener>
             </Router>
           </ImageWrapper>

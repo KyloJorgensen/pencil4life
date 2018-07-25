@@ -8,13 +8,140 @@ import * as faCheckSquare from '@fortawesome/fontawesome-free-solid/faCheckSquar
 import * as faSignInAlt from '@fortawesome/fontawesome-free-solid/faSignInAlt';
 import * as faSignOutAlt from '@fortawesome/fontawesome-free-solid/faSignOutAlt';
 import * as faUserAlt from '@fortawesome/fontawesome-free-solid/faUserAlt';
+import styled, { defaultTheme } from '../utilities/styled.components';
 import { eventListenerConsumer, IEventListenerContext } from '../event-listener/event-listener';
 import Dropdown from '../utilities/dropdown';
 import { userConsumer, IUserContext } from '../user/user-provider';
 
-import './header.less';
-
 fontawesome.library.add(faCheckSquare, faSignInAlt, faSignOutAlt, faUserAlt);
+
+const HeaderWrapper = styled.header`
+	margin: 0 0 20px 0;
+	color: white;
+
+	
+	@media (min-width: 768px) {
+		position: sticky;
+		top: 0;
+	}
+
+	.dropdown-toggle::after {
+		display: inline-block;
+		width: 0;
+		height: 0;
+		margin-left: .255em;
+		vertical-align: .255em;
+		content: "";
+		border-top: .3em solid;
+		border-right: .3em solid transparent;
+		border-bottom: 0;
+		border-left: .3em solid transparent;
+	}
+
+	.user-info {
+		display: flex;
+		justify-content: flex-end;
+
+		> * {
+			margin: 0.3em 0.2em !important;
+
+		}
+
+		> .btn {
+			background: ${props => props.theme.darkblue};
+			a {
+				padding: 0;
+			}
+		}
+
+		.mytooltip {
+			position: relative;
+			display: inline-block;
+		}
+		.mytooltip:hover {
+			border-radius: 0 0.25em 0.25em 0;
+		}
+
+		.mytooltip .mytooltiptext {
+			display: none;
+			background-color: #2e4067;
+			color: #fff;
+			border: 3px solid #172b57;
+			text-align: center;
+			border-radius: 0.25em 0 0 0.25em;
+			position: absolute;
+			z-index: 1;
+			top: -1px;
+			right: 100%;
+			font-size: 1em;
+
+			.mytooltip:hover .mytooltiptext {
+				display: inline-block;
+				background-color: ${props => props.theme.darkblue};
+				border-color: ${props => props.theme.highlightblue};
+			}
+		}
+	}
+
+	.nav-wrapper {
+		top: 0;
+		right: 0;
+		left: 0;
+		z-index: 9999; 
+		nav {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			background-color: ${props => props.theme.darkblue};
+			margin: 0;
+		}
+	}
+	.user-info, .nav-wrapper nav {
+		.selected {
+			text-decoration: underline;
+		}
+
+		a {
+			font-family: "QueenOfCamelot", "Lato", sans-serif;
+			color: white;
+			margin: 0;
+			font-size: 1em;
+			text-decoration: none;
+			padding: 0.5em;
+			background-color: ${props => props.theme.darkblue};
+		}
+
+		a:hover, a:focus{
+			outline: none;
+			color: white;
+			text-decoration: none;
+			box-shadow: none;
+			background-color: ${props => props.theme.highlightblue};
+		}
+		.dropdown-menu, .dropdown-menu-right {
+			display: none;
+			border: none;
+			border-radius: unset;
+			margin: 0.167rem 0 0 0;
+			padding: 0;
+			background-color: ${props => props.theme.darkblue};
+			.btn {
+				display: block;
+				text-align: unset;
+			}
+		}
+		.dropdown-menu-right {
+			position: absolute;
+			right: 0;
+			> * {
+				justify-self: right;
+			}
+		}
+		.show {
+			display: block;
+		}
+	}
+`;
 
 export interface IHeaderProps extends IEventListenerContext {
 	location: Location;
@@ -22,7 +149,6 @@ export interface IHeaderProps extends IEventListenerContext {
 }
 
 export interface IHeaderState {
-	logoMargin: number;
 	navPosition: 'initial' | 'fixed';
 }
 
@@ -31,36 +157,9 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
         super(props);
         this.state = {
   			navPosition: 'initial',
-  			logoMargin: 0,
 		  };
   		this.logout = this.logout.bind(this);
-		this.handleScroll = this.handleScroll.bind(this);
     }
-
-	componentDidMount() {
-		this.props.user.getUser();
-		this.props.addEventListener('scroll', this.handleScroll);
-	}
-
-	componentWillUnmount() {
-		this.props.removeEventListener('scroll', this.handleScroll);
-	}
-	
-	logoRef: React.RefObject<HTMLDivElement> = React.createRef();
-	navRef: React.RefObject<HTMLDivElement> = React.createRef();
-
-	handleScroll(event: UIEvent, ref: React.RefObject<HTMLDivElement>) {
-		this.setState((prevState, props) => {
-			const scroll = ref.current.scrollTop;
-			const imgHeight = this.logoRef.current.clientHeight;
-			const navBarHeight = this.navRef.current.clientHeight;
-			const navBarWidth = this.navRef.current.clientWidth;
-			return {
-				navPosition: scroll >= imgHeight && navBarWidth > 900 ? 'fixed' : 'initial',
-				logoMargin: scroll >= imgHeight && navBarWidth > 900 ? navBarHeight+20 : 0,
-			}
-		});
-	}
 
 	logout() {
 		this.props.user.logout();
@@ -120,13 +219,8 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 		}
 
 		return (
-			<header>
-				<div className="container" >
-					<div className="logo" ref={this.logoRef} style={{marginBottom: this.state.logoMargin+'px'}}>
-						<NavLink role="menuitem" tabIndex={-1} to={'/'} ><img className="logo-img" src="/images/pencil4lifelogo-blue-transparent.png" alt="Pencil4Life" /></NavLink>
-					</div>
-				</div>
-				<div className="container nav-wrapper" ref={this.navRef} style={{position: this.state.navPosition}} >
+			<HeaderWrapper theme={defaultTheme}>
+				<div className="container nav-wrapper" >
 				    <nav >
 				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/'} activeClassName="selected" >HOME</NavLink>
 				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/project'} activeClassName="selected" >PROJECTS</NavLink>
@@ -146,7 +240,7 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 						{user}
 					</div>
 				</div>
-			</header>
+			</HeaderWrapper>
 		);
 	}
 };

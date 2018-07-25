@@ -1,6 +1,40 @@
 'use strict';
 
-import styled from 'styled-components'
+// import styled from 'styled-components'
+
+
+export interface ThemeInterface {
+	primaryColor: string;
+	primaryColorInverted: string;
+	blue: string;
+	darkblue: string;
+	lightblue: string;
+	highlightblue: string;
+	gray: string;
+}
+
+import * as styledComponents from 'styled-components';
+import { ThemedStyledComponentsModule } from 'styled-components';
+
+const {
+  default: styled,
+  css,
+  injectGlobal,
+  keyframes,
+  ThemeProvider
+} = styledComponents as ThemedStyledComponentsModule<ThemeInterface>;
+
+export { css, injectGlobal, keyframes, ThemeProvider };
+export default styled;
+export const defaultTheme: ThemeInterface = {
+	primaryColor: '#172B57', 
+	primaryColorInverted: '#4d5f86',
+	blue: '#002157',
+	darkblue: '#172B57',
+	lightblue: '#3B5CA3',
+	highlightblue: '#4d5f86',
+	gray: 'gray',
+};
 
 export const Popout = styled.div`
 	position: fixed;

@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import './event-listener.less';
+import styled from 'styled-components';
 
 export type IEventType = 'click' | 'scroll' | 'resize';
 
@@ -42,6 +43,34 @@ export interface IEventListenerWrapperMethods {
   addEventListener: (eventType: IEventType, eventHandler: IEventHandler) => boolean;
   removeEventListener: (eventType: IEventType, eventHandler: IEventHandler) => boolean;
 }
+
+const EventListenerProviderWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  > div {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: #888; 
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555; 
+    }
+  }
+`;
 
 export class EventListenerWrapper extends React.Component<null, IEventListenerWrapperState> implements IEventListenerWrapperMethods {
   constructor(props) {
@@ -138,9 +167,11 @@ export class EventListenerWrapper extends React.Component<null, IEventListenerWr
     
     return (
       <EventListenerContext.Provider value={context}>
-        <div className="eventlistener-provider" ref={this.eventRef} onClick={handleClick} onScroll={handleScroll} >
-            {this.props.children}
-        </div>
+        <EventListenerProviderWrapper>
+          <div ref={this.eventRef} onClick={handleClick} onScroll={handleScroll} >
+                {this.props.children}
+          </div>
+        </EventListenerProviderWrapper>
       </EventListenerContext.Provider>
     );
   }

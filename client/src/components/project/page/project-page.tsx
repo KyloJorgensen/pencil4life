@@ -61,12 +61,15 @@ const Wrapper = styled.div`
 		> .back {
 			grid-row: unset;
 		}
+		
 		> .edit {
 			text-align: left; 
 		}
+
 		> .next {
 			grid-row: unset;
 		}
+
 		> .exit {
 			grid-column: 3;  
 		}

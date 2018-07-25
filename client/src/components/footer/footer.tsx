@@ -4,90 +4,52 @@ import * as React from 'react';
 import fontawesome from '@fortawesome/fontawesome';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import brands from '@fortawesome/fontawesome-free-brands';
+import styled from 'styled-components';
 import { eventListenerConsumer, IEventListenerContext } from '../event-listener/event-listener';
-
-import './footer.less'; 
 
 fontawesome.library.add(brands);
 
-export interface FooterState {
-	show: boolean;
-	over: boolean;
-}
+const FooterWrapper = styled.footer`
+	background-color: black;
+	/*padding: 64px;*/
+	position: relative;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10;	
+	.container {
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		margin-left: auto; 
+		margin-right: auto;
+		padding: 0.5em;
 
-export interface FooterMethods {
-	popUpToggle: () => void;
-	handleOutsideClick: () => void;
-	handleMouseEnter: () => void;
-	handleMouseLeave: () => void;
-	handleMouseMove: () => void;
-	handleClick: () => void;
-}
-
-class Footer extends React.Component<IEventListenerContext, FooterState, FooterMethods> {
-    constructor(props) {
-        super(props);
-        this.state = {
-  			show: false,
-  			over: false,
-		};
-		this.popUpToggle = this.popUpToggle.bind(this);
-		this.handleOutsideClick = this.handleOutsideClick.bind(this);
-		this.handleMouseEnter = this.handleMouseEnter.bind(this);
-		this.handleMouseLeave = this.handleMouseLeave.bind(this);
-		this.handleMouseMove = this.handleMouseMove.bind(this);
-		this.handleClick = this.handleClick.bind(this);
-    }
-
-	popUpToggle() {
-		this.setState((prevState) => {return {show: !prevState.show}});
 	}
 
-	handleOutsideClick() {
-		if (!this.state.over) {
-			this.setState(() => {return {show: false}});
+	.social {
+		a {
+			color: #ffffff;
+			font-size: 2.5em;
+			padding: 0.5em;
 		}
 	}
 
-	handleMouseEnter() {
-		this.setState(() => {return {over: true}});
+	.legal, .legal * {
+		color: #454545;
+		font-size: 1em;
+		padding-top: 0;
+		padding-bottom: 0;
+		margin-bottom: 0;
 	}
 
-	handleMouseLeave() {
-		this.setState(() => {return {over: false}});
-	}
+`;
 
-	handleMouseMove() {
-		this.setState(() => {return {over: true}});
-	}
-
-	handleClick() {
-		this.setState(() => {return {show: false, over: false}});
-	}
-
-	componentDidMount() {
-		this.props.addEventListener('scroll', this.handleOutsideClick);
-		this.props.addEventListener('click', this.handleOutsideClick);
-	}
-
-	componentWillUnmount() {
-		this.props.removeEventListener('scroll', this.handleOutsideClick);
-		this.props.removeEventListener('click', this.handleOutsideClick);
-	}
-
+class Footer extends React.Component<null> {
 	render() {
-
-		const { handleClick, handleMouseEnter, handleMouseLeave, handleMouseMove, popUpToggle } = this;
-		const { show } = this.state;
-
-
-		let footerBodyClass = show ? 'footer-body fixed' : 'footer-body';
-		let BodyFillerClass = show ? 'container' : 'hide';
-
 		return (
-			<footer id="footer" >
-		    	<div className={footerBodyClass} onMouseLeave={handleMouseLeave} onMouseMove={handleMouseMove} onMouseEnter={handleMouseEnter} onClick={handleClick} >
-			    	<div className="container" >
+			<FooterWrapper>
+			    	<div className="social container" >
 			    		<a href="https://www.instagram.com/pencil.4.life/"><FontAwesomeIcon icon={["fab", "instagram"]} /></a>
 			    		<a href="https://www.twitch.tv/pencil4life"><FontAwesomeIcon icon={["fab", "twitch"]} /></a>
 			    		<a href="https://twitter.com/pencil4life"><FontAwesomeIcon icon={["fab", "twitter"]} /></a>
@@ -102,12 +64,7 @@ class Footer extends React.Component<IEventListenerContext, FooterState, FooterM
 			    		<a href="">Privacy Policy</a>
 			    		<a href="">User Agreement</a>
 			    	</div>
-		    	</div>
-		    		<div className={BodyFillerClass} >
-			    		<a href="">This is the body filler</a>
-			    	</div>
-		    	<div className="footer-bar" onMouseMove={handleMouseMove} onMouseEnter={handleMouseEnter} onClick={popUpToggle} ></div>
-	    	</footer>
+	    	</FooterWrapper>
 		);
 	}
 };

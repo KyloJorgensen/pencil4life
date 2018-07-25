@@ -45,7 +45,9 @@ ShallowWrapper {
           <HashRouter>
             <EventListenerWrapper>
               <LoadableComponent />
+              <LoadableComponent />
               <Routes />
+              <LoadableComponent />
               <LoadableComponent />
             </EventListenerWrapper>
           </HashRouter>
@@ -83,7 +85,9 @@ ShallowWrapper {
           <HashRouter>
             <EventListenerWrapper>
               <LoadableComponent />
+              <LoadableComponent />
               <Routes />
+              <LoadableComponent />
               <LoadableComponent />
             </EventListenerWrapper>
           </HashRouter>
@@ -106,7 +110,9 @@ ShallowWrapper {
           "children": <HashRouter>
             <EventListenerWrapper>
               <LoadableComponent />
+              <LoadableComponent />
               <Routes />
+              <LoadableComponent />
               <LoadableComponent />
             </EventListenerWrapper>
           </HashRouter>,
@@ -128,7 +134,9 @@ ShallowWrapper {
           "props": Object {
             "children": <EventListenerWrapper>
               <LoadableComponent />
+              <LoadableComponent />
               <Routes />
+              <LoadableComponent />
               <LoadableComponent />
             </EventListenerWrapper>,
           },
@@ -140,12 +148,32 @@ ShallowWrapper {
             "props": Object {
               "children": Array [
                 <LoadableComponent />,
+                <LoadableComponent />,
                 <Routes />,
+                <LoadableComponent />,
                 <LoadableComponent />,
               ],
             },
             "ref": null,
             "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
               Object {
                 "instance": null,
                 "key": undefined,
@@ -218,7 +246,9 @@ ShallowWrapper {
             <HashRouter>
               <EventListenerWrapper>
                 <LoadableComponent />
+                <LoadableComponent />
                 <Routes />
+                <LoadableComponent />
                 <LoadableComponent />
               </EventListenerWrapper>
             </HashRouter>
@@ -256,7 +286,9 @@ ShallowWrapper {
             <HashRouter>
               <EventListenerWrapper>
                 <LoadableComponent />
+                <LoadableComponent />
                 <Routes />
+                <LoadableComponent />
                 <LoadableComponent />
               </EventListenerWrapper>
             </HashRouter>
@@ -279,7 +311,9 @@ ShallowWrapper {
             "children": <HashRouter>
               <EventListenerWrapper>
                 <LoadableComponent />
+                <LoadableComponent />
                 <Routes />
+                <LoadableComponent />
                 <LoadableComponent />
               </EventListenerWrapper>
             </HashRouter>,
@@ -301,7 +335,9 @@ ShallowWrapper {
             "props": Object {
               "children": <EventListenerWrapper>
                 <LoadableComponent />
+                <LoadableComponent />
                 <Routes />
+                <LoadableComponent />
                 <LoadableComponent />
               </EventListenerWrapper>,
             },
@@ -313,12 +349,32 @@ ShallowWrapper {
               "props": Object {
                 "children": Array [
                   <LoadableComponent />,
+                  <LoadableComponent />,
                   <Routes />,
+                  <LoadableComponent />,
                   <LoadableComponent />,
                 ],
               },
               "ref": null,
               "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
                 Object {
                   "instance": null,
                   "key": undefined,

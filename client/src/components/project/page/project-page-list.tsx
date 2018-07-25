@@ -37,14 +37,11 @@ class ProjectPageList extends React.Component<ProjectPageListProps> {
     	let update = false;
     	let prevDiscontinued = prevProps.discontinued;
     	let currentDiscontinued = this.props.discontinued;
-		console.log(prevDiscontinued, currentDiscontinued)
 
     	if (prevDiscontinued != currentDiscontinued) {
 	    	update = true;
 		}
-		console.log(prevDiscontinued, currentDiscontinued)
 
-		console.log(update, prevDiscontinued, currentDiscontinued)
     	if (update) {
     		let query = {
     			discontinued: this.props.discontinued,
