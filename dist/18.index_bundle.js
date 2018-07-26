@@ -113,7 +113,8 @@ var ProfileChangePassword = /** @class */ (function (_super) {
             return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], { to: '/profile' }));
         }
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "profile-wrapper" },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h1", null, "Profile"),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { exact: true, to: '/profile/changepassword', activeClassName: "selected" },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", null, "Change Password")),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("form", { onSubmit: updatePassword },
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null,
                     "Old Password",
@@ -256,7 +257,8 @@ var ProfileEdit = /** @class */ (function (_super) {
             return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], { to: '/profile' }));
         }
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "profile-wrapper" },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h1", null, "Profile"),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { exact: true, to: '/profile/edit', activeClassName: "selected" },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", null, "Edit")),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("form", { onSubmit: updateUser },
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Email"),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
@@ -328,6 +330,8 @@ var ProfileSwitch = /** @class */ (function (_super) {
         }
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "profile-page-wrapper" },
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "container" },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], { exact: true, to: '/profile', activeClassName: "selected" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", null, "PROFILE")),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Switch"], null,
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/profile", component: _profile__WEBPACK_IMPORTED_MODULE_3__["default"] }),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/profile/edit", component: _profile_edit__WEBPACK_IMPORTED_MODULE_4__["default"] }),
@@ -378,7 +382,6 @@ var Profile = /** @class */ (function (_super) {
         var _a = this.props.user, email = _a.email, firstname = _a.firstname, lastname = _a.lastname;
         var logout = this.props.user.logout;
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "profile-wrapper" },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h1", null, "Profile"),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Email"),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, email),

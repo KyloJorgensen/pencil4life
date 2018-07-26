@@ -33,7 +33,7 @@ ShallowWrapper {
         />
         <Route
           component={[Function]}
-          path="/doodles"
+          path="/doodle"
         />
         <Route
           component={[Function]}
@@ -106,7 +106,7 @@ ShallowWrapper {
           />,
           <Route
             component={[Function]}
-            path="/doodles"
+            path="/doodle"
           />,
           <Route
             component={[Function]}
@@ -202,7 +202,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "component": [Function],
-            "path": "/doodles",
+            "path": "/doodle",
           },
           "ref": null,
           "rendered": null,
@@ -378,7 +378,7 @@ ShallowWrapper {
           />
           <Route
             component={[Function]}
-            path="/doodles"
+            path="/doodle"
           />
           <Route
             component={[Function]}
@@ -451,7 +451,7 @@ ShallowWrapper {
             />,
             <Route
               component={[Function]}
-              path="/doodles"
+              path="/doodle"
             />,
             <Route
               component={[Function]}
@@ -547,7 +547,7 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "component": [Function],
-              "path": "/doodles",
+              "path": "/doodle",
             },
             "ref": null,
             "rendered": null,

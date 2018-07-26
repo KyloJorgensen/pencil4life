@@ -893,7 +893,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_loadable__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _no_match__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./no-match */ "./client/src/components/no-match.tsx");
 /* harmony import */ var _utilities_loading__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utilities/loading */ "./client/src/components/utilities/loading.tsx");
-/* harmony import */ var _node_modules_styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../node_modules/styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
 
 var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
@@ -941,8 +941,8 @@ var ProjectSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
     loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(20), __webpack_require__.e(21), __webpack_require__.e(22), __webpack_require__.e(25), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./project/project-switch */ "./client/src/components/project/project-switch.tsx")); },
     loading: Loading,
 });
-var DoodlesSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ./doodles/doodles-switch */ "./client/src/components/doodles/doodles-switch.tsx")); },
+var DoodleSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(20), __webpack_require__.e(21), __webpack_require__.e(25), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./doodle/doodle-switch */ "./client/src/components/doodle/doodle-switch.tsx")); },
     loading: Loading,
 });
 var ComicsSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
@@ -977,7 +977,7 @@ var ImageSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
     loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(25), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! ./image/image-switch */ "./client/src/components/image/image-switch.tsx")); },
     loading: Loading,
 });
-var RoutesWrapper = _node_modules_styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  padding-bottom: 3em;\n"], ["\n  padding-bottom: 3em;\n"])));
+var RoutesWrapper = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  padding-bottom: 3em;\n"], ["\n  padding-bottom: 3em;\n"])));
 var Routes = /** @class */ (function (_super) {
     __extends(Routes, _super);
     function Routes() {
@@ -989,7 +989,7 @@ var Routes = /** @class */ (function (_super) {
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/", component: HomePage }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/event", component: EventSwitch }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/project", component: ProjectSwitch }),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/doodles", component: DoodlesSwitch }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/doodle", component: DoodleSwitch }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/comics", component: ComicsSwitch }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/soundboard", component: SoundboardSwitch }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/shop", component: ShopSwitch }),

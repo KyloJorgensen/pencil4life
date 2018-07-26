@@ -1,7 +1,7 @@
 'use strict';
 
 import * as React from 'react';
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import { userConsumer, IUserContext, UpdateUserParams } from '../user/user-provider';
 
 export interface ProfileEditProps {
@@ -120,7 +120,7 @@ class ProfileEdit extends React.Component<ProfileEditProps, ProfileEditState> im
 		}
 		return (
 			<div className="profile-wrapper" >
-				<h1>Profile</h1>
+				<NavLink exact to={'/profile/edit'} activeClassName="selected" ><h2>Edit</h2></NavLink>
 				<form onSubmit={updateUser}>
 					<label>Email</label>
 					<br/>

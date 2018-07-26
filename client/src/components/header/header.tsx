@@ -52,34 +52,6 @@ const HeaderWrapper = styled.header`
 				padding: 0;
 			}
 		}
-
-		.mytooltip {
-			position: relative;
-			display: inline-block;
-		}
-		.mytooltip:hover {
-			border-radius: 0 0.25em 0.25em 0;
-		}
-
-		.mytooltip .mytooltiptext {
-			display: none;
-			background-color: #2e4067;
-			color: #fff;
-			border: 3px solid #172b57;
-			text-align: center;
-			border-radius: 0.25em 0 0 0.25em;
-			position: absolute;
-			z-index: 1;
-			top: -1px;
-			right: 100%;
-			font-size: 1em;
-
-			.mytooltip:hover .mytooltiptext {
-				display: inline-block;
-				background-color: ${props => props.theme.darkblue};
-				border-color: ${props => props.theme.highlightblue};
-			}
-		}
 	}
 
 	.nav-wrapper {
@@ -187,27 +159,24 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 		}
 
 		let profile = this.props.user.userAccess ? (
-			<NavLink exact key="profile" className="btn mytooltip" role="menuitem" tabIndex={-1} to={'/profile'} activeClassName="selected" >
-				<FontAwesomeIcon icon={["fas", "user-alt"]} />
-				<span className="btn mytooltiptext">PROFILE</span>
+			<NavLink exact key="profile" className="btn" role="menuitem" tabIndex={-1} to={'/profile'} activeClassName="selected" >
+				PROFILE <FontAwesomeIcon icon={["fas", "user-alt"]} />
 			</NavLink>
 		) : ''; 
 		user.push(profile);
 
 		let logInOut = this.props.user.userAccess ? (
-			<a key="logout" className="btn mytooltip" onClick={this.logout} >
-				<FontAwesomeIcon icon={["fas", "sign-out-alt"]} />
- 				<span className="btn mytooltiptext">SIGN OUT</span>
+			<a key="logout" className="btn" onClick={this.logout} >
+				SIGN OUT <FontAwesomeIcon icon={["fas", "sign-out-alt"]} />
 			</a>
 		) : (
-			<NavLink exact key="login" className="btn mytooltip" role="menuitem" tabIndex={-1} to={{
+			<NavLink exact key="login" className="btn" role="menuitem" tabIndex={-1} to={{
 				pathname: '/login', 
 				state: {
 					redirectPath: this.props.location.pathname
 				}
 			}} activeClassName="selected" >
-				<FontAwesomeIcon icon={["fas", "sign-in-alt"]} />
- 				<span className="btn mytooltiptext">SIGN IN</span>
+				SIGN IN <FontAwesomeIcon icon={["fas", "sign-in-alt"]} />
  			</NavLink>
 		); 
 		user.push(logInOut);
@@ -223,7 +192,7 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 				    <nav >
 				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/'} activeClassName="selected" >HOME</NavLink>
 				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/project'} activeClassName="selected" >PROJECTS</NavLink>
-				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/doodles'} activeClassName="selected" >DOODLES</NavLink>
+				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/doodle'} activeClassName="selected" >DOODLES</NavLink>
 				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/comics'} activeClassName="selected" >COMICS</NavLink>
 				    	<Dropdown toggleClass={communityClasses}  toggleChild='COMMUNITY'>
 				    		<NavLink className="btn dropdown-item" exact role="menuitem" tabIndex={-1} to={'/event'} activeClassName="selected" >EVENTS</NavLink>

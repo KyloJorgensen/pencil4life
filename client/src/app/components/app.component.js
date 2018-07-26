@@ -27,8 +27,8 @@ const ProjectSwitch = Loadable({
     loader: () => import('./project/project-switch.container.js'),
     loading: Loading,
 });
-const DoodlesSwitch = Loadable({
-    loader: () => import('./doodles/doodles-switch.container.js'),
+const DoodleSwitch = Loadable({
+    loader: () => import('./doodle/doodle-switch.container.js'),
     loading: Loading,
 });
 const ComicsSwitch = Loadable({
@@ -90,7 +90,7 @@ class App extends Component {
                             <Route exact path="/" component={HomePage} />
                             <Route path="/event" component={EventSwitch} />
                             <Route path="/project" component={ProjectSwitch} />
-                            <Route path="/doodles" component={DoodlesSwitch} />
+                            <Route path="/doodle" component={DoodleSwitch} />
                             <Route path="/comics" component={ComicsSwitch} />
                             <Route path="/soundboard" component={SoundboardSwitch} />
                             <Route path="/shop" component={ShopSwitch} />

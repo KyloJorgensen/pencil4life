@@ -9,6 +9,7 @@ import newsitemRouter from './newsitem/newsitem.router';
 import shopitemRouter from './shopitem/shopitem.router';
 import userRouter from './user/user.router';
 import commmissionsRouter from './commissions/commissions.router';
+import doodleRouter from './doodle/doodle.router';
 
 const router = Router();
 
@@ -21,5 +22,6 @@ router
     .use('/shopitem', shopitemRouter)
     .use('/user', userRouter)
     .use('/commissions', commmissionsRouter)
+    .use('/doodle', doodleRouter)
 
 export default router;

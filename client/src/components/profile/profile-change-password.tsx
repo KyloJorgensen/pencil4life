@@ -1,7 +1,7 @@
 'use strict';
 
 import * as React from 'react';
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import { IUserContext, userConsumer } from '../user/user-provider';
 
 export interface ProfileChangePasswordProps {
@@ -116,7 +116,7 @@ class ProfileChangePassword extends React.Component<ProfileChangePasswordProps, 
 
 		return (
 			<div className="profile-wrapper" >
-				<h1>Profile</h1>
+				<NavLink exact to={'/profile/changepassword'} activeClassName="selected" ><h2>Change Password</h2></NavLink>
 				<form onSubmit={updatePassword}>
 					<label>Old Password{passwordBad ? (<span className="errortext" >* Bad Password</span>) : ''}</label>
 					<br/>

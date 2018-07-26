@@ -9,40 +9,13 @@ import ImageTag from './image-tag';
 
 const ImamgeListItem = styled.div`
 
-	.image-link {
+	.image-link {    
 		display: grid;
-		grid-template-rows: minmax(100px, 200px);
-		> img {
-			max-width: 100%;
-			max-height: 100%;
-			position: relative;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
-
+		grid-template-rows: 1fr auto;
+		height: 100%;
 	}
-
-	.image-wrapper {
-		align-self: stretch;
-		width: 100%;
-		img {
-			max-width: 100%;
-			position: relative;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
-	}
-	.title-year-wrapper {
+	.name-alt-wrapper {
 		align-self: end;
-		> .title, > .year {
-			margin: 0.25em;
-			display: inline-block;
-		}
-		> .year {
-			float:right;
-		}
 	}
 `;
 
@@ -69,8 +42,10 @@ class ImageListItem extends React.Component<ImageListItemProps> {
 			<ImamgeListItem className="image-list-item-wrapper" >	
 				<Link className="image-link" to={'/image/item/'+_imageId} >
 					<ImageTag _imageId={_imageId} />
-					<p>{name}</p>
-					<p>{alt}</p>
+					<div className="name-alt-wrapper">
+						<p>{name}</p>
+						<p>{alt}</p>
+					</div>
 				</Link>
 			</ImamgeListItem>
 		);		

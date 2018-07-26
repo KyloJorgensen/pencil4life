@@ -35,7 +35,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
-var ImamgeListItem = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\n\t.image-link {\n\t\tdisplay: grid;\n\t\tgrid-template-rows: minmax(100px, 200px);\n\t\t> img {\n\t\t\tmax-width: 100%;\n\t\t\tmax-height: 100%;\n\t\t\tposition: relative;\n\t\t\ttop: 50%;\n\t\t\tleft: 50%;\n\t\t\ttransform: translate(-50%, -50%);\n\t\t}\n\n\t}\n\n\t.image-wrapper {\n\t\talign-self: stretch;\n\t\twidth: 100%;\n\t\timg {\n\t\t\tmax-width: 100%;\n\t\t\tposition: relative;\n\t\t\ttop: 50%;\n\t\t\tleft: 50%;\n\t\t\ttransform: translate(-50%, -50%);\n\t\t}\n\t}\n\t.title-year-wrapper {\n\t\talign-self: end;\n\t\t> .title, > .year {\n\t\t\tmargin: 0.25em;\n\t\t\tdisplay: inline-block;\n\t\t}\n\t\t> .year {\n\t\t\tfloat:right;\n\t\t}\n\t}\n"], ["\n\n\t.image-link {\n\t\tdisplay: grid;\n\t\tgrid-template-rows: minmax(100px, 200px);\n\t\t> img {\n\t\t\tmax-width: 100%;\n\t\t\tmax-height: 100%;\n\t\t\tposition: relative;\n\t\t\ttop: 50%;\n\t\t\tleft: 50%;\n\t\t\ttransform: translate(-50%, -50%);\n\t\t}\n\n\t}\n\n\t.image-wrapper {\n\t\talign-self: stretch;\n\t\twidth: 100%;\n\t\timg {\n\t\t\tmax-width: 100%;\n\t\t\tposition: relative;\n\t\t\ttop: 50%;\n\t\t\tleft: 50%;\n\t\t\ttransform: translate(-50%, -50%);\n\t\t}\n\t}\n\t.title-year-wrapper {\n\t\talign-self: end;\n\t\t> .title, > .year {\n\t\t\tmargin: 0.25em;\n\t\t\tdisplay: inline-block;\n\t\t}\n\t\t> .year {\n\t\t\tfloat:right;\n\t\t}\n\t}\n"])));
+var ImamgeListItem = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\n\t.image-link {    \n\t\tdisplay: grid;\n\t\tgrid-template-rows: 1fr auto;\n\t\theight: 100%;\n\t}\n\t.name-alt-wrapper {\n\t\talign-self: end;\n\t}\n"], ["\n\n\t.image-link {    \n\t\tdisplay: grid;\n\t\tgrid-template-rows: 1fr auto;\n\t\theight: 100%;\n\t}\n\t.name-alt-wrapper {\n\t\talign-self: end;\n\t}\n"])));
 var ImageListItem = /** @class */ (function (_super) {
     __extends(ImageListItem, _super);
     function ImageListItem(props) {
@@ -53,8 +53,9 @@ var ImageListItem = /** @class */ (function (_super) {
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](ImamgeListItem, { className: "image-list-item-wrapper" },
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], { className: "image-link", to: '/image/item/' + _imageId },
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_tag__WEBPACK_IMPORTED_MODULE_4__["default"], { _imageId: _imageId }),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, name),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, alt))));
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "name-alt-wrapper" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, name),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, alt)))));
     };
     return ImageListItem;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));

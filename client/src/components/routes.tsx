@@ -7,7 +7,7 @@ import * as Loadable from 'react-loadable';
 import NoMatch from './no-match';
 
 import { LoadingSpinner } from './utilities/loading';
-import styled from '../../../node_modules/styled-components';
+import styled from 'styled-components';
 const Loading = () => <LoadingSpinner/>;
 
 const HomePage = Loadable({
@@ -40,8 +40,8 @@ const ProjectSwitch = Loadable({
   loading: Loading,
 });
 
-const DoodlesSwitch = Loadable({
-  loader: () => import('./doodles/doodles-switch'),
+const DoodleSwitch = Loadable({
+  loader: () => import('./doodle/doodle-switch'),
   loading: Loading,
 });
 
@@ -97,7 +97,7 @@ class Routes extends React.Component {
             <Route exact path="/" component={HomePage} />
             <Route path="/event" component={EventSwitch} />
             <Route path="/project" component={ProjectSwitch} />
-            <Route path="/doodles" component={DoodlesSwitch} />
+            <Route path="/doodle" component={DoodleSwitch} />
             <Route path="/comics" component={ComicsSwitch} />
             <Route path="/soundboard" component={SoundboardSwitch} />
             <Route path="/shop" component={ShopSwitch} />

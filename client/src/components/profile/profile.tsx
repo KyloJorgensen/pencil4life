@@ -19,7 +19,6 @@ class Profile extends React.Component<ProfileProps> {
 
 		return (
 			<div className="profile-wrapper" >
-				<h1>Profile</h1>
 				<label>Email</label>
 				<br/>
 				<p>{email}</p>

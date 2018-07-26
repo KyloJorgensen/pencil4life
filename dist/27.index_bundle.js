@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[25],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[27],{
 
 /***/ "./client/src/components/image/image-edit.tsx":
 /*!****************************************************!*\
@@ -630,4 +630,4 @@ exports.push([module.i, ".dropzone-wrapper .dropzone .bad-files-wrapper .bad-fil
 /***/ })
 
 }]);
-//# sourceMappingURL=25.index_bundle.js.map
+//# sourceMappingURL=27.index_bundle.js.map
