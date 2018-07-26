@@ -206,32 +206,30 @@ class ProjectPageEdit extends React.Component<ProjectPageEditProps, ProjectPageE
 
 		return (
 			<Popout>
-				<div className="project-page-edit-wrapper container" >
-					<form onSubmit={updateProjectPage}>
-						{admin ? <p className="text-right" ><Link to={'/project/item/'+ _projectId + '/' + _projectPageId}>X</Link></p> : ''}
+				<div className="project-page-edit-wrapper" >
+					{admin ? <p className="text-right" ><Link to={'/project/item/'+ _projectId + '/' + _projectPageId}>X</Link></p> : ''}
 
-						<h3>EDIT PROJECT PAGE</h3>
+					<h3>EDIT PROJECT PAGE</h3>
 
-						<label>Image</label>
-						{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
-						
-						<label>Title{required ? (<span className="errortext" >*</span>) : ''}</label>
-						<br/>
-						<input type='text' onKeyPress={hitKey} onChange={editField} name='title' placeholder="Great ProjectPage" value={title} />
-						<br/>
-						<label>Page</label>
-						<br/>
-						<input type="number" onKeyPress={hitKey} onChange={editField} name="page" min={1} max={total} value={page}/>
-						<br/>
-						<label>Details</label>
-						<br/>
-						<RichTextEditor value={details} onChange={onRichTextChange} />
-						<label>Discontinued</label>
-						<br/>
-						<input type='checkbox' checked={!!discontinued} name="discontinued" onChange={handleCheckboxChange} />
-						<br/>
-						<input type='submit' onClick={updateProjectPage} value='SAVE' />
-					</form>	
+					<label>Image</label>
+					{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
+					
+					<label>Title{required ? (<span className="errortext" >*</span>) : ''}</label>
+					<br/>
+					<input type='text' onKeyPress={hitKey} onChange={editField} name='title' placeholder="Great ProjectPage" value={title} />
+					<br/>
+					<label>Page</label>
+					<br/>
+					<input type="number" onKeyPress={hitKey} onChange={editField} name="page" min={1} max={total} value={page}/>
+					<br/>
+					<label>Details</label>
+					<br/>
+					<RichTextEditor value={details} onChange={onRichTextChange} />
+					<label>Discontinued</label>
+					<br/>
+					<input type='checkbox' checked={!!discontinued} name="discontinued" onChange={handleCheckboxChange} />
+					<br/>
+					<input type='submit' onClick={updateProjectPage} value='SAVE' />
 				</div>
 			</Popout>
 		);			

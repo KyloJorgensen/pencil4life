@@ -194,27 +194,25 @@ class DoodleEdit extends React.Component<DoodleEditProps, DoodleEditState> imple
 		return (
 			<Popout>
 				<div className="doodle-page-edit-wrapper" >
-					<form onSubmit={updateDoodle}>
-						{admin ? <p className="text-right" ><Link to={'/doodle/item/' + _doodleId}>X</Link></p> : ''}
+					{admin ? <p className="text-right" ><Link to={'/doodle/item/' + _doodleId}>X</Link></p> : ''}
 
-						<h3>EDIT DOODLE</h3>
+					<h3>EDIT DOODLE</h3>
 
-						<label>Image</label>
-						{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
-						
-						<label>Title</label>
-						<br/>
-						<input type='text' onKeyPress={hitKey} onChange={editField} name='title' placeholder="Great Doodle" value={title} />
-						<br/>
-						<label>Details</label>
-						<br/>
-						<RichTextEditor value={details} onChange={onRichTextChange} />
-						<label>Discontinued</label>
-						<br/>
-						<input type='checkbox' checked={!!discontinued} name="discontinued" onChange={handleCheckboxChange} />
-						<br/>
-						<input type='submit' onClick={updateDoodle} value='SAVE' />
-					</form>	
+					<label>Image</label>
+					{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
+					
+					<label>Title</label>
+					<br/>
+					<input type='text' onKeyPress={hitKey} onChange={editField} name='title' placeholder="Great Doodle" value={title} />
+					<br/>
+					<label>Details</label>
+					<br/>
+					<RichTextEditor value={details} onChange={onRichTextChange} />
+					<label>Discontinued</label>
+					<br/>
+					<input type='checkbox' checked={!!discontinued} name="discontinued" onChange={handleCheckboxChange} />
+					<br/>
+					<input type='submit' onClick={updateDoodle} value='SAVE' />
 				</div>
 			</Popout>
 		);			

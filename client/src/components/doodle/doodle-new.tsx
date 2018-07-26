@@ -27,8 +27,8 @@ export interface DoodleNewState {
 
 export interface DoodleNewMethods {
 	hitKey: (event: UIEvent) => void;
-	addNewProject: (event: UIEvent) => void;
-	addNewProjectResult: (error: boolean, _doodleId: string) => void;
+	addNewDoodle: (event: UIEvent) => void;
+	addNewDoodleResult: (error: boolean, _doodleId: string) => void;
 	onRichTextChange: (value: string) => void;
 	addNewImageResult: (error: boolean, _imageId: string) => void;
 }
@@ -47,45 +47,41 @@ class DoodleNew extends React.Component<DoodleNewProps, DoodleNewState> implemen
 		
 
 		this.hitKey = this.hitKey.bind(this);
-		this.addNewProject = this.addNewProject.bind(this);
-		this.addNewProjectResult = this.addNewProjectResult.bind(this);
+		this.addNewDoodle = this.addNewDoodle.bind(this);
+		this.addNewDoodleResult = this.addNewDoodleResult.bind(this);
 		this.onRichTextChange = this.onRichTextChange.bind(this);
 		this.addNewImageResult = this.addNewImageResult.bind(this);
 	}
 
 	hitKey(event) {
 		if (event.key == 'Enter') {
-			this.addNewProject(event);
+			this.addNewDoodle(event);
 		}
-	}
-	
-	componentDidMount() {
-		this.props.doodle.getDoodles({});
 	}
 
 	titleRef: React.RefObject<HTMLInputElement> = React.createRef();
 
-	addNewProject(event) {
+	addNewDoodle(event) {
 		event.preventDefault();
 		const title = this.titleRef.current.value;
 		const { details, _imageId } = this.state;
 
-		const newProject: addDoodleParams = {
+		const newDoodle: addDoodleParams = {
 			title: title,
 			details: details.toString('html'),
 		}
 
 		if (_imageId != null) {
-			newProject._imageId = _imageId;
+			newDoodle._imageId = _imageId;
 		}
-		this.props.doodle.addDoodle(newProject, this.addNewProjectResult);
+		this.props.doodle.addDoodle(newDoodle, this.addNewDoodleResult);
 
 		this.setState(() => {
 			return {required: false};
 		});
 	}
 
-	addNewProjectResult = (error, _doodleId) => {
+	addNewDoodleResult = (error, _doodleId) => {
 		if (error) {
 			this.setState(() => {
 				return {required: true};
@@ -119,7 +115,7 @@ class DoodleNew extends React.Component<DoodleNewProps, DoodleNewState> implemen
 	}
 	
 	render() {
-		const { addNewImageResult, addNewProject, hitKey, onRichTextChange, titleRef } = this;
+		const { addNewImageResult, addNewDoodle, hitKey, onRichTextChange, titleRef } = this;
 		const { _imageId, imageRequired, _doodleId, required, details } = this.state;
 		const { admin } = this.props.user;
 		const { pathname } = this.props.location;
@@ -137,23 +133,19 @@ class DoodleNew extends React.Component<DoodleNewProps, DoodleNewState> implemen
 		return (
 			<Popout>
 				<div className="doodle-new-wrapper" >
-					<form onSubmit={addNewProject}>
-						<p className="text-right" ><Link to={'/doodle/'}>X</Link></p>
-
-						<h3>New Doodle</h3>
-						<label>Image</label>
-						{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
-						
-						<label>Title{required ? (<span className="errortext" >*</span>) : ''}</label>
-						<br/>
-						<input type='text' onKeyPress={hitKey} placeholder="Great Project" ref={titleRef} />
-						<br/>
-						<label>Details</label>
-						<br/>
-						<RichTextEditor value={details} onChange={onRichTextChange} />
-						<br/>
-						<input type='submit' onClick={addNewProject} value='SAVE' />
-					</form>	
+					<p className="text-right" ><Link to={'/doodle/'}>X</Link></p>
+					<h3>New Doodle</h3>
+					<label>Image</label>
+					{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
+					<label>Title{required ? (<span className="errortext" >*</span>) : ''}</label>
+					<br/>
+					<input type='text' onKeyPress={hitKey} placeholder="Great Doodle" ref={titleRef} />
+					<br/>
+					<label>Details</label>
+					<br/>
+					<RichTextEditor value={details} onChange={onRichTextChange} />
+					<br/>
+					<input type='submit' onClick={addNewDoodle} value='SAVE' />
 				</div>
 			</Popout>
 		);			

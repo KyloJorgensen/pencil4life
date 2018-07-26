@@ -156,25 +156,23 @@ class ProjectNew extends React.Component<ProjectNewProps, ProjectNewState> imple
 	
 		return (
 			<div className="project-new-wrapper" >
-				<form onSubmit={addNewProject}>
-					<h3>New Project</h3>
-					<label>Cover Image</label>
-					{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
-					
-					<label>Title{required ? (<span className="errortext" >*</span>) : ''}</label>
-					<br/>
-					<input type='text' onKeyPress={hitKey} placeholder="Great Project" ref={this.titleRef} />
-					<br/>
-					<label>Year{required ? (<span className="errortext" >*</span>) : ''}</label>
-					<br/>
-					<Datetime dateFormat="YYYY" timeFormat={false} onChange={yearChanged} value={year} />
-					<br/>
-					<label>Details</label>
-					<br/>
-					<RichTextEditor value={details} onChange={onRichTextChange} />
-					<br/>
-					<input type='submit' onClick={addNewProject} value='SAVE' />
-				</form>	
+				<h3>New Project</h3>
+				<label>Cover Image</label>
+				{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
+				
+				<label>Title{required ? (<span className="errortext" >*</span>) : ''}</label>
+				<br/>
+				<input type='text' onKeyPress={hitKey} placeholder="Great Project" ref={this.titleRef} />
+				<br/>
+				<label>Year{required ? (<span className="errortext" >*</span>) : ''}</label>
+				<br/>
+				<Datetime dateFormat="YYYY" timeFormat={false} onChange={yearChanged} value={year} />
+				<br/>
+				<label>Details</label>
+				<br/>
+				<RichTextEditor value={details} onChange={onRichTextChange} />
+				<br/>
+				<input type='submit' onClick={addNewProject} value='SAVE' />
 			</div>
 		);			
 	}

@@ -276,24 +276,23 @@ var DoodleEdit = /** @class */ (function (_super) {
         }
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_styled_components__WEBPACK_IMPORTED_MODULE_7__["Popout"], null,
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "doodle-page-edit-wrapper" },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("form", { onSubmit: updateDoodle },
-                    admin ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "text-right" },
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: '/doodle/item/' + _doodleId }, "X")) : '',
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "EDIT DOODLE"),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Image"),
-                    _imageId ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_edit__WEBPACK_IMPORTED_MODULE_4__["default"], { _imageId: _imageId, updateRedirect: false }) : react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_new__WEBPACK_IMPORTED_MODULE_3__["default"], { required: imageRequired, addNewImageResult: addNewImageResult }),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Title"),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'text', onKeyPress: hitKey, onChange: editField, name: 'title', placeholder: "Great Doodle", value: title }),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Details"),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_rte__WEBPACK_IMPORTED_MODULE_1___default.a, { value: details, onChange: onRichTextChange }),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Discontinued"),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'checkbox', checked: !!discontinued, name: "discontinued", onChange: handleCheckboxChange }),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'submit', onClick: updateDoodle, value: 'SAVE' })))));
+                admin ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "text-right" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: '/doodle/item/' + _doodleId }, "X")) : '',
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "EDIT DOODLE"),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Image"),
+                _imageId ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_edit__WEBPACK_IMPORTED_MODULE_4__["default"], { _imageId: _imageId, updateRedirect: false }) : react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_new__WEBPACK_IMPORTED_MODULE_3__["default"], { required: imageRequired, addNewImageResult: addNewImageResult }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Title"),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'text', onKeyPress: hitKey, onChange: editField, name: 'title', placeholder: "Great Doodle", value: title }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Details"),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_rte__WEBPACK_IMPORTED_MODULE_1___default.a, { value: details, onChange: onRichTextChange }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Discontinued"),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'checkbox', checked: !!discontinued, name: "discontinued", onChange: handleCheckboxChange }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'submit', onClick: updateDoodle, value: 'SAVE' }))));
     };
     return DoodleEdit;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
@@ -492,7 +491,7 @@ var DoodleNew = /** @class */ (function (_super) {
     function DoodleNew(props) {
         var _this = _super.call(this, props) || this;
         _this.titleRef = react__WEBPACK_IMPORTED_MODULE_0__["createRef"]();
-        _this.addNewProjectResult = function (error, _doodleId) {
+        _this.addNewDoodleResult = function (error, _doodleId) {
             if (error) {
                 _this.setState(function () {
                     return { required: true };
@@ -532,38 +531,35 @@ var DoodleNew = /** @class */ (function (_super) {
             details: react_rte__WEBPACK_IMPORTED_MODULE_1___default.a.createEmptyValue(),
         };
         _this.hitKey = _this.hitKey.bind(_this);
-        _this.addNewProject = _this.addNewProject.bind(_this);
-        _this.addNewProjectResult = _this.addNewProjectResult.bind(_this);
+        _this.addNewDoodle = _this.addNewDoodle.bind(_this);
+        _this.addNewDoodleResult = _this.addNewDoodleResult.bind(_this);
         _this.onRichTextChange = _this.onRichTextChange.bind(_this);
         _this.addNewImageResult = _this.addNewImageResult.bind(_this);
         return _this;
     }
     DoodleNew.prototype.hitKey = function (event) {
         if (event.key == 'Enter') {
-            this.addNewProject(event);
+            this.addNewDoodle(event);
         }
     };
-    DoodleNew.prototype.componentDidMount = function () {
-        this.props.doodle.getDoodles({});
-    };
-    DoodleNew.prototype.addNewProject = function (event) {
+    DoodleNew.prototype.addNewDoodle = function (event) {
         event.preventDefault();
         var title = this.titleRef.current.value;
         var _a = this.state, details = _a.details, _imageId = _a._imageId;
-        var newProject = {
+        var newDoodle = {
             title: title,
             details: details.toString('html'),
         };
         if (_imageId != null) {
-            newProject._imageId = _imageId;
+            newDoodle._imageId = _imageId;
         }
-        this.props.doodle.addDoodle(newProject, this.addNewProjectResult);
+        this.props.doodle.addDoodle(newDoodle, this.addNewDoodleResult);
         this.setState(function () {
             return { required: false };
         });
     };
     DoodleNew.prototype.render = function () {
-        var _a = this, addNewImageResult = _a.addNewImageResult, addNewProject = _a.addNewProject, hitKey = _a.hitKey, onRichTextChange = _a.onRichTextChange, titleRef = _a.titleRef;
+        var _a = this, addNewImageResult = _a.addNewImageResult, addNewDoodle = _a.addNewDoodle, hitKey = _a.hitKey, onRichTextChange = _a.onRichTextChange, titleRef = _a.titleRef;
         var _b = this.state, _imageId = _b._imageId, imageRequired = _b.imageRequired, _doodleId = _b._doodleId, required = _b.required, details = _b.details;
         var admin = this.props.user.admin;
         var pathname = this.props.location.pathname;
@@ -576,23 +572,22 @@ var DoodleNew = /** @class */ (function (_super) {
         }
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_styled_components__WEBPACK_IMPORTED_MODULE_7__["Popout"], null,
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "doodle-new-wrapper" },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("form", { onSubmit: addNewProject },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "text-right" },
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: '/doodle/' }, "X")),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "New Doodle"),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Image"),
-                    _imageId ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_edit__WEBPACK_IMPORTED_MODULE_4__["default"], { _imageId: _imageId, updateRedirect: false }) : react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_new__WEBPACK_IMPORTED_MODULE_3__["default"], { required: imageRequired, addNewImageResult: addNewImageResult }),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null,
-                        "Title",
-                        required ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "errortext" }, "*")) : ''),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'text', onKeyPress: hitKey, placeholder: "Great Project", ref: titleRef }),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Details"),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_rte__WEBPACK_IMPORTED_MODULE_1___default.a, { value: details, onChange: onRichTextChange }),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'submit', onClick: addNewProject, value: 'SAVE' })))));
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "text-right" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: '/doodle/' }, "X")),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "New Doodle"),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Image"),
+                _imageId ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_edit__WEBPACK_IMPORTED_MODULE_4__["default"], { _imageId: _imageId, updateRedirect: false }) : react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_new__WEBPACK_IMPORTED_MODULE_3__["default"], { required: imageRequired, addNewImageResult: addNewImageResult }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null,
+                    "Title",
+                    required ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "errortext" }, "*")) : ''),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'text', onKeyPress: hitKey, placeholder: "Great Doodle", ref: titleRef }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Details"),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_rte__WEBPACK_IMPORTED_MODULE_1___default.a, { value: details, onChange: onRichTextChange }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'submit', onClick: addNewDoodle, value: 'SAVE' }))));
     };
     return DoodleNew;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));

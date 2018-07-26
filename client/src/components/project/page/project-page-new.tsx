@@ -142,28 +142,26 @@ class ProjectPageNew extends React.Component<ProjectPageNewProps, ProjectPageNew
 	
 		return (
 			<Popout>
-				<div className="project-page-new-wrapper container" >
-					<form onSubmit={addNewProject}>
-						{admin ? <p className="text-right" ><Link to={'/project/item/'+ _projectId}>X</Link></p> : ''}
+				<div className="project-page-new-wrapper" >
+					{admin ? <p className="text-right" ><Link to={'/project/item/'+ _projectId}>X</Link></p> : ''}
 
-						<h3>New Project Page</h3>
-						<label>Image</label>
-						{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
-						
-						<label>Title{required ? (<span className="errortext" >*</span>) : ''}</label>
-						<br/>
-						<input type='text' onKeyPress={hitKey} placeholder="Great Project" ref={titleRef} />
-						<br/>
-						<label>Page</label>
-						<br/>
-						<input type="number" min={1} max={total+1} onKeyPress={hitKey} ref={pageRef} defaultValue={(total+1).toString()} />
-						<br/>
-						<label>Details</label>
-						<br/>
-						<RichTextEditor value={details} onChange={onRichTextChange} />
-						<br/>
-						<input type='submit' onClick={addNewProject} value='SAVE' />
-					</form>	
+					<h3>New Project Page</h3>
+					<label>Image</label>
+					{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
+					
+					<label>Title{required ? (<span className="errortext" >*</span>) : ''}</label>
+					<br/>
+					<input type='text' onKeyPress={hitKey} placeholder="Great Project" ref={titleRef} />
+					<br/>
+					<label>Page</label>
+					<br/>
+					<input type="number" min={1} max={total+1} onKeyPress={hitKey} ref={pageRef} defaultValue={(total+1).toString()} />
+					<br/>
+					<label>Details</label>
+					<br/>
+					<RichTextEditor value={details} onChange={onRichTextChange} />
+					<br/>
+					<input type='submit' onClick={addNewProject} value='SAVE' />
 				</div>
 			</Popout>
 		);			

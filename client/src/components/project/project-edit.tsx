@@ -240,29 +240,25 @@ class ProjectEdit extends React.Component<ProjectEditProps, ProjectEditState> im
 
 		return (
 			<div className="project-edit-wrapper" >
-				<form onSubmit={updateProject}>
-					<h3>EDIT PROJECT</h3>
-
-					<label>Cover Image</label>
-					{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
-					
-					<label>Title{required ? (<span className="errortext" >*</span>) : ''}</label>
-					<br/>
-					<input type='text' onKeyPress={hitKey} placeholder="Great Project" onChange={editField} name='title' value={title} />
-					<br/>
-					<label>Year{required ? (<span className="errortext" >*</span>) : ''}</label>
-					<br/>
-					<Datetime dateFormat="YYYY" timeFormat={false} value={year} onChange={yearChanged} />
-					<br/>
-					<label>Details</label>
-					<br/>
-					<RichTextEditor value={details} onChange={onRichTextChange} />
-					<label>Discontinued</label>
-					<br/>
-					<input type='checkbox' checked={!!discontinued} name="discontinued" onChange={handleCheckboxChange} />
-					<br/>
-					<input type='submit' onClick={updateProject} value='SAVE' />
-				</form>	
+				<h3>EDIT PROJECT</h3>
+				<label>Cover Image</label>
+				{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
+				<label>Title{required ? (<span className="errortext" >*</span>) : ''}</label>
+				<br/>
+				<input type='text' onKeyPress={hitKey} placeholder="Great Project" onChange={editField} name='title' value={title} />
+				<br/>
+				<label>Year{required ? (<span className="errortext" >*</span>) : ''}</label>
+				<br/>
+				<Datetime dateFormat="YYYY" timeFormat={false} value={year} onChange={yearChanged} />
+				<br/>
+				<label>Details</label>
+				<br/>
+				<RichTextEditor value={details} onChange={onRichTextChange} />
+				<label>Discontinued</label>
+				<br/>
+				<input type='checkbox' checked={!!discontinued} name="discontinued" onChange={handleCheckboxChange} />
+				<br/>
+				<input type='submit' onClick={updateProject} value='SAVE' />
 			</div>
 		);			
 	}
