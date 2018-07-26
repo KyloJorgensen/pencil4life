@@ -238,7 +238,6 @@ class ProjectEdit extends React.Component<ProjectEditProps, ProjectEditState> im
 			return (<Redirect to={{pathname: '/login', state: {redirectPath: pathname}}}/>)
 		}
 
-		console.log(_imageId)
 		return (
 			<div className="project-edit-wrapper" >
 				<form onSubmit={updateProject}>

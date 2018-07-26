@@ -12,8 +12,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-/* harmony import */ var _image_provider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./image-provider */ "./client/src/components/image/image-provider.tsx");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
+/* harmony import */ var _image_provider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./image-provider */ "./client/src/components/image/image-provider.tsx");
+/* harmony import */ var _image_tag__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./image-tag */ "./client/src/components/image/image-tag.tsx");
 
+var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -27,6 +33,9 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
+
+var ImamgeListItem = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\n\t.image-link {\n\t\tdisplay: grid;\n\t\tgrid-template-rows: minmax(100px, 200px);\n\t\t> img {\n\t\t\tmax-width: 100%;\n\t\t\tmax-height: 100%;\n\t\t\tposition: relative;\n\t\t\ttop: 50%;\n\t\t\tleft: 50%;\n\t\t\ttransform: translate(-50%, -50%);\n\t\t}\n\n\t}\n\n\t.image-wrapper {\n\t\talign-self: stretch;\n\t\twidth: 100%;\n\t\timg {\n\t\t\tmax-width: 100%;\n\t\t\tposition: relative;\n\t\t\ttop: 50%;\n\t\t\tleft: 50%;\n\t\t\ttransform: translate(-50%, -50%);\n\t\t}\n\t}\n\t.title-year-wrapper {\n\t\talign-self: end;\n\t\t> .title, > .year {\n\t\t\tmargin: 0.25em;\n\t\t\tdisplay: inline-block;\n\t\t}\n\t\t> .year {\n\t\t\tfloat:right;\n\t\t}\n\t}\n"], ["\n\n\t.image-link {\n\t\tdisplay: grid;\n\t\tgrid-template-rows: minmax(100px, 200px);\n\t\t> img {\n\t\t\tmax-width: 100%;\n\t\t\tmax-height: 100%;\n\t\t\tposition: relative;\n\t\t\ttop: 50%;\n\t\t\tleft: 50%;\n\t\t\ttransform: translate(-50%, -50%);\n\t\t}\n\n\t}\n\n\t.image-wrapper {\n\t\talign-self: stretch;\n\t\twidth: 100%;\n\t\timg {\n\t\t\tmax-width: 100%;\n\t\t\tposition: relative;\n\t\t\ttop: 50%;\n\t\t\tleft: 50%;\n\t\t\ttransform: translate(-50%, -50%);\n\t\t}\n\t}\n\t.title-year-wrapper {\n\t\talign-self: end;\n\t\t> .title, > .year {\n\t\t\tmargin: 0.25em;\n\t\t\tdisplay: inline-block;\n\t\t}\n\t\t> .year {\n\t\t\tfloat:right;\n\t\t}\n\t}\n"])));
 var ImageListItem = /** @class */ (function (_super) {
     __extends(ImageListItem, _super);
     function ImageListItem(props) {
@@ -35,20 +44,23 @@ var ImageListItem = /** @class */ (function (_super) {
         return _this;
     }
     ImageListItem.prototype.componentDidMount = function () {
-        this.props.image.getImage(this.props._imageId);
+        if (this.props._imageId) {
+            this.props.image.getImage(this.props._imageId);
+        }
     };
     ImageListItem.prototype.render = function () {
         var _a = this.props.image.image, name = _a.name, alt = _a.alt, filename = _a.filename, _imageId = _a._imageId;
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "image-list-item-wrapper" },
+        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](ImamgeListItem, { className: "image-list-item-wrapper" },
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], { className: "image-link", to: '/image/item/' + _imageId },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: filename, alt: alt }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_tag__WEBPACK_IMPORTED_MODULE_4__["default"], { _imageId: _imageId }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, name),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, alt))));
     };
     return ImageListItem;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
-/* harmony default export */ __webpack_exports__["default"] = (Object(_image_provider__WEBPACK_IMPORTED_MODULE_2__["imageConsumer"])(ImageListItem));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_image_provider__WEBPACK_IMPORTED_MODULE_3__["imageConsumer"])(ImageListItem));
+var templateObject_1;
 
 
 /***/ }),
@@ -68,7 +80,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _image_list_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./image-list-item */ "./client/src/components/image/image-list-item.tsx");
 /* harmony import */ var _image_provider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./image-provider */ "./client/src/components/image/image-provider.tsx");
 /* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
 
+var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -84,6 +101,8 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
+var ImageListWrapper = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\t> ul {\n\t\tpadding: 2em 0;\n\t\tdisplay: grid;\n\t\tgrid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n\t\tgrid-template-rows: minmax(100px, 1fr);\n\t\tgrid-gap: 2rem;\n\t}\n"], ["\n\t> ul {\n\t\tpadding: 2em 0;\n\t\tdisplay: grid;\n\t\tgrid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n\t\tgrid-template-rows: minmax(100px, 1fr);\n\t\tgrid-gap: 2rem;\n\t}\n"])));
 var ImageList = /** @class */ (function (_super) {
     __extends(ImageList, _super);
     function ImageList(props) {
@@ -106,8 +125,8 @@ var ImageList = /** @class */ (function (_super) {
         }
         if (update) {
             var query = {
-                discontinued: this.props.discontinued || false,
-                limit: this.props.limit || 10,
+                discontinued: this.props.discontinued,
+                limit: this.props.limit,
             };
             this.props.image.getImages(query);
         }
@@ -122,7 +141,7 @@ var ImageList = /** @class */ (function (_super) {
                 ImageList.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_list_item__WEBPACK_IMPORTED_MODULE_2__["default"], { key: imageKey, _imageId: imageKey, displayDetails: displayDetails }));
             });
         }
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "image-list-wrapper" },
+        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](ImageListWrapper, null,
             admin ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], { to: "/image/new" }, "NEW IMAGE"),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null))) : '',
@@ -130,11 +149,13 @@ var ImageList = /** @class */ (function (_super) {
     };
     ImageList.defaultProps = {
         displayDetails: true,
+        limit: 100,
     };
     return ImageList;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
 /* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_4__["userConsumer"])(Object(_image_provider__WEBPACK_IMPORTED_MODULE_3__["imageConsumer"])(ImageList)));
+var templateObject_1;
 
 
 /***/ }),

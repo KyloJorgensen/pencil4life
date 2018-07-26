@@ -362,6 +362,62 @@ var ImageNew = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./client/src/components/image/image-tag.tsx":
+/*!***************************************************!*\
+  !*** ./client/src/components/image/image-tag.tsx ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _image_provider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./image-provider */ "./client/src/components/image/image-provider.tsx");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
+
+var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+var ImgWrapper = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\talign-self: stretch;\n\twidth: 100%;\n\timg {\n\t\tmax-width: 100%;\n     \tmax-height: 100%;\n\t\tposition: relative;\n\t\ttop: 50%;\n\t\tleft: 50%;\n\t\ttransform: translate(-50%, -50%);\n\t}\n"], ["\n\talign-self: stretch;\n\twidth: 100%;\n\timg {\n\t\tmax-width: 100%;\n     \tmax-height: 100%;\n\t\tposition: relative;\n\t\ttop: 50%;\n\t\tleft: 50%;\n\t\ttransform: translate(-50%, -50%);\n\t}\n"])));
+var ImageTag = /** @class */ (function (_super) {
+    __extends(ImageTag, _super);
+    function ImageTag(props) {
+        return _super.call(this, props) || this;
+    }
+    ImageTag.prototype.componentDidMount = function () {
+        if (this.props._imageId) {
+            this.props.image.getImage(this.props._imageId);
+        }
+    };
+    ImageTag.prototype.render = function () {
+        var _a = this.props.image.image, alt = _a.alt, filename = _a.filename;
+        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](ImgWrapper, null,
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: filename, alt: alt })));
+    };
+    return ImageTag;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
+;
+/* harmony default export */ __webpack_exports__["default"] = (Object(_image_provider__WEBPACK_IMPORTED_MODULE_1__["imageConsumer"])(ImageTag));
+var templateObject_1;
+
+
+/***/ }),
+
 /***/ "./client/src/components/utilities/dropzone.less":
 /*!*******************************************************!*\
   !*** ./client/src/components/utilities/dropzone.less ***!

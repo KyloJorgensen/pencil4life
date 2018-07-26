@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import ImageListItem from './image-list-item';
 import { IImageContext, getImagesQuery, imageConsumer } from './image-provider';
 import { IUserContext, userConsumer } from '../user/user-provider';
+import styled from 'styled-components';
 
 export interface ImageListProps {
 	user: IUserContext;
@@ -14,9 +15,20 @@ export interface ImageListProps {
 	displayDetails: boolean;
 }
 
+const ImageListWrapper = styled.div`
+	> ul {
+		padding: 2em 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		grid-template-rows: minmax(100px, 1fr);
+		grid-gap: 2rem;
+	}
+`;
+
 class ImageList extends React.Component<ImageListProps> {
 	public static defaultProps = {
 		displayDetails: true,
+		limit: 100,
 	}
     constructor(props) {
         super(props);
@@ -42,8 +54,8 @@ class ImageList extends React.Component<ImageListProps> {
 
     	if (update) {
     		let query = {
-    			discontinued: this.props.discontinued || false,
-    			limit: this.props.limit || 10,
+    			discontinued: this.props.discontinued,
+    			limit: this.props.limit,
     		}
     		this.props.image.getImages(query);
     	}
@@ -61,7 +73,7 @@ class ImageList extends React.Component<ImageListProps> {
 			});
 		}
 		return (
-			<div className="image-list-wrapper" >
+			<ImageListWrapper>
 				{admin ? (
 					<div>
 						<Link to="/image/new">NEW IMAGE</Link>
@@ -71,7 +83,7 @@ class ImageList extends React.Component<ImageListProps> {
 				<ul className='image-list' >
 					{ImageList}
 				</ul>
-			</div>
+			</ImageListWrapper>
 		);			
 	}
 };
