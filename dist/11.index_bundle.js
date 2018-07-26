@@ -117,7 +117,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _doodle_provider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./doodle-provider */ "./client/src/components/doodle/doodle-provider.tsx");
 /* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
 /* harmony import */ var _utilities_styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utilities/styled.components */ "./client/src/components/utilities/styled.components.tsx");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
 
+var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -136,6 +141,8 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
+var DoodleEditWrapper = styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tcolor: white;\n\t\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\tline-height: 2em;\n\t\ttext-align: center; \n\t\tdisplay: block;\n\t\tmargin-left: auto;\n\t\tmargin-right: 1em;\n\t}\n"], ["\n\tcolor: white;\n\t\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\tline-height: 2em;\n\t\ttext-align: center; \n\t\tdisplay: block;\n\t\tmargin-left: auto;\n\t\tmargin-right: 1em;\n\t}\n"])));
 var DoodleEdit = /** @class */ (function (_super) {
     __extends(DoodleEdit, _super);
     function DoodleEdit(props) {
@@ -275,9 +282,8 @@ var DoodleEdit = /** @class */ (function (_super) {
             return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], { to: { pathname: '/login', state: { redirectPath: pathname } } }));
         }
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_styled_components__WEBPACK_IMPORTED_MODULE_7__["Popout"], null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "doodle-page-edit-wrapper" },
-                admin ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "text-right" },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: '/doodle/item/' + _doodleId }, "X")) : '',
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](DoodleEditWrapper, null,
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { className: "exit", to: "/doodle/item/" + _doodleId }, "X"),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "EDIT DOODLE"),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Image"),
                 _imageId ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_edit__WEBPACK_IMPORTED_MODULE_4__["default"], { _imageId: _imageId, updateRedirect: false }) : react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_new__WEBPACK_IMPORTED_MODULE_3__["default"], { required: imageRequired, addNewImageResult: addNewImageResult }),
@@ -298,6 +304,7 @@ var DoodleEdit = /** @class */ (function (_super) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
 /* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_6__["userConsumer"])(Object(_doodle_provider__WEBPACK_IMPORTED_MODULE_5__["doodleConsumer"])(DoodleEdit)));
+var templateObject_1;
 
 
 /***/ }),
@@ -467,7 +474,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
 /* harmony import */ var _doodle_provider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./doodle-provider */ "./client/src/components/doodle/doodle-provider.tsx");
 /* harmony import */ var _utilities_styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utilities/styled.components */ "./client/src/components/utilities/styled.components.tsx");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
 
+var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -486,6 +498,8 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
+var DoodleNewWrapper = styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tcolor: white;\n\t\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\tline-height: 2em;\n\t\ttext-align: center; \n\t\tdisplay: block;\n\t\tmargin-left: auto;\n\t\tmargin-right: 1em;\n\t}\n"], ["\n\tcolor: white;\n\t\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\tline-height: 2em;\n\t\ttext-align: center; \n\t\tdisplay: block;\n\t\tmargin-left: auto;\n\t\tmargin-right: 1em;\n\t}\n"])));
 var DoodleNew = /** @class */ (function (_super) {
     __extends(DoodleNew, _super);
     function DoodleNew(props) {
@@ -571,9 +585,8 @@ var DoodleNew = /** @class */ (function (_super) {
             return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], { to: { pathname: '/login', state: { redirectPath: pathname } } }));
         }
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_styled_components__WEBPACK_IMPORTED_MODULE_7__["Popout"], null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "doodle-new-wrapper" },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "text-right" },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: '/doodle/' }, "X")),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](DoodleNewWrapper, null,
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { className: "exit", to: "/doodle/" }, "X"),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "New Doodle"),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Image"),
                 _imageId ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_edit__WEBPACK_IMPORTED_MODULE_4__["default"], { _imageId: _imageId, updateRedirect: false }) : react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_new__WEBPACK_IMPORTED_MODULE_3__["default"], { required: imageRequired, addNewImageResult: addNewImageResult }),
@@ -593,6 +606,7 @@ var DoodleNew = /** @class */ (function (_super) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
 /* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_5__["userConsumer"])(Object(_doodle_provider__WEBPACK_IMPORTED_MODULE_6__["doodleConsumer"])(DoodleNew)));
+var templateObject_1;
 
 
 /***/ }),

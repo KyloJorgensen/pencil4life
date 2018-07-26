@@ -10,6 +10,22 @@ import { IDoodleContext, updateDoodleParams, doodleConsumer } from './doodle-pro
 import { IUserContext, userConsumer } from '../user/user-provider';
 import { Location } from 'history';
 import { Popout } from '../utilities/styled.components';
+import styled from 'styled-components';
+
+const DoodleEditWrapper = styled.div`
+	color: white;
+	
+	> .exit {
+		color: white;
+		background-color: #e98383;
+		width: 2em;
+		line-height: 2em;
+		text-align: center; 
+		display: block;
+		margin-left: auto;
+		margin-right: 1em;
+	}
+`;
 
 export interface DoodleEditProps {
 	doodle: IDoodleContext;
@@ -193,14 +209,11 @@ class DoodleEdit extends React.Component<DoodleEditProps, DoodleEditState> imple
 
 		return (
 			<Popout>
-				<div className="doodle-page-edit-wrapper" >
-					{admin ? <p className="text-right" ><Link to={'/doodle/item/' + _doodleId}>X</Link></p> : ''}
-
+				<DoodleEditWrapper>
+					<Link className="exit" to={`/doodle/item/${_doodleId}`}>X</Link>
 					<h3>EDIT DOODLE</h3>
-
 					<label>Image</label>
 					{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
-					
 					<label>Title</label>
 					<br/>
 					<input type='text' onKeyPress={hitKey} onChange={editField} name='title' placeholder="Great Doodle" value={title} />
@@ -213,7 +226,7 @@ class DoodleEdit extends React.Component<DoodleEditProps, DoodleEditState> imple
 					<input type='checkbox' checked={!!discontinued} name="discontinued" onChange={handleCheckboxChange} />
 					<br/>
 					<input type='submit' onClick={updateDoodle} value='SAVE' />
-				</div>
+				</DoodleEditWrapper>
 			</Popout>
 		);			
 	}

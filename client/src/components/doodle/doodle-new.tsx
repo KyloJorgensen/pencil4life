@@ -9,6 +9,22 @@ import { IUserContext, userConsumer } from '../user/user-provider';
 import { Location } from 'history';
 import { doodleConsumer, IDoodleContext, addDoodleParams } from './doodle-provider';
 import { Popout } from '../utilities/styled.components';
+import styled from 'styled-components';
+
+const DoodleNewWrapper = styled.div`
+	color: white;
+	
+	> .exit {
+		color: white;
+		background-color: #e98383;
+		width: 2em;
+		line-height: 2em;
+		text-align: center; 
+		display: block;
+		margin-left: auto;
+		margin-right: 1em;
+	}
+`;
 
 export interface DoodleNewProps {
 	user: IUserContext;
@@ -132,8 +148,8 @@ class DoodleNew extends React.Component<DoodleNewProps, DoodleNewState> implemen
 	
 		return (
 			<Popout>
-				<div className="doodle-new-wrapper" >
-					<p className="text-right" ><Link to={'/doodle/'}>X</Link></p>
+				<DoodleNewWrapper>
+					<Link className="exit" to={`/doodle/`}>X</Link>
 					<h3>New Doodle</h3>
 					<label>Image</label>
 					{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
@@ -146,7 +162,7 @@ class DoodleNew extends React.Component<DoodleNewProps, DoodleNewState> implemen
 					<RichTextEditor value={details} onChange={onRichTextChange} />
 					<br/>
 					<input type='submit' onClick={addNewDoodle} value='SAVE' />
-				</div>
+				</DoodleNewWrapper>
 			</Popout>
 		);			
 	}
