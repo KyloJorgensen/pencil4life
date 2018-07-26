@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">61.9% </span>
+        <span class="strong">64.44% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>26/42</span>
+        <span class='fraction'>29/45</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">6.06% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>2/33</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">62.5% </span>
+        <span class="strong">65.12% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>25/40</span>
+        <span class='fraction'>28/43</span>
       </div>
     </div>
     <p class="quiet">
@@ -158,7 +158,13 @@
 <a name='L110'></a><a href='#L110'>110</a>
 <a name='L111'></a><a href='#L111'>111</a>
 <a name='L112'></a><a href='#L112'>112</a>
-<a name='L113'></a><a href='#L113'>113</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -167,16 +173,8 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -240,6 +238,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -278,7 +290,9 @@ import * as Loadable from 'react-loadable';
 // import CommingSoon from './comming-soon';
 import NoMatch from './no-match';
 &nbsp;
-const Loading = <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>&lt;div&gt;Loading...&lt;/div&gt;;</span>
+import { LoadingSpinner } from './utilities/loading';
+import styled from 'styled-components';
+const Loading = <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>&lt;LoadingSpinner/&gt;;</span>
 &nbsp;
 const HomePage = Loadable({
   loader: <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span>import(</span>'./home/homepage')</span>,
@@ -310,8 +324,8 @@ const ProjectSwitch = Loadable({
   loading: Loading,
 });
 &nbsp;
-const DoodlesSwitch = Loadable({
-  loader: <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span>import(</span>'./doodles/doodles-switch')</span>,
+const DoodleSwitch = Loadable({
+  loader: <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span>import(</span>'./doodle/doodle-switch')</span>,
   loading: Loading,
 });
 &nbsp;
@@ -355,15 +369,19 @@ const ImageSwitch = Loadable({
   loading: Loading,
 });
 &nbsp;
+const RoutesWrapper = styled.div`
+  padding-bottom: 3em;
+`;
+&nbsp;
 class Routes extends React.Component {
   render() {
     return (
-      &lt;div&gt;
+      &lt;RoutesWrapper&gt;
           &lt;Switch&gt;
             &lt;Route exact path="/" component={HomePage} /&gt;
             &lt;Route path="/event" component={EventSwitch} /&gt;
             &lt;Route path="/project" component={ProjectSwitch} /&gt;
-            &lt;Route path="/doodles" component={DoodlesSwitch} /&gt;
+            &lt;Route path="/doodle" component={DoodleSwitch} /&gt;
             &lt;Route path="/comics" component={ComicsSwitch} /&gt;
             &lt;Route path="/soundboard" component={SoundboardSwitch} /&gt;
             &lt;Route path="/shop" component={ShopSwitch} /&gt;
@@ -377,7 +395,7 @@ class Routes extends React.Component {
             &lt;Route path="/image" component={ImageSwitch} /&gt;
             &lt;Route component={NoMatch}/&gt;
           &lt;/Switch&gt;
-      &lt;/div&gt;
+      &lt;/RoutesWrapper&gt;
     );
   }
 }
@@ -388,7 +406,7 @@ export default Routes;</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Jul 25 2018 14:43:24 GMT-0600 (Mountain Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jul 26 2018 14:07:18 GMT-0600 (Mountain Daylight Time)
 </div>
 </div>
 <script src="..\..\..\..\prettify.js"></script>

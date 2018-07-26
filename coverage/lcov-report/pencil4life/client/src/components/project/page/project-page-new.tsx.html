@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">20.51% </span>
+        <span class="strong">22.5% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>16/78</span>
+        <span class='fraction'>18/80</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">10% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/20</span>
+        <span class='fraction'>2/20</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">6.67% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>1/15</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">23.81% </span>
+        <span class="strong">26.15% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>15/63</span>
+        <span class='fraction'>17/65</span>
       </div>
     </div>
     <p class="quiet">
@@ -218,7 +218,19 @@
 <a name='L170'></a><a href='#L170'>170</a>
 <a name='L171'></a><a href='#L171'>171</a>
 <a name='L172'></a><a href='#L172'>172</a>
-<a name='L173'></a><a href='#L173'>173</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -229,6 +241,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -351,8 +379,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -361,8 +387,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -401,6 +425,22 @@ import { IUserContext, userConsumer } from '../../user/user-provider';
 import { Location } from 'history';
 import { projectPageConsumer, IProjectPageContext, addProjectPageParams } from './project-page-provider';
 import { Popout } from '../../utilities/styled.components';
+import styled from 'styled-components';
+&nbsp;
+const ProjectPageNewWrapper = styled.div`
+	color: white;
+	
+	&gt; .exit {
+		color: white;
+		background-color: #e98383;
+		width: 2em;
+		line-height: 2em;
+		text-align: center; 
+		display: block;
+		margin-left: auto;
+		margin-right: 1em;
+	}
+`;
 &nbsp;
 export interface ProjectPageNewProps {
 	user: IUserContext;
@@ -523,8 +563,6 @@ class ProjectPageNew extends React.Component&lt;ProjectPageNewProps, ProjectPage
 		const { <span class="cstat-no" title="statement not covered" >pathname </span>} = this.props.location;
 		const { <span class="cstat-no" title="statement not covered" >total </span>} = this.props.projectPage;
 &nbsp;
-		
-&nbsp;
 <span class="cstat-no" title="statement not covered" >		if (_projectPageId) {</span>
 <span class="cstat-no" title="statement not covered" >			return (&lt;Redirect to={'/project/item/'+this.state._projectPageId} /&gt;);</span>
 		}
@@ -534,29 +572,27 @@ class ProjectPageNew extends React.Component&lt;ProjectPageNewProps, ProjectPage
 	
 <span class="cstat-no" title="statement not covered" >		return (</span>
 			&lt;Popout&gt;
-				&lt;div className="project-page-new-wrapper container" &gt;
-					&lt;form onSubmit={addNewProject}&gt;
-						{admin ? &lt;p className="text-right" &gt;&lt;Link to={'/project/item/'+ _projectId}&gt;X&lt;/Link&gt;&lt;/p&gt; : ''}
+				&lt;ProjectPageNewWrapper&gt;
+					&lt;Link className="exit" to={'/project/item/'+ _projectId}&gt;X&lt;/Link&gt;
 &nbsp;
-						&lt;h3&gt;New Project Page&lt;/h3&gt;
-						&lt;label&gt;Image&lt;/label&gt;
-						{_imageId ? &lt;ImageEdit _imageId={_imageId} updateRedirect={false} /&gt; : &lt;ImageNew required={imageRequired} addNewImageResult={addNewImageResult} /&gt;}
-						
-						&lt;label&gt;Title{required ? (&lt;span className="errortext" &gt;*&lt;/span&gt;) : ''}&lt;/label&gt;
-						&lt;br/&gt;
-						&lt;input type='text' onKeyPress={hitKey} placeholder="Great Project" ref={titleRef} /&gt;
-						&lt;br/&gt;
-						&lt;label&gt;Page&lt;/label&gt;
-						&lt;br/&gt;
-						&lt;input type="number" min={1} max={total+1} onKeyPress={hitKey} ref={pageRef} defaultValue={(total+1).toString()} /&gt;
-						&lt;br/&gt;
-						&lt;label&gt;Details&lt;/label&gt;
-						&lt;br/&gt;
-						&lt;RichTextEditor value={details} onChange={onRichTextChange} /&gt;
-						&lt;br/&gt;
-						&lt;input type='submit' onClick={addNewProject} value='SAVE' /&gt;
-					&lt;/form&gt;	
-				&lt;/div&gt;
+					&lt;h3&gt;New Project Page&lt;/h3&gt;
+					&lt;label&gt;Image&lt;/label&gt;
+					{_imageId ? &lt;ImageEdit _imageId={_imageId} updateRedirect={false} /&gt; : &lt;ImageNew required={imageRequired} addNewImageResult={addNewImageResult} /&gt;}
+					
+					&lt;label&gt;Title{required ? (&lt;span className="errortext" &gt;*&lt;/span&gt;) : ''}&lt;/label&gt;
+					&lt;br/&gt;
+					&lt;input type='text' onKeyPress={hitKey} placeholder="Great Project" ref={titleRef} /&gt;
+					&lt;br/&gt;
+					&lt;label&gt;Page&lt;/label&gt;
+					&lt;br/&gt;
+					&lt;input type="number" min={1} max={total+1} onKeyPress={hitKey} ref={pageRef} defaultValue={(total+1).toString()} /&gt;
+					&lt;br/&gt;
+					&lt;label&gt;Details&lt;/label&gt;
+					&lt;br/&gt;
+					&lt;RichTextEditor value={details} onChange={onRichTextChange} /&gt;
+					&lt;br/&gt;
+					&lt;input type='submit' onClick={addNewProject} value='SAVE' /&gt;
+				&lt;/ProjectPageNewWrapper&gt;
 			&lt;/Popout&gt;
 		);			
 	}
@@ -568,7 +604,7 @@ export default userConsumer(projectPageConsumer(ProjectPageNew));</pre></td></tr
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Jul 25 2018 14:43:24 GMT-0600 (Mountain Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jul 26 2018 14:07:18 GMT-0600 (Mountain Daylight Time)
 </div>
 </div>
 <script src="..\..\..\..\..\..\prettify.js"></script>

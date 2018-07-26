@@ -3,13 +3,28 @@
 import * as React from 'react';
 import RichTextEditor from 'react-rte';
 import { Redirect, Link } from "react-router-dom";
-import * as Datetime from 'react-datetime';
 import ImageNew from '../../image/image-new';
 import ImageEdit from '../../image/image-edit';
 import { IProjectPageContext, updateProjectPageParams, projectPageConsumer } from './project-page-provider';
 import { IUserContext, userConsumer } from '../../user/user-provider';
 import { Location } from 'history';
 import { Popout } from '../../utilities/styled.components';
+import styled from 'styled-components';
+
+const ProjectPageEditWrapper = styled.div`
+	color: white;
+	
+	> .exit {
+		color: white;
+		background-color: #e98383;
+		width: 2em;
+		line-height: 2em;
+		text-align: center; 
+		display: block;
+		margin-left: auto;
+		margin-right: 1em;
+	}
+`;
 
 export interface ProjectPageEditProps {
 	projectPage: IProjectPageContext;
@@ -206,14 +221,11 @@ class ProjectPageEdit extends React.Component<ProjectPageEditProps, ProjectPageE
 
 		return (
 			<Popout>
-				<div className="project-page-edit-wrapper" >
-					{admin ? <p className="text-right" ><Link to={'/project/item/'+ _projectId + '/' + _projectPageId}>X</Link></p> : ''}
-
+				<ProjectPageEditWrapper>
+					<Link className="exit" to={`/project/item/${_projectId}/${_projectPageId}`}>X</Link>
 					<h3>EDIT PROJECT PAGE</h3>
-
 					<label>Image</label>
 					{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
-					
 					<label>Title{required ? (<span className="errortext" >*</span>) : ''}</label>
 					<br/>
 					<input type='text' onKeyPress={hitKey} onChange={editField} name='title' placeholder="Great ProjectPage" value={title} />
@@ -230,7 +242,7 @@ class ProjectPageEdit extends React.Component<ProjectPageEditProps, ProjectPageE
 					<input type='checkbox' checked={!!discontinued} name="discontinued" onChange={handleCheckboxChange} />
 					<br/>
 					<input type='submit' onClick={updateProjectPage} value='SAVE' />
-				</div>
+				</ProjectPageEditWrapper>
 			</Popout>
 		);			
 	}

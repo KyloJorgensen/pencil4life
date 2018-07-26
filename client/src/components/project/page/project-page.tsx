@@ -50,10 +50,6 @@ const Wrapper = styled.div`
 		> * {
 			padding: 1em;
 		}
-		> img {
-			max-width: 100%;
-			align-self: center;
-		}
 	}
 
 	@media (min-width: 575px) {
@@ -111,7 +107,11 @@ class ProjectPage extends React.Component<ProjectPageProps> {
 		const {  _projectPageId, title, page, _imageId, details } = this.props.projectPage.projectPage;
 		const { admin } = this.props.user;
 
-		const coverImageElem = _imageId ? (<ImageTag _imageId={_imageId} />) : '';
+		const coverImageElem = _imageId ? (
+			<div>
+				<ImageTag _imageId={_imageId} />
+			</div>
+		) : '';
 
 		return (
 			<Popout>
@@ -121,10 +121,12 @@ class ProjectPage extends React.Component<ProjectPageProps> {
 					<BackArrow _projectId={_projectId} />
 					<div className="content">
 						{coverImageElem}
-						{title || details != '<p><br></p>' ? <div>
-							{title ? <h2 className="title">{title}</h2> : ''}
-							{details != '<p><br></p>' ? <RichTextEditor value={RichTextEditor.createValueFromString(details, 'html')} readOnly={true} /> : ''}
-						</div> : ''}
+						{title || details != '<p><br></p>' ? (
+							<div>
+								{title ? <h2 className="title">{title}</h2> : ''}
+								{details != '<p><br></p>' ? <RichTextEditor value={RichTextEditor.createValueFromString(details, 'html')} readOnly={true} /> : ''}
+							</div>
+						) : ''}
 					</div>
 					<NextArrow _projectId={_projectId} />
 				</Wrapper>

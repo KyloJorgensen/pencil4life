@@ -159,7 +159,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _project_page_provider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./project-page-provider */ "./client/src/components/project/page/project-page-provider.tsx");
 /* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../user/user-provider */ "./client/src/components/user/user-provider.tsx");
 /* harmony import */ var _utilities_styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utilities/styled.components */ "./client/src/components/utilities/styled.components.tsx");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
 
+var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -178,6 +183,8 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
+var ProjectPageEditWrapper = styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tcolor: white;\n\t\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\tline-height: 2em;\n\t\ttext-align: center; \n\t\tdisplay: block;\n\t\tmargin-left: auto;\n\t\tmargin-right: 1em;\n\t}\n"], ["\n\tcolor: white;\n\t\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\tline-height: 2em;\n\t\ttext-align: center; \n\t\tdisplay: block;\n\t\tmargin-left: auto;\n\t\tmargin-right: 1em;\n\t}\n"])));
 var ProjectPageEdit = /** @class */ (function (_super) {
     __extends(ProjectPageEdit, _super);
     function ProjectPageEdit(props) {
@@ -327,9 +334,8 @@ var ProjectPageEdit = /** @class */ (function (_super) {
             return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], { to: { pathname: '/login', state: { redirectPath: pathname } } }));
         }
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_styled_components__WEBPACK_IMPORTED_MODULE_7__["Popout"], null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "project-page-edit-wrapper" },
-                admin ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "text-right" },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: '/project/item/' + _projectId + '/' + _projectPageId }, "X")) : '',
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](ProjectPageEditWrapper, null,
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { className: "exit", to: "/project/item/" + _projectId + "/" + _projectPageId }, "X"),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "EDIT PROJECT PAGE"),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Image"),
                 _imageId ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_edit__WEBPACK_IMPORTED_MODULE_4__["default"], { _imageId: _imageId, updateRedirect: false }) : react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_new__WEBPACK_IMPORTED_MODULE_3__["default"], { required: imageRequired, addNewImageResult: addNewImageResult }),
@@ -356,6 +362,7 @@ var ProjectPageEdit = /** @class */ (function (_super) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
 /* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_6__["userConsumer"])(Object(_project_page_provider__WEBPACK_IMPORTED_MODULE_5__["projectPageConsumer"])(ProjectPageEdit)));
+var templateObject_1;
 
 
 /***/ }),
@@ -517,7 +524,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../user/user-provider */ "./client/src/components/user/user-provider.tsx");
 /* harmony import */ var _project_page_provider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./project-page-provider */ "./client/src/components/project/page/project-page-provider.tsx");
 /* harmony import */ var _utilities_styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utilities/styled.components */ "./client/src/components/utilities/styled.components.tsx");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
 
+var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -536,6 +548,8 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
+var ProjectPageNewWrapper = styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tcolor: white;\n\t\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\tline-height: 2em;\n\t\ttext-align: center; \n\t\tdisplay: block;\n\t\tmargin-left: auto;\n\t\tmargin-right: 1em;\n\t}\n"], ["\n\tcolor: white;\n\t\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\tline-height: 2em;\n\t\ttext-align: center; \n\t\tdisplay: block;\n\t\tmargin-left: auto;\n\t\tmargin-right: 1em;\n\t}\n"])));
 var ProjectPageNew = /** @class */ (function (_super) {
     __extends(ProjectPageNew, _super);
     function ProjectPageNew(props) {
@@ -629,9 +643,8 @@ var ProjectPageNew = /** @class */ (function (_super) {
             return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], { to: { pathname: '/login', state: { redirectPath: pathname } } }));
         }
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_styled_components__WEBPACK_IMPORTED_MODULE_7__["Popout"], null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "project-page-new-wrapper" },
-                admin ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "text-right" },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: '/project/item/' + _projectId }, "X")) : '',
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](ProjectPageNewWrapper, null,
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { className: "exit", to: '/project/item/' + _projectId }, "X"),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "New Project Page"),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Image"),
                 _imageId ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_edit__WEBPACK_IMPORTED_MODULE_4__["default"], { _imageId: _imageId, updateRedirect: false }) : react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_new__WEBPACK_IMPORTED_MODULE_3__["default"], { required: imageRequired, addNewImageResult: addNewImageResult }),
@@ -655,6 +668,7 @@ var ProjectPageNew = /** @class */ (function (_super) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
 /* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_5__["userConsumer"])(Object(_project_page_provider__WEBPACK_IMPORTED_MODULE_6__["projectPageConsumer"])(ProjectPageNew)));
+var templateObject_1;
 
 
 /***/ }),
@@ -1081,7 +1095,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
-var Wrapper = styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tdisplay: grid;\n\tgrid-template-columns: auto auto auto min-content;\n\n\t> .back {\n\t\tgrid-row: 1;\n\t}\n\n\t> .edit {\n\t\tgrid-column: 2;\n\t\talign-self: center;\n\t\ttext-align: center;\n\t}\n\n\t> .next {\n\t\tgrid-column: 3;  \n\t\tgrid-row: 1;\n\t}\n\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\theight: 2em;\n\t\tline-height: 2;\n\t\tpadding: 0;\n\t\ttext-align: center;\n\t\tgrid-column: 4;  \n\t}\n\n\t> .content {\n\t\tgrid-column-start: 1;\n\t\tgrid-column-end: -1;\n\t\tdisplay: flex;\n\t\tjustify-content: center;\n\t\tflex-wrap: wrap;\n\t\t\n\t\t> * {\n\t\t\tpadding: 1em;\n\t\t}\n\t\t> img {\n\t\t\tmax-width: 100%;\n\t\t\talign-self: center;\n\t\t}\n\t}\n\n\t@media (min-width: 575px) {\n\t\tgrid-template-columns: auto 1fr auto;\n\t\t> .back {\n\t\t\tgrid-row: unset;\n\t\t}\n\t\t\n\t\t> .edit {\n\t\t\ttext-align: left; \n\t\t}\n\n\t\t> .next {\n\t\t\tgrid-row: unset;\n\t\t}\n\n\t\t> .exit {\n\t\t\tgrid-column: 3;  \n\t\t}\n\n\t\t> .content {\n\t\t\tgrid-column: unset;\n\t\t}\n\t}\n\n"], ["\n\tdisplay: grid;\n\tgrid-template-columns: auto auto auto min-content;\n\n\t> .back {\n\t\tgrid-row: 1;\n\t}\n\n\t> .edit {\n\t\tgrid-column: 2;\n\t\talign-self: center;\n\t\ttext-align: center;\n\t}\n\n\t> .next {\n\t\tgrid-column: 3;  \n\t\tgrid-row: 1;\n\t}\n\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\theight: 2em;\n\t\tline-height: 2;\n\t\tpadding: 0;\n\t\ttext-align: center;\n\t\tgrid-column: 4;  \n\t}\n\n\t> .content {\n\t\tgrid-column-start: 1;\n\t\tgrid-column-end: -1;\n\t\tdisplay: flex;\n\t\tjustify-content: center;\n\t\tflex-wrap: wrap;\n\t\t\n\t\t> * {\n\t\t\tpadding: 1em;\n\t\t}\n\t\t> img {\n\t\t\tmax-width: 100%;\n\t\t\talign-self: center;\n\t\t}\n\t}\n\n\t@media (min-width: 575px) {\n\t\tgrid-template-columns: auto 1fr auto;\n\t\t> .back {\n\t\t\tgrid-row: unset;\n\t\t}\n\t\t\n\t\t> .edit {\n\t\t\ttext-align: left; \n\t\t}\n\n\t\t> .next {\n\t\t\tgrid-row: unset;\n\t\t}\n\n\t\t> .exit {\n\t\t\tgrid-column: 3;  \n\t\t}\n\n\t\t> .content {\n\t\t\tgrid-column: unset;\n\t\t}\n\t}\n\n"])));
+var Wrapper = styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tdisplay: grid;\n\tgrid-template-columns: auto auto auto min-content;\n\n\t> .back {\n\t\tgrid-row: 1;\n\t}\n\n\t> .edit {\n\t\tgrid-column: 2;\n\t\talign-self: center;\n\t\ttext-align: center;\n\t}\n\n\t> .next {\n\t\tgrid-column: 3;  \n\t\tgrid-row: 1;\n\t}\n\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\theight: 2em;\n\t\tline-height: 2;\n\t\tpadding: 0;\n\t\ttext-align: center;\n\t\tgrid-column: 4;  \n\t}\n\n\t> .content {\n\t\tgrid-column-start: 1;\n\t\tgrid-column-end: -1;\n\t\tdisplay: flex;\n\t\tjustify-content: center;\n\t\tflex-wrap: wrap;\n\t\t\n\t\t> * {\n\t\t\tpadding: 1em;\n\t\t}\n\t}\n\n\t@media (min-width: 575px) {\n\t\tgrid-template-columns: auto 1fr auto;\n\t\t> .back {\n\t\t\tgrid-row: unset;\n\t\t}\n\t\t\n\t\t> .edit {\n\t\t\ttext-align: left; \n\t\t}\n\n\t\t> .next {\n\t\t\tgrid-row: unset;\n\t\t}\n\n\t\t> .exit {\n\t\t\tgrid-column: 3;  \n\t\t}\n\n\t\t> .content {\n\t\t\tgrid-column: unset;\n\t\t}\n\t}\n\n"], ["\n\tdisplay: grid;\n\tgrid-template-columns: auto auto auto min-content;\n\n\t> .back {\n\t\tgrid-row: 1;\n\t}\n\n\t> .edit {\n\t\tgrid-column: 2;\n\t\talign-self: center;\n\t\ttext-align: center;\n\t}\n\n\t> .next {\n\t\tgrid-column: 3;  \n\t\tgrid-row: 1;\n\t}\n\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\theight: 2em;\n\t\tline-height: 2;\n\t\tpadding: 0;\n\t\ttext-align: center;\n\t\tgrid-column: 4;  \n\t}\n\n\t> .content {\n\t\tgrid-column-start: 1;\n\t\tgrid-column-end: -1;\n\t\tdisplay: flex;\n\t\tjustify-content: center;\n\t\tflex-wrap: wrap;\n\t\t\n\t\t> * {\n\t\t\tpadding: 1em;\n\t\t}\n\t}\n\n\t@media (min-width: 575px) {\n\t\tgrid-template-columns: auto 1fr auto;\n\t\t> .back {\n\t\t\tgrid-row: unset;\n\t\t}\n\t\t\n\t\t> .edit {\n\t\t\ttext-align: left; \n\t\t}\n\n\t\t> .next {\n\t\t\tgrid-row: unset;\n\t\t}\n\n\t\t> .exit {\n\t\t\tgrid-column: 3;  \n\t\t}\n\n\t\t> .content {\n\t\t\tgrid-column: unset;\n\t\t}\n\t}\n\n"])));
 var ProjectPage = /** @class */ (function (_super) {
     __extends(ProjectPage, _super);
     function ProjectPage(props) {
@@ -1103,7 +1117,8 @@ var ProjectPage = /** @class */ (function (_super) {
         var _projectId = this.props.projectPage._projectId;
         var _a = this.props.projectPage.projectPage, _projectPageId = _a._projectPageId, title = _a.title, page = _a.page, _imageId = _a._imageId, details = _a.details;
         var admin = this.props.user.admin;
-        var coverImageElem = _imageId ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_tag__WEBPACK_IMPORTED_MODULE_3__["default"], { _imageId: _imageId })) : '';
+        var coverImageElem = _imageId ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_tag__WEBPACK_IMPORTED_MODULE_3__["default"], { _imageId: _imageId }))) : '';
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_styled_components__WEBPACK_IMPORTED_MODULE_7__["Popout"], null,
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Wrapper, null,
                 admin ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { className: "edit", to: '/project/edit/' + _projectId + '/' + _projectPageId }, "EDIT") : '',
@@ -1111,9 +1126,9 @@ var ProjectPage = /** @class */ (function (_super) {
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_project_page_changer__WEBPACK_IMPORTED_MODULE_6__["BackArrow"], { _projectId: _projectId }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "content" },
                     coverImageElem,
-                    title || details != '<p><br></p>' ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
+                    title || details != '<p><br></p>' ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
                         title ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", { className: "title" }, title) : '',
-                        details != '<p><br></p>' ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_rte__WEBPACK_IMPORTED_MODULE_1___default.a, { value: react_rte__WEBPACK_IMPORTED_MODULE_1___default.a.createValueFromString(details, 'html'), readOnly: true }) : '') : ''),
+                        details != '<p><br></p>' ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_rte__WEBPACK_IMPORTED_MODULE_1___default.a, { value: react_rte__WEBPACK_IMPORTED_MODULE_1___default.a.createValueFromString(details, 'html'), readOnly: true }) : '')) : ''),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_project_page_changer__WEBPACK_IMPORTED_MODULE_6__["NextArrow"], { _projectId: _projectId }))));
     };
     return ProjectPage;

@@ -9,6 +9,22 @@ import { IUserContext, userConsumer } from '../../user/user-provider';
 import { Location } from 'history';
 import { projectPageConsumer, IProjectPageContext, addProjectPageParams } from './project-page-provider';
 import { Popout } from '../../utilities/styled.components';
+import styled from 'styled-components';
+
+const ProjectPageNewWrapper = styled.div`
+	color: white;
+	
+	> .exit {
+		color: white;
+		background-color: #e98383;
+		width: 2em;
+		line-height: 2em;
+		text-align: center; 
+		display: block;
+		margin-left: auto;
+		margin-right: 1em;
+	}
+`;
 
 export interface ProjectPageNewProps {
 	user: IUserContext;
@@ -131,8 +147,6 @@ class ProjectPageNew extends React.Component<ProjectPageNewProps, ProjectPageNew
 		const { pathname } = this.props.location;
 		const { total } = this.props.projectPage;
 
-		
-
 		if (_projectPageId) {
 			return (<Redirect to={'/project/item/'+this.state._projectPageId} />);
 		}
@@ -142,8 +156,8 @@ class ProjectPageNew extends React.Component<ProjectPageNewProps, ProjectPageNew
 	
 		return (
 			<Popout>
-				<div className="project-page-new-wrapper" >
-					{admin ? <p className="text-right" ><Link to={'/project/item/'+ _projectId}>X</Link></p> : ''}
+				<ProjectPageNewWrapper>
+					<Link className="exit" to={'/project/item/'+ _projectId}>X</Link>
 
 					<h3>New Project Page</h3>
 					<label>Image</label>
@@ -162,7 +176,7 @@ class ProjectPageNew extends React.Component<ProjectPageNewProps, ProjectPageNew
 					<RichTextEditor value={details} onChange={onRichTextChange} />
 					<br/>
 					<input type='submit' onClick={addNewProject} value='SAVE' />
-				</div>
+				</ProjectPageNewWrapper>
 			</Popout>
 		);			
 	}

@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">80% </span>
+        <span class="strong">81.48% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>20/25</span>
+        <span class='fraction'>22/27</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">18.18% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>2/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">82.61% </span>
+        <span class="strong">84% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>19/23</span>
+        <span class='fraction'>21/25</span>
       </div>
     </div>
     <p class="quiet">
@@ -105,21 +105,37 @@
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -137,7 +153,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -169,7 +187,7 @@
 import * as React from 'react';
 import { HashRouter as Router } from 'react-router-dom';
 import * as Loadable from 'react-loadable';
-import EventListener from './event-listener/event-listener';
+// import EventListener from './event-listener/event-listener';
 import UserWrapper from './user/user-provider'
 import ImageWrapper from './image/image-provider'
 // import Header from './header/header';
@@ -177,12 +195,14 @@ import ImageWrapper from './image/image-provider'
 import '../css/index.less';
 import Routes from './routes';
 import { NewsWrapper } from './news/news-provider';
+import styled from 'styled-components';
 &nbsp;
-const Loading = <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>&lt;div&gt;Loading...&lt;/div&gt;;</span>
+import { LoadingSpinner } from './utilities/loading';
+const Loading = <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>&lt;LoadingSpinner/&gt;;</span>
 &nbsp;
 const Logo = Loadable({
   loader: <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span>import(</span>'./header/logo')</span>,
-  loading: Loading,
+loading: Loading,
 });
 &nbsp;
 const Header = Loadable({
@@ -200,6 +220,13 @@ const FooterBar = Loadable({
   loading: Loading,
 });
 &nbsp;
+const PageLayout = styled.div`
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+`;
+&nbsp;
 class App extends React.Component {
   render() {
     return (
@@ -207,13 +234,13 @@ class App extends React.Component {
         &lt;UserWrapper&gt;
           &lt;ImageWrapper&gt;
             &lt;Router&gt;
-              &lt;EventListener&gt;
+              &lt;PageLayout&gt;
                 &lt;Logo/&gt;
                 &lt;Header/&gt;
                 &lt;Routes/&gt;
                 &lt;Footer/&gt;
                 &lt;FooterBar/&gt;
-              &lt;/EventListener&gt;
+              &lt;/PageLayout&gt;
             &lt;/Router&gt;
           &lt;/ImageWrapper&gt;
         &lt;/UserWrapper&gt;      
@@ -229,7 +256,7 @@ export default App;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Jul 25 2018 14:43:24 GMT-0600 (Mountain Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jul 26 2018 14:07:18 GMT-0600 (Mountain Daylight Time)
 </div>
 </div>
 <script src="..\..\..\..\prettify.js"></script>
