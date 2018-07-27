@@ -15,7 +15,7 @@ import { userConsumer, IUserContext } from '../user/user-provider';
 fontawesome.library.add(faCheckSquare, faSignInAlt, faSignOutAlt, faUserAlt);
 
 const HeaderWrapper = styled.header`
-	margin: 0 0 20px 0;
+	margin: 0;
 	color: white;
 	
 	@media (min-width: 768px) {

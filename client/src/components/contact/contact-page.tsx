@@ -15,18 +15,15 @@ const ContactPageWrapper = styled.div`
 	display: grid;
 	grid-column-gap: 1em;
 	
-	@media (min-width: 765px) {
-		grid-template-columns: repeat(auto-fill,minmax(500px,1fr));
-	}
-	
 	> h1 {
 		grid-column-start: 1;
-  		grid-column-end: -1;
+		grid-column-end: -1;
+		font-size: 2em;
 	}
 
 	> .socialmedia {
 		display: block;
-		margin: 1em 0;
+		margin: 0.5em 0;
     	flex-wrap: nowrap;
 		text-decoration: none;
 		
@@ -40,55 +37,25 @@ const ContactPageWrapper = styled.div`
 			border-radius: 16px;
 			flex-grow: 1;
 			color: white;
-			font-size: 8em;
+			font-size: 4em;
 		}
 
 		> div {
-			height: 0;
-			width: 0;
+			width: initial;
+			height: initial;
 			align-self: center;
-			flex-grow: 0;
-			transition: 2s;
 			overflow: hidden;
-			margin: 0 1em;
+			flex-grow: 1;
+			margin: 1em;
 
 			> h2 {
 				width: max-content;
 				margin: 0 auto;
-				opacity: 0;
-				transition: opacity 1s;
-			}
-		}
-
-		@media (min-width: 765px) {
-			display: inline-block;
-			display: flex;
-
-			> div {
-				width: 0;
-				height: initial;
-				margin: 1em 0;
-			}
-
-			> svg {
-				width: initial;
+				font-size: 1.5em;
 			}
 		}
 
 		&:hover, &:focus {
-			> div {
-				width: initial;
-				height: initial;
-				flex-grow: 1;
-				transition: 1s;
-				margin: 1em;
-
-				> h2 {
-					opacity: 1;
-					transition-delay: 1s;
-					transition: 2s;
-				}
-			}
 		}
 	}
 
@@ -135,6 +102,31 @@ const ContactPageWrapper = styled.div`
 			background-color: #172b57;
 		}
 	}
+
+	@media (min-width: 765px) {
+		grid-template-columns: repeat(auto-fill,minmax(500px,1fr));
+		> h1 {
+			font-size: 2.5em;
+		}
+		.socialmedia {
+			display: inline-block;
+			display: flex;
+
+			> svg {
+				width: initial;
+				font-size: 8em;
+			}
+
+			> div {				
+				width: initial;
+				height: initial;
+				> h2 {
+					font-size: 2em;
+				}
+			}
+		}
+	}
+	
 `;
 
 class ContactPage extends React.Component {
