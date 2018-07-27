@@ -49,12 +49,10 @@ class Footer extends React.Component<null> {
 		return (
 			<FooterWrapper>
 			    	<div className="social container" >
-			    		<a href="https://www.instagram.com/pencil.4.life/"><FontAwesomeIcon icon={["fab", "instagram"]} /></a>
-			    		<a href="https://www.twitch.tv/pencil4life"><FontAwesomeIcon icon={["fab", "twitch"]} /></a>
-			    		<a href="https://twitter.com/pencil4life"><FontAwesomeIcon icon={["fab", "twitter"]} /></a>
-			    		<a href="https://www.facebook.com/pencil4life/?ref=br_rs"><FontAwesomeIcon icon={["fab", "facebook-f"]} /></a>
-
-			    		{/*<a className="button alt" onClick={this.login} >ADMIN</a>*/}
+			    		<a href="https://www.instagram.com/pencil.4.life/" target="_blank"><FontAwesomeIcon icon={["fab", "instagram"]} /></a>
+			    		<a href="https://www.twitch.tv/pencil4life" target="_blank"><FontAwesomeIcon icon={["fab", "twitch"]} /></a>
+			    		<a href="https://twitter.com/pencil4life" target="_blank"><FontAwesomeIcon icon={["fab", "twitter"]} /></a>
+			    		<a href="https://www.facebook.com/pencil4life/?ref=br_rs" target="_blank"><FontAwesomeIcon icon={["fab", "facebook-f"]} /></a>
 			    	</div>
 			    	<div className="legal container">
 			    		<a href="">&copy;Pencil4Life</a>

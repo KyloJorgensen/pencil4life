@@ -74,6 +74,7 @@ EventItemController.prototype.getEventItems = function(req, res, next) {
     if (!('old' in req.query)) {
         query.where('end_date').gte(Date.now());
     }
+    query.sort('start_date end_date');
     query.select('_id');
     query.then(function(eventItemsDocs) {
         let page = !Number.isNaN(Number(req.query.page)) ? Math.abs(Number(req.query.page)) : 1;
@@ -117,7 +118,6 @@ EventItemController.prototype.updateEventItem = function(req, res, next) {
         if ('end_date' in req.body) {
             changes.end_date = req.body.end_date;
         }
-        console.log(req.body)
         if ('details' in req.body) {
             changes.details = req.body.details;
         }

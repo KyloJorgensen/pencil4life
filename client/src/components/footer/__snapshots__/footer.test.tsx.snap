@@ -23,6 +23,7 @@ ShallowWrapper {
         >
           <a
             href="https://www.instagram.com/pencil.4.life/"
+            target="_blank"
           >
             <FontAwesomeIcon
               border={false}
@@ -49,6 +50,7 @@ ShallowWrapper {
           </a>
           <a
             href="https://www.twitch.tv/pencil4life"
+            target="_blank"
           >
             <FontAwesomeIcon
               border={false}
@@ -75,6 +77,7 @@ ShallowWrapper {
           </a>
           <a
             href="https://twitter.com/pencil4life"
+            target="_blank"
           >
             <FontAwesomeIcon
               border={false}
@@ -101,6 +104,7 @@ ShallowWrapper {
           </a>
           <a
             href="https://www.facebook.com/pencil4life/?ref=br_rs"
+            target="_blank"
           >
             <FontAwesomeIcon
               border={false}
@@ -167,6 +171,7 @@ ShallowWrapper {
           "children": Array [
             <a
               href="https://www.instagram.com/pencil.4.life/"
+              target="_blank"
             >
               <FontAwesomeIcon
                 border={false}
@@ -193,6 +198,7 @@ ShallowWrapper {
             </a>,
             <a
               href="https://www.twitch.tv/pencil4life"
+              target="_blank"
             >
               <FontAwesomeIcon
                 border={false}
@@ -219,6 +225,7 @@ ShallowWrapper {
             </a>,
             <a
               href="https://twitter.com/pencil4life"
+              target="_blank"
             >
               <FontAwesomeIcon
                 border={false}
@@ -245,6 +252,7 @@ ShallowWrapper {
             </a>,
             <a
               href="https://www.facebook.com/pencil4life/?ref=br_rs"
+              target="_blank"
             >
               <FontAwesomeIcon
                 border={false}
@@ -302,6 +310,7 @@ ShallowWrapper {
                 transform={null}
               />,
               "href": "https://www.instagram.com/pencil.4.life/",
+              "target": "_blank",
             },
             "ref": null,
             "rendered": Object {
@@ -362,6 +371,7 @@ ShallowWrapper {
                 transform={null}
               />,
               "href": "https://www.twitch.tv/pencil4life",
+              "target": "_blank",
             },
             "ref": null,
             "rendered": Object {
@@ -422,6 +432,7 @@ ShallowWrapper {
                 transform={null}
               />,
               "href": "https://twitter.com/pencil4life",
+              "target": "_blank",
             },
             "ref": null,
             "rendered": Object {
@@ -482,6 +493,7 @@ ShallowWrapper {
                 transform={null}
               />,
               "href": "https://www.facebook.com/pencil4life/?ref=br_rs",
+              "target": "_blank",
             },
             "ref": null,
             "rendered": Object {
@@ -631,6 +643,7 @@ ShallowWrapper {
           >
             <a
               href="https://www.instagram.com/pencil.4.life/"
+              target="_blank"
             >
               <FontAwesomeIcon
                 border={false}
@@ -657,6 +670,7 @@ ShallowWrapper {
             </a>
             <a
               href="https://www.twitch.tv/pencil4life"
+              target="_blank"
             >
               <FontAwesomeIcon
                 border={false}
@@ -683,6 +697,7 @@ ShallowWrapper {
             </a>
             <a
               href="https://twitter.com/pencil4life"
+              target="_blank"
             >
               <FontAwesomeIcon
                 border={false}
@@ -709,6 +724,7 @@ ShallowWrapper {
             </a>
             <a
               href="https://www.facebook.com/pencil4life/?ref=br_rs"
+              target="_blank"
             >
               <FontAwesomeIcon
                 border={false}
@@ -775,6 +791,7 @@ ShallowWrapper {
             "children": Array [
               <a
                 href="https://www.instagram.com/pencil.4.life/"
+                target="_blank"
               >
                 <FontAwesomeIcon
                   border={false}
@@ -801,6 +818,7 @@ ShallowWrapper {
               </a>,
               <a
                 href="https://www.twitch.tv/pencil4life"
+                target="_blank"
               >
                 <FontAwesomeIcon
                   border={false}
@@ -827,6 +845,7 @@ ShallowWrapper {
               </a>,
               <a
                 href="https://twitter.com/pencil4life"
+                target="_blank"
               >
                 <FontAwesomeIcon
                   border={false}
@@ -853,6 +872,7 @@ ShallowWrapper {
               </a>,
               <a
                 href="https://www.facebook.com/pencil4life/?ref=br_rs"
+                target="_blank"
               >
                 <FontAwesomeIcon
                   border={false}
@@ -910,6 +930,7 @@ ShallowWrapper {
                   transform={null}
                 />,
                 "href": "https://www.instagram.com/pencil.4.life/",
+                "target": "_blank",
               },
               "ref": null,
               "rendered": Object {
@@ -970,6 +991,7 @@ ShallowWrapper {
                   transform={null}
                 />,
                 "href": "https://www.twitch.tv/pencil4life",
+                "target": "_blank",
               },
               "ref": null,
               "rendered": Object {
@@ -1030,6 +1052,7 @@ ShallowWrapper {
                   transform={null}
                 />,
                 "href": "https://twitter.com/pencil4life",
+                "target": "_blank",
               },
               "ref": null,
               "rendered": Object {
@@ -1090,6 +1113,7 @@ ShallowWrapper {
                   transform={null}
                 />,
                 "href": "https://www.facebook.com/pencil4life/?ref=br_rs",
+                "target": "_blank",
               },
               "ref": null,
               "rendered": Object {

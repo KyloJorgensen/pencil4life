@@ -3,22 +3,22 @@
 import * as  React from 'react';
 import { Route, Switch } from 'react-router';
 import { NavLink } from "react-router-dom";
-import InfoPage from './info-page';
+import AboutPage from './about-page';
 import NoMatch from '../no-match';
 
-class InfoSwitch extends React.Component {
+class AboutSwitch extends React.Component {
     constructor(props) {
         super(props);
     }
 
 	render() {
 		return (
-			<div className="info-switch-wrapper">
+			<div className="about-switch-wrapper">
 				<div className="container">
-					<NavLink exact to={'/info'} activeClassName="selected" ><h2>Info</h2></NavLink>
+					<NavLink exact to={'/about'} activeClassName="selected" ><h2>About</h2></NavLink>
                     <Switch>
-						<Route exact path="/info" component={InfoPage} />
-                        <Route path="/info/info" component={NoMatch} />
+						<Route exact path="/about" component={AboutPage} />
+                        <Route path="/about/about" component={NoMatch} />
                         <Route component={NoMatch}/>
                     </Switch>
 				</div>
@@ -27,4 +27,4 @@ class InfoSwitch extends React.Component {
 	}
 };
 
-export default InfoSwitch;
+export default AboutSwitch;

@@ -4,6 +4,7 @@ import * as React from 'react';
 import RichTextEditor from 'react-rte';
 import {Redirect, withRouter} from "react-router-dom";
 import * as Datetime from 'react-datetime';
+import * as moment from 'moment';
 import { IUserContext, userConsumer } from '../user/user-provider';
 import { Moment } from 'moment';
 import { Location } from 'history';
@@ -20,8 +21,8 @@ export interface EventNewItemState {
 	_eventItemId: boolean;
 	required: boolean;
 	title: string;
-	start_date: string | Moment | Date;
-	end_date: string | Moment | Date;
+	start_date: Moment;
+	end_date: Moment;
 	details: any;
 }
 
@@ -41,8 +42,8 @@ class EventNewItem extends React.Component<EventNewItemProps, EventNewItemState,
         	_eventItemId: false,
         	required: false,
         	title: null,
-        	start_date: String(Date.now()),
-        	end_date: String(Date.now()),
+        	start_date: moment(Date.now()),
+        	end_date: moment(Date.now()),
         	details: RichTextEditor.createEmptyValue(),
         };
 

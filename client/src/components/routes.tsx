@@ -65,8 +65,8 @@ const CommissionSwitch = Loadable({
   loading: Loading,
 });
 
-const InfoSwitch = Loadable({
-  loader: () => import('./info/info-switch'),
+const AboutSwitch = Loadable({
+  loader: () => import('./about/about-switch'),
   loading: Loading,
 });
 
@@ -102,7 +102,7 @@ class Routes extends React.Component {
             <Route path="/soundboard" component={SoundboardSwitch} />
             <Route path="/shop" component={ShopSwitch} />
             <Route path="/commission" component={CommissionSwitch} />
-            <Route path="/info" component={InfoSwitch} />
+            <Route path="/about" component={AboutSwitch} />
             <Route path="/contact" component={ContactSwitch} />
             <Route path="/login" component={LoginPage} />
             <Route path="/signup/" component={SignupPage} />

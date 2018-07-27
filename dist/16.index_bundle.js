@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[16],{
 
-/***/ "./client/src/components/info/info-page.tsx":
-/*!**************************************************!*\
-  !*** ./client/src/components/info/info-page.tsx ***!
-  \**************************************************/
+/***/ "./client/src/components/about/about-page.tsx":
+/*!****************************************************!*\
+  !*** ./client/src/components/about/about-page.tsx ***!
+  \****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -23,28 +23,28 @@ var __extends = (undefined && undefined.__extends) || (function () {
     };
 })();
 
-var InfoPage = /** @class */ (function (_super) {
-    __extends(InfoPage, _super);
-    function InfoPage(props) {
+var AboutPage = /** @class */ (function (_super) {
+    __extends(AboutPage, _super);
+    function AboutPage(props) {
         var _this = _super.call(this, props) || this;
         _this.state = {};
         return _this;
     }
-    InfoPage.prototype.render = function () {
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "info-page-wrapper" }, "Coming Soon!!"));
+    AboutPage.prototype.render = function () {
+        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "about-page-wrapper" }, "Coming Soon!!"));
     };
-    return InfoPage;
+    return AboutPage;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
-/* harmony default export */ __webpack_exports__["default"] = (InfoPage);
+/* harmony default export */ __webpack_exports__["default"] = (AboutPage);
 
 
 /***/ }),
 
-/***/ "./client/src/components/info/info-switch.tsx":
-/*!****************************************************!*\
-  !*** ./client/src/components/info/info-switch.tsx ***!
-  \****************************************************/
+/***/ "./client/src/components/about/about-switch.tsx":
+/*!******************************************************!*\
+  !*** ./client/src/components/about/about-switch.tsx ***!
+  \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -54,7 +54,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-/* harmony import */ var _info_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./info-page */ "./client/src/components/info/info-page.tsx");
+/* harmony import */ var _about_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./about-page */ "./client/src/components/about/about-page.tsx");
 /* harmony import */ var _no_match__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../no-match */ "./client/src/components/no-match.tsx");
 
 var __extends = (undefined && undefined.__extends) || (function () {
@@ -72,25 +72,25 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
-var InfoSwitch = /** @class */ (function (_super) {
-    __extends(InfoSwitch, _super);
-    function InfoSwitch(props) {
+var AboutSwitch = /** @class */ (function (_super) {
+    __extends(AboutSwitch, _super);
+    function AboutSwitch(props) {
         return _super.call(this, props) || this;
     }
-    InfoSwitch.prototype.render = function () {
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "info-switch-wrapper" },
+    AboutSwitch.prototype.render = function () {
+        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "about-switch-wrapper" },
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "container" },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], { exact: true, to: '/info', activeClassName: "selected" },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", null, "Info")),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], { exact: true, to: '/about', activeClassName: "selected" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", null, "About")),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Switch"], null,
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/info", component: _info_page__WEBPACK_IMPORTED_MODULE_3__["default"] }),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/info/info", component: _no_match__WEBPACK_IMPORTED_MODULE_4__["default"] }),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/about", component: _about_page__WEBPACK_IMPORTED_MODULE_3__["default"] }),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/about/about", component: _no_match__WEBPACK_IMPORTED_MODULE_4__["default"] }),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { component: _no_match__WEBPACK_IMPORTED_MODULE_4__["default"] })))));
     };
-    return InfoSwitch;
+    return AboutSwitch;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
-/* harmony default export */ __webpack_exports__["default"] = (InfoSwitch);
+/* harmony default export */ __webpack_exports__["default"] = (AboutSwitch);
 
 
 /***/ })

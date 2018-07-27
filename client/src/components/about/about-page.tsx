@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-class InfoPage extends React.Component {
+class AboutPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -10,11 +10,11 @@ class InfoPage extends React.Component {
 
 	render() {
 		return (
-			<div className="info-page-wrapper">
+			<div className="about-page-wrapper">
 				Coming Soon!!
 			</div>
 		);			
 	}
 };
 
-export default InfoPage;
+export default AboutPage;

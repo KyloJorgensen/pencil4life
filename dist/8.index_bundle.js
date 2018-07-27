@@ -324,8 +324,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-datetime */ "./node_modules/react-datetime/DateTime.js");
 /* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_datetime__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
-/* harmony import */ var _event_provider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./event-provider */ "./client/src/components/event/event-provider.tsx");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
+/* harmony import */ var _event_provider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./event-provider */ "./client/src/components/event/event-provider.tsx");
 
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -343,6 +345,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
 var EventNewItem = /** @class */ (function (_super) {
     __extends(EventNewItem, _super);
     function EventNewItem(props) {
@@ -352,8 +355,8 @@ var EventNewItem = /** @class */ (function (_super) {
             _eventItemId: false,
             required: false,
             title: null,
-            start_date: String(Date.now()),
-            end_date: String(Date.now()),
+            start_date: moment__WEBPACK_IMPORTED_MODULE_4__(Date.now()),
+            end_date: moment__WEBPACK_IMPORTED_MODULE_4__(Date.now()),
             details: react_rte__WEBPACK_IMPORTED_MODULE_1___default.a.createEmptyValue(),
         };
         _this.hitKey = _this.hitKey.bind(_this);
@@ -465,7 +468,7 @@ var EventNewItem = /** @class */ (function (_super) {
     return EventNewItem;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
-/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_4__["userConsumer"])(Object(_event_provider__WEBPACK_IMPORTED_MODULE_5__["eventConsumer"])(Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(EventNewItem))));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_5__["userConsumer"])(Object(_event_provider__WEBPACK_IMPORTED_MODULE_6__["eventConsumer"])(Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(EventNewItem))));
 
 
 /***/ }),
