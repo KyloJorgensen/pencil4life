@@ -13,9 +13,12 @@ fontawesome.library.add(brands, faEnvelope, faComments);
 
 const ContactPageWrapper = styled.div`
 	display: grid;
-	grid-template-columns: repeat(auto-fill,minmax(500px,1fr));
 	grid-column-gap: 1em;
-
+	
+	@media (min-width: 765px) {
+		grid-template-columns: repeat(auto-fill,minmax(500px,1fr));
+	}
+	
 	> h1 {
 		grid-column-start: 1;
   		grid-column-end: -1;

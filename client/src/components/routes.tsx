@@ -87,6 +87,7 @@ const ImageSwitch = Loadable({
 
 const RoutesWrapper = styled.div`
   padding-bottom: 3em;
+  margin: 5px;
 `;
 
 class Routes extends React.Component {

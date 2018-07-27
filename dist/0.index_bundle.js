@@ -977,7 +977,7 @@ var ImageSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
     loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(25), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! ./image/image-switch */ "./client/src/components/image/image-switch.tsx")); },
     loading: Loading,
 });
-var RoutesWrapper = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  padding-bottom: 3em;\n"], ["\n  padding-bottom: 3em;\n"])));
+var RoutesWrapper = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  padding-bottom: 3em;\n  margin: 5px;\n"], ["\n  padding-bottom: 3em;\n  margin: 5px;\n"])));
 var Routes = /** @class */ (function (_super) {
     __extends(Routes, _super);
     function Routes() {
