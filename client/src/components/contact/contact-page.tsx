@@ -14,13 +14,6 @@ fontawesome.library.add(brands, faEnvelope, faComments);
 const ContactPageWrapper = styled.div`
 	display: grid;
 	grid-column-gap: 1em;
-	
-	> h1 {
-		grid-column-start: 1;
-		grid-column-end: -1;
-		font-size: 2em;
-	}
-
 	> .socialmedia {
 		display: block;
 		margin: 0.5em 0;
@@ -105,9 +98,6 @@ const ContactPageWrapper = styled.div`
 
 	@media (min-width: 765px) {
 		grid-template-columns: repeat(auto-fill,minmax(500px,1fr));
-		> h1 {
-			font-size: 2.5em;
-		}
 		.socialmedia {
 			display: inline-block;
 			display: flex;
@@ -137,7 +127,6 @@ class ContactPage extends React.Component {
 	render() {
 		return (
 			<ContactPageWrapper>
-				<h1>Reach out to me...</h1>
 				<a className='socialmedia instagram' href="https://www.instagram.com/pencil.4.life/" target="_blank" >
 					<FontAwesomeIcon icon={["fab", "instagram"]} />
 					<div>
@@ -165,7 +154,7 @@ class ContactPage extends React.Component {
 				<a className='socialmedia soundboard'  href="/#/soundboard">
 					<FontAwesomeIcon icon={["fas", "comments"]} />
 					<div>
-						<h2>Join my sound board</h2>
+						<h2>Join my soundboard</h2>
 					</div>
 				</a>
 				<a className='socialmedia message'  href="/#/contact/message">

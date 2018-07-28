@@ -8,7 +8,8 @@ import imageRouter from './image/image.router';
 import newsitemRouter from './newsitem/newsitem.router';
 import shopitemRouter from './shopitem/shopitem.router';
 import userRouter from './user/user.router';
-import commmissionsRouter from './commissions/commissions.router';
+import commissionsRouter from './commissions/commissions.router';
+import contactRouter from './contact/contact.router';
 import doodleRouter from './doodle/doodle.router';
 
 const router = Router();
@@ -21,7 +22,8 @@ router
     .use('/newsitem', newsitemRouter)
     .use('/shopitem', shopitemRouter)
     .use('/user', userRouter)
-    .use('/commissions', commmissionsRouter)
+    .use('/commissions', commissionsRouter)
+    .use('/contact', contactRouter)
     .use('/doodle', doodleRouter)
 
 export default router;

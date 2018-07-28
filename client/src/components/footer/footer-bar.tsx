@@ -9,6 +9,7 @@ const FooterBarWrapper = styled.div`
 	position: sticky;
 	bottom: 0;
 	z-index: 49;
+	overflow: hidden;
 
 	.footer-bar {
 		background-color: black;

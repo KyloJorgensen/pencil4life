@@ -4,8 +4,8 @@ import * as React from 'react';
 import { Route, Switch } from 'react-router';
 import { NavLink } from "react-router-dom";
 import ContactPage from './contact-page';
+import ContactMessage from './contact-message';
 import NoMatch from '../no-match';
-import CommingSoon from '../comming-soon';
 
 class ContactSwitch extends React.Component {
     constructor(props) {
@@ -19,7 +19,7 @@ class ContactSwitch extends React.Component {
 					<NavLink exact to={'/contact'} activeClassName="selected" ><h2>Contact</h2></NavLink>
                     <Switch>
 						<Route exact path="/contact" component={ContactPage} />
-                        <Route path="/contact/message" component={CommingSoon} />
+                        <Route path="/contact/message" component={ContactMessage} />
                         <Route component={NoMatch}/>
                     </Switch>
 				</div>

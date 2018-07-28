@@ -117,7 +117,7 @@ var Header = /** @class */ (function (_super) {
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { className: "btn dropdown-item", exact: true, role: "menuitem", tabIndex: -1, to: '/soundboard', activeClassName: "selected" }, "SOUNDBOARD")),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { exact: true, className: "btn", role: "menuitem", tabIndex: -1, to: '/shop', activeClassName: "selected" }, "SHOP"),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { exact: true, className: "btn", role: "menuitem", tabIndex: -1, to: '/commission', activeClassName: "selected" }, "COMMISSION"),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { exact: true, className: "btn", role: "menuitem", tabIndex: -1, to: '/info', activeClassName: "selected" }, "INFO"),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { exact: true, className: "btn", role: "menuitem", tabIndex: -1, to: '/about', activeClassName: "selected" }, "ABOUT"),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], { exact: true, className: "btn", role: "menuitem", tabIndex: -1, to: '/contact', activeClassName: "selected" }, "CONTACT")),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "user-info" }, user))));
     };

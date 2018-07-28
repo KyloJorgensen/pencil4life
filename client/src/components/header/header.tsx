@@ -201,7 +201,7 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 				    	</Dropdown>
 					    <NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/shop'} activeClassName="selected" >SHOP</NavLink>
 				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/commission'} activeClassName="selected" >COMMISSION</NavLink>
-				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/info'} activeClassName="selected" >INFO</NavLink>
+				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/about'} activeClassName="selected" >ABOUT</NavLink>
 				    	<NavLink exact className="btn" role="menuitem" tabIndex={-1} to={'/contact'} activeClassName="selected" >CONTACT</NavLink>
 				    </nav>
 					<div className="user-info" >

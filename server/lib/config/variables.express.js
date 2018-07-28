@@ -22,6 +22,7 @@ exports.BT_PUBLIC_KEY = process.env.BT_PUBLIC_KEY || 'k7x3r67pkqn4m59p';
 exports.BT_PRIVATE_KEY = process.env.BT_PRIVATE_KEY || 'e4614ba54f975cd132f2b52437b5fbe6';
 exports.NM_NOREPLY_EMAIL = process.env.NM_NOREPLY_EMAIL || 'noreply@pencil4life.com';
 exports.NM_COMMISSIONS_EMAIL = process.env.NM_COMMISSIONS_EMAIL || 'commissions@pencil4life.com';
+exports.NM_CONTACT_EMAIL = process.env.NM_CONTACT_EMAIL || 'contact@pencil4life.com';
 exports.default = {
     NODE_ENV: exports.NODE_ENV,
     HTTP_PORT: exports.HTTP_PORT,
@@ -37,4 +38,5 @@ exports.default = {
     BT_PRIVATE_KEY: exports.BT_PRIVATE_KEY,
     NM_NOREPLY_EMAIL: exports.NM_NOREPLY_EMAIL,
     NM_COMMISSIONS_EMAIL: exports.NM_COMMISSIONS_EMAIL,
+    NM_CONTACT_EMAIL: exports.NM_CONTACT_EMAIL,
 };
