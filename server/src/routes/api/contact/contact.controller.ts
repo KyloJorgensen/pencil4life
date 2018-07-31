@@ -51,7 +51,7 @@ export const createContactMessage = (req: Request, res: Response, next: NextFunc
         </div>`;
         return submitMessage({
             from: {
-                name: 'Contacts Request',
+                name: 'Contact Request',
                 address: NM_NOREPLY_EMAIL
             },
             to: [{

@@ -109,7 +109,7 @@ export const createCommissionRequest = (req: Request, res: Response, next: NextF
         </div>`;
         return submitMessage({
             from: {
-                name: 'Commissions Request',
+                name: 'Commission Request',
                 address: NM_NOREPLY_EMAIL
             },
             to: [{

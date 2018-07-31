@@ -278,7 +278,7 @@ exports.forgotPassword = function (req, res, next) {
             });
             return wduckApi_1.submitMessage({
                 from: {
-                    name: 'Contacts Request',
+                    name: 'Pencil4Life',
                     address: variables_express_1.NM_NOREPLY_EMAIL
                 },
                 to: [{

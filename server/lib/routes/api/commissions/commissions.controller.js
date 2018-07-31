@@ -97,7 +97,7 @@ exports.createCommissionRequest = function (req, res, next) {
         var message = "<div>\n            <p>Requestor: " + commissionRequest.requestor + "</p>\n            <p>Email: " + commissionRequest.email + "</p>\n            <p>Details:</p>\n            <div>" + commissionRequest.details + "</div>\n        </div>";
         return wduckApi_1.submitMessage({
             from: {
-                name: 'Commissions Request',
+                name: 'Commission Request',
                 address: variables_express_1.NM_NOREPLY_EMAIL
             },
             to: [{
