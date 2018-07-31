@@ -29,7 +29,8 @@
     "helmet": "^3.12.1",
     "log-to-file": "^1.2.2",
     "mongoose-diff-history": "^1.5.3",
-    "node-fetch": "^2.2.0"
+    "node-fetch": "^2.2.0",
+    "react-html-email": "^3.0.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome": "^1.1.8",

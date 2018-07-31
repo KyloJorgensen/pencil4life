@@ -313,7 +313,7 @@ describe('User-Provider', () => {
         const UP = userProvider(
             userConsumer(
                 methodTest((user) => {
-                    user.updateUser(params)
+                    user.updateUser(params, () => {})
                 })
             )
         );

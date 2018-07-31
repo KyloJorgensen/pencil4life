@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Redirect, NavLink } from "react-router-dom";
-import { userConsumer, IUserContext, UpdateUserParams } from '../user/user-provider';
+import { userConsumer, IUserContext, UpdateUserParams } from '../user-provider';
 
 export interface ProfileEditProps {
 	user: IUserContext;

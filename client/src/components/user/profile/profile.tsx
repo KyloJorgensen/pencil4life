@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { userConsumer, IUserContext } from '../user/user-provider';
+import { userConsumer, IUserContext } from '../user-provider';
 
 export interface ProfileProps {
 	user: IUserContext;

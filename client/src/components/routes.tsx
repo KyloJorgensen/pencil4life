@@ -16,12 +16,12 @@ const HomePage = Loadable({
 });
 
 const LoginPage = Loadable({
-  loader: () => import('./login/login-page'),
+  loader: () => import('./user/login-page'),
   loading: Loading,
 });
 
 const SignupPage = Loadable({
-  loader: () => import('./signup/signup-page'),
+  loader: () => import('./user/signup-page'),
   loading: Loading,
 });
 
@@ -76,7 +76,17 @@ const ContactSwitch = Loadable({
 });
 
 const ProfilePage = Loadable({
-  loader: () => import('./profile/profile-switch'),
+  loader: () => import('./user/profile/profile-switch'),
+  loading: Loading,
+});
+
+const ForgotPasswordPage = Loadable({
+  loader: () => import('./user/forgotpassword'),
+  loading: Loading,
+});
+
+const ResetPasswordPage = Loadable({
+  loader: () => import('./user/resetpassword'),
   loading: Loading,
 });
 
@@ -106,7 +116,9 @@ class Routes extends React.Component {
             <Route path="/about" component={AboutSwitch} />
             <Route path="/contact" component={ContactSwitch} />
             <Route path="/login" component={LoginPage} />
-            <Route path="/signup/" component={SignupPage} />
+            <Route path="/signup" component={SignupPage} />
+            <Route path="/forgotpassword" component={ForgotPasswordPage} />
+            <Route exact path="/resetpassword/:userId/:reset_code" component={ResetPasswordPage} />
             <Route path="/news" component={NewsSwitch} />
             <Route path="/profile" component={ProfilePage} />
             <Route path="/image" component={ImageSwitch} />

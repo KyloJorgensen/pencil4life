@@ -6,8 +6,8 @@ import { Redirect, NavLink } from "react-router-dom";
 import Profile from './profile';
 import ProfileEdit from './profile-edit';
 import ProfileChangePassword from './profile-change-password';
-import NoMatch from '../no-match';
-import { IUserContext, userConsumer } from '../user/user-provider';
+import NoMatch from '../../no-match';
+import { IUserContext, userConsumer } from '../user-provider';
 
 export interface ProfileSwitchProps {
 	user: IUserContext;

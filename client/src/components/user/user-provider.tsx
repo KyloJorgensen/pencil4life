@@ -24,6 +24,15 @@ const Context: IUserContext = {
   updatePassword: () => {
     console.error('Error: Cannot updatePassword no UserContext.Provider element in parents');
   },
+  forgotPassword: () => {
+    console.error('Error: Cannot forgotPassword no UserContext.Provider element in parents');
+  },
+  resetPassword: () => {
+    console.error('Error: Cannot resetPassword no UserContext.Provider element in parents');
+  },
+  checkResetCode: () => {
+    console.error('Error: Cannot checkResetCode no UserContext.Provider element in parents');
+  },
   email: null,
   firstname: null,
   lastname: null,
@@ -69,6 +78,9 @@ export interface UserWrapperMethods {
   logout: () => void;
   updateUser: (params: UpdateUserParams, callback: (error) => void) => void;
   updatePassword: (oldpassword: string, newpassword: string, callback: (error) => void) => void;
+  forgotPassword: (email: string, callback: (error) => void) => void;
+  resetPassword: (newpassword: string, userId: string, reset_code: string, callback: (error) => void) => void;
+  checkResetCode: (userId: string, reset_code: string, callback: (error) => void) => void;
 }
 
 export class UserWrapper extends React.Component<IUserProps, IUserState> implements UserWrapperMethods {
@@ -91,6 +103,7 @@ export class UserWrapper extends React.Component<IUserProps, IUserState> impleme
     this.logout = this.logout.bind(this);
     this.updateUser = this.updateUser.bind(this);
     this.updatePassword = this.updatePassword.bind(this);
+    this.forgotPassword = this.forgotPassword.bind(this);
   }
 
   getUser() {
@@ -108,7 +121,7 @@ export class UserWrapper extends React.Component<IUserProps, IUserState> impleme
         return response.json();
       } else {
         const error = new Error(response.statusText)
-        error.message = String(response)
+        error.message = JSON.stringify(response)
         throw error;
       }
     })
@@ -174,9 +187,9 @@ export class UserWrapper extends React.Component<IUserProps, IUserState> impleme
     });
   }
 
-  login(email, password, callback) {
+  login(username, password, callback) {
     const payload = {
-      email: email,
+      username: username,
       password: password,
     }
     
@@ -196,7 +209,7 @@ export class UserWrapper extends React.Component<IUserProps, IUserState> impleme
         return response.json();
       } else {
         const error = new Error(response.statusText)
-        error.message = String(response)
+        error.message = JSON.stringify(response)
         throw error;
       }
     })
@@ -339,8 +352,95 @@ export class UserWrapper extends React.Component<IUserProps, IUserState> impleme
       });
     }
   }
+  
+  forgotPassword(email, callback) {
+    const payload = {
+      email: email,
+    };
+    if (Object.keys(payload).length > 0) {
+      const request = new Request('/api/user/forgotpassword', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      fetch(request)
+      .then((response) => {
+        return response.json();
+      })
+      .then((body) => {
+        callback(true);
+      })
+      .catch((error) => {
+        callback(false);
+        console.log(error);
+      });
+    }
+  }  
+  
+  resetPassword(newpassword, userId, reset_code, callback) {
+    const payload = {
+      newpassword: newpassword,
+    };
+    if (Object.keys(payload).length > 0) {
+      const request = new Request(`/api/user/resetpassword/${userId}/${reset_code}`, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      fetch(request)
+      .then((response) => {
+        return response.json();
+      })
+      .then((body:{
+        vaild: boolean
+      }) => {
+        callback(!body.vaild);
+      })
+      .catch((error) => {
+        callback(true);
+        console.log(error);
+      });
+    }
+  }
+
+  checkResetCode(userId, reset_code, callback) {
+    const request = new Request(`/api/user/resetpassword/${userId}/${reset_code}`, {
+      method: 'GET',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    });
+
+    fetch(request)
+    .then((response) => {
+      console.log(response)
+      return response.json();
+    })
+    .then((body:{
+      vaild: boolean
+    }) => {
+      callback(body.vaild);
+    })
+    .catch((error) => {
+      callback(false);
+      console.log(error);
+    });
+  }
 
   render() {
+    const {signup, getUser, login, logout, updateUser, updatePassword, forgotPassword, resetPassword, checkResetCode } = this;
     const { email, firstname, lastname, username, userAccess, admin } = this.state;
       const context: IUserContext = {
         email: email,
@@ -349,12 +449,15 @@ export class UserWrapper extends React.Component<IUserProps, IUserState> impleme
         username: username,
         userAccess: userAccess,
         admin: admin,
-        signup: this.signup,
-        getUser: this.getUser,
-        login: this.login,
-        logout: this.logout,
-        updateUser: this.updateUser,
-        updatePassword: this.updatePassword,
+        signup: signup,
+        getUser: getUser,
+        login: login,
+        logout: logout,
+        updateUser: updateUser,
+        updatePassword: updatePassword,
+        forgotPassword: forgotPassword,
+        resetPassword: resetPassword,
+        checkResetCode: checkResetCode,
       }
       return (
           <UserContext.Provider value={context} >

@@ -2,6 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var user_model_1 = require("./user.model");
 var bcrypt = require("bcryptjs");
+var wduckApi_1 = require("../../../utilities/wduckApi");
+var variables_express_1 = require("../../../config/variables.express");
+var user_email_templates_1 = require("./user-email-templates");
 var sendUser = function (req, res, user) {
     req.session._userId = user._id;
     if (user.admin) {
@@ -15,10 +18,8 @@ var sendUser = function (req, res, user) {
         admin: user.admin,
     });
 };
-function UserController() { }
-;
 // creates new user from email, password, and name. Attaches UserKey session.
-UserController.prototype.createUser = function (req, res, next) {
+exports.createUser = function (req, res, next) {
     // generates the salt for bcrypt to encrypt the passwordz
     bcrypt.genSalt(10, function (err, salt) {
         if (err) {
@@ -29,22 +30,13 @@ UserController.prototype.createUser = function (req, res, next) {
             if (err) {
                 return next(err);
             }
-            return new Promise(function (resolve, reject) {
-                // creates user useing email, encrypted password (hash), name
-                user_model_1.User.create({
-                    email: req.body.email,
-                    username: req.body.username,
-                    password: hash,
-                    firstname: req.body.firstname,
-                    lastname: req.body.lastname
-                }, function (error, user) {
-                    if (error) {
-                        reject(error);
-                    }
-                    else {
-                        resolve(user);
-                    }
-                });
+            // creates user useing email, encrypted password (hash), name
+            user_model_1.User.create({
+                email: req.body.email,
+                username: req.body.username,
+                password: hash,
+                firstname: req.body.firstname,
+                lastname: req.body.lastname
             }).then(function (user) {
                 sendUser(req, res, user);
             }).catch(function (error) {
@@ -54,23 +46,9 @@ UserController.prototype.createUser = function (req, res, next) {
     });
 };
 // one get returns users name
-UserController.prototype.getUser = function (req, res, next) {
-    return new Promise(function (resolve, reject) {
-        user_model_1.User.findOne({
-            _id: req.session._userId
-        }, function (error, user) {
-            if (error) {
-                reject(error);
-            }
-            else {
-                if (user) {
-                    if ('_id' in user) {
-                        return resolve(user);
-                    }
-                }
-                resolve(false);
-            }
-        });
+exports.getUser = function (req, res, next) {
+    user_model_1.User.findOne({
+        _id: req.session._userId
     }).then(function (user) {
         if (user) {
             sendUser(req, res, user);
@@ -84,57 +62,43 @@ UserController.prototype.getUser = function (req, res, next) {
         next(error);
     });
 };
-// Attaches UserKey if email and password are vaild.
-UserController.prototype.login = function (req, res, next) {
-    var email = req.body.email;
+// Attaches UserKey if username and password are vaild.
+exports.login = function (req, res, next) {
+    var username = req.body.username;
     var password = req.body.password;
-    return new Promise(function (resolve, reject) {
-        user_model_1.User.findOne({ email: email }, function (error, user) {
-            if (error) {
-                reject(error);
-            }
-            else {
-                resolve(user);
-            }
-        });
-    }).then(function (user) {
+    user_model_1.User.findOne({ username: username })
+        .then(function (user) {
         if (user == null) {
             var error = new Error('Invaild Username.');
             error.message = 'LoginError';
-            return next(error);
+            throw error;
         }
-        return new Promise(function (resolve, reject) {
-            user.validatePassword(password, user.password, function (error, isVaild) {
-                if (error) {
-                    reject(error);
-                }
-                else {
-                    if (isVaild) {
-                        resolve(user);
-                    }
-                    else {
-                        resolve(false);
-                    }
-                }
-            });
-        }).then(function (user) {
-            if (user) {
-                sendUser(req, res, user);
+        return user.validatePassword(password, user.password)
+            .then(function (isVaild) {
+            if (isVaild) {
+                return user;
             }
             else {
-                var error = new Error('Invaild Password.');
-                error.message = 'LoginError';
-                return next(error);
+                return null;
             }
-        }).catch(function (error) {
-            next(error);
         });
-    }).catch(function (error) {
+    })
+        .then(function (user) {
+        if (user) {
+            sendUser(req, res, user);
+        }
+        else {
+            var error = new Error('Invaild Password.');
+            error.message = 'LoginError';
+            return next(error);
+        }
+    })
+        .catch(function (error) {
         next(error);
     });
 };
 // Log user out
-UserController.prototype.logout = function (req, res, next) {
+exports.logout = function (req, res, next) {
     req.session.regenerate(function (err) {
         if (err) {
             return next(err);
@@ -142,7 +106,7 @@ UserController.prototype.logout = function (req, res, next) {
         res.status(200).end();
     });
 };
-UserController.prototype.updateUser = function (req, res, next) {
+exports.updateUser = function (req, res, next) {
     var changes;
     if ('body' in req) {
         if ('email' in req.body) {
@@ -163,28 +127,21 @@ UserController.prototype.updateUser = function (req, res, next) {
         error.name = 'BadRequest';
         return next(error);
     }
-    return new Promise(function (resolve, reject) {
-        user_model_1.User.findOneAndUpdate({
-            _id: req.session._userId
-        }, {
-            $set: changes
-        }, {
-            new: true
-        }, function (error, user) {
-            if (error) {
-                reject(error);
-            }
-            else {
-                resolve(user);
-            }
-        });
-    }).then(function (user) {
+    user_model_1.User.findOneAndUpdate({
+        _id: req.session._userId
+    }, {
+        $set: changes
+    }, {
+        new: true
+    })
+        .then(function (user) {
         sendUser(req, res, user);
-    }).catch(function (error) {
+    })
+        .catch(function (error) {
         next(error);
     });
 };
-UserController.prototype.updateUserPassword = function (req, res, next) {
+exports.updateUserPassword = function (req, res, next) {
     var oldpassword;
     var newpassword;
     if ('body' in req) {
@@ -200,88 +157,250 @@ UserController.prototype.updateUserPassword = function (req, res, next) {
         error.name = 'BadRequest';
         return next(error);
     }
-    return new Promise(function (resolve, reject) {
-        user_model_1.User.findOne({
-            _id: req.session._userId
-        }, function (error, user) {
-            if (error) {
-                reject(error);
-            }
-            else {
-                if (user) {
-                    if ('_id' in user) {
-                        return resolve(user);
-                    }
-                }
-                resolve(false);
-            }
-        });
-    }).then(function (user) {
+    user_model_1.User.findOne({
+        _id: req.session._userId
+    })
+        .then(function (user) {
         if (user == null) {
             var error = new Error('Invaild User.');
             error.name = 'LoginError';
             return next(error);
         }
-        return new Promise(function (resolve, reject) {
-            user.validatePassword(oldpassword, user.password, function (error, isVaild) {
-                if (error) {
-                    reject(error);
-                }
-                else {
-                    if (isVaild) {
-                        resolve(user);
-                    }
-                    else {
-                        resolve(false);
-                    }
-                }
-            });
-        }).then(function (user) {
-            if (user) {
-                bcrypt.genSalt(10, function (err, salt) {
-                    if (err) {
-                        return next(err);
-                    }
-                    // generates encrypted password
-                    bcrypt.hash(newpassword, salt, function (err, hash) {
-                        if (err) {
-                            return next(err);
-                        }
-                        var changes;
-                        changes.password = hash;
-                        return new Promise(function (resolve, reject) {
-                            user_model_1.User.findOneAndUpdate({
-                                _id: req.session._userId
-                            }, {
-                                $set: changes
-                            }, {
-                                new: true
-                            }, function (error, user) {
-                                if (error) {
-                                    reject(error);
-                                }
-                                else {
-                                    resolve(user);
-                                }
-                            });
-                        }).then(function (user) {
-                            sendUser(req, res, user);
-                        }).catch(function (error) {
-                            next(error);
-                        });
-                    });
-                });
+        return user.validatePassword(oldpassword, user.password)
+            .then(function (isVaild) {
+            if (isVaild) {
+                return user;
             }
-            else {
-                var error = new Error('Invaild Password.');
-                error.name = 'LoginError';
-                return next(error);
-            }
-        }).catch(function (error) {
-            next(error);
+            return null;
         });
-    }).catch(function (error) {
+    })
+        .then(function (user) {
+        if (user) {
+            var changes_1;
+            bcrypt.genSalt(10, function (error, salt) {
+                if (error) {
+                    throw (error);
+                }
+                // generates encrypted password
+                bcrypt.hash(newpassword, salt, function (error, hash) {
+                    if (error) {
+                        throw error;
+                    }
+                    changes_1.password = hash;
+                });
+            });
+            return changes_1;
+        }
+        else {
+            var error = new Error('Invaild Password.');
+            error.name = 'LoginError';
+            throw error;
+        }
+    })
+        .then(function (changes) {
+        return user_model_1.User.findOneAndUpdate({
+            _id: req.session._userId
+        }, {
+            $set: changes
+        }, {
+            new: true
+        });
+    })
+        .then(function (user) {
+        sendUser(req, res, user);
+    })
+        .catch(function (error) {
         next(error);
     });
 };
-exports.default = UserController.prototype;
+exports.forgotPassword = function (req, res, next) {
+    var email;
+    if ('body' in req) {
+        if ('email' in req.body) {
+            email = req.body.email;
+        }
+        else {
+            var error = new Error('missing email');
+            error.name = 'BadRequest';
+            return next(error);
+        }
+    }
+    else {
+        var error = new Error('missing Body');
+        error.name = 'BadRequest';
+        return next(error);
+    }
+    user_model_1.User.findOne({ email: email })
+        .then(function (user) {
+        if (user == null) {
+            var message = user_email_templates_1.invaildResetPasswordEmailTemplate();
+            return wduckApi_1.submitMessage({
+                from: {
+                    name: 'Contacts Request',
+                    address: variables_express_1.NM_NOREPLY_EMAIL
+                },
+                to: [{
+                        name: user.username,
+                        address: user.email,
+                    }],
+                subject: 'Pencil4life Account Password Reset',
+                html: message,
+            });
+        }
+        var code = function () {
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            for (var i = 0; i < 64; i++)
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+            return text;
+        }();
+        var changes = {
+            reset_code: {
+                code: code,
+                date: new Date(),
+                used: false,
+            }
+        };
+        //add a day to the date
+        changes.reset_code.date.setDate(changes.reset_code.date.getDate() + 1);
+        return user_model_1.User.findOneAndUpdate({
+            email: email
+        }, {
+            $set: changes
+        }, {
+            new: true
+        })
+            .then(function (user) {
+            var message = user_email_templates_1.resetPasswordEmailTemplate({
+                userId: user._id,
+                username: user.username,
+                code: changes.reset_code.code
+            });
+            return wduckApi_1.submitMessage({
+                from: {
+                    name: 'Contacts Request',
+                    address: variables_express_1.NM_NOREPLY_EMAIL
+                },
+                to: [{
+                        name: user.username,
+                        address: user.email,
+                    }],
+                subject: 'Pencil4life Account Password Reset',
+                html: message,
+            });
+        });
+    })
+        .then(function () {
+        res.status(200).json({
+            success: true
+        });
+    })
+        .catch(function (error) {
+        next(error);
+    });
+};
+exports.check_reset_code = function (userId, reset_code) {
+    return user_model_1.User.find({ _id: userId })
+        .then(function (user) {
+        if (!user) {
+            return false;
+        }
+        if (!user[0].reset_code) {
+            return false;
+        }
+        console.log(user[0].reset_code);
+        if (!user[0].reset_code.used &&
+            user[0].reset_code.code == reset_code &&
+            user[0].reset_code.date > new Date()) {
+            return user[0];
+        }
+        return false;
+    }).catch(function (error) {
+        // console.log(error)
+        return false;
+    });
+};
+exports.checkResetCode = function (req, res, next) {
+    var _a = req.params, userId = _a.userId, reset_code = _a.reset_code;
+    exports.check_reset_code(userId, reset_code)
+        .then(function (vaild) {
+        res.json({
+            vaild: !!vaild,
+        });
+    })
+        .catch(function (error) {
+        next(error);
+    });
+};
+exports.resetPassword = function (req, res, next) {
+    var _a = req.params, userId = _a.userId, reset_code = _a.reset_code;
+    var newpassword;
+    if ('body' in req) {
+        if ('newpassword' in req.body) {
+            newpassword = req.body.newpassword;
+        }
+        else {
+            var error = new Error('missing newpassword');
+            error.name = 'BadRequest';
+            return next(error);
+        }
+    }
+    else {
+        var error = new Error('missing Body');
+        error.name = 'BadRequest';
+        return next(error);
+    }
+    exports.check_reset_code(userId, reset_code)
+        .then(function (user) {
+        if (user) {
+            return user;
+        }
+        else {
+            res.json({
+                vaild: false,
+            });
+        }
+    })
+        .then(function (user) {
+        return new Promise(function (resolve, reject) {
+            bcrypt.genSalt(10, function (error, salt) {
+                if (error) {
+                    reject(error);
+                }
+                // generates encrypted password
+                bcrypt.hash(newpassword, salt, function (error, hash) {
+                    if (error) {
+                        reject(error);
+                    }
+                    console.log(hash);
+                    resolve({
+                        password: hash,
+                        reset_code: {
+                            code: user.reset_code.code,
+                            date: user.reset_code.date,
+                            used: true,
+                        }
+                    });
+                });
+            });
+        });
+    })
+        .then(function (changes) {
+        return user_model_1.User.findOneAndUpdate({
+            _id: userId,
+        }, {
+            $set: changes,
+        }, {
+            new: true,
+        });
+    })
+        .then(function (user) {
+        console.log(user);
+        res.json({
+            vaild: true,
+        });
+    })
+        .catch(function (error) {
+        next(error);
+    });
+};

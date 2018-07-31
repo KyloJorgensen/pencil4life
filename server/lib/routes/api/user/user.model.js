@@ -29,18 +29,37 @@ var userSchema = new mongoose_1.Schema({
         type: Boolean,
         default: false,
     },
+    reset_code: {
+        code: {
+            type: String,
+        },
+        date: {
+            type: Date,
+        },
+        used: {
+            type: Boolean,
+        }
+    },
     discontinued: {
         type: Boolean,
         default: false,
     }
 }, { timestamps: true });
 userSchema.methods.validatePassword = function (password, hash, callback) {
-    bcrypt.compare(password, hash, function (err, isValid) {
-        if (err) {
-            callback(err);
-            return;
-        }
-        callback(null, isValid);
+    return new Promise(function (resolve, reject) {
+        bcrypt.compare(password, hash, function (error, isValid) {
+            if (error) {
+                if (callback) {
+                    callback(error);
+                }
+                reject(error);
+                return;
+            }
+            if (callback) {
+                callback(null, isValid);
+            }
+            resolve(isValid);
+        });
     });
 };
 exports.User = mongoose_1.model('User', userSchema);

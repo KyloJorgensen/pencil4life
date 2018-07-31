@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import * as objectPath from 'object-path';
-import { withRouter, Link } from 'react-router-dom';
-import { IUserContext, userConsumer, SignupParams } from '../user/user-provider';
+import { withRouter, Link, NavLink } from 'react-router-dom';
+import { IUserContext, userConsumer, SignupParams } from './user-provider';
 import { Location } from 'history';
 
 import {Redirect} from 'react-router-dom';
@@ -173,8 +173,8 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 		return (
 			<div className="signup-page-wrapper">
 				<div className="container">
-					<form className="signup-signup-form" onSubmit={signup} >
-						<label>Signup</label>
+					<div className="signup-signup-form" onSubmit={signup} >
+						<NavLink to='/signup'><h2>Signup</h2></NavLink>
 						<br/>
 						<label htmlFor="email"><b>Email:</b></label>
 						<br/>
@@ -207,7 +207,7 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
     					{badAuth ? (<span className="errortext" >* Required</span>) : ''}
     					<br/>
 						<input type="submit" onClick={signup} value="Signup"/>
-					</form>
+					</div>
 					<p>or <Link className="btn" to={'/login'} >Login</Link></p>
 				</div>
 			</div>

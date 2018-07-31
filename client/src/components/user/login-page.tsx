@@ -1,10 +1,9 @@
 'use strict';
 
 import * as React from 'react';
-// import userActions from '../../actions/user.actions';
 import * as objectPath from 'object-path';
-import { withRouter, Link } from 'react-router-dom';
-import { IUserContext, userConsumer } from '../user/user-provider';
+import { withRouter, Link, NavLink } from 'react-router-dom';
+import { IUserContext, userConsumer } from './user-provider';
 import { Location } from 'history';
 
 import {Redirect} from 'react-router-dom';
@@ -36,7 +35,7 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 		this.loginResult = this.loginResult.bind(this);
     }
 
-	emailRef: React.RefObject<HTMLInputElement> = React.createRef();
+	usernameRef: React.RefObject<HTMLInputElement> = React.createRef();
 	
 	passwordRef: React.RefObject<HTMLInputElement > = React.createRef();
 	
@@ -48,15 +47,15 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 
 	login(event) {
 		event.preventDefault();
-		let email, password;
+		let username, password;
 		let invalid = null;
-		// Validate email
-		if (this.emailRef.current.value) {
-			email = this.emailRef.current.value;
+		// Validate username
+		if (this.usernameRef.current.value) {
+			username = this.usernameRef.current.value;
 		} else {
 			invalid = invalid || {};
-			invalid.email = {
-				message: "Email is Required"
+			invalid.username = {
+				message: "Username is Required"
 			}
 		}
 		// Validate password
@@ -70,15 +69,15 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 		}
 
 		if (invalid) {
-			this.emailRef.current.value = '';
+			this.usernameRef.current.value = '';
 			this.passwordRef.current.value = '';
 			this.setState(() => {
 				return {badAuth: true};
 			});
 			return;
 		}
-		// Login in with vaildated email and password
-		this.props.user.login(email, password, this.loginResult);
+		// Login in with vaildated username and password
+		this.props.user.login(username, password, this.loginResult);
 
 		this.setState(() => {
 			return {badAuth: true};
@@ -87,7 +86,7 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 
 	loginResult(result) {
     	if (!result) {
-			this.emailRef.current.value = '';
+			this.usernameRef.current.value = '';
 			this.passwordRef.current.value = '';
 			this.setState(() => {
 				return {badAuth: true};
@@ -96,7 +95,7 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 	}
 
 	render() {
-		const { emailRef, passwordRef, hitKey, login } = this;
+		const { usernameRef, passwordRef, hitKey, login } = this;
 		const { badAuth } = this.state
 		const { userAccess, admin } = this.props.user;
 
@@ -114,12 +113,12 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 		return (
 			<div className="login-page-wrapper">
 				<div className="container">
-					<form className="login-login-form" onSubmit={login} >
-						<label>Login</label>
+					<div className="login-login-form" onSubmit={login} >
+						<NavLink to='/login'><h2>Login</h2></NavLink>
 						<br/>
-						<label htmlFor="email"><b>Email:</b></label>
+						<label htmlFor="username"><b>Username:</b></label>
 						<br/>
-    					<input type="text" onKeyPress={hitKey} placeholder="Enter youremail@example.com" name="email" ref={emailRef} autoComplete='email' required />
+    					<input type="text" onKeyPress={hitKey} placeholder="coolhats" name="username" ref={usernameRef} autoComplete='username' required />
     					{badAuth ? (<span className="errortext" >* Required</span>) : ''}
     					<br/>
     					<label htmlFor="password"><b>Password:</b></label>
@@ -128,8 +127,8 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 						{badAuth ? (<span className="errortext" >* Required</span>) : ''}
 						<br/>
 						<input type="submit" onClick={login} value="LOGIN"/>
-					</form>
-					<p>or <Link className="btn" to={'/signup'} >Signup</Link></p>
+					</div>
+					<p><Link className="btn" to={'/forgotpassword'}>Forgot Password</Link>or <Link className="btn" to={'/signup'} >Signup</Link></p>
 				</div>
 			</div>
 		);			

@@ -1,5 +1,6 @@
 'use strict';
 import fetch, { Request, RequestInit } from 'node-fetch';
+import { NODE_ENV } from '../config/variables.express';
 
 export interface SubmitMessageOptions {
 
@@ -230,6 +231,7 @@ export const fetchFromWDuckApi = (endpoint: string, requestInit?: RequestInit) =
       requestInit.headers['Content-Type'] = 'application/json';
     }
   }
+
   let request = new Request(`http://localhost:8080${endpoint}`, requestInit);
 
   return fetch(request).then((response) => {

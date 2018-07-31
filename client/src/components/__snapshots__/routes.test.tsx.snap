@@ -65,7 +65,15 @@ ShallowWrapper {
         />
         <Route
           component={[Function]}
-          path="/signup/"
+          path="/signup"
+        />
+        <Route
+          component={[Function]}
+          path="/forgotpassword"
+        />
+        <Route
+          component={[Function]}
+          path="/resetpassword"
         />
         <Route
           component={[Function]}
@@ -138,7 +146,15 @@ ShallowWrapper {
           />,
           <Route
             component={[Function]}
-            path="/signup/"
+            path="/signup"
+          />,
+          <Route
+            component={[Function]}
+            path="/forgotpassword"
+          />,
+          <Route
+            component={[Function]}
+            path="/resetpassword"
           />,
           <Route
             component={[Function]}
@@ -298,7 +314,31 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "component": [Function],
-            "path": "/signup/",
+            "path": "/signup",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "component": [Function],
+            "path": "/forgotpassword",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "component": [Function],
+            "path": "/resetpassword",
           },
           "ref": null,
           "rendered": null,
@@ -410,7 +450,15 @@ ShallowWrapper {
           />
           <Route
             component={[Function]}
-            path="/signup/"
+            path="/signup"
+          />
+          <Route
+            component={[Function]}
+            path="/forgotpassword"
+          />
+          <Route
+            component={[Function]}
+            path="/resetpassword"
           />
           <Route
             component={[Function]}
@@ -483,7 +531,15 @@ ShallowWrapper {
             />,
             <Route
               component={[Function]}
-              path="/signup/"
+              path="/signup"
+            />,
+            <Route
+              component={[Function]}
+              path="/forgotpassword"
+            />,
+            <Route
+              component={[Function]}
+              path="/resetpassword"
             />,
             <Route
               component={[Function]}
@@ -643,7 +699,31 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "component": [Function],
-              "path": "/signup/",
+              "path": "/signup",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "component": [Function],
+              "path": "/forgotpassword",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "component": [Function],
+              "path": "/resetpassword",
             },
             "ref": null,
             "rendered": null,

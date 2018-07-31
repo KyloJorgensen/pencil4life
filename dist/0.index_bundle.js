@@ -56,15 +56,15 @@ var Logo = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
     loading: Loading,
 });
 var Header = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(22), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./header/header */ "./client/src/components/header/header.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./header/header */ "./client/src/components/header/header.tsx")); },
     loading: Loading,
 });
 var Footer = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(22), __webpack_require__.e(17), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ./footer/footer */ "./client/src/components/footer/footer.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(22), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ./footer/footer */ "./client/src/components/footer/footer.tsx")); },
     loading: Loading,
 });
 var FooterBar = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(22), __webpack_require__.e(17), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ./footer/footer-bar */ "./client/src/components/footer/footer-bar.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(22), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ./footer/footer-bar */ "./client/src/components/footer/footer-bar.tsx")); },
     loading: Loading,
 });
 var PageLayout = styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  height: 100%;\n  width: 100%;\n  display: grid;\n  grid-template-rows: auto auto 1fr;\n"], ["\n  height: 100%;\n  width: 100%;\n  display: grid;\n  grid-template-rows: auto auto 1fr;\n"])));
@@ -918,31 +918,31 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 var Loading = function () { return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_loading__WEBPACK_IMPORTED_MODULE_4__["LoadingSpinner"], null); };
 var HomePage = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(26), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ./home/homepage */ "./client/src/components/home/homepage.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(20), __webpack_require__.e(26), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ./home/homepage */ "./client/src/components/home/homepage.tsx")); },
     loading: Loading,
 });
 var LoginPage = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ./login/login-page */ "./client/src/components/login/login-page.tsx")); },
+    loader: function () { return __webpack_require__.e(/*! import() */ 29).then(__webpack_require__.bind(null, /*! ./user/login-page */ "./client/src/components/user/login-page.tsx")); },
     loading: Loading,
 });
 var SignupPage = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ./signup/signup-page */ "./client/src/components/signup/signup-page.tsx")); },
+    loader: function () { return __webpack_require__.e(/*! import() */ 30).then(__webpack_require__.bind(null, /*! ./user/signup-page */ "./client/src/components/user/signup-page.tsx")); },
     loading: Loading,
 });
 var EventSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(23), __webpack_require__.e(26), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./event/event-switch */ "./client/src/components/event/event-switch.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(20), __webpack_require__.e(23), __webpack_require__.e(26), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./event/event-switch */ "./client/src/components/event/event-switch.tsx")); },
     loading: Loading,
 });
 var NewsSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ./news/news-switch */ "./client/src/components/news/news-switch.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(20), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ./news/news-switch */ "./client/src/components/news/news-switch.tsx")); },
     loading: Loading,
 });
 var ProjectSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(22), __webpack_require__.e(23), __webpack_require__.e(25), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./project/project-switch */ "./client/src/components/project/project-switch.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(20), __webpack_require__.e(21), __webpack_require__.e(23), __webpack_require__.e(25), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./project/project-switch */ "./client/src/components/project/project-switch.tsx")); },
     loading: Loading,
 });
 var DoodleSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(22), __webpack_require__.e(25), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./doodle/doodle-switch */ "./client/src/components/doodle/doodle-switch.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(20), __webpack_require__.e(21), __webpack_require__.e(25), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./doodle/doodle-switch */ "./client/src/components/doodle/doodle-switch.tsx")); },
     loading: Loading,
 });
 var ComicsSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
@@ -958,7 +958,7 @@ var ShopSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
     loading: Loading,
 });
 var CommissionSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(23), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! ./commission/commission-switch */ "./client/src/components/commission/commission-switch.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(20), __webpack_require__.e(23), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! ./commission/commission-switch */ "./client/src/components/commission/commission-switch.tsx")); },
     loading: Loading,
 });
 var AboutSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
@@ -966,11 +966,19 @@ var AboutSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
     loading: Loading,
 });
 var ContactSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(21), __webpack_require__.e(22), __webpack_require__.e(17), __webpack_require__.e(27)]).then(__webpack_require__.bind(null, /*! ./contact/contact-switch */ "./client/src/components/contact/contact-switch.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(20), __webpack_require__.e(21), __webpack_require__.e(22), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! ./contact/contact-switch */ "./client/src/components/contact/contact-switch.tsx")); },
     loading: Loading,
 });
 var ProfilePage = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return __webpack_require__.e(/*! import() */ 18).then(__webpack_require__.bind(null, /*! ./profile/profile-switch */ "./client/src/components/profile/profile-switch.tsx")); },
+    loader: function () { return __webpack_require__.e(/*! import() */ 31).then(__webpack_require__.bind(null, /*! ./user/profile/profile-switch */ "./client/src/components/user/profile/profile-switch.tsx")); },
+    loading: Loading,
+});
+var ForgotPasswordPage = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
+    loader: function () { return __webpack_require__.e(/*! import() */ 32).then(__webpack_require__.bind(null, /*! ./user/forgotpassword */ "./client/src/components/user/forgotpassword.tsx")); },
+    loading: Loading,
+});
+var ResetPasswordPage = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
+    loader: function () { return __webpack_require__.e(/*! import() */ 33).then(__webpack_require__.bind(null, /*! ./user/resetpassword */ "./client/src/components/user/resetpassword.tsx")); },
     loading: Loading,
 });
 var ImageSwitch = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
@@ -997,7 +1005,9 @@ var Routes = /** @class */ (function (_super) {
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/about", component: AboutSwitch }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/contact", component: ContactSwitch }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/login", component: LoginPage }),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/signup/", component: SignupPage }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/signup", component: SignupPage }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/forgotpassword", component: ForgotPasswordPage }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, path: "/resetpassword/:userId/:reset_code", component: ResetPasswordPage }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/news", component: NewsSwitch }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/profile", component: ProfilePage }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], { path: "/image", component: ImageSwitch }),
@@ -1065,6 +1075,15 @@ var Context = {
     updatePassword: function () {
         console.error('Error: Cannot updatePassword no UserContext.Provider element in parents');
     },
+    forgotPassword: function () {
+        console.error('Error: Cannot forgotPassword no UserContext.Provider element in parents');
+    },
+    resetPassword: function () {
+        console.error('Error: Cannot resetPassword no UserContext.Provider element in parents');
+    },
+    checkResetCode: function () {
+        console.error('Error: Cannot checkResetCode no UserContext.Provider element in parents');
+    },
     email: null,
     firstname: null,
     lastname: null,
@@ -1085,6 +1104,7 @@ var UserWrapper = /** @class */ (function (_super) {
         _this.logout = _this.logout.bind(_this);
         _this.updateUser = _this.updateUser.bind(_this);
         _this.updatePassword = _this.updatePassword.bind(_this);
+        _this.forgotPassword = _this.forgotPassword.bind(_this);
         return _this;
     }
     UserWrapper.prototype.getUser = function () {
@@ -1104,7 +1124,7 @@ var UserWrapper = /** @class */ (function (_super) {
             }
             else {
                 var error = new Error(response.statusText);
-                error.message = String(response);
+                error.message = JSON.stringify(response);
                 throw error;
             }
         })
@@ -1166,10 +1186,10 @@ var UserWrapper = /** @class */ (function (_super) {
             console.error(error);
         });
     };
-    UserWrapper.prototype.login = function (email, password, callback) {
+    UserWrapper.prototype.login = function (username, password, callback) {
         var _this = this;
         var payload = {
-            email: email,
+            username: username,
             password: password,
         };
         var request = new Request('/api/user/login', {
@@ -1188,7 +1208,7 @@ var UserWrapper = /** @class */ (function (_super) {
             }
             else {
                 var error = new Error(response.statusText);
-                error.message = String(response);
+                error.message = JSON.stringify(response);
                 throw error;
             }
         })
@@ -1333,8 +1353,85 @@ var UserWrapper = /** @class */ (function (_super) {
             });
         }
     };
+    UserWrapper.prototype.forgotPassword = function (email, callback) {
+        var payload = {
+            email: email,
+        };
+        if (Object.keys(payload).length > 0) {
+            var request = new Request('/api/user/forgotpassword', {
+                method: 'POST',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
+            fetch(request)
+                .then(function (response) {
+                return response.json();
+            })
+                .then(function (body) {
+                callback(true);
+            })
+                .catch(function (error) {
+                callback(false);
+                console.log(error);
+            });
+        }
+    };
+    UserWrapper.prototype.resetPassword = function (newpassword, userId, reset_code, callback) {
+        var payload = {
+            newpassword: newpassword,
+        };
+        if (Object.keys(payload).length > 0) {
+            var request = new Request("/api/user/resetpassword/" + userId + "/" + reset_code, {
+                method: 'POST',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
+            fetch(request)
+                .then(function (response) {
+                return response.json();
+            })
+                .then(function (body) {
+                callback(!body.vaild);
+            })
+                .catch(function (error) {
+                callback(true);
+                console.log(error);
+            });
+        }
+    };
+    UserWrapper.prototype.checkResetCode = function (userId, reset_code, callback) {
+        var request = new Request("/api/user/resetpassword/" + userId + "/" + reset_code, {
+            method: 'GET',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+        });
+        fetch(request)
+            .then(function (response) {
+            console.log(response);
+            return response.json();
+        })
+            .then(function (body) {
+            callback(body.vaild);
+        })
+            .catch(function (error) {
+            callback(false);
+            console.log(error);
+        });
+    };
     UserWrapper.prototype.render = function () {
-        var _a = this.state, email = _a.email, firstname = _a.firstname, lastname = _a.lastname, username = _a.username, userAccess = _a.userAccess, admin = _a.admin;
+        var _a = this, signup = _a.signup, getUser = _a.getUser, login = _a.login, logout = _a.logout, updateUser = _a.updateUser, updatePassword = _a.updatePassword, forgotPassword = _a.forgotPassword, resetPassword = _a.resetPassword, checkResetCode = _a.checkResetCode;
+        var _b = this.state, email = _b.email, firstname = _b.firstname, lastname = _b.lastname, username = _b.username, userAccess = _b.userAccess, admin = _b.admin;
         var context = {
             email: email,
             firstname: firstname,
@@ -1342,12 +1439,15 @@ var UserWrapper = /** @class */ (function (_super) {
             username: username,
             userAccess: userAccess,
             admin: admin,
-            signup: this.signup,
-            getUser: this.getUser,
-            login: this.login,
-            logout: this.logout,
-            updateUser: this.updateUser,
-            updatePassword: this.updatePassword,
+            signup: signup,
+            getUser: getUser,
+            login: login,
+            logout: logout,
+            updateUser: updateUser,
+            updatePassword: updatePassword,
+            forgotPassword: forgotPassword,
+            resetPassword: resetPassword,
+            checkResetCode: checkResetCode,
         };
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](UserContext.Provider, { value: context }, this.props.children));
     };

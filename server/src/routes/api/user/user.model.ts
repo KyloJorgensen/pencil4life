@@ -7,13 +7,18 @@ export interface IUser {
     email: string;
     username: string;
     password: string;
+    reset_code?: {
+        code: string;
+        date: Date;
+        used: boolean;
+    };
     firstname: string;
     lastname: string;
     admin: boolean;
     discontinued: boolean;
 }
 
-export type IValidatePassword = (password: string, hash: string, callback: Function) => void;
+export type IValidatePassword = (password: string, hash: string, callback?: Function) => Promise<boolean>;
 
 export interface IUserModel extends IUser, Document {
     validatePassword: IValidatePassword;
@@ -52,6 +57,17 @@ const userSchema: IUserSchema = new Schema({
         type: Boolean,
         default: false,
     },
+    reset_code: {
+        code: {
+            type: String,
+        },
+        date: {
+            type: Date,
+        },
+        used: {
+            type: Boolean,
+        }
+    },
     discontinued: {
         type: Boolean,
         default: false,
@@ -59,13 +75,21 @@ const userSchema: IUserSchema = new Schema({
 }, {timestamps: true});
 
 userSchema.methods.validatePassword = (password, hash, callback) => {
-    bcrypt.compare(password, hash, function(err, isValid) {
-        if (err) {
-            callback(err);
-            return;
-        }
-        callback(null, isValid);
-    });
+    return new Promise((resolve, reject) => {
+        bcrypt.compare(password, hash, (error, isValid) => {
+            if (error) {
+                if (callback) {
+                    callback(error);
+                }
+                reject(error);
+                return;
+            }
+            if (callback) {
+                callback(null, isValid);
+            }
+            resolve(isValid);
+        });
+    })
 };
 
 export const User: Model<IUserModel> = model<IUserModel>('User', userSchema);

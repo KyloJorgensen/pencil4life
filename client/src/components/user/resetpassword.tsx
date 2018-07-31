@@ -1,61 +1,58 @@
 'use strict';
 
 import * as React from 'react';
-import { Redirect, NavLink } from "react-router-dom";
-import { IUserContext, userConsumer } from '../user/user-provider';
+import { Redirect, NavLink, match } from "react-router-dom";
+import { IUserContext, userConsumer } from './user-provider';
 
-export interface ProfileChangePasswordProps {
+export interface ResetPasswordProps {
 	user: IUserContext;
+	match: match<{
+		userId: string;
+		reset_code: string;
+	}>;
 }
 
-export interface ProfileChangePasswordState {
+export interface ResetPasswordState {
 	redirect: boolean;
 	passwordMismtach: boolean;
 	passwordBad: boolean;
+	vaildCode: boolean;
 }
 
-export interface ProfileChangePasswordMethods {
+export interface ResetPasswordMethods {
 	hitKey: (event: UIEvent) => void;
-	updatePassword: (event: UIEvent) => void;
-	updatePasswordResult: (error: boolean) => void;
+	resetPassword: (event: UIEvent) => void;
+	resetPasswordResult: (error: boolean) => void;
 	redirect: (event: UIEvent) => void;
 }
 
 
-class ProfileChangePassword extends React.Component<ProfileChangePasswordProps, ProfileChangePasswordState> implements ProfileChangePasswordMethods {
+class ResetPassword extends React.Component<ResetPasswordProps, ResetPasswordState> implements ResetPasswordMethods {
     constructor(props) {
         super(props);
         this.state = {
         	redirect: false,
         	passwordMismtach: false,
-        	passwordBad: false,
+			passwordBad: false,
+			vaildCode: true,
         };
 
 		this.hitKey = this.hitKey.bind(this);
-		this.updatePassword = this.updatePassword.bind(this);
-		this.updatePasswordResult = this.updatePasswordResult.bind(this);
+		this.resetPassword = this.resetPassword.bind(this);
+		this.resetPasswordResult = this.resetPasswordResult.bind(this);
 		this.redirect = this.redirect.bind(this);
     }
 
 	hitKey(event) {
 		if (event.key == 'Enter') {
-            this.updatePassword(event);
+            this.resetPassword(event);
         }
 	}
 
-    updatePassword(event) {
+    resetPassword(event) {
 		event.preventDefault();
-		let oldpassword = this.oldpasswordRef.current.value;
 		let newpassword = this.newpasswordRef.current.value;
 		let confirmpassword = this.confirmpasswordRef.current.value;
-		if (!oldpassword) {
-			this.setState(() => {
-				return {
-					passwordBad: true,
-				};
-			});
-			return;
-		}
 
 		if (newpassword == confirmpassword) {
 			this.setState(() => {
@@ -64,9 +61,8 @@ class ProfileChangePassword extends React.Component<ProfileChangePasswordProps, 
 					passwordMismtach: false,
 				};
 			});
-			this.props.user.updatePassword(oldpassword, newpassword, this.updatePasswordResult);
+			this.props.user.resetPassword(newpassword, this.props.match.params.userId, this.props.match.params.reset_code, this.resetPasswordResult);
 		} else {
-			this.oldpasswordRef.current.value = '';
 			this.newpasswordRef.current.value = '';
 			this.confirmpasswordRef.current.value = '';
 
@@ -78,9 +74,8 @@ class ProfileChangePassword extends React.Component<ProfileChangePasswordProps, 
 		}
     }
 
-    updatePasswordResult(error) {
+    resetPasswordResult(error) {
     	if (error) {
-			this.oldpasswordRef.current.value = '';
 			this.newpasswordRef.current.value = '';
 			this.confirmpasswordRef.current.value = '';
 			this.setState(() => {
@@ -92,7 +87,16 @@ class ProfileChangePassword extends React.Component<ProfileChangePasswordProps, 
     	} else {
 			this.redirect();
     	} 
-    }
+	}
+
+	componentDidMount() {
+		const { userId, reset_code } = this.props.match.params;
+		this.props.user.checkResetCode(userId, reset_code, (vaild) => {
+			this.setState(() => {
+				return {vaildCode: vaild};
+			});
+		});
+	}
 
 	redirect() {
 		this.setState(() => {
@@ -102,26 +106,26 @@ class ProfileChangePassword extends React.Component<ProfileChangePasswordProps, 
 		});
 	}
 
-	oldpasswordRef: React.RefObject<HTMLInputElement> = React.createRef();
 	newpasswordRef: React.RefObject<HTMLInputElement> = React.createRef();
 	confirmpasswordRef: React.RefObject<HTMLInputElement> = React.createRef();
 
 	render() {
-		const { hitKey, updatePassword, oldpasswordRef, newpasswordRef, confirmpasswordRef } = this;
-		const { redirect, passwordBad, passwordMismtach} = this.state;
-
+		const { hitKey, resetPassword, newpasswordRef, confirmpasswordRef } = this;
+		const { redirect, passwordBad, passwordMismtach, vaildCode} = this.state;
+		const { userId, reset_code } = this.props.match.params;
 		if (redirect) {
 			return (<Redirect to='/profile'/>);
 		}
 
+
+		if (!userId || !reset_code || !vaildCode) {
+			return (<Redirect to='/forgotpassword'/>);
+		}
+
 		return (
-			<div className="profile-wrapper" >
-				<NavLink exact to={'/profile/changepassword'} activeClassName="selected" ><h2>Change Password</h2></NavLink>
-				<form onSubmit={updatePassword}>
-					<label>Old Password{passwordBad ? (<span className="errortext" >* Bad Password</span>) : ''}</label>
-					<br/>
-					<input type='password' onKeyPress={hitKey} placeholder="Old Password" ref={oldpasswordRef} />
-					<br/>
+			<div className="profile-wrapper container" >
+				<h2>Reset Password</h2>
+				<div>
 					<label>New Password{passwordMismtach ? (<span className="errortext" >*</span>) : ''}</label>
 					<br/>
 					<input type='password' onKeyPress={hitKey} placeholder="New Password" ref={newpasswordRef} />
@@ -130,11 +134,11 @@ class ProfileChangePassword extends React.Component<ProfileChangePasswordProps, 
 					<br/>
 					<input type='password' onKeyPress={hitKey} placeholder="New Password" ref={confirmpasswordRef} />
 					<br/>
-					<input type='submit' onClick={updatePassword} value='SAVE' />
-				</form>	
+					<input type='submit' onClick={resetPassword} value='SAVE' />
+				</div>	
 			</div>
 		);			
 	}
 };
 
-export default userConsumer(ProfileChangePassword);
+export default userConsumer(ResetPassword);
