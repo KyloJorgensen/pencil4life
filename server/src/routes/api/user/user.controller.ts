@@ -240,7 +240,7 @@ export const forgotPassword = (req: Request, res: Response, next: NextFunction) 
             const message = invaildResetPasswordEmailTemplate();
             return submitMessage({
                 from: {
-                    name: 'Contacts Request',
+                    name: 'Pencil4Life',
                     address: NM_NOREPLY_EMAIL
                 },
                 to: [{

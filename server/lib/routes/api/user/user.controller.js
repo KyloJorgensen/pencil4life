@@ -236,7 +236,7 @@ exports.forgotPassword = function (req, res, next) {
             var message = user_email_templates_1.invaildResetPasswordEmailTemplate();
             return wduckApi_1.submitMessage({
                 from: {
-                    name: 'Contacts Request',
+                    name: 'Pencil4Life',
                     address: variables_express_1.NM_NOREPLY_EMAIL
                 },
                 to: [{
