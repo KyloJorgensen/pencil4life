@@ -1186,10 +1186,10 @@ var UserWrapper = /** @class */ (function (_super) {
             console.error(error);
         });
     };
-    UserWrapper.prototype.login = function (username, password, callback) {
+    UserWrapper.prototype.login = function (email, password, callback) {
         var _this = this;
         var payload = {
-            username: username,
+            email: email,
             password: password,
         };
         var request = new Request('/api/user/login', {

@@ -35,7 +35,7 @@ var LoginPage = /** @class */ (function (_super) {
     __extends(LoginPage, _super);
     function LoginPage(props) {
         var _this = _super.call(this, props) || this;
-        _this.usernameRef = react__WEBPACK_IMPORTED_MODULE_0__["createRef"]();
+        _this.emailRef = react__WEBPACK_IMPORTED_MODULE_0__["createRef"]();
         _this.passwordRef = react__WEBPACK_IMPORTED_MODULE_0__["createRef"]();
         _this.state = {
             badAuth: false,
@@ -52,16 +52,16 @@ var LoginPage = /** @class */ (function (_super) {
     };
     LoginPage.prototype.login = function (event) {
         event.preventDefault();
-        var username, password;
+        var email, password;
         var invalid = null;
-        // Validate username
-        if (this.usernameRef.current.value) {
-            username = this.usernameRef.current.value;
+        // Validate email
+        if (this.emailRef.current.value) {
+            email = this.emailRef.current.value;
         }
         else {
             invalid = invalid || {};
-            invalid.username = {
-                message: "Username is Required"
+            invalid.email = {
+                message: "Email is Required"
             };
         }
         // Validate password
@@ -75,22 +75,22 @@ var LoginPage = /** @class */ (function (_super) {
             };
         }
         if (invalid) {
-            this.usernameRef.current.value = '';
+            this.emailRef.current.value = '';
             this.passwordRef.current.value = '';
             this.setState(function () {
                 return { badAuth: true };
             });
             return;
         }
-        // Login in with vaildated username and password
-        this.props.user.login(username, password, this.loginResult);
+        // Login in with vaildated email and password
+        this.props.user.login(email, password, this.loginResult);
         this.setState(function () {
             return { badAuth: true };
         });
     };
     LoginPage.prototype.loginResult = function (result) {
         if (!result) {
-            this.usernameRef.current.value = '';
+            this.emailRef.current.value = '';
             this.passwordRef.current.value = '';
             this.setState(function () {
                 return { badAuth: true };
@@ -98,7 +98,7 @@ var LoginPage = /** @class */ (function (_super) {
         }
     };
     LoginPage.prototype.render = function () {
-        var _a = this, usernameRef = _a.usernameRef, passwordRef = _a.passwordRef, hitKey = _a.hitKey, login = _a.login;
+        var _a = this, emailRef = _a.emailRef, passwordRef = _a.passwordRef, hitKey = _a.hitKey, login = _a.login;
         var badAuth = this.state.badAuth;
         var _b = this.props.user, userAccess = _b.userAccess, admin = _b.admin;
         if (userAccess || admin) {
@@ -115,10 +115,10 @@ var LoginPage = /** @class */ (function (_super) {
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], { to: '/login' },
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", null, "Login")),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", { htmlFor: "username" },
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("b", null, "Username:")),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", { htmlFor: "email" },
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("b", null, "Email:")),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", onKeyPress: hitKey, placeholder: "coolhats", name: "username", ref: usernameRef, autoComplete: 'username', required: true }),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", onKeyPress: hitKey, placeholder: "coolhats", name: "email", ref: emailRef, autoComplete: 'email', required: true }),
                     badAuth ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "errortext" }, "* Required")) : '',
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", { htmlFor: "password" },

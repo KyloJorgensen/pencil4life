@@ -35,7 +35,7 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 		this.loginResult = this.loginResult.bind(this);
     }
 
-	usernameRef: React.RefObject<HTMLInputElement> = React.createRef();
+	emailRef: React.RefObject<HTMLInputElement> = React.createRef();
 	
 	passwordRef: React.RefObject<HTMLInputElement > = React.createRef();
 	
@@ -47,15 +47,15 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 
 	login(event) {
 		event.preventDefault();
-		let username, password;
+		let email, password;
 		let invalid = null;
-		// Validate username
-		if (this.usernameRef.current.value) {
-			username = this.usernameRef.current.value;
+		// Validate email
+		if (this.emailRef.current.value) {
+			email = this.emailRef.current.value;
 		} else {
 			invalid = invalid || {};
-			invalid.username = {
-				message: "Username is Required"
+			invalid.email = {
+				message: "Email is Required"
 			}
 		}
 		// Validate password
@@ -69,15 +69,15 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 		}
 
 		if (invalid) {
-			this.usernameRef.current.value = '';
+			this.emailRef.current.value = '';
 			this.passwordRef.current.value = '';
 			this.setState(() => {
 				return {badAuth: true};
 			});
 			return;
 		}
-		// Login in with vaildated username and password
-		this.props.user.login(username, password, this.loginResult);
+		// Login in with vaildated email and password
+		this.props.user.login(email, password, this.loginResult);
 
 		this.setState(() => {
 			return {badAuth: true};
@@ -86,7 +86,7 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 
 	loginResult(result) {
     	if (!result) {
-			this.usernameRef.current.value = '';
+			this.emailRef.current.value = '';
 			this.passwordRef.current.value = '';
 			this.setState(() => {
 				return {badAuth: true};
@@ -95,7 +95,7 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 	}
 
 	render() {
-		const { usernameRef, passwordRef, hitKey, login } = this;
+		const { emailRef, passwordRef, hitKey, login } = this;
 		const { badAuth } = this.state
 		const { userAccess, admin } = this.props.user;
 
@@ -116,9 +116,9 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 					<div className="login-login-form" onSubmit={login} >
 						<NavLink to='/login'><h2>Login</h2></NavLink>
 						<br/>
-						<label htmlFor="username"><b>Username:</b></label>
+						<label htmlFor="email"><b>Email:</b></label>
 						<br/>
-    					<input type="text" onKeyPress={hitKey} placeholder="coolhats" name="username" ref={usernameRef} autoComplete='username' required />
+    					<input type="text" onKeyPress={hitKey} placeholder="coolhats" name="email" ref={emailRef} autoComplete='email' required />
     					{badAuth ? (<span className="errortext" >* Required</span>) : ''}
     					<br/>
     					<label htmlFor="password"><b>Password:</b></label>

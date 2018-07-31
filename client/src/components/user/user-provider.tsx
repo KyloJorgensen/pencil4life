@@ -187,9 +187,9 @@ export class UserWrapper extends React.Component<IUserProps, IUserState> impleme
     });
   }
 
-  login(username, password, callback) {
+  login(email, password, callback) {
     const payload = {
-      username: username,
+      email: email,
       password: password,
     }
     

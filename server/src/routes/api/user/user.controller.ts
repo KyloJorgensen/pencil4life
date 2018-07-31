@@ -68,11 +68,11 @@ export const getUser = (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
-// Attaches UserKey if username and password are vaild.
+// Attaches UserKey if email and password are vaild.
 export const login = (req: Request, res: Response, next: NextFunction) => {
-    let username:string = req.body.username;
+    let email:string = req.body.email;
     let password:string = req.body.password;
-    User.findOne({username: username})
+    User.findOne({email: email})
     .then((user) => {
         if (user == null) {
             let error = new Error('Invaild Username.');
