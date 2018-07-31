@@ -73,7 +73,8 @@ ShallowWrapper {
         />
         <Route
           component={[Function]}
-          path="/resetpassword"
+          exact={true}
+          path="/resetpassword/:userId/:reset_code"
         />
         <Route
           component={[Function]}
@@ -154,7 +155,8 @@ ShallowWrapper {
           />,
           <Route
             component={[Function]}
-            path="/resetpassword"
+            exact={true}
+            path="/resetpassword/:userId/:reset_code"
           />,
           <Route
             component={[Function]}
@@ -338,7 +340,8 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "component": [Function],
-            "path": "/resetpassword",
+            "exact": true,
+            "path": "/resetpassword/:userId/:reset_code",
           },
           "ref": null,
           "rendered": null,
@@ -458,7 +461,8 @@ ShallowWrapper {
           />
           <Route
             component={[Function]}
-            path="/resetpassword"
+            exact={true}
+            path="/resetpassword/:userId/:reset_code"
           />
           <Route
             component={[Function]}
@@ -539,7 +543,8 @@ ShallowWrapper {
             />,
             <Route
               component={[Function]}
-              path="/resetpassword"
+              exact={true}
+              path="/resetpassword/:userId/:reset_code"
             />,
             <Route
               component={[Function]}
@@ -723,7 +728,8 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "component": [Function],
-              "path": "/resetpassword",
+              "exact": true,
+              "path": "/resetpassword/:userId/:reset_code",
             },
             "ref": null,
             "rendered": null,
