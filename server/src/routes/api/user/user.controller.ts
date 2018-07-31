@@ -244,8 +244,7 @@ export const forgotPassword = (req: Request, res: Response, next: NextFunction) 
                     address: NM_NOREPLY_EMAIL
                 },
                 to: [{
-                    name: user.username, 
-                    address: user.email,
+                    address: email,
                 }],
                 subject: 'Pencil4life Account Password Reset',
                 html: message,

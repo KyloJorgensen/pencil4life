@@ -12,38 +12,64 @@ export interface ResetPasswordEmailTemplateParams {
 
 export const resetPasswordEmailTemplate = (params: ResetPasswordEmailTemplateParams) => renderEmail(
     <Email title="Pencil4life Password Reset">
-        <Item>
-            <Span fontSize={20}>
-                Hello {params.username},
-            </Span>
-        </Item>
-        <Item>
-            <Span fontSize={12}>You recently requested to reset your password for your Pencil4Life Account. Use the button below to reset it.</Span>
-            <Span fontWeight={'bold'}>This password reset is only vaild for the next 24 hours.</Span>
-        </Item>
-        <Item align="center">
-            <Span fontSize={12}>
-                <A href={`https://${NODE_ENV == 'development' ? 'dev' :'www'}.pencil4life.com/#/resetpassword/${params.userId}/${params.code}`}>Click Here</A> to reset your password.
-            </Span>
-        </Item>
+        <Box width='600px' cellPadding={8} cellSpacing={16} align='center' >
+            <Item align="center">
+                <A href={`https://${NODE_ENV == 'development' ? 'dev' :'www'}.pencil4life.com/#/`}>
+                    <Image src={'https://pencil4life.com/images/pencil4lifelogo-blue-transparent.png'} width={600} height={155}  alt='PENCIL4Life'/>
+                </A>
+            </Item>
+            <Item>
+                <Span fontSize={18}>
+                    Hello {params.username},
+                </Span>
+            </Item>
+            <Item>
+                <Span fontSize={12}>You recently requested to reset your password for your Pencil4Life Account. Use the button below to reset it.</Span>
+                <Span fontSize={12} fontWeight={'bold'}>This password reset is only vaild for the next 24 hours.</Span>
+            </Item>
+            <Item align="center">
+                <Span fontSize={12}>
+                    <A href={`https://${NODE_ENV == 'development' ? 'dev' :'www'}.pencil4life.com/#/resetpassword/${params.userId}/${params.code}`}>Click Here</A> to reset your password.
+                </Span>
+            </Item>
+            <Item>
+                <Span fontSize={12}>If you didn't make this request no need to worry, but if you have questions about your accounts security  <A href={`https://${NODE_ENV == 'development' ? 'dev' :'www'}.pencil4life.com/#/contact/message/`}>Click Here</A> to send us a message.</Span>
+            </Item>
+            <Item>
+                <Span fontSize={12}>Thank you, Pencil 4 Life</Span>
+            </Item>
+        </Box>
     </Email>
 );
 
 export const invaildResetPasswordEmailTemplate = () => renderEmail(
     <Email title="Pencil4life Password Reset">
-        <Item>
-            <Span fontSize={20}>
-                Hello Friend,
-            </Span>
-        </Item>
-        <Item>
-            <Span fontSize={12}>You recently requested to reset your password for your Pencil4Life Account. But we don't have any account using your email address.</Span>
-        </Item>
-        <Item align="center">
-            <Span fontSize={12}>
-                <A href={`https://${NODE_ENV == 'development' ? 'dev' :'www'}.pencil4life.com/#/signup`}>Click Here</A> to make an account.
-            </Span>
-        </Item>
+        <Box width='600px' cellPadding={8} cellSpacing={16} align='center' >
+            <Item align="center">
+                <A href={`https://${NODE_ENV == 'development' ? 'dev' :'www'}.pencil4life.com/#/`}>
+                    <Image src={'https://pencil4life.com/images/pencil4lifelogo-blue-transparent.png'} width={600} height={155} alt='PENCIL4Life'/>
+                </A>
+            </Item>
+            <Item>
+                <Span fontSize={20}>
+                    Hello Friend,
+                </Span>
+            </Item>
+            <Item>
+                <Span fontSize={12}>You recently requested to reset your password for your Pencil4Life Account. But we don't have any account using your email address.</Span>
+            </Item>
+            <Item align="center">
+                <Span fontSize={12}>
+                    <A href={`https://${NODE_ENV == 'development' ? 'dev' :'www'}.pencil4life.com/#/signup`}>Click Here</A> to make an account.
+                </Span>
+            </Item>
+            <Item>
+                <Span fontSize={12}>If you didn't make this request no need to worry, but if you have questions about your accounts security  <A href={`https://${NODE_ENV == 'development' ? 'dev' :'www'}.pencil4life.com/#/contact/message/`}>Click Here</A> to send us a message.</Span>
+            </Item>
+            <Item>
+                <Span fontSize={12}>Thank you, Pencil 4 Life</Span>
+            </Item>
+        </Box>
     </Email>
 );
 
