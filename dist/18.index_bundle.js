@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[18],{
 
-/***/ "./client/src/components/profile/profile-change-password.tsx":
-/*!*******************************************************************!*\
-  !*** ./client/src/components/profile/profile-change-password.tsx ***!
-  \*******************************************************************/
+/***/ "./client/src/components/user/profile/profile-change-password.tsx":
+/*!************************************************************************!*\
+  !*** ./client/src/components/user/profile/profile-change-password.tsx ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -12,7 +12,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
+/* harmony import */ var _user_provider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user-provider */ "./client/src/components/user/user-provider.tsx");
 
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -139,15 +139,15 @@ var ProfileChangePassword = /** @class */ (function (_super) {
     return ProfileChangePassword;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
-/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_2__["userConsumer"])(ProfileChangePassword));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_user_provider__WEBPACK_IMPORTED_MODULE_2__["userConsumer"])(ProfileChangePassword));
 
 
 /***/ }),
 
-/***/ "./client/src/components/profile/profile-edit.tsx":
-/*!********************************************************!*\
-  !*** ./client/src/components/profile/profile-edit.tsx ***!
-  \********************************************************/
+/***/ "./client/src/components/user/profile/profile-edit.tsx":
+/*!*************************************************************!*\
+  !*** ./client/src/components/user/profile/profile-edit.tsx ***!
+  \*************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -156,7 +156,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
+/* harmony import */ var _user_provider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user-provider */ "./client/src/components/user/user-provider.tsx");
 
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -277,15 +277,15 @@ var ProfileEdit = /** @class */ (function (_super) {
     return ProfileEdit;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
-/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_2__["userConsumer"])(ProfileEdit));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_user_provider__WEBPACK_IMPORTED_MODULE_2__["userConsumer"])(ProfileEdit));
 
 
 /***/ }),
 
-/***/ "./client/src/components/profile/profile-switch.tsx":
-/*!**********************************************************!*\
-  !*** ./client/src/components/profile/profile-switch.tsx ***!
-  \**********************************************************/
+/***/ "./client/src/components/user/profile/profile-switch.tsx":
+/*!***************************************************************!*\
+  !*** ./client/src/components/user/profile/profile-switch.tsx ***!
+  \***************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -295,11 +295,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-/* harmony import */ var _profile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./profile */ "./client/src/components/profile/profile.tsx");
-/* harmony import */ var _profile_edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./profile-edit */ "./client/src/components/profile/profile-edit.tsx");
-/* harmony import */ var _profile_change_password__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./profile-change-password */ "./client/src/components/profile/profile-change-password.tsx");
-/* harmony import */ var _no_match__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../no-match */ "./client/src/components/no-match.tsx");
-/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
+/* harmony import */ var _profile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./profile */ "./client/src/components/user/profile/profile.tsx");
+/* harmony import */ var _profile_edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./profile-edit */ "./client/src/components/user/profile/profile-edit.tsx");
+/* harmony import */ var _profile_change_password__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./profile-change-password */ "./client/src/components/user/profile/profile-change-password.tsx");
+/* harmony import */ var _no_match__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../no-match */ "./client/src/components/no-match.tsx");
+/* harmony import */ var _user_provider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../user-provider */ "./client/src/components/user/user-provider.tsx");
 
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -341,15 +341,15 @@ var ProfileSwitch = /** @class */ (function (_super) {
     return ProfileSwitch;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
-/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_7__["userConsumer"])(ProfileSwitch));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_user_provider__WEBPACK_IMPORTED_MODULE_7__["userConsumer"])(ProfileSwitch));
 
 
 /***/ }),
 
-/***/ "./client/src/components/profile/profile.tsx":
-/*!***************************************************!*\
-  !*** ./client/src/components/profile/profile.tsx ***!
-  \***************************************************/
+/***/ "./client/src/components/user/profile/profile.tsx":
+/*!********************************************************!*\
+  !*** ./client/src/components/user/profile/profile.tsx ***!
+  \********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -358,7 +358,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
+/* harmony import */ var _user_provider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user-provider */ "./client/src/components/user/user-provider.tsx");
 
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -403,7 +403,7 @@ var Profile = /** @class */ (function (_super) {
     return Profile;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
-/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_2__["userConsumer"])(Profile));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_user_provider__WEBPACK_IMPORTED_MODULE_2__["userConsumer"])(Profile));
 
 
 /***/ })

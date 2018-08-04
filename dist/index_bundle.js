@@ -251,7 +251,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var Loading = function () { return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_components_utilities_loading__WEBPACK_IMPORTED_MODULE_3__["LoadingSpinner"], null); };
 var App = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
-    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(24), __webpack_require__.e(0)]).then(__webpack_require__.bind(null, /*! ./components/app */ "./client/src/components/app.tsx")); },
+    loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(26), __webpack_require__.e(0)]).then(__webpack_require__.bind(null, /*! ./components/app */ "./client/src/components/app.tsx")); },
     loading: Loading,
 });
 Object(react_dom__WEBPACK_IMPORTED_MODULE_1__["render"])(react__WEBPACK_IMPORTED_MODULE_0__["createElement"](App, null), document.getElementById('app'));
