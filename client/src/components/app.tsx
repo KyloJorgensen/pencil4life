@@ -37,7 +37,7 @@ const FooterBar = Loadable({
 });
 
 const PageLayout = styled.div`
-  /* height: 100%; */
+  min-height: 100%;
   width: 100%;
   display: grid;
   grid-template-rows: auto auto 1fr;
