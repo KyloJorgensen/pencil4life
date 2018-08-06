@@ -6,7 +6,7 @@ import './dropzone.less';
 export interface DropzoneProps {
 	multiple?: boolean;
 	fileTypes: string[];
-	handleChange?: (vaildFiles: any[]) => void;
+	handleChange?: (vaildFiles: File[]) => void;
 }
 
 export interface DropzoneState {
@@ -48,11 +48,12 @@ class Dropzone extends React.Component<DropzoneProps, DropzoneState> implements 
 		this.clearBadFile = this.clearBadFile.bind(this);
 		this.validateFileType = this.validateFileType.bind(this);
 		this.clearAllBadFiles = this.clearAllBadFiles.bind(this);
-    }
-
+	}
+	
 	onFilesSelected(event: React.ChangeEvent<HTMLInputElement>) {
 	    event.preventDefault();
-	    this.handleFiles(event.target.files);
+		this.handleFiles(event.target.files);
+		event.target.value = '';
 	}
 
 	handleDragOver(event) {
@@ -70,6 +71,7 @@ class Dropzone extends React.Component<DropzoneProps, DropzoneState> implements 
 	handleDrop(event) {
 	    event.preventDefault();
 	    this.handleFiles(event.dataTransfer.files);
+		event.target.value = '';
 	}
 
 	handleFiles(_files: FileList) {
@@ -100,14 +102,15 @@ class Dropzone extends React.Component<DropzoneProps, DropzoneState> implements 
 				}
 			}
 		});
-		if ('handleChange' in this.props) {
-			this.props.handleChange(vaildFiles);
-		}
 		this.setState(() => {
+			console.log(vaildFiles)
 			return {
 				vaildFiles: vaildFiles,
 			};
 		});
+		if ('handleChange' in this.props) {
+			this.props.handleChange(vaildFiles);
+		}
 	}
 
 	validateFileType(file) {

@@ -8,6 +8,7 @@ import ImageEdit from '../image/image-edit';
 import { IUserContext, userConsumer } from '../user/user-provider';
 import { Location } from 'history';
 import { doodleConsumer, IDoodleContext, addDoodleParams } from './doodle-provider';
+import ImageEditingTool from '../image/image-editing-tool';
 import { Popout } from '../utilities/styled.components';
 import styled from 'styled-components';
 
@@ -35,7 +36,6 @@ export interface DoodleNewProps {
 export interface DoodleNewState {
 	_doodleId: string;
 	required: boolean;
-	imageRequired: boolean;
 	title: string;
 	details: any;
 	_imageId?: string;
@@ -46,7 +46,8 @@ export interface DoodleNewMethods {
 	addNewDoodle: (event: UIEvent) => void;
 	addNewDoodleResult: (error: boolean, _doodleId: string) => void;
 	onRichTextChange: (value: string) => void;
-	addNewImageResult: (error: boolean, _imageId: string) => void;
+	handleCoverImageChange: (_imageId) => void;
+	removeImage: () => void;
 }
 
 
@@ -56,7 +57,6 @@ class DoodleNew extends React.Component<DoodleNewProps, DoodleNewState> implemen
         this.state = {
         	_doodleId: null,
         	required: false,
-        	imageRequired: false,
 			title: null,
         	details: RichTextEditor.createEmptyValue(),
 		};
@@ -66,7 +66,24 @@ class DoodleNew extends React.Component<DoodleNewProps, DoodleNewState> implemen
 		this.addNewDoodle = this.addNewDoodle.bind(this);
 		this.addNewDoodleResult = this.addNewDoodleResult.bind(this);
 		this.onRichTextChange = this.onRichTextChange.bind(this);
-		this.addNewImageResult = this.addNewImageResult.bind(this);
+		this.handleCoverImageChange = this.handleCoverImageChange.bind(this);
+		this.removeImage = this.removeImage.bind(this);
+	}
+
+	handleCoverImageChange(_imageId) {
+		this.setState(() => {
+			return {
+				_imageId: _imageId,
+			};
+		});
+	}
+
+	removeImage() {
+		this.setState(() => {
+			return {
+				_imageId: null,
+			}
+		});
 	}
 
 	hitKey(event) {
@@ -114,25 +131,10 @@ class DoodleNew extends React.Component<DoodleNewProps, DoodleNewState> implemen
 			return {details: value};
 		});
 	}
-
-	addNewImageResult = (error, _imageId) => {
-		if (error) {
-			this.setState(() => {
-				return {imageRequired: true};
-			});
-		} else {
-			this.setState(() => {
-				return {
-					_imageId: _imageId,
-					imageRequired: false,
-				};
-			});
-		} 
-	}
 	
 	render() {
-		const { addNewImageResult, addNewDoodle, hitKey, onRichTextChange, titleRef } = this;
-		const { _imageId, imageRequired, _doodleId, required, details } = this.state;
+		const { addNewDoodle, hitKey, onRichTextChange, titleRef, handleCoverImageChange, removeImage } = this;
+		const { _imageId, _doodleId, required, details } = this.state;
 		const { admin } = this.props.user;
 		const { pathname } = this.props.location;
 		const { total } = this.props.doodle;
@@ -152,7 +154,7 @@ class DoodleNew extends React.Component<DoodleNewProps, DoodleNewState> implemen
 					<Link className="exit" to={`/doodle/`}>X</Link>
 					<h3>New Doodle</h3>
 					<label>Image</label>
-					{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
+					<ImageEditingTool _imageId={_imageId} onChange={handleCoverImageChange} removeImage={removeImage} />
 					<label>Title{required ? (<span className="errortext" >*</span>) : ''}</label>
 					<br/>
 					<input type='text' onKeyPress={hitKey} placeholder="Great Doodle" ref={titleRef} />

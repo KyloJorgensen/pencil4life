@@ -4,11 +4,10 @@ import * as React from 'react';
 import RichTextEditor from 'react-rte';
 import {Redirect} from 'react-router-dom';
 import * as Datetime from 'react-datetime';
-import ImageNew from '../image/image-new';
-import ImageEdit from '../image/image-edit';
+import { Location } from 'history';
+import ImageEditingTool from '../image/image-editing-tool';
 import { IUserContext, userConsumer } from '../user/user-provider';
 import { IProjectContext, addProjectParams, projectConsumer } from './project-provider';
-import { Location } from 'history';
 
 export interface ProjectNewProps {
 	user: IUserContext;
@@ -34,7 +33,8 @@ export interface ProjectNewMethods {
 	addNewProject: (event: UIEvent) => void;
 	addNewProjectResult: (error: boolean, _projectId: string) => void;
 	onRichTextChange: (value: string) => void;
-	addNewImageResult: (error: boolean, _imageId: string) => void;
+	handleCoverImageChange: (_imageId) => void;
+	removeImage: () => void;
 }
 
 
@@ -59,7 +59,8 @@ class ProjectNew extends React.Component<ProjectNewProps, ProjectNewState> imple
 		this.addNewProject = this.addNewProject.bind(this);
 		this.addNewProjectResult = this.addNewProjectResult.bind(this);
 		this.onRichTextChange = this.onRichTextChange.bind(this);
-		this.addNewImageResult = this.addNewImageResult.bind(this);
+		this.handleCoverImageChange = this.handleCoverImageChange.bind(this);
+		this.removeImage = this.removeImage.bind(this);
 	}
 
 	hitKey(event) {
@@ -123,26 +124,29 @@ class ProjectNew extends React.Component<ProjectNewProps, ProjectNewState> imple
 		});
 	}
 
-	addNewImageResult = (error, _imageId) => {
-		if (error) {
-			this.setState(() => {
-				return {imageRequired: true};
-			});
-		} else {
-			this.setState(() => {
-				return {
-					coverImage: {
-						_imageId: _imageId,
-					},
-					imageRequired: false,
-				};
-			});
-		} 
+	handleCoverImageChange(_imageId) {
+		this.setState(() => {
+			return {
+				coverImage: {
+					_imageId: _imageId,
+				},
+			};
+		});
+	}
+
+	removeImage() {
+		this.setState(() => {
+			return {
+				coverImage: {
+					_imageId: null,
+				},
+			}
+		});
 	}
 	
 	render() {
-		const { addNewImageResult, addNewProject, hitKey, yearChanged, onRichTextChange } = this;
-		const { coverImage, imageRequired, _projectId, required, details, year } = this.state;
+		const { handleCoverImageChange, removeImage, addNewProject, hitKey, yearChanged, onRichTextChange } = this;
+		const { coverImage,  _projectId, required, details, year } = this.state;
 		const { _imageId } = coverImage;
 		const { admin } = this.props.user;
 		const { pathname } = this.props.location;
@@ -153,13 +157,12 @@ class ProjectNew extends React.Component<ProjectNewProps, ProjectNewState> imple
 		if (!admin) {
 			return (<Redirect to={{pathname: '/login', state: {redirectPath: pathname}}}/>)
 		}
-	
+		console.log(_imageId);
 		return (
 			<div className="project-new-wrapper" >
 				<h3>New Project</h3>
 				<label>Cover Image</label>
-				{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
-				
+				<ImageEditingTool _imageId={_imageId} onChange={handleCoverImageChange} removeImage={removeImage} />				
 				<label>Title{required ? (<span className="errortext" >*</span>) : ''}</label>
 				<br/>
 				<input type='text' onKeyPress={hitKey} placeholder="Great Project" ref={this.titleRef} />

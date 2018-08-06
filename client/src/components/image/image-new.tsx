@@ -79,7 +79,12 @@ class ImageNew extends React.Component<ImageNewProps, ImageNewState> implements 
 
     addNewImage(event) {
 		event.preventDefault();
-		const { currentImage, name, alt } = this.state;
+		// const { currentImage, name, alt } = this.state;
+		
+		// const { currentImage as propsCurrentImage, name, alt } = this.props;
+		const currentImage = 'currentImage' in this.props ? this.props.currentImage : this.state.currentImage;
+		const name = 'name' in this.props ? this.props.name : this.state.name;
+		const alt = 'alt' in this.props ? this.props.alt : this.state.alt;
 		
 		if (!name || !currentImage.name) {
 			this.setState(() => {
@@ -129,7 +134,7 @@ class ImageNew extends React.Component<ImageNewProps, ImageNewState> implements 
 				required: false,
 				name: '',
 				alt: '',
-				currentImage: new File([], 'file'),
+				currentImage: new File([], ''),
 			}
 		});
     }

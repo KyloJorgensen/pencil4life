@@ -4,11 +4,10 @@ import * as React from 'react';
 import RichTextEditor from 'react-rte';
 import {Redirect} from "react-router-dom";
 import * as Datetime from 'react-datetime';
-import ImageNew from '../image/image-new';
-import ImageEdit from '../image/image-edit';
 import { IProjectContext, updateProjectParams, projectConsumer } from './project-provider';
 import { IUserContext, userConsumer } from '../user/user-provider';
 import { Location } from 'history';
+import ImageEditingTool from '../image/image-editing-tool';
 
 export interface ProjectEditProps {
 	project: IProjectContext;
@@ -38,7 +37,8 @@ export interface ProjectEditMethods {
 	updateProjectResult: (error: boolean) => void;
 	onRichTextChange: (value) => void;
 	redirect: () => void;
-	addNewImageResult: (error: boolean, _imageId: string) => void;
+	handleCoverImageChange: (_imageId) => void;
+	removeImage: () => void;
 }
 
 class ProjectEdit extends React.Component<ProjectEditProps, ProjectEditState> implements ProjectEditMethods {
@@ -65,7 +65,8 @@ class ProjectEdit extends React.Component<ProjectEditProps, ProjectEditState> im
 		this.updateProjectResult = this.updateProjectResult.bind(this);
 		this.onRichTextChange = this.onRichTextChange.bind(this);
 		this.redirect = this.redirect.bind(this);
-		this.addNewImageResult = this.addNewImageResult.bind(this);
+		this.handleCoverImageChange = this.handleCoverImageChange.bind(this);
+		this.removeImage = this.removeImage.bind(this);
 	}
 	
 	editField(event) {
@@ -161,21 +162,24 @@ class ProjectEdit extends React.Component<ProjectEditProps, ProjectEditState> im
 		});
 	}
 
-	addNewImageResult(error, _imageId) {
-		if (error) {
-			this.setState(() => {
-				return {imageRequired: true};
-			});
-		} else {
-			this.setState(() => {
-				return {
-					coverImage: {
-						_imageId: _imageId,
-					},
-					imageRequired: false,
-				};
-			});
-		} 
+	handleCoverImageChange(_imageId) {
+		this.setState(() => {
+			return {
+				coverImage: {
+					_imageId: _imageId,
+				},
+			};
+		});
+	}
+
+	removeImage() {
+		this.setState(() => {
+			return {
+				coverImage: {
+					_imageId: null,
+				},
+			}
+		});
 	}
 
     componentWillMount() {
@@ -223,8 +227,8 @@ class ProjectEdit extends React.Component<ProjectEditProps, ProjectEditState> im
     }
 
 	render() {
-		const { addNewImageResult, hitKey, handleCheckboxChange, editField, updateProject, yearChanged, onRichTextChange} = this;
-		const { title, coverImage, imageRequired, redirect, required, year, details, discontinued } = this.state;
+		const { handleCoverImageChange, removeImage, hitKey, handleCheckboxChange, editField, updateProject, yearChanged, onRichTextChange} = this;
+		const { title, coverImage, redirect, required, year, details, discontinued } = this.state;
 		const { _imageId } = coverImage;
 		const { admin } = this.props.user;
 		const { pathname } = this.props.location;
@@ -242,7 +246,7 @@ class ProjectEdit extends React.Component<ProjectEditProps, ProjectEditState> im
 			<div className="project-edit-wrapper" >
 				<h3>EDIT PROJECT</h3>
 				<label>Cover Image</label>
-				{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
+				<ImageEditingTool _imageId={_imageId} onChange={handleCoverImageChange} removeImage={removeImage} />
 				<label>Title{required ? (<span className="errortext" >*</span>) : ''}</label>
 				<br/>
 				<input type='text' onKeyPress={hitKey} placeholder="Great Project" onChange={editField} name='title' value={title} />

@@ -17,10 +17,16 @@ fontawesome.library.add(faCheckSquare, faSignInAlt, faSignOutAlt, faUserAlt);
 const HeaderWrapper = styled.header`
 	margin: 0;
 	color: white;
+	height: 0;
+    margin-bottom: 12em;
 	
+	@media (min-width: 430px) {
+		margin-bottom: 9em;
+	}
+
 	@media (min-width: 768px) {
 		position: sticky;
-		top: 0;
+		top: -1px;
 		z-index: 9999;
 	}
 
@@ -54,7 +60,13 @@ const HeaderWrapper = styled.header`
 		}
 	}
 
+	.user-info {	
+		width: min-content;
+		margin-left: auto;
+	}
+
 	.nav-wrapper {
+		height: 0;
 		nav {
 			display: flex;
 			flex-wrap: wrap;
@@ -63,6 +75,7 @@ const HeaderWrapper = styled.header`
 			margin: 0;
 		}
 	}
+
 	.user-info, .nav-wrapper nav {
 		.selected {
 			text-decoration: underline;

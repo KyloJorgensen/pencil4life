@@ -253,7 +253,11 @@ var ImageNew = /** @class */ (function (_super) {
     };
     ImageNew.prototype.addNewImage = function (event) {
         event.preventDefault();
-        var _a = this.state, currentImage = _a.currentImage, name = _a.name, alt = _a.alt;
+        // const { currentImage, name, alt } = this.state;
+        // const { currentImage as propsCurrentImage, name, alt } = this.props;
+        var currentImage = 'currentImage' in this.props ? this.props.currentImage : this.state.currentImage;
+        var name = 'name' in this.props ? this.props.name : this.state.name;
+        var alt = 'alt' in this.props ? this.props.alt : this.state.alt;
         if (!name || !currentImage.name) {
             this.setState(function () {
                 return { required: true };
@@ -297,7 +301,7 @@ var ImageNew = /** @class */ (function (_super) {
                 required: false,
                 name: '',
                 alt: '',
-                currentImage: new File([], 'file'),
+                currentImage: new File([], ''),
             };
         });
     };
@@ -497,6 +501,7 @@ var Dropzone = /** @class */ (function (_super) {
     Dropzone.prototype.onFilesSelected = function (event) {
         event.preventDefault();
         this.handleFiles(event.target.files);
+        event.target.value = '';
     };
     Dropzone.prototype.handleDragOver = function (event) {
         event.preventDefault();
@@ -510,6 +515,7 @@ var Dropzone = /** @class */ (function (_super) {
     Dropzone.prototype.handleDrop = function (event) {
         event.preventDefault();
         this.handleFiles(event.dataTransfer.files);
+        event.target.value = '';
     };
     Dropzone.prototype.handleFiles = function (_files) {
         var _this = this;
@@ -540,14 +546,15 @@ var Dropzone = /** @class */ (function (_super) {
                 }
             }
         });
-        if ('handleChange' in this.props) {
-            this.props.handleChange(vaildFiles);
-        }
         this.setState(function () {
+            console.log(vaildFiles);
             return {
                 vaildFiles: vaildFiles,
             };
         });
+        if ('handleChange' in this.props) {
+            this.props.handleChange(vaildFiles);
+        }
     };
     Dropzone.prototype.validateFileType = function (file) {
         var fileTypes = [];

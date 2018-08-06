@@ -21,11 +21,11 @@ const Wrapper = styled.div`
 		display: flex;
 		justify-content: space-between;
 	}
-	> img {
+	img {
 		max-width: 100%;
+		max-height: 600px;
 		margin: 0 auto;
 	}
-
 `;
 
 export interface ProjectProps {

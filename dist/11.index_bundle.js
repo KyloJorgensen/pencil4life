@@ -112,12 +112,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_rte__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-rte */ "./node_modules/react-rte/dist/react-rte.js");
 /* harmony import */ var react_rte__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_rte__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-/* harmony import */ var _image_image_new__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../image/image-new */ "./client/src/components/image/image-new.tsx");
-/* harmony import */ var _image_image_edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../image/image-edit */ "./client/src/components/image/image-edit.tsx");
-/* harmony import */ var _doodle_provider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./doodle-provider */ "./client/src/components/doodle/doodle-provider.tsx");
-/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
-/* harmony import */ var _utilities_styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utilities/styled.components */ "./client/src/components/utilities/styled.components.tsx");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
+/* harmony import */ var _doodle_provider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./doodle-provider */ "./client/src/components/doodle/doodle-provider.tsx");
+/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
+/* harmony import */ var _image_image_editing_tool__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../image/image-editing-tool */ "./client/src/components/image/image-editing-tool.tsx");
+/* harmony import */ var _utilities_styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utilities/styled.components */ "./client/src/components/utilities/styled.components.tsx");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
 
 var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
@@ -141,8 +140,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
-
-var DoodleEditWrapper = styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tcolor: white;\n\t\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\tline-height: 2em;\n\t\ttext-align: center; \n\t\tdisplay: block;\n\t\tmargin-left: auto;\n\t\tmargin-right: 1em;\n\t}\n"], ["\n\tcolor: white;\n\t\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\tline-height: 2em;\n\t\ttext-align: center; \n\t\tdisplay: block;\n\t\tmargin-left: auto;\n\t\tmargin-right: 1em;\n\t}\n"])));
+var DoodleEditWrapper = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tcolor: white;\n\t\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\tline-height: 2em;\n\t\ttext-align: center; \n\t\tdisplay: block;\n\t\tmargin-left: auto;\n\t\tmargin-right: 1em;\n\t}\n"], ["\n\tcolor: white;\n\t\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\tline-height: 2em;\n\t\ttext-align: center; \n\t\tdisplay: block;\n\t\tmargin-left: auto;\n\t\tmargin-right: 1em;\n\t}\n"])));
 var DoodleEdit = /** @class */ (function (_super) {
     __extends(DoodleEdit, _super);
     function DoodleEdit(props) {
@@ -150,7 +148,6 @@ var DoodleEdit = /** @class */ (function (_super) {
         _this.state = {
             redirect: false,
             title: null,
-            imageRequired: false,
             _imageId: null,
             details: react_rte__WEBPACK_IMPORTED_MODULE_1___default.a.createEmptyValue(),
             discontinued: false,
@@ -162,9 +159,24 @@ var DoodleEdit = /** @class */ (function (_super) {
         _this.updateDoodleResult = _this.updateDoodleResult.bind(_this);
         _this.onRichTextChange = _this.onRichTextChange.bind(_this);
         _this.redirect = _this.redirect.bind(_this);
-        _this.addNewImageResult = _this.addNewImageResult.bind(_this);
+        _this.handleCoverImageChange = _this.handleCoverImageChange.bind(_this);
+        _this.removeImage = _this.removeImage.bind(_this);
         return _this;
     }
+    DoodleEdit.prototype.handleCoverImageChange = function (_imageId) {
+        this.setState(function () {
+            return {
+                _imageId: _imageId,
+            };
+        });
+    };
+    DoodleEdit.prototype.removeImage = function () {
+        this.setState(function () {
+            return {
+                _imageId: null,
+            };
+        });
+    };
     DoodleEdit.prototype.editField = function (event) {
         var _a = event.target, name = _a.name, value = _a.value;
         this.setState(function (prevState) {
@@ -221,21 +233,6 @@ var DoodleEdit = /** @class */ (function (_super) {
             return { redirect: true };
         });
     };
-    DoodleEdit.prototype.addNewImageResult = function (error, _imageId) {
-        if (error) {
-            this.setState(function () {
-                return { imageRequired: true };
-            });
-        }
-        else {
-            this.setState(function () {
-                return {
-                    _imageId: _imageId,
-                    imageRequired: false,
-                };
-            });
-        }
-    };
     DoodleEdit.prototype.componentWillMount = function () {
         var _a = this.props.doodle.doodle, title = _a.title, details = _a.details, _imageId = _a._imageId, discontinued = _a.discontinued;
         this.setState(function () {
@@ -270,8 +267,8 @@ var DoodleEdit = /** @class */ (function (_super) {
         this.props.doodle.getDoodle(this.props.doodle.doodle._doodleId);
     };
     DoodleEdit.prototype.render = function () {
-        var _a = this, addNewImageResult = _a.addNewImageResult, hitKey = _a.hitKey, handleCheckboxChange = _a.handleCheckboxChange, editField = _a.editField, updateDoodle = _a.updateDoodle, onRichTextChange = _a.onRichTextChange;
-        var _b = this.state, title = _b.title, _imageId = _b._imageId, imageRequired = _b.imageRequired, redirect = _b.redirect, details = _b.details, discontinued = _b.discontinued;
+        var _a = this, hitKey = _a.hitKey, handleCheckboxChange = _a.handleCheckboxChange, editField = _a.editField, updateDoodle = _a.updateDoodle, onRichTextChange = _a.onRichTextChange, handleCoverImageChange = _a.handleCoverImageChange, removeImage = _a.removeImage;
+        var _b = this.state, title = _b.title, _imageId = _b._imageId, redirect = _b.redirect, details = _b.details, discontinued = _b.discontinued;
         var admin = this.props.user.admin;
         var pathname = this.props.location.pathname;
         var _doodleId = this.props.doodle.doodle._doodleId;
@@ -281,12 +278,12 @@ var DoodleEdit = /** @class */ (function (_super) {
         if (!admin) {
             return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], { to: { pathname: '/login', state: { redirectPath: pathname } } }));
         }
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_styled_components__WEBPACK_IMPORTED_MODULE_7__["Popout"], null,
+        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_styled_components__WEBPACK_IMPORTED_MODULE_6__["Popout"], null,
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](DoodleEditWrapper, null,
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { className: "exit", to: "/doodle/item/" + _doodleId }, "X"),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "EDIT DOODLE"),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Image"),
-                _imageId ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_edit__WEBPACK_IMPORTED_MODULE_4__["default"], { _imageId: _imageId, updateRedirect: false }) : react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_new__WEBPACK_IMPORTED_MODULE_3__["default"], { required: imageRequired, addNewImageResult: addNewImageResult }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_editing_tool__WEBPACK_IMPORTED_MODULE_5__["default"], { _imageId: _imageId, onChange: handleCoverImageChange, removeImage: removeImage }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Title"),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'text', onKeyPress: hitKey, onChange: editField, name: 'title', placeholder: "Great Doodle", value: title }),
@@ -303,7 +300,7 @@ var DoodleEdit = /** @class */ (function (_super) {
     return DoodleEdit;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
-/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_6__["userConsumer"])(Object(_doodle_provider__WEBPACK_IMPORTED_MODULE_5__["doodleConsumer"])(DoodleEdit)));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_4__["userConsumer"])(Object(_doodle_provider__WEBPACK_IMPORTED_MODULE_3__["doodleConsumer"])(DoodleEdit)));
 var templateObject_1;
 
 
@@ -469,12 +466,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_rte__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-rte */ "./node_modules/react-rte/dist/react-rte.js");
 /* harmony import */ var react_rte__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_rte__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-/* harmony import */ var _image_image_new__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../image/image-new */ "./client/src/components/image/image-new.tsx");
-/* harmony import */ var _image_image_edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../image/image-edit */ "./client/src/components/image/image-edit.tsx");
-/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
-/* harmony import */ var _doodle_provider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./doodle-provider */ "./client/src/components/doodle/doodle-provider.tsx");
-/* harmony import */ var _utilities_styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utilities/styled.components */ "./client/src/components/utilities/styled.components.tsx");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
+/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
+/* harmony import */ var _doodle_provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./doodle-provider */ "./client/src/components/doodle/doodle-provider.tsx");
+/* harmony import */ var _image_image_editing_tool__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../image/image-editing-tool */ "./client/src/components/image/image-editing-tool.tsx");
+/* harmony import */ var _utilities_styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utilities/styled.components */ "./client/src/components/utilities/styled.components.tsx");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
 
 var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
@@ -498,8 +494,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
-
-var DoodleNewWrapper = styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tcolor: white;\n\t\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\tline-height: 2em;\n\t\ttext-align: center; \n\t\tdisplay: block;\n\t\tmargin-left: auto;\n\t\tmargin-right: 1em;\n\t}\n"], ["\n\tcolor: white;\n\t\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\tline-height: 2em;\n\t\ttext-align: center; \n\t\tdisplay: block;\n\t\tmargin-left: auto;\n\t\tmargin-right: 1em;\n\t}\n"])));
+var DoodleNewWrapper = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tcolor: white;\n\t\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\tline-height: 2em;\n\t\ttext-align: center; \n\t\tdisplay: block;\n\t\tmargin-left: auto;\n\t\tmargin-right: 1em;\n\t}\n"], ["\n\tcolor: white;\n\t\n\t> .exit {\n\t\tcolor: white;\n\t\tbackground-color: #e98383;\n\t\twidth: 2em;\n\t\tline-height: 2em;\n\t\ttext-align: center; \n\t\tdisplay: block;\n\t\tmargin-left: auto;\n\t\tmargin-right: 1em;\n\t}\n"])));
 var DoodleNew = /** @class */ (function (_super) {
     __extends(DoodleNew, _super);
     function DoodleNew(props) {
@@ -522,25 +517,9 @@ var DoodleNew = /** @class */ (function (_super) {
                 return { details: value };
             });
         };
-        _this.addNewImageResult = function (error, _imageId) {
-            if (error) {
-                _this.setState(function () {
-                    return { imageRequired: true };
-                });
-            }
-            else {
-                _this.setState(function () {
-                    return {
-                        _imageId: _imageId,
-                        imageRequired: false,
-                    };
-                });
-            }
-        };
         _this.state = {
             _doodleId: null,
             required: false,
-            imageRequired: false,
             title: null,
             details: react_rte__WEBPACK_IMPORTED_MODULE_1___default.a.createEmptyValue(),
         };
@@ -548,9 +527,24 @@ var DoodleNew = /** @class */ (function (_super) {
         _this.addNewDoodle = _this.addNewDoodle.bind(_this);
         _this.addNewDoodleResult = _this.addNewDoodleResult.bind(_this);
         _this.onRichTextChange = _this.onRichTextChange.bind(_this);
-        _this.addNewImageResult = _this.addNewImageResult.bind(_this);
+        _this.handleCoverImageChange = _this.handleCoverImageChange.bind(_this);
+        _this.removeImage = _this.removeImage.bind(_this);
         return _this;
     }
+    DoodleNew.prototype.handleCoverImageChange = function (_imageId) {
+        this.setState(function () {
+            return {
+                _imageId: _imageId,
+            };
+        });
+    };
+    DoodleNew.prototype.removeImage = function () {
+        this.setState(function () {
+            return {
+                _imageId: null,
+            };
+        });
+    };
     DoodleNew.prototype.hitKey = function (event) {
         if (event.key == 'Enter') {
             this.addNewDoodle(event);
@@ -573,8 +567,8 @@ var DoodleNew = /** @class */ (function (_super) {
         });
     };
     DoodleNew.prototype.render = function () {
-        var _a = this, addNewImageResult = _a.addNewImageResult, addNewDoodle = _a.addNewDoodle, hitKey = _a.hitKey, onRichTextChange = _a.onRichTextChange, titleRef = _a.titleRef;
-        var _b = this.state, _imageId = _b._imageId, imageRequired = _b.imageRequired, _doodleId = _b._doodleId, required = _b.required, details = _b.details;
+        var _a = this, addNewDoodle = _a.addNewDoodle, hitKey = _a.hitKey, onRichTextChange = _a.onRichTextChange, titleRef = _a.titleRef, handleCoverImageChange = _a.handleCoverImageChange, removeImage = _a.removeImage;
+        var _b = this.state, _imageId = _b._imageId, _doodleId = _b._doodleId, required = _b.required, details = _b.details;
         var admin = this.props.user.admin;
         var pathname = this.props.location.pathname;
         var total = this.props.doodle.total;
@@ -584,12 +578,12 @@ var DoodleNew = /** @class */ (function (_super) {
         if (!admin) {
             return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], { to: { pathname: '/login', state: { redirectPath: pathname } } }));
         }
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_styled_components__WEBPACK_IMPORTED_MODULE_7__["Popout"], null,
+        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_styled_components__WEBPACK_IMPORTED_MODULE_6__["Popout"], null,
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](DoodleNewWrapper, null,
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { className: "exit", to: "/doodle/" }, "X"),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "New Doodle"),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Image"),
-                _imageId ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_edit__WEBPACK_IMPORTED_MODULE_4__["default"], { _imageId: _imageId, updateRedirect: false }) : react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_new__WEBPACK_IMPORTED_MODULE_3__["default"], { required: imageRequired, addNewImageResult: addNewImageResult }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_editing_tool__WEBPACK_IMPORTED_MODULE_5__["default"], { _imageId: _imageId, onChange: handleCoverImageChange, removeImage: removeImage }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null,
                     "Title",
                     required ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "errortext" }, "*")) : ''),
@@ -605,7 +599,7 @@ var DoodleNew = /** @class */ (function (_super) {
     return DoodleNew;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
-/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_5__["userConsumer"])(Object(_doodle_provider__WEBPACK_IMPORTED_MODULE_6__["doodleConsumer"])(DoodleNew)));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_3__["userConsumer"])(Object(_doodle_provider__WEBPACK_IMPORTED_MODULE_4__["doodleConsumer"])(DoodleNew)));
 var templateObject_1;
 
 
@@ -1218,6 +1212,137 @@ var templateObject_1;
 
 /***/ }),
 
+/***/ "./client/src/components/image/image-editing-tool.tsx":
+/*!************************************************************!*\
+  !*** ./client/src/components/image/image-editing-tool.tsx ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _image_image_new__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../image/image-new */ "./client/src/components/image/image-new.tsx");
+/* harmony import */ var _image_image_edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../image/image-edit */ "./client/src/components/image/image-edit.tsx");
+/* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
+/* harmony import */ var _utilities_styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utilities/styled.components */ "./client/src/components/utilities/styled.components.tsx");
+/* harmony import */ var _utilities_dropzone__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utilities/dropzone */ "./client/src/components/utilities/dropzone.tsx");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
+/* harmony import */ var _image_tag__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./image-tag */ "./client/src/components/image/image-tag.tsx");
+
+var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+
+
+
+
+
+var ImageEditingToolWrapper = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\t> .image-display {\n\t\tdisplay: grid;\n\t\tgrid-template-rows: minmax(100px, 300px);\n\t\tgrid-gap: 1em;\n\n\t\timg {\n\t\t\tmax-height: 100%;\n\t\t}\n\t\t\n\t\t> .image-display-options {\n\t\t\tdisplay: flex;\n\t\t\tjustify-content: space-evenly;\n\t\t}\n\t}\n\n\t> .popout > .edit {\n\t\tdisplay: flex;\n\t\tflex-wrap: wrap-reverse;\n\t\t> * {\n\t\t\tflex-grow: 1;\n\t\t}\n\t\t\n\t\t.exit {\n\t\t\tflex-grow: 0;\n\t\t\talign-self: end;\n\t\t\tcolor: white;\n\t\t\tbackground-color: #e98383;\n\t\t\twidth: 3.5em;\n\t\t\tline-height: 2em;\n\t\t\ttext-align: center;\n\t\t\tdisplay: block;\n\t\t\tmargin-left: auto;\n\t\t\tmargin-right: 1em;\n\t\t\tpadding: 0;\n\t\t}\n\t}\n"], ["\n\t> .image-display {\n\t\tdisplay: grid;\n\t\tgrid-template-rows: minmax(100px, 300px);\n\t\tgrid-gap: 1em;\n\n\t\timg {\n\t\t\tmax-height: 100%;\n\t\t}\n\t\t\n\t\t> .image-display-options {\n\t\t\tdisplay: flex;\n\t\t\tjustify-content: space-evenly;\n\t\t}\n\t}\n\n\t> .popout > .edit {\n\t\tdisplay: flex;\n\t\tflex-wrap: wrap-reverse;\n\t\t> * {\n\t\t\tflex-grow: 1;\n\t\t}\n\t\t\n\t\t.exit {\n\t\t\tflex-grow: 0;\n\t\t\talign-self: end;\n\t\t\tcolor: white;\n\t\t\tbackground-color: #e98383;\n\t\t\twidth: 3.5em;\n\t\t\tline-height: 2em;\n\t\t\ttext-align: center;\n\t\t\tdisplay: block;\n\t\t\tmargin-left: auto;\n\t\t\tmargin-right: 1em;\n\t\t\tpadding: 0;\n\t\t}\n\t}\n"])));
+var ImageEditingTool = /** @class */ (function (_super) {
+    __extends(ImageEditingTool, _super);
+    function ImageEditingTool(props) {
+        var _this = _super.call(this, props) || this;
+        _this.state = {
+            imageRequired: false,
+            show: false,
+            currentImage: new File([], ''),
+        };
+        _this.addNewImageResult = _this.addNewImageResult.bind(_this);
+        _this.handleDropzoneImageChange = _this.handleDropzoneImageChange.bind(_this);
+        _this.cancel = _this.cancel.bind(_this);
+        _this.toggleShow = _this.toggleShow.bind(_this);
+        return _this;
+    }
+    ImageEditingTool.prototype.addNewImageResult = function (error, _imageId) {
+        if (error) {
+            this.setState(function () {
+                return { imageRequired: true };
+            });
+        }
+        else {
+            this.setState(function () {
+                return {
+                    imageRequired: false,
+                    show: false,
+                    currentImage: new File([], ''),
+                };
+            });
+            this.props.onChange(_imageId);
+        }
+    };
+    ImageEditingTool.prototype.handleDropzoneImageChange = function (images) {
+        this.setState(function () {
+            if (images.length > 0) {
+                return {
+                    currentImage: images[0],
+                    show: true,
+                };
+            }
+            return;
+        });
+    };
+    ImageEditingTool.prototype.cancel = function () {
+        this.setState(function () {
+            return {
+                currentImage: new File([], ''),
+                show: false,
+            };
+        });
+    };
+    ImageEditingTool.prototype.toggleShow = function () {
+        this.setState(function (prevState) {
+            return {
+                show: !prevState.show,
+            };
+        });
+    };
+    ImageEditingTool.prototype.render = function () {
+        var _a = this, addNewImageResult = _a.addNewImageResult, handleDropzoneImageChange = _a.handleDropzoneImageChange, cancel = _a.cancel, toggleShow = _a.toggleShow;
+        var _b = this.state, imageRequired = _b.imageRequired, show = _b.show, currentImage = _b.currentImage;
+        var _c = this.props, _imageId = _c._imageId, removeImage = _c.removeImage;
+        var admin = this.props.user.admin;
+        var pathname = this.props.location.pathname;
+        if (!admin) {
+            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], { to: { pathname: '/login', state: { redirectPath: pathname } } }));
+        }
+        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](ImageEditingToolWrapper, null,
+            _imageId ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'image-display' },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_tag__WEBPACK_IMPORTED_MODULE_8__["default"], { _imageId: _imageId, displayDetails: true }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "image-display-options" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { onClick: toggleShow }, "EDIT"),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { onClick: removeImage }, "REMOVE")))) : (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_dropzone__WEBPACK_IMPORTED_MODULE_6__["default"], { multiple: false, handleChange: handleDropzoneImageChange, fileTypes: ['image/jpeg', 'image/pjpeg', 'image/png'] })),
+            show ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_styled_components__WEBPACK_IMPORTED_MODULE_5__["Popout"], { className: "popout" }, _imageId ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'edit' },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_edit__WEBPACK_IMPORTED_MODULE_3__["default"], { _imageId: _imageId, updateRedirect: false }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "exit", onClick: cancel }, "x"))) : (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_new__WEBPACK_IMPORTED_MODULE_2__["default"], { deleteImage: cancel, currentImage: currentImage, imageRequired: imageRequired, addNewImageResult: addNewImageResult }))))) : ''));
+    };
+    return ImageEditingTool;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
+;
+/* harmony default export */ __webpack_exports__["default"] = (Object(_user_user_provider__WEBPACK_IMPORTED_MODULE_4__["userConsumer"])(Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(ImageEditingTool)));
+var templateObject_1;
+
+
+/***/ }),
+
 /***/ "./client/src/components/utilities/styled.components.tsx":
 /*!***************************************************************!*\
   !*** ./client/src/components/utilities/styled.components.tsx ***!
@@ -1252,7 +1377,7 @@ var defaultTheme = {
     highlightblue: '#4d5f86',
     gray: 'gray',
 };
-var Popout = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tposition: fixed;\n\ttop: 0;\n\tbottom: 0;\n\tleft: 0;\n\tright: 0;\n\tbackground: rgba(0, 0, 0, 0.85);\n\tz-index: 10000;\n\t> * {\n\t\tposition: relative;\n\t\ttop: 50%;\n\t\tleft: 50%;\n\t\ttransform: translate(-50%, -50%);\n\t\tmargin: 0;\n\t\toverflow: auto;    \n\t\tmax-height: 100%;\n\t\tpadding: 2em 0;\n\t}\n\t\n"], ["\n\tposition: fixed;\n\ttop: 0;\n\tbottom: 0;\n\tleft: 0;\n\tright: 0;\n\tbackground: rgba(0, 0, 0, 0.85);\n\tz-index: 10000;\n\t> * {\n\t\tposition: relative;\n\t\ttop: 50%;\n\t\tleft: 50%;\n\t\ttransform: translate(-50%, -50%);\n\t\tmargin: 0;\n\t\toverflow: auto;    \n\t\tmax-height: 100%;\n\t\tpadding: 2em 0;\n\t}\n\t\n"])));
+var Popout = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tcolor: white;\n\tposition: fixed;\n\ttop: 0;\n\tbottom: 0;\n\tleft: 0;\n\tright: 0;\n\tbackground: rgba(0, 0, 0, 0.85);\n\tz-index: 10000;\n\t> * {\n\t\tposition: relative;\n\t\ttop: 50%;\n\t\tleft: 50%;\n\t\ttransform: translate(-50%, -50%);\n\t\tmargin: 0;\n\t\toverflow: auto;    \n\t\tmax-height: 100%;\n\t\tpadding: 2em 0;\n\t}\n\t\n"], ["\n\tcolor: white;\n\tposition: fixed;\n\ttop: 0;\n\tbottom: 0;\n\tleft: 0;\n\tright: 0;\n\tbackground: rgba(0, 0, 0, 0.85);\n\tz-index: 10000;\n\t> * {\n\t\tposition: relative;\n\t\ttop: 50%;\n\t\tleft: 50%;\n\t\ttransform: translate(-50%, -50%);\n\t\tmargin: 0;\n\t\toverflow: auto;    \n\t\tmax-height: 100%;\n\t\tpadding: 2em 0;\n\t}\n\t\n"])));
 var templateObject_1;
 
 

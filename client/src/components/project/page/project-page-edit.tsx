@@ -8,6 +8,7 @@ import ImageEdit from '../../image/image-edit';
 import { IProjectPageContext, updateProjectPageParams, projectPageConsumer } from './project-page-provider';
 import { IUserContext, userConsumer } from '../../user/user-provider';
 import { Location } from 'history';
+import ImageEditingTool from '../../image/image-editing-tool';
 import { Popout } from '../../utilities/styled.components';
 import styled from 'styled-components';
 
@@ -37,7 +38,6 @@ export interface ProjectPageEditState {
 	required: boolean;
 	title: string;
 	page: number;
-	imageRequired: boolean;
 	_imageId: string;
 	details: any;
 	discontinued: boolean;
@@ -51,7 +51,6 @@ export interface ProjectPageEditMethods {
 	updateProjectPageResult: (error: boolean) => void;
 	onRichTextChange: (value) => void;
 	redirect: () => void;
-	addNewImageResult: (error: boolean, _imageId: string) => void;
 }
 
 class ProjectPageEdit extends React.Component<ProjectPageEditProps, ProjectPageEditState> implements ProjectPageEditMethods {
@@ -62,7 +61,6 @@ class ProjectPageEdit extends React.Component<ProjectPageEditProps, ProjectPageE
         	required: false,
         	title: null,
         	page: null,
-        	imageRequired: false,
         	_imageId: null,
         	details: RichTextEditor.createEmptyValue(),
         	discontinued: false,
@@ -75,7 +73,24 @@ class ProjectPageEdit extends React.Component<ProjectPageEditProps, ProjectPageE
 		this.updateProjectPageResult = this.updateProjectPageResult.bind(this);
 		this.onRichTextChange = this.onRichTextChange.bind(this);
 		this.redirect = this.redirect.bind(this);
-		this.addNewImageResult = this.addNewImageResult.bind(this);
+		this.handleCoverImageChange = this.handleCoverImageChange.bind(this);
+		this.removeImage = this.removeImage.bind(this);
+	}
+
+	handleCoverImageChange(_imageId) {
+		this.setState(() => {
+			return {
+				_imageId: _imageId,
+			};
+		});
+	}
+
+	removeImage() {
+		this.setState(() => {
+			return {
+				_imageId: null,
+			}
+		});
 	}
 	
 	editField(event) {
@@ -151,21 +166,6 @@ class ProjectPageEdit extends React.Component<ProjectPageEditProps, ProjectPageE
 		});
 	}
 
-	addNewImageResult(error, _imageId) {
-		if (error) {
-			this.setState(() => {
-				return {imageRequired: true};
-			});
-		} else {
-			this.setState(() => {
-				return {
-					_imageId: _imageId,
-					imageRequired: false,
-				};
-			});
-		} 
-	}
-
     componentWillMount() {
 		const { title, page, details, _imageId, discontinued } = this.props.projectPage.projectPage;
 
@@ -203,8 +203,8 @@ class ProjectPageEdit extends React.Component<ProjectPageEditProps, ProjectPageE
     }
 
 	render() {
-		const { addNewImageResult, hitKey, handleCheckboxChange, editField, updateProjectPage, onRichTextChange} = this;
-		const { title, _imageId, imageRequired, redirect, required, page, details, discontinued } = this.state;
+		const { hitKey, handleCheckboxChange, editField, updateProjectPage, onRichTextChange, handleCoverImageChange, removeImage} = this;
+		const { title, _imageId, redirect, required, page, details, discontinued } = this.state;
 		const { admin } = this.props.user;
 		const { pathname } = this.props.location;
 		const { total, _projectId } = this.props.projectPage;
@@ -225,7 +225,7 @@ class ProjectPageEdit extends React.Component<ProjectPageEditProps, ProjectPageE
 					<Link className="exit" to={`/project/item/${_projectId}/${_projectPageId}`}>X</Link>
 					<h3>EDIT PROJECT PAGE</h3>
 					<label>Image</label>
-					{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
+					<ImageEditingTool _imageId={_imageId} onChange={handleCoverImageChange} removeImage={removeImage} />
 					<label>Title{required ? (<span className="errortext" >*</span>) : ''}</label>
 					<br/>
 					<input type='text' onKeyPress={hitKey} onChange={editField} name='title' placeholder="Great ProjectPage" value={title} />

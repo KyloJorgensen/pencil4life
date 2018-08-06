@@ -37,6 +37,7 @@ export const defaultTheme: ThemeInterface = {
 };
 
 export const Popout = styled.div`
+	color: white;
 	position: fixed;
 	top: 0;
 	bottom: 0;

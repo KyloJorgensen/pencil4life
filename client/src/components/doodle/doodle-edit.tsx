@@ -3,11 +3,11 @@
 import * as React from 'react';
 import RichTextEditor from 'react-rte';
 import { Redirect, Link } from "react-router-dom";
-import * as Datetime from 'react-datetime';
 import ImageNew from '../image/image-new';
 import ImageEdit from '../image/image-edit';
 import { IDoodleContext, updateDoodleParams, doodleConsumer } from './doodle-provider';
 import { IUserContext, userConsumer } from '../user/user-provider';
+import ImageEditingTool from '../image/image-editing-tool';
 import { Location } from 'history';
 import { Popout } from '../utilities/styled.components';
 import styled from 'styled-components';
@@ -36,7 +36,6 @@ export interface DoodleEditProps {
 export interface DoodleEditState {
 	redirect: boolean;
 	title: string;
-	imageRequired: boolean;
 	_imageId: string;
 	details: any;
 	discontinued: boolean;
@@ -50,7 +49,8 @@ export interface DoodleEditMethods {
 	updateDoodleResult: (error: boolean) => void;
 	onRichTextChange: (value) => void;
 	redirect: () => void;
-	addNewImageResult: (error: boolean, _imageId: string) => void;
+	handleCoverImageChange: (_imageId) => void;
+	removeImage: () => void;
 }
 
 class DoodleEdit extends React.Component<DoodleEditProps, DoodleEditState> implements DoodleEditMethods {
@@ -59,7 +59,6 @@ class DoodleEdit extends React.Component<DoodleEditProps, DoodleEditState> imple
         this.state = {
         	redirect: false,
         	title: null,
-        	imageRequired: false,
         	_imageId: null,
         	details: RichTextEditor.createEmptyValue(),
         	discontinued: false,
@@ -72,9 +71,26 @@ class DoodleEdit extends React.Component<DoodleEditProps, DoodleEditState> imple
 		this.updateDoodleResult = this.updateDoodleResult.bind(this);
 		this.onRichTextChange = this.onRichTextChange.bind(this);
 		this.redirect = this.redirect.bind(this);
-		this.addNewImageResult = this.addNewImageResult.bind(this);
+		this.handleCoverImageChange = this.handleCoverImageChange.bind(this);
+		this.removeImage = this.removeImage.bind(this);
 	}
 	
+	handleCoverImageChange(_imageId) {
+		this.setState(() => {
+			return {
+				_imageId: _imageId,
+			};
+		});
+	}
+
+	removeImage() {
+		this.setState(() => {
+			return {
+				_imageId: null,
+			}
+		});
+	}
+
 	editField(event) {
 		const { name, value } = event.target;
 		this.setState((prevState) => {
@@ -141,21 +157,6 @@ class DoodleEdit extends React.Component<DoodleEditProps, DoodleEditState> imple
 		});
 	}
 
-	addNewImageResult(error, _imageId) {
-		if (error) {
-			this.setState(() => {
-				return {imageRequired: true};
-			});
-		} else {
-			this.setState(() => {
-				return {
-					_imageId: _imageId,
-					imageRequired: false,
-				};
-			});
-		} 
-	}
-
     componentWillMount() {
 		const { title, details, _imageId, discontinued } = this.props.doodle.doodle;
 
@@ -192,8 +193,8 @@ class DoodleEdit extends React.Component<DoodleEditProps, DoodleEditState> imple
     }
 
 	render() {
-		const { addNewImageResult, hitKey, handleCheckboxChange, editField, updateDoodle, onRichTextChange} = this;
-		const { title, _imageId, imageRequired, redirect, details, discontinued } = this.state;
+		const { hitKey, handleCheckboxChange, editField, updateDoodle, onRichTextChange, handleCoverImageChange, removeImage} = this;
+		const { title, _imageId, redirect, details, discontinued } = this.state;
 		const { admin } = this.props.user;
 		const { pathname } = this.props.location;
 		const { _doodleId } = this.props.doodle.doodle;
@@ -213,7 +214,7 @@ class DoodleEdit extends React.Component<DoodleEditProps, DoodleEditState> imple
 					<Link className="exit" to={`/doodle/item/${_doodleId}`}>X</Link>
 					<h3>EDIT DOODLE</h3>
 					<label>Image</label>
-					{_imageId ? <ImageEdit _imageId={_imageId} updateRedirect={false} /> : <ImageNew required={imageRequired} addNewImageResult={addNewImageResult} />}
+					<ImageEditingTool _imageId={_imageId} onChange={handleCoverImageChange} removeImage={removeImage} />
 					<label>Title</label>
 					<br/>
 					<input type='text' onKeyPress={hitKey} onChange={editField} name='title' placeholder="Great Doodle" value={title} />
