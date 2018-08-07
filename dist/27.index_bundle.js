@@ -124,8 +124,17 @@ var ImageEdit = /** @class */ (function (_super) {
             });
         }
         else {
+            this.setState(function (prevState) {
+                return {
+                    required: false,
+                    loading: false,
+                };
+            });
             if (this.props.updateRedirect) {
                 this.redirect();
+            }
+            if ('redirectfunc' in this.props) {
+                this.props.redirectfunc();
             }
         }
     };

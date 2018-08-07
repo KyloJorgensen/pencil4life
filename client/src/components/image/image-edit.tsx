@@ -14,6 +14,7 @@ export interface ImageEditProps {
 	user: IUserContext;
 	location: Location;
 	updateRedirect?: boolean;
+	redirectfunc?: () => void;
 }
 
 export interface ImageEditState {
@@ -135,9 +136,18 @@ class ImageEdit extends React.Component<ImageEditProps, ImageEditState> implemen
 				};
 			});
     	} else {
+			this.setState((prevState) => {
+				return {
+					required: false,
+					loading: false,
+				};
+			});
     		if (this.props.updateRedirect) {
 				this.redirect();
-    		}
+			}
+			if ('redirectfunc' in this.props) {
+				this.props.redirectfunc();
+			}
     	} 
     }
 

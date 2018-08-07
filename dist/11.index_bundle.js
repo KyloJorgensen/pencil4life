@@ -1330,7 +1330,7 @@ var ImageEditingTool = /** @class */ (function (_super) {
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { onClick: toggleShow }, "EDIT"),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { onClick: removeImage }, "REMOVE")))) : (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_dropzone__WEBPACK_IMPORTED_MODULE_6__["default"], { multiple: false, handleChange: handleDropzoneImageChange, fileTypes: ['image/jpeg', 'image/pjpeg', 'image/png'] })),
             show ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_styled_components__WEBPACK_IMPORTED_MODULE_5__["Popout"], { className: "popout" }, _imageId ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'edit' },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_edit__WEBPACK_IMPORTED_MODULE_3__["default"], { _imageId: _imageId, updateRedirect: false }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_edit__WEBPACK_IMPORTED_MODULE_3__["default"], { _imageId: _imageId, updateRedirect: false, redirectfunc: toggleShow }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "exit", onClick: cancel }, "x"))) : (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_image_image_new__WEBPACK_IMPORTED_MODULE_2__["default"], { deleteImage: cancel, currentImage: currentImage, imageRequired: imageRequired, addNewImageResult: addNewImageResult }))))) : ''));
     };

@@ -163,7 +163,7 @@ class ImageEditingTool extends React.Component<ImageEditingToolProps, ImageEditi
 					<Popout className="popout" >
 						{_imageId ? (
 							<div className='edit'>
-								<ImageEdit _imageId={_imageId} updateRedirect={false} />
+								<ImageEdit _imageId={_imageId} updateRedirect={false} redirectfunc={toggleShow} />
 								<button className="exit" onClick={cancel}>x</button>
 							</div>
 						) : (
