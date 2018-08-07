@@ -23,14 +23,13 @@ const FooterWrapper = styled.footer`
 		margin-left: auto; 
 		margin-right: auto;
 		padding: 0.5em;
-
 	}
 
 	.social {
 		a {
 			color: #ffffff;
 			font-size: 2.5em;
-			padding: 0.5em;
+			padding: 0.3em;
 		}
 	}
 
@@ -51,8 +50,9 @@ class Footer extends React.Component<null> {
 			    	<div className="social container" >
 			    		<a href="https://www.instagram.com/pencil.4.life/" target="_blank"><FontAwesomeIcon icon={["fab", "instagram"]} /></a>
 			    		<a href="https://www.twitch.tv/pencil4life" target="_blank"><FontAwesomeIcon icon={["fab", "twitch"]} /></a>
+						<a href="https://www.youtube.com/user/shadowshand" target="_blank" ><FontAwesomeIcon icon={["fab", "youtube"]} /></a>
 			    		<a href="https://twitter.com/pencil4life" target="_blank"><FontAwesomeIcon icon={["fab", "twitter"]} /></a>
-			    		<a href="https://www.facebook.com/pencil4life/?ref=br_rs" target="_blank"><FontAwesomeIcon icon={["fab", "facebook-f"]} /></a>
+						<a href="https://www.facebook.com/pencil4life/?ref=br_rs" target="_blank"><FontAwesomeIcon icon={["fab", "facebook-f"]} /></a>
 			    	</div>
 			    	<div className="legal container">
 			    		<a href="">&copy;Pencil4Life</a>

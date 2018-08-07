@@ -67,7 +67,7 @@ var FooterBar = react_loadable__WEBPACK_IMPORTED_MODULE_2__({
     loader: function () { return Promise.all(/*! import() */[__webpack_require__.e(23), __webpack_require__.e(24), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ./footer/footer-bar */ "./client/src/components/footer/footer-bar.tsx")); },
     loading: Loading,
 });
-var PageLayout = styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  min-height: 100%;\n  width: 100%;\n  display: grid;\n  grid-template-rows: auto auto 1fr;\n"], ["\n  min-height: 100%;\n  width: 100%;\n  display: grid;\n  grid-template-rows: auto auto 1fr;\n"])));
+var PageLayout = styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  min-height: 100%;\n  width: 100%;\n  display: grid;\n  grid-template-columns: 100%;\n  grid-template-rows: auto auto 1fr;\n"], ["\n  min-height: 100%;\n  width: 100%;\n  display: grid;\n  grid-template-columns: 100%;\n  grid-template-rows: auto auto 1fr;\n"])));
 var App = /** @class */ (function (_super) {
     __extends(App, _super);
     function App() {

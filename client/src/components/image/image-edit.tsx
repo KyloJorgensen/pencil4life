@@ -213,8 +213,8 @@ class ImageEdit extends React.Component<ImageEditProps, ImageEditState> implemen
 						</div>
 					</div>
 					<div className="image-input" >
-						<label>Name</label>
-						<input type="text" onKeyPress={hitKey} name="name" value={name} onChange={imageDetailChanged} placeholder="Great Image" />{required ? (<span className="errortext" >*</span>) : ''}
+						<label>Name{required ? (<span className="errortext" >*</span>) : ''}</label>
+						<input type="text" onKeyPress={hitKey} name="name" value={name} onChange={imageDetailChanged} placeholder="Great Image" />
 						<label>Alt</label>
 						<input type="text" onKeyPress={hitKey} name="alt" value={alt} onChange={imageDetailChanged} placeholder="blue tree pencil4life" />
 						<label>Discontinued</label>

@@ -14,6 +14,7 @@ fontawesome.library.add(brands, faEnvelope, faComments);
 const ContactPageWrapper = styled.div`
 	display: grid;
 	grid-column-gap: 1em;
+	grid-template-columns: 100%;
 	> .socialmedia {
 		display: block;
 		margin: 0.5em 0;
@@ -78,6 +79,12 @@ const ContactPageWrapper = styled.div`
 		}
 	}
 
+	> .youtube {
+		svg {
+			background-color: #ff0000;
+		}
+	}
+
 	> .facebook {
 		svg {
 			background-color: #4267b2;
@@ -104,7 +111,7 @@ const ContactPageWrapper = styled.div`
 
 			> svg {
 				width: initial;
-				font-size: 8em;
+				font-size: 7em;
 			}
 
 			> div {				
@@ -137,6 +144,12 @@ class ContactPage extends React.Component {
 					<FontAwesomeIcon icon={["fab", "twitch"]} />
 					<div>
 						<h2>pencil4life on Twitch</h2>
+					</div>
+				</a>
+				<a className='socialmedia youtube' href="https://www.youtube.com/user/shadowshand" target="_blank" >
+					<FontAwesomeIcon icon={["fab", "youtube"]} />
+					<div>
+						<h2>shadowshand on YouTube</h2>
 					</div>
 				</a>
 				<a className='socialmedia twiiter' href="https://twitter.com/pencil4life" target="_blank" >
