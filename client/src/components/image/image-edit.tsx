@@ -6,8 +6,7 @@ import Dropzone from '../utilities/dropzone';
 import { IImageContext, imageConsumer } from './image-provider';
 import { userConsumer, IUserContext } from '../user/user-provider';
 import { Location } from 'history';
-import { Popout } from '../utilities/styled.components';
-import { LoadingSpinner } from '../utilities/loading';
+import { Popout, LoadingSpinner } from '../utilities/styled.components';
 
 export interface ImageEditProps {
 	image: IImageContext;
@@ -225,7 +224,9 @@ class ImageEdit extends React.Component<ImageEditProps, ImageEditState> implemen
 				<input type='submit' onClick={updateImage} value='SAVE' />
 				{loading ? (
 					<Popout>
-						<LoadingSpinner/>
+						<div>
+							<LoadingSpinner/>
+						</div>
 					</Popout>
 				) : ''}
 			</div>

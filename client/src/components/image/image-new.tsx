@@ -6,8 +6,7 @@ import Dropzone from '../utilities/dropzone';
 import { IUserContext, userConsumer } from '../user/user-provider';
 import { imageConsumer, Image, IImageContext, newImageParams } from './image-provider';
 import { Location } from 'history';
-import { LoadingSpinner } from '../utilities/loading';
-import { Popout } from '../utilities/styled.components';
+import { Popout, LoadingSpinner } from '../utilities/styled.components';
 
 export interface ImageNewProps {
 	user: IUserContext;
@@ -219,7 +218,9 @@ class ImageNew extends React.Component<ImageNewProps, ImageNewState> implements 
 				<input type='submit' onClick={addNewImage} value='SAVE' />
 				{loading ? (
 					<Popout>
-						<LoadingSpinner/>
+						<div>
+							<LoadingSpinner/>
+						</div>
 					</Popout>
 				) : ''}
 			</div>
