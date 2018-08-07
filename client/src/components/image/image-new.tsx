@@ -6,6 +6,8 @@ import Dropzone from '../utilities/dropzone';
 import { IUserContext, userConsumer } from '../user/user-provider';
 import { imageConsumer, Image, IImageContext, newImageParams } from './image-provider';
 import { Location } from 'history';
+import { LoadingSpinner } from '../utilities/loading';
+import { Popout } from '../utilities/styled.components';
 
 export interface ImageNewProps {
 	user: IUserContext;
@@ -30,6 +32,7 @@ export interface ImageNewState {
 	name: string;
 	alt: string;
 	currentImage: File;
+	loading: boolean;
 }
 
 export interface ImageNewMethods {
@@ -51,7 +54,8 @@ class ImageNew extends React.Component<ImageNewProps, ImageNewState> implements 
         	required: false,
         	name: '',
         	alt: '',
-        	currentImage: new File([], 'file'),
+			currentImage: new File([], 'file'),
+			loading: false,
         };
 
 		this.hitKey = this.hitKey.bind(this);
@@ -103,18 +107,27 @@ class ImageNew extends React.Component<ImageNewProps, ImageNewState> implements 
 		let addNewImageResult = 'addNewImageResult' in this.props ? this.props.addNewImageResult : this.addNewImageResult;
 		this.props.image.addImage(params, addNewImageResult);
 		this.setState(() => {
-			return {required: false};
+			return {
+				required: false,
+				loading: true,
+			};
 		});
     }
 
     addNewImageResult(error, _imageId) {
     	if (error) {
 			this.setState(() => {
-				return {required: true};
+				return {
+					required: true,
+					loading: false,
+				};
 			});
     	} else {
 			this.setState(() => {
-				return {_imageId: _imageId};
+				return {
+					_imageId: _imageId,
+					loading: false,
+				};
 			});
     	} 
     }
@@ -146,7 +159,7 @@ class ImageNew extends React.Component<ImageNewProps, ImageNewState> implements 
 	}
 
 	render() {
-		const { redirect, _imageId } = this.state;
+		const { redirect, _imageId, loading } = this.state;
 		const { admin } = this.props.user;
 		if (redirect) {
 			return (<Redirect to='/image' />);
@@ -204,6 +217,11 @@ class ImageNew extends React.Component<ImageNewProps, ImageNewState> implements 
 					</div>
 				</div>
 				<input type='submit' onClick={addNewImage} value='SAVE' />
+				{loading ? (
+					<Popout>
+						<LoadingSpinner/>
+					</Popout>
+				) : ''}
 			</div>
 		);			
 	}

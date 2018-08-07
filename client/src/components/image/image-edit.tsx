@@ -6,6 +6,8 @@ import Dropzone from '../utilities/dropzone';
 import { IImageContext, imageConsumer } from './image-provider';
 import { userConsumer, IUserContext } from '../user/user-provider';
 import { Location } from 'history';
+import { Popout } from '../utilities/styled.components';
+import { LoadingSpinner } from '../utilities/loading';
 
 export interface ImageEditProps {
 	image: IImageContext;
@@ -22,7 +24,7 @@ export interface ImageEditState {
 	name: string;
 	alt: string;
 	image: File;
-	
+	loading: boolean;
 }
 
 export interface ImageEditMethods {
@@ -48,7 +50,8 @@ class ImageEdit extends React.Component<ImageEditProps, ImageEditState> implemen
         	discontinued: false,
         	name: '',
         	alt: '',
-        	image: new File([], ''),
+			image: new File([], ''),
+			loading: false,
         };
 
 		this.hitKey = this.hitKey.bind(this);
@@ -116,14 +119,20 @@ class ImageEdit extends React.Component<ImageEditProps, ImageEditState> implemen
 
 		this.props.image.updateImage(this.state, this.props.image.image, this.updateImageResult);
 		this.setState((prevState) => {
-			return {required: false};
+			return {
+				required: false,
+				loading: true,
+			};
 		});
     }
 
     updateImageResult(error) {
     	if (error) {
 			this.setState((prevState) => {
-				return {required: true};
+				return {
+					required: true,
+					loading: false,
+				};
 			});
     	} else {
     		if (this.props.updateRedirect) {
@@ -155,7 +164,7 @@ class ImageEdit extends React.Component<ImageEditProps, ImageEditState> implemen
 
 	render() {
 		const { imageDetailChanged, hitKey, updateImage, imageChanged, handleCheckboxChange } = this;
-		const { redirect, image, name, alt, required, discontinued } = this.state;
+		const { redirect, image, name, alt, required, discontinued, loading } = this.state;
 		const { filename, _imageId } = this.props.image.image;
 		const { admin } = this.props.user;
 		if (redirect) {
@@ -204,6 +213,11 @@ class ImageEdit extends React.Component<ImageEditProps, ImageEditState> implemen
 					</div>
 				</div>
 				<input type='submit' onClick={updateImage} value='SAVE' />
+				{loading ? (
+					<Popout>
+						<LoadingSpinner/>
+					</Popout>
+				) : ''}
 			</div>
 		);			
 	}

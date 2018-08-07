@@ -15,6 +15,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utilities_dropzone__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utilities/dropzone */ "./client/src/components/utilities/dropzone.tsx");
 /* harmony import */ var _image_provider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./image-provider */ "./client/src/components/image/image-provider.tsx");
 /* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
+/* harmony import */ var _utilities_styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utilities/styled.components */ "./client/src/components/utilities/styled.components.tsx");
+/* harmony import */ var _utilities_loading__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utilities/loading */ "./client/src/components/utilities/loading.tsx");
 
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -26,6 +28,8 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+
+
 
 
 
@@ -43,6 +47,7 @@ var ImageEdit = /** @class */ (function (_super) {
             name: '',
             alt: '',
             image: new File([], ''),
+            loading: false,
         };
         _this.hitKey = _this.hitKey.bind(_this);
         _this.updateImage = _this.updateImage.bind(_this);
@@ -103,13 +108,19 @@ var ImageEdit = /** @class */ (function (_super) {
         }
         this.props.image.updateImage(this.state, this.props.image.image, this.updateImageResult);
         this.setState(function (prevState) {
-            return { required: false };
+            return {
+                required: false,
+                loading: true,
+            };
         });
     };
     ImageEdit.prototype.updateImageResult = function (error) {
         if (error) {
             this.setState(function (prevState) {
-                return { required: true };
+                return {
+                    required: true,
+                    loading: false,
+                };
             });
         }
         else {
@@ -138,7 +149,7 @@ var ImageEdit = /** @class */ (function (_super) {
     };
     ImageEdit.prototype.render = function () {
         var _a = this, imageDetailChanged = _a.imageDetailChanged, hitKey = _a.hitKey, updateImage = _a.updateImage, imageChanged = _a.imageChanged, handleCheckboxChange = _a.handleCheckboxChange;
-        var _b = this.state, redirect = _b.redirect, image = _b.image, name = _b.name, alt = _b.alt, required = _b.required, discontinued = _b.discontinued;
+        var _b = this.state, redirect = _b.redirect, image = _b.image, name = _b.name, alt = _b.alt, required = _b.required, discontinued = _b.discontinued, loading = _b.loading;
         var _c = this.props.image.image, filename = _c.filename, _imageId = _c._imageId;
         var admin = this.props.user.admin;
         if (redirect) {
@@ -174,7 +185,9 @@ var ImageEdit = /** @class */ (function (_super) {
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", onKeyPress: hitKey, name: "alt", value: alt, onChange: imageDetailChanged, placeholder: "blue tree pencil4life" }),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Discontinued"),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'checkbox', checked: !!discontinued, name: "discontinued", onChange: handleCheckboxChange }))),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'submit', onClick: updateImage, value: 'SAVE' })));
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'submit', onClick: updateImage, value: 'SAVE' }),
+            loading ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_styled_components__WEBPACK_IMPORTED_MODULE_5__["Popout"], null,
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_loading__WEBPACK_IMPORTED_MODULE_6__["LoadingSpinner"], null))) : ''));
     };
     ImageEdit.defaultProps = {
         updateRedirect: true,
@@ -202,6 +215,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utilities_dropzone__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utilities/dropzone */ "./client/src/components/utilities/dropzone.tsx");
 /* harmony import */ var _user_user_provider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user/user-provider */ "./client/src/components/user/user-provider.tsx");
 /* harmony import */ var _image_provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./image-provider */ "./client/src/components/image/image-provider.tsx");
+/* harmony import */ var _utilities_loading__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utilities/loading */ "./client/src/components/utilities/loading.tsx");
+/* harmony import */ var _utilities_styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utilities/styled.components */ "./client/src/components/utilities/styled.components.tsx");
 
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -218,6 +233,8 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
+
 var ImageNew = /** @class */ (function (_super) {
     __extends(ImageNew, _super);
     function ImageNew(props) {
@@ -229,6 +246,7 @@ var ImageNew = /** @class */ (function (_super) {
             name: '',
             alt: '',
             currentImage: new File([], 'file'),
+            loading: false,
         };
         _this.hitKey = _this.hitKey.bind(_this);
         _this.addNewImage = _this.addNewImage.bind(_this);
@@ -272,18 +290,27 @@ var ImageNew = /** @class */ (function (_super) {
         var addNewImageResult = 'addNewImageResult' in this.props ? this.props.addNewImageResult : this.addNewImageResult;
         this.props.image.addImage(params, addNewImageResult);
         this.setState(function () {
-            return { required: false };
+            return {
+                required: false,
+                loading: true,
+            };
         });
     };
     ImageNew.prototype.addNewImageResult = function (error, _imageId) {
         if (error) {
             this.setState(function () {
-                return { required: true };
+                return {
+                    required: true,
+                    loading: false,
+                };
             });
         }
         else {
             this.setState(function () {
-                return { _imageId: _imageId };
+                return {
+                    _imageId: _imageId,
+                    loading: false,
+                };
             });
         }
     };
@@ -311,7 +338,7 @@ var ImageNew = /** @class */ (function (_super) {
         });
     };
     ImageNew.prototype.render = function () {
-        var _a = this.state, redirect = _a.redirect, _imageId = _a._imageId;
+        var _a = this.state, redirect = _a.redirect, _imageId = _a._imageId, loading = _a.loading;
         var admin = this.props.user.admin;
         if (redirect) {
             return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], { to: '/image' }));
@@ -356,7 +383,9 @@ var ImageNew = /** @class */ (function (_super) {
                     required ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "errortext" }, "*")) : '',
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Alt"),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", onKeyPress: hitKey, name: "alt", value: alt, onChange: imageDetailChanged, placeholder: "blue tree pencil4life" }))),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'submit', onClick: addNewImage, value: 'SAVE' })));
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'submit', onClick: addNewImage, value: 'SAVE' }),
+            loading ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_styled_components__WEBPACK_IMPORTED_MODULE_6__["Popout"], null,
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utilities_loading__WEBPACK_IMPORTED_MODULE_5__["LoadingSpinner"], null))) : ''));
     };
     return ImageNew;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
@@ -613,6 +642,46 @@ var Dropzone = /** @class */ (function (_super) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
 ;
 /* harmony default export */ __webpack_exports__["default"] = (Dropzone);
+
+
+/***/ }),
+
+/***/ "./client/src/components/utilities/styled.components.tsx":
+/*!***************************************************************!*\
+  !*** ./client/src/components/utilities/styled.components.tsx ***!
+  \***************************************************************/
+/*! exports provided: css, injectGlobal, keyframes, ThemeProvider, default, defaultTheme, Popout */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "css", function() { return css; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "injectGlobal", function() { return injectGlobal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "keyframes", function() { return keyframes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ThemeProvider", function() { return ThemeProvider; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultTheme", function() { return defaultTheme; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Popout", function() { return Popout; });
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.es.js");
+
+var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+
+var _a = styled_components__WEBPACK_IMPORTED_MODULE_0__, styled = _a.default, css = _a.css, injectGlobal = _a.injectGlobal, keyframes = _a.keyframes, ThemeProvider = _a.ThemeProvider;
+
+/* harmony default export */ __webpack_exports__["default"] = (styled);
+var defaultTheme = {
+    primaryColor: '#172B57',
+    primaryColorInverted: '#4d5f86',
+    blue: '#002157',
+    darkblue: '#172B57',
+    lightblue: '#3B5CA3',
+    highlightblue: '#4d5f86',
+    gray: 'gray',
+};
+var Popout = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\tcolor: white;\n\tposition: fixed;\n\ttop: 0;\n\tbottom: 0;\n\tleft: 0;\n\tright: 0;\n\tbackground: rgba(0, 0, 0, 0.85);\n\tz-index: 10000;\n\t> * {\n\t\tposition: relative;\n\t\ttop: 50%;\n\t\tleft: 50%;\n\t\ttransform: translate(-50%, -50%);\n\t\tmargin: 0;\n\t\toverflow: auto;    \n\t\tmax-height: 100%;\n\t\tpadding: 2em 0;\n\t}\n\t\n"], ["\n\tcolor: white;\n\tposition: fixed;\n\ttop: 0;\n\tbottom: 0;\n\tleft: 0;\n\tright: 0;\n\tbackground: rgba(0, 0, 0, 0.85);\n\tz-index: 10000;\n\t> * {\n\t\tposition: relative;\n\t\ttop: 50%;\n\t\tleft: 50%;\n\t\ttransform: translate(-50%, -50%);\n\t\tmargin: 0;\n\t\toverflow: auto;    \n\t\tmax-height: 100%;\n\t\tpadding: 2em 0;\n\t}\n\t\n"])));
+var templateObject_1;
 
 
 /***/ }),
