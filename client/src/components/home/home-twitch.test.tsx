@@ -1,7 +1,7 @@
 'use strict';
 
 import * as React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { ShallowWrapper, shallow } from 'enzyme';
 import TwitchIFrame from './home-twitch';
 
 let wrapper: ShallowWrapper;

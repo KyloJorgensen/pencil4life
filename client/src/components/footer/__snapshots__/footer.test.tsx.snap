@@ -76,6 +76,33 @@ ShallowWrapper {
             />
           </a>
           <a
+            href="https://www.youtube.com/user/shadowshand"
+            target="_blank"
+          >
+            <FontAwesomeIcon
+              border={false}
+              className=""
+              fixedWidth={false}
+              flip={null}
+              icon={
+                Array [
+                  "fab",
+                  "youtube",
+                ]
+              }
+              inverse={false}
+              listItem={false}
+              mask={null}
+              pull={null}
+              pulse={false}
+              rotation={null}
+              size={null}
+              spin={false}
+              symbol={false}
+              transform={null}
+            />
+          </a>
+          <a
             href="https://twitter.com/pencil4life"
             target="_blank"
           >
@@ -209,6 +236,33 @@ ShallowWrapper {
                   Array [
                     "fab",
                     "twitch",
+                  ]
+                }
+                inverse={false}
+                listItem={false}
+                mask={null}
+                pull={null}
+                pulse={false}
+                rotation={null}
+                size={null}
+                spin={false}
+                symbol={false}
+                transform={null}
+              />
+            </a>,
+            <a
+              href="https://www.youtube.com/user/shadowshand"
+              target="_blank"
+            >
+              <FontAwesomeIcon
+                border={false}
+                className=""
+                fixedWidth={false}
+                flip={null}
+                icon={
+                  Array [
+                    "fab",
+                    "youtube",
                   ]
                 }
                 inverse={false}
@@ -386,6 +440,67 @@ ShallowWrapper {
                 "icon": Array [
                   "fab",
                   "twitch",
+                ],
+                "inverse": false,
+                "listItem": false,
+                "mask": null,
+                "pull": null,
+                "pulse": false,
+                "rotation": null,
+                "size": null,
+                "spin": false,
+                "symbol": false,
+                "transform": null,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "a",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <FontAwesomeIcon
+                border={false}
+                className=""
+                fixedWidth={false}
+                flip={null}
+                icon={
+                  Array [
+                    "fab",
+                    "youtube",
+                  ]
+                }
+                inverse={false}
+                listItem={false}
+                mask={null}
+                pull={null}
+                pulse={false}
+                rotation={null}
+                size={null}
+                spin={false}
+                symbol={false}
+                transform={null}
+              />,
+              "href": "https://www.youtube.com/user/shadowshand",
+              "target": "_blank",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "border": false,
+                "className": "",
+                "fixedWidth": false,
+                "flip": null,
+                "icon": Array [
+                  "fab",
+                  "youtube",
                 ],
                 "inverse": false,
                 "listItem": false,
@@ -696,6 +811,33 @@ ShallowWrapper {
               />
             </a>
             <a
+              href="https://www.youtube.com/user/shadowshand"
+              target="_blank"
+            >
+              <FontAwesomeIcon
+                border={false}
+                className=""
+                fixedWidth={false}
+                flip={null}
+                icon={
+                  Array [
+                    "fab",
+                    "youtube",
+                  ]
+                }
+                inverse={false}
+                listItem={false}
+                mask={null}
+                pull={null}
+                pulse={false}
+                rotation={null}
+                size={null}
+                spin={false}
+                symbol={false}
+                transform={null}
+              />
+            </a>
+            <a
               href="https://twitter.com/pencil4life"
               target="_blank"
             >
@@ -829,6 +971,33 @@ ShallowWrapper {
                     Array [
                       "fab",
                       "twitch",
+                    ]
+                  }
+                  inverse={false}
+                  listItem={false}
+                  mask={null}
+                  pull={null}
+                  pulse={false}
+                  rotation={null}
+                  size={null}
+                  spin={false}
+                  symbol={false}
+                  transform={null}
+                />
+              </a>,
+              <a
+                href="https://www.youtube.com/user/shadowshand"
+                target="_blank"
+              >
+                <FontAwesomeIcon
+                  border={false}
+                  className=""
+                  fixedWidth={false}
+                  flip={null}
+                  icon={
+                    Array [
+                      "fab",
+                      "youtube",
                     ]
                   }
                   inverse={false}
@@ -1006,6 +1175,67 @@ ShallowWrapper {
                   "icon": Array [
                     "fab",
                     "twitch",
+                  ],
+                  "inverse": false,
+                  "listItem": false,
+                  "mask": null,
+                  "pull": null,
+                  "pulse": false,
+                  "rotation": null,
+                  "size": null,
+                  "spin": false,
+                  "symbol": false,
+                  "transform": null,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "a",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <FontAwesomeIcon
+                  border={false}
+                  className=""
+                  fixedWidth={false}
+                  flip={null}
+                  icon={
+                    Array [
+                      "fab",
+                      "youtube",
+                    ]
+                  }
+                  inverse={false}
+                  listItem={false}
+                  mask={null}
+                  pull={null}
+                  pulse={false}
+                  rotation={null}
+                  size={null}
+                  spin={false}
+                  symbol={false}
+                  transform={null}
+                />,
+                "href": "https://www.youtube.com/user/shadowshand",
+                "target": "_blank",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "border": false,
+                  "className": "",
+                  "fixedWidth": false,
+                  "flip": null,
+                  "icon": Array [
+                    "fab",
+                    "youtube",
                   ],
                   "inverse": false,
                   "listItem": false,

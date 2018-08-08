@@ -3,10 +3,28 @@
 import * as React from 'react';
 import * as objectPath from 'object-path';
 import { withRouter, Link, NavLink } from 'react-router-dom';
-import { IUserContext, userConsumer } from './user-provider';
 import { Location } from 'history';
-
 import {Redirect} from 'react-router-dom';
+import styled, { Popout, LoadingSpinner } from '../utilities/styled.components';
+import { IUserContext, userConsumer } from './user-provider';
+
+export const LoginPageWrapper = styled.div`
+	.login-container {
+		max-width: 300px;
+		input {
+			width: 100%;
+		}
+	}
+	@media (min-width: 300px) {
+		position: relative;
+		top: 50%;
+		left: 50%;
+
+		.login-container {
+			transform: translate(-50%, -50%);
+		}
+	}
+`;
 
 export interface LoginPageProps {
 	user: IUserContext;
@@ -15,6 +33,7 @@ export interface LoginPageProps {
 
 export interface LoginPageState {
 	badAuth: boolean;
+	loading: boolean;
 }
 
 export interface LoginPageMethods {
@@ -28,6 +47,7 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
         super(props);
         this.state = {
         	badAuth: false,
+        	loading: false,
         };
 
 		this.hitKey = this.hitKey.bind(this);
@@ -76,12 +96,15 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 			});
 			return;
 		}
+		
+		this.setState(() => {
+			return {
+				badAuth: false,
+				loading: true,
+			};
+		});
 		// Login in with vaildated email and password
 		this.props.user.login(email, password, this.loginResult);
-
-		this.setState(() => {
-			return {badAuth: true};
-		});
 	}
 
 	loginResult(result) {
@@ -91,15 +114,17 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 			this.setState(() => {
 				return {badAuth: true};
 			});
-    	} 
+    	} else {
+			this.setState(() => {
+				return {badAuth: true};
+			});
+		}
 	}
 
 	render() {
 		const { emailRef, passwordRef, hitKey, login } = this;
-		const { badAuth } = this.state
+		const { badAuth, loading } = this.state
 		const { userAccess, admin } = this.props.user;
-
-
 
 		if (userAccess || admin) {
 			if (objectPath.has(this, 'props.location.state.redirectPath')) {
@@ -111,26 +136,32 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 		}
 
 		return (
-			<div className="login-page-wrapper">
-				<div className="container">
+			<LoginPageWrapper>
+				<div className="login-container">
 					<div className="login-login-form" onSubmit={login} >
 						<NavLink to='/login'><h2>Login</h2></NavLink>
-						<br/>
 						<label htmlFor="email"><b>Email:</b></label>
-						<br/>
-    					<input type="text" onKeyPress={hitKey} placeholder="coolhats" name="email" ref={emailRef} autoComplete='email' required />
-    					{badAuth ? (<span className="errortext" >* Required</span>) : ''}
-    					<br/>
+    					<p>
+							<input type="text" onKeyPress={hitKey} placeholder="coolhats@example.com" name="email" ref={emailRef} autoComplete='email' required />
+							{badAuth ? (<span className="errortext" >* Required</span>) : ''}
+						</p>
     					<label htmlFor="password"><b>Password:</b></label>
-						<br/>
-    					<input type="password" onKeyPress={hitKey} placeholder="Enter Password" name="password" ref={passwordRef} autoComplete='password' required />
-						{badAuth ? (<span className="errortext" >* Required</span>) : ''}
-						<br/>
+    					<p>
+							<input type="password" onKeyPress={hitKey} placeholder="Enter Password" name="password" ref={passwordRef} autoComplete='password' required />
+							{badAuth ? (<span className="errortext" >* Required</span>) : ''}
+						</p>
 						<input type="submit" onClick={login} value="LOGIN"/>
 					</div>
 					<p><Link className="btn" to={'/forgotpassword'}>Forgot Password</Link>or <Link className="btn" to={'/signup'} >Signup</Link></p>
 				</div>
-			</div>
+				{loading ? (
+					<Popout>
+						<div>
+							<LoadingSpinner/>
+						</div>
+					</Popout>
+				) : ''}
+			</LoginPageWrapper>
 		);			
 	}
 };

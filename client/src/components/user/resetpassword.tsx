@@ -3,6 +3,25 @@
 import * as React from 'react';
 import { Redirect, NavLink, match } from "react-router-dom";
 import { IUserContext, userConsumer } from './user-provider';
+import styled, { Popout, LoadingSpinner } from '../utilities/styled.components';
+
+export const ResetPasswordPageWrapper = styled.div`
+	.reset-password-container {
+		max-width: 300px;
+		input {
+			width: 100%;
+		}
+	}
+	@media (min-width: 300px) {
+		position: relative;
+		top: 50%;
+		left: 50%;
+
+		.reset-password-container {
+			transform: translate(-50%, -50%);
+		}
+	}
+`;
 
 export interface ResetPasswordProps {
 	user: IUserContext;
@@ -15,8 +34,8 @@ export interface ResetPasswordProps {
 export interface ResetPasswordState {
 	redirect: boolean;
 	passwordMismtach: boolean;
-	passwordBad: boolean;
 	vaildCode: boolean;
+	loading: boolean;
 }
 
 export interface ResetPasswordMethods {
@@ -33,8 +52,8 @@ class ResetPassword extends React.Component<ResetPasswordProps, ResetPasswordSta
         this.state = {
         	redirect: false,
         	passwordMismtach: false,
-			passwordBad: false,
 			vaildCode: true,
+			loading: false,
         };
 
 		this.hitKey = this.hitKey.bind(this);
@@ -57,8 +76,8 @@ class ResetPassword extends React.Component<ResetPasswordProps, ResetPasswordSta
 		if (newpassword == confirmpassword) {
 			this.setState(() => {
 				return {
-					passwordBad: false,
 					passwordMismtach: false,
+					loading: true,
 				};
 			});
 			this.props.user.resetPassword(newpassword, this.props.match.params.userId, this.props.match.params.reset_code, this.resetPasswordResult);
@@ -81,10 +100,15 @@ class ResetPassword extends React.Component<ResetPasswordProps, ResetPasswordSta
 			this.setState(() => {
 				return {
 					passwordMismtach: true,
-					passwordBad: true,
+					loading: false,
 				};
 			});
     	} else {
+			this.setState(() => {
+				return {
+					loading: false,
+				};
+			});
 			this.redirect();
     	} 
 	}
@@ -111,7 +135,7 @@ class ResetPassword extends React.Component<ResetPasswordProps, ResetPasswordSta
 
 	render() {
 		const { hitKey, resetPassword, newpasswordRef, confirmpasswordRef } = this;
-		const { redirect, passwordBad, passwordMismtach, vaildCode} = this.state;
+		const { redirect, passwordMismtach, vaildCode, loading} = this.state;
 		const { userId, reset_code } = this.props.match.params;
 		if (redirect) {
 			return (<Redirect to='/profile'/>);
@@ -123,20 +147,27 @@ class ResetPassword extends React.Component<ResetPasswordProps, ResetPasswordSta
 		}
 
 		return (
-			<div className="profile-wrapper container" >
-				<h2>Reset Password</h2>
-				<div>
+			<ResetPasswordPageWrapper>
+				<div className='reset-password-container'>
+					<h2>Reset Password</h2>
 					<label>New Password{passwordMismtach ? (<span className="errortext" >*</span>) : ''}</label>
-					<br/>
-					<input type='password' onKeyPress={hitKey} placeholder="New Password" ref={newpasswordRef} />
-					<br/>
+					<p>
+						<input type='password' onKeyPress={hitKey} placeholder="New Password" ref={newpasswordRef} />
+					</p>
 					<label>Confrim New Password{passwordMismtach ? (<span className="errortext" >* Must match new Password</span>) : ''}</label>
-					<br/>
-					<input type='password' onKeyPress={hitKey} placeholder="New Password" ref={confirmpasswordRef} />
-					<br/>
+					<p>
+						<input type='password' onKeyPress={hitKey} placeholder="New Password" ref={confirmpasswordRef} />
+					</p>
 					<input type='submit' onClick={resetPassword} value='SAVE' />
-				</div>	
-			</div>
+				</div>
+				{loading ? (
+					<Popout>
+						<div>
+							<LoadingSpinner/>
+						</div>
+					</Popout>
+				) : ''}
+			</ResetPasswordPageWrapper>
 		);			
 	}
 };

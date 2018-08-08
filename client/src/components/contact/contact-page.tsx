@@ -45,7 +45,7 @@ const ContactPageWrapper = styled.div`
 			> h2 {
 				width: max-content;
 				margin: 0 auto;
-				font-size: 1.5em;
+				font-size: 1.3em;
 			}
 		}
 

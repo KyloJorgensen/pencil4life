@@ -17,19 +17,49 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": <iframe
-        allowFullScreen={true}
-        frameBorder="0"
-        onLoad={[Function]}
-        scrolling="no"
-        src="https://player.twitch.tv/?channel=pencil4life"
-        style={
+      "children": <styled.div
+        height="60.96774193548387px"
+        theme={
           Object {
-            "height": "auto",
-            "width": "auto",
+            "blue": "#002157",
+            "darkblue": "#172B57",
+            "gray": "gray",
+            "highlightblue": "#4d5f86",
+            "lightblue": "#3B5CA3",
+            "primaryColor": "#172B57",
+            "primaryColorInverted": "#4d5f86",
           }
         }
-      />,
+        width="100px"
+      >
+        <img
+          alt="Pencil4Life live on Twitch"
+          src="/images/livetwitch.png"
+        />
+        <h2>
+          Not streaming at the moment
+        </h2>
+        <h2>
+          Check 
+          <Link
+            replace={false}
+            to="event"
+          >
+            Events
+          </Link>
+           for next stream
+        </h2>
+        <h2>
+          Visit my 
+          <a
+            href="https://www.youtube.com/user/shadowshand"
+            target="_blank"
+          >
+            YouTube
+          </a>
+           channel
+        </h2>
+      </styled.div>,
       "className": "twitch-iframe-wrapper col-md-8 p-0",
     },
     "ref": Object {
@@ -38,23 +68,148 @@ ShallowWrapper {
     "rendered": Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "class",
       "props": Object {
-        "allowFullScreen": true,
-        "frameBorder": "0",
-        "onLoad": [Function],
-        "scrolling": "no",
-        "src": "https://player.twitch.tv/?channel=pencil4life",
-        "style": Object {
-          "height": "auto",
-          "width": "auto",
+        "children": Array [
+          <img
+            alt="Pencil4Life live on Twitch"
+            src="/images/livetwitch.png"
+          />,
+          <h2>
+            Not streaming at the moment
+          </h2>,
+          <h2>
+            Check 
+            <Link
+              replace={false}
+              to="event"
+            >
+              Events
+            </Link>
+             for next stream
+          </h2>,
+          <h2>
+            Visit my 
+            <a
+              href="https://www.youtube.com/user/shadowshand"
+              target="_blank"
+            >
+              YouTube
+            </a>
+             channel
+          </h2>,
+        ],
+        "height": "60.96774193548387px",
+        "theme": Object {
+          "blue": "#002157",
+          "darkblue": "#172B57",
+          "gray": "gray",
+          "highlightblue": "#4d5f86",
+          "lightblue": "#3B5CA3",
+          "primaryColor": "#172B57",
+          "primaryColorInverted": "#4d5f86",
         },
+        "width": "100px",
       },
-      "ref": Object {
-        "current": null,
-      },
-      "rendered": null,
-      "type": "iframe",
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "alt": "Pencil4Life live on Twitch",
+            "src": "/images/livetwitch.png",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "img",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Not streaming at the moment",
+          },
+          "ref": null,
+          "rendered": "Not streaming at the moment",
+          "type": "h2",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "Check ",
+              <Link
+                replace={false}
+                to="event"
+              >
+                Events
+              </Link>,
+              " for next stream",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Check ",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Events",
+                "replace": false,
+                "to": "event",
+              },
+              "ref": null,
+              "rendered": "Events",
+              "type": [Function],
+            },
+            " for next stream",
+          ],
+          "type": "h2",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "Visit my ",
+              <a
+                href="https://www.youtube.com/user/shadowshand"
+                target="_blank"
+              >
+                YouTube
+              </a>,
+              " channel",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Visit my ",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "YouTube",
+                "href": "https://www.youtube.com/user/shadowshand",
+                "target": "_blank",
+              },
+              "ref": null,
+              "rendered": "YouTube",
+              "type": "a",
+            },
+            " channel",
+          ],
+          "type": "h2",
+        },
+      ],
+      "type": [Function],
     },
     "type": "div",
   },
@@ -64,19 +219,49 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": <iframe
-          allowFullScreen={true}
-          frameBorder="0"
-          onLoad={[Function]}
-          scrolling="no"
-          src="https://player.twitch.tv/?channel=pencil4life"
-          style={
+        "children": <styled.div
+          height="60.96774193548387px"
+          theme={
             Object {
-              "height": "auto",
-              "width": "auto",
+              "blue": "#002157",
+              "darkblue": "#172B57",
+              "gray": "gray",
+              "highlightblue": "#4d5f86",
+              "lightblue": "#3B5CA3",
+              "primaryColor": "#172B57",
+              "primaryColorInverted": "#4d5f86",
             }
           }
-        />,
+          width="100px"
+        >
+          <img
+            alt="Pencil4Life live on Twitch"
+            src="/images/livetwitch.png"
+          />
+          <h2>
+            Not streaming at the moment
+          </h2>
+          <h2>
+            Check 
+            <Link
+              replace={false}
+              to="event"
+            >
+              Events
+            </Link>
+             for next stream
+          </h2>
+          <h2>
+            Visit my 
+            <a
+              href="https://www.youtube.com/user/shadowshand"
+              target="_blank"
+            >
+              YouTube
+            </a>
+             channel
+          </h2>
+        </styled.div>,
         "className": "twitch-iframe-wrapper col-md-8 p-0",
       },
       "ref": Object {
@@ -85,23 +270,148 @@ ShallowWrapper {
       "rendered": Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "class",
         "props": Object {
-          "allowFullScreen": true,
-          "frameBorder": "0",
-          "onLoad": [Function],
-          "scrolling": "no",
-          "src": "https://player.twitch.tv/?channel=pencil4life",
-          "style": Object {
-            "height": "auto",
-            "width": "auto",
+          "children": Array [
+            <img
+              alt="Pencil4Life live on Twitch"
+              src="/images/livetwitch.png"
+            />,
+            <h2>
+              Not streaming at the moment
+            </h2>,
+            <h2>
+              Check 
+              <Link
+                replace={false}
+                to="event"
+              >
+                Events
+              </Link>
+               for next stream
+            </h2>,
+            <h2>
+              Visit my 
+              <a
+                href="https://www.youtube.com/user/shadowshand"
+                target="_blank"
+              >
+                YouTube
+              </a>
+               channel
+            </h2>,
+          ],
+          "height": "60.96774193548387px",
+          "theme": Object {
+            "blue": "#002157",
+            "darkblue": "#172B57",
+            "gray": "gray",
+            "highlightblue": "#4d5f86",
+            "lightblue": "#3B5CA3",
+            "primaryColor": "#172B57",
+            "primaryColorInverted": "#4d5f86",
           },
+          "width": "100px",
         },
-        "ref": Object {
-          "current": null,
-        },
-        "rendered": null,
-        "type": "iframe",
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "alt": "Pencil4Life live on Twitch",
+              "src": "/images/livetwitch.png",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "img",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Not streaming at the moment",
+            },
+            "ref": null,
+            "rendered": "Not streaming at the moment",
+            "type": "h2",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "Check ",
+                <Link
+                  replace={false}
+                  to="event"
+                >
+                  Events
+                </Link>,
+                " for next stream",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              "Check ",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Events",
+                  "replace": false,
+                  "to": "event",
+                },
+                "ref": null,
+                "rendered": "Events",
+                "type": [Function],
+              },
+              " for next stream",
+            ],
+            "type": "h2",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "Visit my ",
+                <a
+                  href="https://www.youtube.com/user/shadowshand"
+                  target="_blank"
+                >
+                  YouTube
+                </a>,
+                " channel",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              "Visit my ",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "YouTube",
+                  "href": "https://www.youtube.com/user/shadowshand",
+                  "target": "_blank",
+                },
+                "ref": null,
+                "rendered": "YouTube",
+                "type": "a",
+              },
+              " channel",
+            ],
+            "type": "h2",
+          },
+        ],
+        "type": [Function],
       },
       "type": "div",
     },

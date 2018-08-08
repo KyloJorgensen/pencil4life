@@ -4,6 +4,25 @@ import * as React from 'react';
 import * as objectPath from 'object-path';
 import { withRouter, Link, Redirect, NavLink } from 'react-router-dom';
 import { IUserContext, userConsumer } from './user-provider';
+import styled, { Popout, LoadingSpinner } from '../utilities/styled.components';
+
+export const ForgotPasswordPageWrapper = styled.div`
+	.forgot-password-container {
+		max-width: 300px;
+		input {
+			width: 100%;
+		}
+	}
+	@media (min-width: 300px) {
+		position: relative;
+		top: 50%;
+		left: 50%;
+
+		.forgot-password-container {
+			transform: translate(-50%, -50%);
+		}
+	}
+`;
 
 export interface ForgotPasswordPageProps {
 	user: IUserContext;
@@ -12,6 +31,7 @@ export interface ForgotPasswordPageProps {
 export interface ForgotPasswordPageState {
     required: boolean;
     requestSent: boolean;
+    loading: boolean;
 }
 
 export interface ForgotPasswordPageMethods {
@@ -25,7 +45,8 @@ class ForgotPasswordPage extends React.Component<ForgotPasswordPageProps, Forgot
         super(props);
         this.state = {
         	required: false,
-        	requestSent: false,
+			requestSent: false,
+			loading: false,
         };
 
 		this.hitKey = this.hitKey.bind(this);
@@ -58,7 +79,9 @@ class ForgotPasswordPage extends React.Component<ForgotPasswordPageProps, Forgot
 		if (invalid) {
 			this.emailRef.current.value = '';
 			this.setState(() => {
-				return {required: true};
+				return {
+					required: true,
+				};
 			});
 			return;
 		}
@@ -66,29 +89,39 @@ class ForgotPasswordPage extends React.Component<ForgotPasswordPageProps, Forgot
 		this.props.user.forgotPassword(email, this.forgotPasswordResult);
 
 		this.setState(() => {
-			return {required: true};
+			return {
+				required: true,
+				loading: true,
+			};
 		});
 	}
 
 	forgotPasswordResult(result) {
     	if (result) {
 			this.setState(() => {
-				return {requestSent: true};
+				return {
+					requestSent: true,
+					required: false,
+					loading: false,
+				};
 			});
         } else {
 			this.emailRef.current.value = '';
 			this.setState(() => {
-				return {required: true};
+				return {
+					required: true,
+					loading: false,
+				};
 			});
     	} 
 	}
 
 	render() {
 		const { emailRef, hitKey, forgotPassword } = this;
-        const { required, requestSent } = this.state
+        const { required, requestSent, loading } = this.state
         if (requestSent) {
             return(
-				<div className="forgotPassword-page-wrapper">
+				<div>
 					<div className="container">
 						<NavLink to={'/forgotpassword'} activeClassName="selected" ><h2>Reset Password Request</h2></NavLink>
 						<p>Request successfully sent to your email. Check your inbox or junk for a Pencil 4 Life Password Reset for link to reset password.</p>
@@ -100,20 +133,25 @@ class ForgotPasswordPage extends React.Component<ForgotPasswordPageProps, Forgot
         }
 
 		return (
-			<div className="forgotPassword-page-wrapper">
-				<div className="container">
-					<NavLink to={'/forgotpassword'} activeClassName="selected" ><h2>Reset Password Request</h2></NavLink>
-					<br/>
-					<label htmlFor="email"><b>Email:</b></label>
-					<br/>
-					<input type="text" onKeyPress={hitKey} placeholder="Enter youremail@example.com" name="email" ref={emailRef} autoComplete='email' required />
-					{required ? (<span className="errortext" >* Required</span>) : ''}
-					<br/>
+			<ForgotPasswordPageWrapper>
+				<div className="forgot-password-container">
+					<NavLink to={'/forgotpassword'} activeClassName="selected" ><h2>Reset Password</h2></NavLink>
+					<label htmlFor="email">Email</label>
+					<p>
+						<input type="text" onKeyPress={hitKey} placeholder="Enter youremail@example.com" name="email" ref={emailRef} autoComplete='email' required />
+						{required ? (<span className="errortext" >* Required</span>) : ''}
+					</p>
 					<input type="submit" onClick={forgotPassword} value="RESET PASSWORD"/>
-
 					<p><Link className="btn" to={'/login'}>Login</Link> or <Link className="btn" to={'/signup'} >Signup</Link></p>
 				</div>
-			</div>
+				{loading ? (
+					<Popout>
+						<div>
+							<LoadingSpinner/>
+						</div>
+					</Popout>
+				) : ''}
+			</ForgotPasswordPageWrapper>
 		);			
 	}
 };

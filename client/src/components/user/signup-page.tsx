@@ -2,11 +2,28 @@
 
 import * as React from 'react';
 import * as objectPath from 'object-path';
-import { withRouter, Link, NavLink } from 'react-router-dom';
+import { withRouter, Link, NavLink, Redirect } from 'react-router-dom';
 import { IUserContext, userConsumer, SignupParams } from './user-provider';
 import { Location } from 'history';
+import styled, { Popout, LoadingSpinner } from '../utilities/styled.components';
 
-import {Redirect} from 'react-router-dom';
+export const SignPageWrapper = styled.div`
+	.signup-container {
+		max-width: 300px;
+		input {
+			width: 100%;
+		}
+	}
+	@media (min-width: 300px) {
+		position: relative;
+		top: 50%;
+		left: 50%;
+
+		.signup-container {
+			transform: translate(-50%, -50%);
+		}
+	}
+`;
 
 export interface LoginPageProps {
 	user: IUserContext;
@@ -15,6 +32,7 @@ export interface LoginPageProps {
 
 export interface LoginPageState {
 	badAuth: boolean;
+	loading: boolean;
 }
 
 export interface LoginPageMethods {
@@ -27,7 +45,8 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
     constructor(props) {
         super(props);
         this.state = {
-        	badAuth: false,
+			badAuth: false,
+			loading: false,
         };
 
 		this.hitKey = this.hitKey.bind(this);
@@ -123,7 +142,6 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 		}
 
 		if (invalid) {
-			console.log(invalid)
 			this.setState(() => {
 				return {badAuth: true};
 			});
@@ -136,12 +154,15 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 			firstname: firstname,
 			lastname: lastname,
 		};
+		
+		this.setState(() => {
+			return {
+				badAuth: false,
+				loading: true,
+			};
+		});
 
 		this.props.user.signup(signupParams, this.signupResult);
-
-		this.setState(() => {
-			return {badAuth: true};
-		});
 	}
 
 	signupResult(result) {
@@ -149,14 +170,24 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 			this.emailRef.current.nodeValue = '';
 			this.passwordRef.current.nodeValue = '';
 			this.setState(() => {
-				return {badAuth: true};
+				return {
+					badAuth: true,
+					loading: false,
+				};
 			});
-    	} 
+    	} else {
+			this.setState(() => {
+				return {
+					badAuth: false,
+					loading: false,
+				};
+			});			
+		}
 	}
 
 	render() {
 		const { emailRef, passwordRef, verifypasswordRef, hitKey, signup, usernameRef, firstnameRef, lastnameRef } = this;
-		const { badAuth } = this.state
+		const { badAuth, loading } = this.state
 		const { userAccess, admin } = this.props.user;
 
 
@@ -171,46 +202,53 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState, LoginPag
 		}
 
 		return (
-			<div className="signup-page-wrapper">
-				<div className="container">
+			<SignPageWrapper>
+				<div className="signup-container">
 					<div className="signup-signup-form" onSubmit={signup} >
 						<NavLink to='/signup'><h2>Signup</h2></NavLink>
-						<br/>
-						<label htmlFor="email"><b>Email:</b></label>
-						<br/>
-    					<input type="text" onKeyPress={hitKey} placeholder="Enter youremail@example.com" name="email" ref={emailRef} autoComplete='email' required />
-    					{badAuth ? (<span className="errortext" >* Required</span>) : ''}
-    					<br/>
-						<label htmlFor="username"><b>Username:</b></label>
-						<br/>
-    					<input type="text" onKeyPress={hitKey} placeholder="Enter username" name="username" ref={usernameRef} autoComplete='username' required />
-    					{badAuth ? (<span className="errortext" >* Required</span>) : ''}
-    					<br/>
-    					<label htmlFor="password"><b>Password:</b></label>
-						<br/>
-    					<input type="password" onKeyPress={hitKey} placeholder="Enter Password" name="password" ref={passwordRef} autoComplete='new-password' required />
-						{badAuth ? (<span className="errortext" >* Required</span>) : ''}
-						<br/>
-    					<label htmlFor="verifypass"><b>Verify Password:</b></label>
-						<br/>
-    					<input type="password" onKeyPress={hitKey} placeholder="Enter Password" name="verifypass" ref={verifypasswordRef} autoComplete='new-password' required />
-						{badAuth ? (<span className="errortext" >* Required</span>) : ''}
-						<br/>
-						<label htmlFor="firstname"><b>First Name:</b></label>
-						<br/>
-    					<input type="text" onKeyPress={hitKey} placeholder="Enter First Name" name="firstname" ref={firstnameRef} autoComplete='given-name' required />
-    					{badAuth ? (<span className="errortext" >* Required</span>) : ''}
-    					<br/>
-						<label htmlFor="lastname"><b>Last Name:</b></label>
-						<br/>
-    					<input type="text" onKeyPress={hitKey} placeholder="Enter Last Name" name="lastname" ref={lastnameRef} autoComplete='family-name' required  />
-    					{badAuth ? (<span className="errortext" >* Required</span>) : ''}
-    					<br/>
+							
+						<label htmlFor="email">Email</label>
+						<p>
+    						<input type="text" onKeyPress={hitKey} placeholder="Enter youremail@example.com" name="email" ref={emailRef} autoComplete='email' required />
+    						{badAuth ? (<span className="errortext" >* Required</span>) : ''}
+						</p>
+						<label htmlFor="username">Username</label>
+    					<p>
+							<input type="text" onKeyPress={hitKey} placeholder="Enter username" name="username" ref={usernameRef} autoComplete='username' required />
+							{badAuth ? (<span className="errortext" >* Required</span>) : ''}
+						</p>
+    					<label htmlFor="password">Password</label>
+    					<p>
+							<input type="password" onKeyPress={hitKey} placeholder="Enter Password" name="password" ref={passwordRef} autoComplete='new-password' required />
+							{badAuth ? (<span className="errortext" >* Required</span>) : ''}
+						</p>
+    					<label htmlFor="verifypass">Verify Password</label>
+    					<p>
+							<input type="password" onKeyPress={hitKey} placeholder="Enter Password" name="verifypass" ref={verifypasswordRef} autoComplete='new-password' required />
+							{badAuth ? (<span className="errortext" >* Required</span>) : ''}
+						</p>
+						<label htmlFor="firstname">First Name</label>
+    					<p>
+							<input type="text" onKeyPress={hitKey} placeholder="Enter First Name" name="firstname" ref={firstnameRef} autoComplete='given-name' required />
+							{badAuth ? (<span className="errortext" >* Required</span>) : ''}
+						</p>
+						<label htmlFor="lastname">Last Name</label>
+    					<p>
+							<input type="text" onKeyPress={hitKey} placeholder="Enter Last Name" name="lastname" ref={lastnameRef} autoComplete='family-name' required  />
+							{badAuth ? (<span className="errortext" >* Required</span>) : ''}
+						</p>
 						<input type="submit" onClick={signup} value="Signup"/>
 					</div>
 					<p>or <Link className="btn" to={'/login'} >Login</Link></p>
 				</div>
-			</div>
+				{loading ? (
+					<Popout>
+						<div>
+							<LoadingSpinner/>
+						</div>
+					</Popout>
+				) : ''}
+			</SignPageWrapper>
 		);			
 	}
 };
