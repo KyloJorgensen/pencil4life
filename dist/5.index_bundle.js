@@ -205,7 +205,8 @@ var TwitchIframe = /** @class */ (function (_super) {
         if (!this.state.twitchStreaming) {
             return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "twitch-iframe-wrapper col-md-8 p-0", ref: this.twitchIframeWrapperRef },
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](TwitchStreamFailed, { height: this.state.twitchIframeHeight, width: this.state.twitchIframeWidth, theme: _utilities_styled_components__WEBPACK_IMPORTED_MODULE_1__["defaultTheme"] },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: "/images/livetwitch.png", alt: "Pencil4Life live on Twitch" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("a", { href: "https://www.twitch.tv/pencil4life" },
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: "/images/livetwitch.png", alt: "Pencil4Life live on Twitch" })),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", null, "Not streaming at the moment"),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", null,
                         "Check ",

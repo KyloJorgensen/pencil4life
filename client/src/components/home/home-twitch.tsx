@@ -138,7 +138,9 @@ class TwitchIframe extends React.Component<TwitchIframeProps, TwitchIframeState,
 			return (
 				<div className="twitch-iframe-wrapper col-md-8 p-0" ref={this.twitchIframeWrapperRef} >
 					<TwitchStreamFailed height={this.state.twitchIframeHeight} width={this.state.twitchIframeWidth} theme={defaultTheme}>
-							<img src="/images/livetwitch.png" alt="Pencil4Life live on Twitch"/>
+							<a href="https://www.twitch.tv/pencil4life">
+								<img src="/images/livetwitch.png" alt="Pencil4Life live on Twitch"/>
+							</a>
 							<h2>Not streaming at the moment</h2>
 							<h2>Check <Link to="event">Events</Link> for next stream</h2>
 							<h2>Visit my <a href="https://www.youtube.com/user/shadowshand" target="_blank" >YouTube</a> channel</h2>
